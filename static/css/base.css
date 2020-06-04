@@ -1,0 +1,103 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html{
+    scroll-behavior: smooth;
+}
+#navbar{
+    display: flex;
+    position: sticky;
+    padding: -5px 15px;
+    align-items: center;
+    justify-content: space-between;
+    top: 0px;  
+}
+#navbar::before{
+    content: "";
+    background-color: rgb(139, 139, 139);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    z-index: -1;
+}
+#navbar ul{
+    display: flex;
+    align-items: center;
+    margin-left: -127px;
+    margin-top: 0;
+}
+
+#navbar ul li {
+    list-style: none;
+    font-family: 'Baloo Bhai 2', cursive;
+    font-size: 1.3rem;
+}
+#navbar ul li a{
+    color:white;
+    display: block;
+    font-size: 20px;
+    padding: 10px 7px;
+    text-decoration: none;
+    /* border-radius: 20px; */
+}
+.mid img{
+ padding: 5px;
+}
+ .mid:hover{
+    background-color: rgba(243, 243, 243, 0.315);
+    border-radius: 1px;
+}
+.active{
+    color:rgb(0, 0, 0);
+    background-color: rgb(22, 158, 56);
+}
+#logo img{
+    height: 60px;
+}
+/* .right{
+    display: flex;
+    flex-direction: row;
+} */
+.left{
+    display: flex;
+    color: white;
+    font-size: 20px;
+}
+.left #logo{
+   margin-left: 20px;
+   margin-right: 10px;
+}
+.left p{
+    font-size: 15px;
+}
+.left #tagLine{
+    font-family: 'Berkshire Swash', cursive;
+font-family: 'Piedra', cursive;
+    color:rgb(0, 255, 55);
+    margin-left: 40px;
+}
+.right{
+    margin: 5px 0; 
+}
+.right .btn{
+  background-color: rgb(52, 192, 87);
+  border:1px solid #000;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 10px;
+  
+  cursor: pointer;
+}
+.right .btn:hover{
+  background-color: rgb(0, 219, 55);
+  border:1px solid white;
+}
+.right .btn-SignUp{
+    margin-right:20px;
+}
+
+/* .right img{
+  margin-top: 10px;
+}  */

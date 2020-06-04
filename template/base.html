@@ -1,15 +1,38 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
+        {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title%} {% endblock title %}</title>
-    
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-    <h1>Hello</h1>
+    <nav id="navbar">
+        <!-- navbar left section -->
+        <div class="left" >
+            <div id="tagLine">
+            <h3>i Learn</h3>
+        </div>
+    </div>
+    <!-- navbar mid section -->
+        <ul class="mid">
+           <img src="/static/img/categories.png" alt="">
+          <li class="item" ><a >Categories</a></li>
+        </ul>
+    
+<!-- Navbar right section -->
+<div class="right">
+<button class="btn btn-Teach">Teach On iLearn</button>
+<button class="btn btn-Login">Log In</button>
+<button class="btn btn-SignUp">Sign Up</button>
+</div>
+      </nav>
+      {% block body %} 
+      {% endblock body %} 
 </body>
 <script src="{% static 'js/home.js' %}"></script>
 </html>
+
+
+ 

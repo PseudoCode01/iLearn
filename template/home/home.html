@@ -1,2 +1,17 @@
 {% extends "base.html" %}
+{% load static %}
 {%block title%} home{% endblock title %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<section id="home">
+    <div class="searchSection">
+   <h1>Transform The Way of Learning</h1>
+   <p id="cThought">"You Dont Have To Be Great To Start,But Start To Be Great"</p>
+    <div id="searchBox" >
+   <input type="text" id="search" name="search" placeholder="What Do You Want Learn?">
+   <img src="static/img/search.png" alt="">
+</div>
+</div>
+  </section>
+{% endblock body %}
