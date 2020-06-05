@@ -17,8 +17,20 @@
     </div>
     <!-- navbar mid section -->
         <ul class="mid">
+            <span>
            <img src="/static/img/categories.png" alt="">
-          <li class="item" ><a >Categories</a></li>
+          <li class="item" ><a >Categories</a>
+           </li> 
+        </span>
+           <ul class="displayClass">
+            <li class="item">Class 6</li>
+            <li class="item">Class 7</li>
+            <li class="item">Class 8</li>
+            <li class="item">Class 9</li>
+            <li class="item">Class 10</li>
+            <li class="item">Class 11</li>
+            <li class="item">Class 12</li>
+        </ul>
         </ul>
     
 <!-- Navbar right section -->
@@ -28,10 +40,11 @@
 <button class="btn btn-SignUp">Sign Up</button>
 </div>
       </nav>
+    
       {% block body %} 
       {% endblock body %} 
 </body>
-<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/base.js' %}"></script>
 </html>
 
 

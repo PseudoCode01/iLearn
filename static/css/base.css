@@ -11,7 +11,8 @@ html{
     padding: -5px 15px;
     align-items: center;
     justify-content: space-between;
-    top: 0px;  
+    top: 0px;
+    height: 50px;  
 }
 #navbar::before{
     content: "";
@@ -22,33 +23,43 @@ html{
     opacity: 0.6;
     z-index: -1;
 }
-#navbar ul{
+#navbar .mid{
     display: flex;
+    flex-direction: column;
     align-items: center;
     margin-left: -127px;
     margin-top: 0;
+    height: 100%;
 }
 
-#navbar ul li {
+#navbar .mid li {
     list-style: none;
     font-family: 'Baloo Bhai 2', cursive;
     font-size: 1.3rem;
+    justify-content: center;
 }
-#navbar ul li a{
+#navbar .mid li a{
     color:white;
     display: block;
-    font-size: 20px;
+    font-size: 25px;
     padding: 10px 7px;
     text-decoration: none;
     /* border-radius: 20px; */
 }
 .mid img{
- padding: 5px;
+ padding: 12px;
+}
+.mid span{
+    display: flex;
+    flex-direction: row;
 }
  .mid:hover{
-    background-color: rgba(243, 243, 243, 0.315);
-    border-radius: 1px;
+    background-color:  rgb(22, 158, 56);
+    border-radius: 2px;
+    cursor: pointer;
 }
+
+
 .active{
     color:rgb(0, 0, 0);
     background-color: rgb(22, 158, 56);
@@ -56,10 +67,6 @@ html{
 #logo img{
     height: 60px;
 }
-/* .right{
-    display: flex;
-    flex-direction: row;
-} */
 .left{
     display: flex;
     color: white;
@@ -77,6 +84,7 @@ html{
 font-family: 'Piedra', cursive;
     color:rgb(0, 255, 55);
     margin-left: 40px;
+   cursor: pointer;
 }
 .right{
     margin: 5px 0; 
@@ -87,7 +95,6 @@ font-family: 'Piedra', cursive;
   font-size: 15px;
   border-radius: 2px;
   padding: 10px;
-  
   cursor: pointer;
 }
 .right .btn:hover{
@@ -98,6 +105,25 @@ font-family: 'Piedra', cursive;
     margin-right:20px;
 }
 
-/* .right img{
-  margin-top: 10px;
-}  */
+.mid:hover .displayClass{
+    display: block;
+    position: relative;
+    
+    /* background-color: yellow; */
+}
+/* Display Categories */
+.displayClass{
+    display: none;
+    z-index: 5;
+    width: 130px;
+    border-radius: 2px;
+    padding-left: 10px;
+    /* text-align: center; */
+    /* top: 10px; */
+    background-color: rgb(223, 223, 223);
+    
+}
+.displayClass .item{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
