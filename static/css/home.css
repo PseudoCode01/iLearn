@@ -47,13 +47,9 @@
     cursor: pointer;
 }
 .searchSection{
-    
-    position: fixed;
- 
- z-index:-1;
+    position: relative;
  margin-left: -60px;
  top: 25%;
- 
 }
 .searchSection h1{
     font-size: 30px;
