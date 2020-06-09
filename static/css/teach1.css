@@ -1,0 +1,177 @@
+/* top  starting section */
+#home
+{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: white;
+    height: 450px;
+}
+#home::before{
+    content: "";
+    background:url("/static/img/teach1Header.jpg") no-repeat center center/cover;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    overflow: hidden;
+    height: 80%;
+    opacity: 0.8;
+    z-index: -1;
+}
+.container{
+    color: white;
+    margin-top: 100px;
+    margin-left: 10%;
+    margin-right: 21%;
+    max-width: 510px;
+    z-index: 1;
+}
+.container h1{
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    font-family: cursive;
+}
+.container p{
+   align-items: center;
+   font-size: 1em;
+}
+.container button{
+    border: none;
+    font-size: 1.5em;
+    background-color: green;
+    padding: 10px;
+    color: white;
+     margin-top: 50px;
+     border-radius: 4px;
+
+
+}
+.container button:hover{
+    background-color: rgb(49, 219, 49);
+    cursor: pointer;
+}
+/* discover yourself section begins */
+.discover{
+    margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.discover h1{
+    font-weight: bold;
+    font-size: 2.5rem
+}
+.item1{
+    display: flex;
+margin-top: 50px;
+padding: 20px;
+justify-content: space-evenly;
+flex-wrap: wrap;
+}
+.item1 #box{
+    width: 330px;
+}
+.item1 h2{
+    font-weight: bold;
+    font-family: cursive;
+}
+.item1 p{
+    font-size: small;
+}
+
+   /* expand section begins here */
+   .expand{
+    font-size: 20px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+   .expand h1{
+       font-size: 2.5rem;
+   }
+   .expand p{
+       font-size: 1rem;
+       padding: 5px;
+   }
+  #Line{
+      width: 70px;
+      height: 3px;
+      margin-top: 10px;
+      margin-bottom: 50px;
+      background-color: red;
+  }
+  .item2{
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 150px;
+      justify-content: space-evenly;
+  }
+  .item2 p{
+      font-size: 1rem;
+  }
+  /* boxes for teachers reviews */
+  
+   #expand1{
+       border: 2px solid black;
+       width: 300px;
+       height: 350px;
+       background-color: blanchedalmond;
+     padding: 20px ;
+     border-top: 6px solid green;
+     margin-bottom: 10px;
+     border-radius: 6px;
+   }
+   #expand2{
+       border: 2px solid black;
+       width: 300px;
+       height: 350px;
+       background-color: blanchedalmond;
+       margin-bottom: 10px;
+       padding: 20px ;
+       border-top: 6px solid blue;
+       border-radius: 6px;
+   }
+   #expand3{
+       border: 2px solid black;
+       width: 300px;
+       height: 350px;
+       margin-bottom: 10px;
+       background-color: blanchedalmond;
+       padding: 20px ;
+       border-top: 6px solid red;
+       border-radius: 6px;
+   }
+   /* help section begins here */
+  #help{
+     justify-content: center;
+     align-content: center;
+     margin-top: 50px;
+     height: 400px;
+     margin-bottom: 20px;
+  }
+  #help::before{
+      content: "";
+      position: absolute;
+      background: url('/static/img/teach1Footer.jpg') no-repeat center center/cover;
+      width: 100%;
+      height:60%;
+      z-index: -1;
+      opacity: 0.6;
+      
+  }
+ .item3{
+    top: 200px;
+    text-align: center;
+      padding: 20px 12rem;
+      color: white;
+  }
+  .item3 h3{
+      color: black;
+      margin: 40px 0 40px 0;
+      font-size: 2.2rem;
+  }
+ .item3 span{
+   font-size: 1rem;
+   color: black;
+  }

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body%}
+<link rel="stylesheet" href="{% static 'css/teach1.css' %}">
+<section id="home">
+    <div class="container">
+        <h1>Make a global impact</h1>
+        <p>Create an online video course and earn money by teaching people around the world.</p>
+        <button>Become an instructor</button>
+    </div>
+</section>
+<!-- discover youself section begins -->
+<div class="discover">
+    <h1>Discover Yourself</h1>
+</div>
+   <!-- boxes and icons for discover section -->
+<div class="item1">
+
+    <div id="box">
+        <img src="/static/img/money.png" />
+        <h3>Earn Money</h3>
+        <p>Earn money every time a student purchases your course. Get paid monthly through PayPal or Payoneer, it’s your
+            choice.</p>
+    </div>
+    <div id="box">
+        <img src="/static/img/video.png" />
+        <h3>Inspire students</h3>
+        <p>Help people learn new skills, advance their careers, and explore their hobbies by sharing  your knowledge</p>
+    </div>
+    <div id="box">
+        <img src="/static/img/thumb-up.png" />
+        <h3>Join our community</h3>
+        <p>Take advantage of our active community of instructors to help you through your course creation process.</p>
+    </div>
+</div>
+<!-- expand your reach section begins -->
+<div class="expand">
+    <h1>Expand Your Reach</h1>
+    <span id="Line"></span>
+    <p>We aim to change lives by connecting instructors with students around the country.</p>
+</div>
+<!-- boxes for teachers reviews and their photos -->
+<div class="item2">
+    <div id="expand1">
+        <p>iLearn has given me the opportunity to reach a global audience for my classes that wouldn’t have been
+            possible otherwise.</p>
+           
+    </div>
+    <div id="expand2">
+        <p>Launching my first course on iLearn allowed me to quit my full-time job and start my own company. I went from
+            working 60+ hour weeks to setting my own hours and schedule.</p>
+    </div>
+    <div id="expand3">
+        <p>There's no greater success on the iLearn marketplace than hearing that you've helped a student achieve their
+            goals. Teaching on iLearn has brought me new relationships from wonderful and insatiably curious students.
+        </p>
+    </div>
+</div>
+
+
+<!-- help section begins here -->
+  <section id="help">
+     <div class="item3">
+         <h3>We are here to help</h3>
+        <span > Our Instructor Support Team is here for you 24/7 to help you through your course creation needs. Use our Teaching Center, a resource center to help you through the process. Join Studio U and get peer-to-peer support from our engaged instructor community. This community group is always on, always there, and always helpful.</span>
+     </div>
+  </section>
+
+
+{% endblock body %}

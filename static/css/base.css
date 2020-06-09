@@ -1,50 +1,16 @@
 *{
     margin: 0px;
     padding: 0px;
+    font-size: 16px;
+}
+@media (max-width:700px){
+  *{
+    font-size: 10px;
+  }
 }
 html{
     scroll-behavior: smooth;
 }
-#navbar{
-    display: flex;
-    position: sticky;
-    padding: -5px 15px;
-    align-items: center;
-    justify-content: space-between;
-    top: 0px;
-    height: 50px;  
-}
-#navbar::before{
-    content: "";
-    background-color: rgb(139, 139, 139);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0.6;
-    z-index: -1;
-}
-#navbar .mid{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: -127px;
-    margin-top: 0;
-    height: 100%;
-}
-
-.mid .Categories img{
- padding: 12px;
-}
-.mid span{
-    display: flex;
-    flex-direction: row;
-}
- .mid:hover{
-    background-color:  rgb(22, 158, 56);
-    border-radius: 2px;
-    cursor: pointer;
-}
-
 
 .active{
     color:rgb(0, 0, 0);
@@ -69,75 +35,475 @@ html{
     font-family: 'Berkshire Swash', cursive;
 font-family: 'Piedra', cursive;
     color:rgb(0, 255, 55);
-    margin-left: 40px;
+    margin-left: 20px;
    cursor: pointer;
 }
-/* designed right section of navbar */
-.right{
-    margin: 5px 0; 
+      
+
+ /* Add a black background color to the top navigation */
+ @media(min-width:900px){
+.topnav{
+    height: 60px;
 }
-.right .btn{
-  background-color: rgb(52, 192, 87);
-  border:1px solid #000;
-  font-size: 15px;
-  border-radius: 2px;
-  padding: 10px;
-  cursor: pointer;
-}
-.right .btn:hover{
-  background-color: rgb(0, 219, 55);
-  border:1px solid white;
-}
-.right .btn-SignUp{
-    margin-right:20px;
+ }
+.topnav {
+  background-color: rgba(121, 121, 121, 0.623);
+  overflow: hidden;
+  align-items: center;
 }
 
-.dropbtn {
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .dropdown {
-    position: relative;
-  }
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    top: 50px;
-    border-radius: 2px;
-    z-index: 1;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-   
-  }
-  .dropdown-subcontent {
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 17px 24px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav .logo{
+    font-size: 20px;
+}
+/* Add an active class to highlight the current page */
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* Dropdown container - needed to position the dropdown content */
+.dropdown {
+  float: left;
+  overflow: hidden;
+  margin-left: 20px;
+margin-top: 5px;
+}
+
+/* Style the dropdown button to fit inside the topnav */
+.dropdown .dropbtn {
+  font-size: 17px;/* Add a dark background on topnav links and the dropdown button on hover */
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-subcontent {
     display: none;
     position: absolute;
     background-color: #f7f7f7;
     min-width: 160px;
-
     border-radius: 2px;
     margin-left: 30px;
     z-index: 1;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   }
-  .dropdown-content li{
-      list-style: none;
-      padding: 10px;
-      margin-top: 10px;
-  } 
-  .dropdown-content li span{
-      float:right;  
-  } 
- 
-  .dropdown-content li:hover {background-color: #ddd;}
-  
-  .dropdown-content .item:hover .dropdown-subcontent{display: block;}
+/* Style the links inside the dropdown */
+.dropdown-content li {
+  float: none;
+  color: black;
+  padding: 9px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.dropdown-content li span{
+    float:right;  
+} 
+.dropdown-content li:hover {background-color: #ddd;}
 
-  .dropdown:hover .dropdown-content {display: block;}
+.dropdown-content .item:hover .dropdown-subcontent{display: block;}
 
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.topnav .mid2 {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 24px;
+    text-decoration: none;
+    margin-left: 19px;
+    font-size: 17px;
+  }
+.mid2 #searchBox{
+    display: flex;
+ }
+ .mid2 #searchBox img{
+    background-color: white;
+    height: 18px;
+    padding: 8px;
+}
+ .mid2 #searchBox img:hover{
+    background-color: rgb(0, 255, 55);
+    cursor: pointer;
+}
+.mid2 #search{
+    width: 222px;
+    height: 34px;
+    padding: 0 10px;
+    border: none;
+}
+ .btn{
+    float:right;
+    background-color: rgb(52, 192, 87);
+    border:1px solid #000;
+    font-size: 15px;
+    border-radius: 2px;
+    padding: 10px;
+    margin-top: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .btn-SignUp{
+      margin-right: 10px;
+  }
+  .btn-Teach{
+    padding: 0;
+  }
+  .btn-Teach a{
+    padding: 9px;
+    color: rgb(80, 80, 80);
+  }
+   .btn:hover{
+    background-color: rgb(0, 219, 55);
+    border:1px solid white;
+    color: white;
+  }
+  .btn:hover a{
+    color: white;
+  }
+  .logout{
+      margin-right: 10px;
+  }
+/* When the screen is less than 900 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 900px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn,.topnav .btn,.topnav .mid2 ,.topnav #uname{
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 900px) {
+    .topnav{
+        background-color: black;
+    }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a,.topnav.responsive .btn,.topnav.responsive .mid2,.topnav.responsive #uname {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive #uname span{
+      position: absolute;
+      font-size: 18px;
+      font-family: ubuntu, monospace;
+      top: 60px;
+      margin: auto;
+      text-align: center;
+  }
+  .dropdown{
+      margin-top: 45px;
+    margin-left: -5px;  
+  }
+  .topnav.responsive .mid2{
+      margin-left: -10px;
+  }
+  .btn-Teach{
+      margin-bottom: 10px;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  .btn{
+      float: left;
+  }
+} 
+.logout a{
+    padding: 10px;
+}
+.logout{
+    margin-bottom: 10px;
+    padding:0;
+}
+/* signup modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
   
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* Modal Header */
+  .modal-header {
+    padding: 12px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;}
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  @media only screen and (max-width:1100px )and (min-width:800px){
+      .modal-content{
+      width: 55%;}
+  }
+  @media only screen and (max-width:800px ){
+      .modal-content{
+      width: 90%;}
+  }
+  @media only screen and (max-width:420px ){
+      .modal-content{
+      width: 100%;}
+  }
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+#uname span{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 8px;
+    margin-left: 10px;
+    color: white;
+}
+
+
+/* signup form */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+.form-group{
+    justify-content: center;
+    margin-top: 20px;
+}
+.form-group input{
+    display:block;
+    padding: 15px 20px;
+    border: 2px solid black;
+    width: 350px;
+    height: 15px;
+    margin-top: 8px;
+    border-radius: 6px;
+}
+@media only screen and (max-width:470px ){
+    .form-group input {
+    max-width:300px ;}
+}
+form button{
+    display: flex;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 11px 47px;
+    width: 150px;
+    background-color: rgb(6, 180, 6);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+form button:hover{
+    background-color: black;
+    cursor: pointer;
+}
+/* css fpr alerts */
+.alert-success{
+    padding:10px 0 10px 0;
+    width: 100%;
+    background-color: rgb(79, 255, 133);
+}
+.alert-error{
+    padding:12px 0 12px 0;
+    width: 100%;
+    background-color: rgb(255, 115, 101);
+}
+.alert strong{
+margin-left: 10px;
+}
+.closeAlert{
+    font-size: 38px;
+float: right;
+border: none;
+padding: 0px 11px;
+background-color:rgba(255, 255, 255, 0);
+margin-top: -12px;
+}
+@media(max-width:450px){
+    .alert{
+        font-size: 10px;
+    }
+    .closeAlert{
+        font-size: 38px;
+    float: right;
+    border: none;
+    padding: 0px 11px;
+    background-color:rgba(255, 255, 255, 0);
+    margin-top: -17px;
+    }
+}
+  /* footer part is designed */
+#lastElem{
+    position: relative;
+    bottom: 0;
+    margin-top: 50px;
+    background-color:rgb(53, 53, 53);
+    }
+    .foot{
+      padding-top: 30px;
+      display: flex;
+      color: white;
+      flex-wrap: wrap;
+    }
+    .footUl{
+      margin: 20px 55px;
+      color: white;
+      list-style-type: none;
+    }
+    .footUl li{
+      margin-top: 8px;
+    }
+    .footUl li a{
+        
+        color: white;
+        text-decoration: none;
+    }
+    footer{
+      font-family: fantasy;padding-left: 60px;
+      color: white;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: space-between;
+    }
+    @media (min-width:800px)
+    {#fitem1{
+      padding-left: 60px;
+    }
+    #fitem2{
+      padding-right: 150px;
+    }
+    #fitem2 img{
+      margin:0px 20px;
+    }}
+    @media (max-width: 800px){
+      #fitem2{
+      margin-bottom: 30px;
+    }
+      #fitem2 img{
+      margin:0px 10px;
+    } 
+    }
+
+    /* creating the typewritter effect */
+    .typewriter b {
+      font-size: 20px;
+      font-family: monospace; /* Web-safe typewriter-like font */
+      overflow: hidden; /* Ensures the content is not revealed until the animation */
+      border-right: .10em solid rgb(0, 255, 42); /* The typwriter cursor */
+      white-space: nowrap; /* Keeps the content on a single line */
+      margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+      letter-spacing: .05em; 
+      animation: 
+      typing 3.5s steps(30),
+      blinking-cursor .5s step-end infinite;
+      animation-iteration-count: infinite;
+    }
+    
+    /* The typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    /* The typewriter cursor effect */
+    @keyframes blinking-cursor {
+      from, to { border-color: transparent }
+      50% { border-color: rgb(0, 255, 42); }
+    }
+
+    
