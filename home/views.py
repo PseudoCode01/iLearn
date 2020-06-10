@@ -26,15 +26,50 @@ def handleSignUp(request):
         if pass1 != pass2:
             messages.error(request,"Passwords do not match")
             return redirect('/')
+        try:
+            user=User.objects.get(username=username)
+            messages.error(request,"UserName has Already Been Taken")
+            return redirect('/')
+        except:
         #create user
-        myuser=User.objects.create_user(username,email,pass1)
-        myuser.first_name="student"
-        myuser.save()
-        user=authenticate(username=username,password=pass1)
-        login(request,user)
-        messages.success(request,"Your iCoder Account has been successfully created")
-        return redirect('/')
+            myuser=User.objects.create_user(username,email,pass1)
+            myuser.save()
+            messages.success(request,"Your iLearn Account has been successfully created")
+            user=authenticate(username=username,password=pass1)
+            if user is not None:
+                login(request,user)
+            return redirect('/')
     
+def handleTeacherSignUp(request):
+    if request.method=='POST':
+        username=request.POST['userName']
+        email=request.POST['email']
+        pass1=request.POST['password']
+        pass2=request.POST['cpassword']
+        #validation for errorneous input
+        if len(username)> 15:
+            messages.error(request,"Your username can not contain more than 15 Characters")
+            return redirect('/teach1')
+        if not username.isalnum():
+            messages.error(request,"Your username can contain letters and numbers only ")
+            return redirect('/teach1')
+        if pass1 != pass2:
+            messages.error(request,"Passwords do not match")
+            return redirect('/teach1')
+        try:
+            user=User.objects.get(username=username)
+            messages.error(request,"UserName has Already Been Taken")
+            return redirect('/teach1')
+        except:
+        #create user
+            myuser=User.objects.create_user(username,email,pass1)
+            myuser.save()
+            messages.success(request,"Your are successfully registered on iLearn")
+            user=authenticate(username=username,password=pass1)
+            if user is not None:
+                login(request,user)
+            return redirect('/teach1')
+
 def handleLogin(request):
     if request.method=='POST':
         loginusername=request.POST['loginuserName']

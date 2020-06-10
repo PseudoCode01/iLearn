@@ -46,6 +46,7 @@ window.onclick = function(event) {
 }
 }
 //closeing the alert
+if(document.querySelector('.closeAlert')!==null)
 document.querySelector('.closeAlert').addEventListener('click',function(){
   document.querySelector('.alert').style.display='none'
 })

@@ -5,7 +5,7 @@
 }
 @media (max-width:700px){
   *{
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 html{
@@ -210,7 +210,7 @@ margin-top: 5px;
 }
 
 /* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 922px) {
     .topnav{
         background-color: black;
     }
@@ -219,6 +219,17 @@ margin-top: 5px;
     position: absolute;
     right: 0;
     top: 0;
+  }
+  .topnav{
+    z-index: 0;
+  }
+  .dropdown-content{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-y: scroll;
+  }
+  .dropdown-subcontent{
+    margin-bottom: 30px;
   }
   .topnav.responsive a,.topnav.responsive .btn,.topnav.responsive .mid2,.topnav.responsive #uname {
     float: none;
@@ -274,7 +285,9 @@ margin-top: 5px;
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+  .modal-header h2{
+    font-size: 1.3rem;
+  }
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
@@ -286,10 +299,9 @@ margin-top: 5px;
   
   /* The Close Button */
   .close {
-    color: #aaa;
+    color:black;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 1.6rem;
   }
   
   .close:hover,
@@ -320,7 +332,6 @@ margin-top: 5px;
     animation-name: animatetop;
     animation-duration: 0.4s
   }
-  
   @media only screen and (max-width:1100px )and (min-width:800px){
       .modal-content{
       width: 55%;}
@@ -335,7 +346,7 @@ margin-top: 5px;
   }
   /* Add Animation */
   @keyframes animatetop {
-    from {top: -300px; opacity: 0}
+    from {top: -800px; opacity: 0}
     to {top: 0; opacity: 1}
   }
 #uname span{
@@ -378,7 +389,7 @@ form button{
     font-size: 20px;
     margin-top: 30px;
     margin-bottom: 20px;
-    padding: 11px 47px;
+    padding: 11px 40px;
     width: 150px;
     background-color: rgb(6, 180, 6);
     color: white;
@@ -405,12 +416,15 @@ form button:hover{
 margin-left: 10px;
 }
 .closeAlert{
-    font-size: 38px;
+   
 float: right;
 border: none;
 padding: 0px 11px;
 background-color:rgba(255, 255, 255, 0);
 margin-top: -12px;
+}
+.closeAlert span{
+font-size: 38px;
 }
 @media(max-width:450px){
     .alert{

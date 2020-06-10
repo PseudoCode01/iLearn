@@ -15,7 +15,7 @@
     left: 0px;
     width: 100%;
     overflow: hidden;
-    height: 80%;
+    height: 450px;
     opacity: 0.8;
     z-index: -1;
 }
@@ -23,14 +23,13 @@
     color: white;
     margin-top: 100px;
     margin-left: 10%;
-    margin-right: 21%;
+    margin-right: 10%;
     max-width: 510px;
-    z-index: 1;
 }
 .container h1{
-    font-size: 2.5em;
+    font-size: 2.2rem;
     margin-bottom: 10px;
-    font-family: cursive;
+    font-family: cursive,sans-serif,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .container p{
    align-items: center;
@@ -39,7 +38,7 @@
 .container button{
     border: none;
     font-size: 1.5em;
-    background-color: green;
+    background-color: rgb(52, 192, 87);
     padding: 10px;
     color: white;
      margin-top: 50px;
@@ -49,6 +48,7 @@
 }
 .container button:hover{
     background-color: rgb(49, 219, 49);
+    border: 2px solid white;
     cursor: pointer;
 }
 /* discover yourself section begins */
@@ -147,7 +147,7 @@ flex-wrap: wrap;
      justify-content: center;
      align-content: center;
      margin-top: 50px;
-     height: 400px;
+     height: 450px;
      margin-bottom: 20px;
   }
   #help::before{
@@ -155,10 +155,9 @@ flex-wrap: wrap;
       position: absolute;
       background: url('/static/img/teach1Footer.jpg') no-repeat center center/cover;
       width: 100%;
-      height:60%;
+      height:400px;
       z-index: -1;
-      opacity: 0.6;
-      
+      opacity: 0.6;   
   }
  .item3{
     top: 200px;
@@ -169,8 +168,16 @@ flex-wrap: wrap;
   .item3 h3{
       color: black;
       margin: 40px 0 40px 0;
-      font-size: 2.2rem;
+      font-size: 2rem;
   }
+  @media (max-width:482px){
+      .item3{
+          padding: 20px 5rem;
+      }
+  .item3 h3{
+      font-size: 1.8rem;
+  }
+}
  .item3 span{
    font-size: 1rem;
    color: black;
