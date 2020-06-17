@@ -9,72 +9,73 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-   
+
     <div class="topnav" id="myTopnav">
-        <a href="/" class="active logo">i Learn</a>
-        <div class="dropdown">
-          <button class="dropbtn">Categories
+        <a href="/" class="logo">i Learn</a>
+        <div class="dropside">
+          <button class="dropbtn" onclick="openNav()">Categories
             <i class="fa fa-caret-down"></i>
           </button>
-          <ul class="dropdown-content">
-            <li class="item" id="6">Class 6 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds6 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
-            <li class="item" id="7">Class 7 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds7 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
-            <li class="item" id="8">Class 8 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds8 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
-            <li class="item" id="9">Class 9 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds9 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
-            <li class="item" id="10">Class 10 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds10 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
-            <li class="item" id="11">Class 11 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds11 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
-            <li class="item" id="12">Class 12 <span><img src="/static/img/next.png" alt=""></span>
-                <ul class="dropdown-subcontent ds12 ">
-                    <li class="subitem">Maths</li>
-                    <li class="subitem">Physics</li>
-                    <li class="subitem">Chemistry</li>
-                    <li class="subitem">Computer</li>
-                </ul>
-            </li>
+        </div>
+          <ul class="dropdown-content sidenav" id="mySidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#8592;</a>
+            <a class=" collapsible" id="6">Class 6
+            </a>
+                  <ul class="content ds6 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
+            <a class=" collapsible" id="7">Class 7
+            </a>
+                  <ul class="content ds7 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
+            <a class=" collapsible" id="8">Class 8
+            </a>
+                  <ul class="content ds8 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
+            <a class=" collapsible" id="9">Class 9
+            </a>
+                  <ul class="content ds9 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
+            <a class=" collapsible" id="10">Class 10
+            </a>
+                  <ul class="content ds10 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
+            <a class=" collapsible" id="11">Class 11
+            </a>
+                  <ul class="content ds11 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
+            <a class=" collapsible" id="12">Class 12
+            </a>
+                  <ul class="content ds12 ">
+                      <li class="subitem">Maths</li>
+                      <li class="subitem">Physics</li>
+                      <li class="subitem">Chemistry</li>
+                      <li class="subitem">Computer</li>
+                  </ul>
         </ul>
-    </div>
     <div class="mid2">
             <div id="searchBox" >
               <input type="text" id="search" name="search" placeholder="What Do You Want Learn?">
@@ -83,7 +84,11 @@
         </div>
         {% if user.is_authenticated %}
          <span id="uname">
-             <button class="btn logout" ><a href="/logout">Logout</a></button>
+             <button class="btn logout" ><a  class="logouta" href="/logout">Logout</a></button>
+             {% if request.user.first_name == "Teacher" %}
+             <a href="/addCourse" class="role">Instructer</a>
+            {% endif %}
+
              <span id="name" class="typewriter"><b>Welcome {{request.user}}</b></span>
         </span>
         {% else %}
@@ -163,9 +168,9 @@
           <ul class="footUl">
             <li><b>iLearn</b></li>
             <li><a href="/teach1">Teach On iLearn</a></li>
-            <li><a href="">About Us</a></li>
+            <li><a href="/about">About Us</a></li>
             <li><a href="">Devlopers</a></li>
-            <li><a href="">Contact Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
           </ul>
         </div>
         <div>
@@ -192,5 +197,4 @@
     
 </body>
 <script src="{% static 'js/base.js' %}"></script>
-
 </html>

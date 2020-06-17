@@ -1,0 +1,20 @@
+{% extends 'baseTeach.html' %}
+
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/addCourse.css' %}">
+<div class="addCourse">
+    <img src="/static/img/addCourse.png" alt="">
+    <h1>Create An Awesome Course</h1>
+<a type="button" class="btn btn-addCourse" href="/getStarted">Create Your Course</a>
+</div>
+<div id="Home-Tutor">
+    <h2>Or</h2>
+  </div>
+<div class="homeTutor">
+  <img src="/static/img/homeTuition.png" alt="">
+  <h1>Become a Home Tutor</h1>
+<a type="button" class="btn btn-homeTutor" href="/homeTutor">Register</a>
+</div>
+{% endblock body %}
+    

@@ -1,15 +1,39 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from home.models import Contact
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+
 # Create your views here.
 def home(request):
     return render(request,'home/home.html')
 def Teach1(request):
     return render(request,'home/teach1.html')
+def about(request):
+    return render(request,'home/about.html')
+def addCourse(request):
+    return render(request,'home/addCourse.html')
+def homeTutor(request):
+    return render(request,'home/homeTutor.html')
+def getStarted(request):
+    return render(request,'home/getStarted.html')
+def createCourse(request):
+    return render(request,'home/createCourse.html')
+def contact(request):
+    if request.method=='POST':
+        name=request.POST['userName']
+        email=request.POST['email']
+        content=request.POST['disc']
+        if len(email)<6 or len(content)<5:
+            messages.error(request,'Please fill the form Correctly')
+        else:
+            contact=Contact(username=name,email=email,content=content)
+            contact.save()
+            messages.success(request,'We Will Respond You as soon as Possible')
+
+    return render(request,'home/contact.html')
 def handleSignUp(request):
     if request.method=='POST':
         username=request.POST['userName']
@@ -33,6 +57,7 @@ def handleSignUp(request):
         except:
         #create user
             myuser=User.objects.create_user(username,email,pass1)
+            myuser.first_name="Student"
             myuser.save()
             messages.success(request,"Your iLearn Account has been successfully created")
             user=authenticate(username=username,password=pass1)
@@ -63,6 +88,7 @@ def handleTeacherSignUp(request):
         except:
         #create user
             myuser=User.objects.create_user(username,email,pass1)
+            myuser.first_name="Teacher"
             myuser.save()
             messages.success(request,"Your are successfully registered on iLearn")
             user=authenticate(username=username,password=pass1)

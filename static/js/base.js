@@ -50,3 +50,31 @@ if(document.querySelector('.closeAlert')!==null)
 document.querySelector('.closeAlert').addEventListener('click',function(){
   document.querySelector('.alert').style.display='none'
 })
+
+//open side nav
+/* Set the width of the side navigation to 250px */
+function openNav() {
+  console.log(this)
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+//open collapsiblle on sidebar
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+} 

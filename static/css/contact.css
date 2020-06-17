@@ -1,0 +1,62 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 90px;
+    height: 600px;
+}
+/* form::before{
+        content: "";
+        background:url("/static/img/back8.jpg") no-repeat center center/cover;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        overflow: hidden;
+        height: 600px;
+        opacity: 0.9;
+        z-index: -1;
+} */
+form span{
+    font-size: 2rem;
+}
+.form-group{
+    justify-content: center;
+    margin-top: 20px;
+}
+.form-group input{
+    display:block;
+    padding: 15px 20px;
+    border: 2px solid black;
+    width: 750px;
+    height: 15px;
+    margin-top: 8px;
+    border-radius: 6px;
+}
+.form-group textarea{
+    display:block;
+    padding: 15px 20px;
+    border: 2px solid black;
+    width: 750px;
+    height: 100px;
+    margin-top: 8px;
+    border-radius: 6px;
+}
+
+form button{
+    display: flex;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 11px 40px;
+    width: 150px;
+    background-color: rgb(6, 180, 6);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+form button:hover{
+    background-color: black;
+    cursor: pointer;
+}

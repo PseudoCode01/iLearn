@@ -1,0 +1,69 @@
+select { 
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    -ms-appearance: none; 
+    appearance: none; 
+    outline: 0; 
+    background: rgb(255, 255, 255); 
+    background-image: none; 
+    border: none;   
+} 
+.select { 
+    position: relative; 
+    display: block; 
+    width: 16em; 
+    height: 3em; 
+    line-height: 3; 
+    background: rgb(255, 255, 255); 
+    overflow: hidden; 
+    border:1px solid black; 
+    border-radius: .25em; 
+} 
+select { 
+    width: 100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0 0 0 .5em; 
+    color: #fff; 
+    cursor: pointer; 
+    color: black;
+} 
+
+select::-ms-expand { 
+    display: none; 
+}  
+.select::after { 
+    content: '\25BC'; 
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    padding: 0 1em; 
+    background: rgb(238, 238, 238); 
+    pointer-events: none; 
+} 
+
+#TeacherCategory{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.courseTitle{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.courseTitle input{
+width: 40rem;
+height: 2rem;
+border: 1px solid black;
+font-size: 1.7rem;
+padding: 10px;
+}
+#topSec{
+    padding-bottom: 10px;
+    background-color: rgb(228, 228, 228);
+}

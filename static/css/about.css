@@ -1,0 +1,64 @@
+
+  .zoom{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .zoom1 {
+    
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  .zoom2 {
+    /* float: left; */
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+  .zoom3 {
+    /* float: left; */
+    width: 25%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+  
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .container::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  .title {
+    color: grey;
+  }
+  .zoom{
+    animation-name:about;
+    animation-duration: 1s;
+  }
+  @keyframes about{
+    from{width: 0; opacity: 0;margin-left: 50%;}
+    to{width: 100%; opacity: 1;}
+  
+  }
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }

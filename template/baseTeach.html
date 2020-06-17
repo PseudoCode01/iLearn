@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Course</title>
+    {% load static %}
+</head>
+<link rel="stylesheet" href="{% static 'css/baseTeach.css' %}">
+<body>
+    <div class="top">
+    <div id="Tname">
+        {{request.user|slugify|first|upper}}
+        <div class="box arrow-top">
+            <h5>Hi! {{request.user}}</h5>
+            <p>{{request.user.email}}</p>
+          </div>
+    </div>
+    <a href="/" id="role">Student</a>
+</div>
+<div id="mySidenav" class="sidenav">
+    <a href="#"><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
+    <a href="#"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
+    <a href="#"><span><img src="/static/img/performence.png" alt=""></span><span>Performence</span></a>
+    <a href="#"><span><img src="/static/img/resource.png" alt=""></span><span>Resources</span></a>
+  </div>
+  
+  {% block body %}
+      
+  {% endblock body %}
+      
+</body>
+<script src="{% static 'js/baseTeach.js' %}"></script>
+</html>

@@ -1,11 +1,3 @@
-let container=document.querySelector('.container')
-let dropdown=document.querySelector('.dropdown')
-dropdown.addEventListener('mouseover',function(){
-    container.style.zIndex="-1"
-})
-dropdown.addEventListener('mouseleave',function(){
-    container.style.zIndex="0"
-})
 
 //become an instructor
 if( document.getElementById("TeacherSignUp")!==null){

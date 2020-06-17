@@ -7,7 +7,11 @@
     <div class="container">
         <h1>Make a global impact</h1>
         <p>Create an online video course and earn money by teaching people around the world.</p>
-        <button id="TeacherSignUp">Become an instructor</button>
+        {% if user.is_authenticated %}
+       <a type="button" class="btn-getStarted" href="/addCourse">Get Started</a>
+       {% else %}
+       <button id="TeacherSignUp">Become an instructor</button>
+       {% endif %}
     </div>
 </section>
 <div id="myModal " class="modal modal-Teachersignup">

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/getStarted.css' %}">
+<body>
+    <div id="TeacherCategory">
+    <div class="category">
+    <h3>Select a Category you want teach</h3>
+    <div class="select">
+    <select>
+        <option value="">Choose an Option</option>
+        <option value="">Class 6</option>
+        <option value="">Class 7</option>
+        <option value="">Class 8</option>
+        <option value="">Class 9</option>
+        <option value="">Class 10</option>
+        <option value="">Class 11</option>
+        <option value="">Class 12</option>
+    </select>
+</div>
+</div>
+    <div class="subcategory">
+    <h3>Select a Sub-Category</h3>
+    <div class="select">
+    <select>
+        <option value="">Choose an Option</option>
+        <option value="">Physics</option>
+        <option value="">Math</option>
+        <option value="">Chemistry</option>
+        <option value="">Boilogy</option>
+    </select>
+</div>
+</div>
+</div>
+<div id="title">
+ <h3>Enter the title of your course</h3> 
+ <input type="text" placeholder="eg:Learn Copmlex Number" required>  
+</div>
+<div class="btn">
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+</div>
+</body>
+<script src="{% static 'js/getStarted.js'%}"></script>
+</html>

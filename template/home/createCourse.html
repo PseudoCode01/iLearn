@@ -1,0 +1,43 @@
+{% extends 'baseTeach.html' %}
+
+{% block body %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/createCourse.css' %}">
+</head>
+<body >
+    <div id="topSec">
+    <div id="TeacherCategory">
+    <div class="category">
+    <h3>Select a Category you want teach</h3>
+    <div class="select">
+    <select>
+        <option value="">Choose an Option</option>
+        <option value="">Class 6</option>
+        <option value="">Class 7</option>
+        <option value="">Class 8</option>
+        <option value="">Class 9</option>
+        <option value="">Class 10</option>
+        <option value="">Class 11</option>
+        <option value="">Class 12</option>
+    </select>
+</div>
+</div>
+    <div class="subcategory">
+    <h3>Select a Sub-Category</h3>
+    <div class="select">
+    <select>
+        <option value="">Choose an Option</option>
+        <option value="">Physics</option>
+        <option value="">Math</option>
+        <option value="">Chemistry</option>
+        <option value="">Boilogy</option>
+    </select>
+</div>
+</div>
+</div>
+<div class="courseTitle">
+    <h3>Course Title</h3>
+    <input type="text" placeholder="eg:Learn Complex Number" required>
+</div></div>
+
+{% endblock body %}
