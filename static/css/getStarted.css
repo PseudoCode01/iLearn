@@ -72,6 +72,7 @@ padding: 10px;
     background-color: rgb(204, 255, 191);
     border: 1px solid black;
     border-radius: 2px;
+    cursor: pointer;
 }
 #next{
     position: absolute;
@@ -82,4 +83,8 @@ padding: 10px;
     background-color: rgb(85, 175, 63);
     border: 1px solid black;
     border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }

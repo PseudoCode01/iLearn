@@ -190,6 +190,13 @@ margin-top: 5px;
     display: block;
     text-align: left;
   }
+ #uname >a{
+    float: none;
+    display: inline-block;
+    color: white;
+    padding: 10px 3px;
+    margin-bottom: 20px;
+  }
   .topnav.responsive #uname span{
       position: absolute;
       font-size: 18px;

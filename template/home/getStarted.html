@@ -12,38 +12,39 @@
     <div class="category">
     <h3>Select a Category you want teach</h3>
     <div class="select">
-    <select>
-        <option value="">Choose an Option</option>
-        <option value="">Class 6</option>
-        <option value="">Class 7</option>
-        <option value="">Class 8</option>
-        <option value="">Class 9</option>
-        <option value="">Class 10</option>
-        <option value="">Class 11</option>
-        <option value="">Class 12</option>
+    <select id="cat">
+        <option value="0">Choose an Option</option>
+        <option value="6">Class 6</option>
+        <option value="7">Class 7</option>
+        <option value="8">Class 8</option>
+        <option value="9">Class 9</option>
+        <option value="10">Class 10</option>
+        <option value="11">Class 11</option>
+        <option value="12">Class 12</option>
     </select>
 </div>
 </div>
     <div class="subcategory">
     <h3>Select a Sub-Category</h3>
     <div class="select">
-    <select>
+    <select id="sub-cat">
         <option value="">Choose an Option</option>
-        <option value="">Physics</option>
-        <option value="">Math</option>
-        <option value="">Chemistry</option>
-        <option value="">Boilogy</option>
+        <option value="Physics">Physics</option>
+        <option value="Math">Math</option>
+        <option value="Chemistry">Chemistry</option>
+        <option value="Boilogy">Boilogy</option>
     </select>
 </div>
 </div>
 </div>
 <div id="title">
  <h3>Enter the title of your course</h3> 
- <input type="text" placeholder="eg:Learn Copmlex Number" required>  
+ <input type="text" placeholder="eg:Learn Copmlex Number" id="courseTitle" required>  
 </div>
+
 <div class="btn">
     <button id="previous">Previous</button>
-    <button id="next">Next</button>
+    <a id="next" >Next</a>
 </div>
 </body>
 <script src="{% static 'js/getStarted.js'%}"></script>

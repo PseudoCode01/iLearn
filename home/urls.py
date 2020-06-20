@@ -13,5 +13,7 @@ urlpatterns = [
     path('homeTutor', views.homeTutor,name="homeTutor"),
     path('getStarted', views.getStarted,name="getStrated"),
     path('createCourse', views.createCourse,name="createCourse"),
-    path('teachersignup', views.handleTeacherSignUp,name="handleTeacherSignUp")
+    path('addVideos', views.addVideos,name="addVideos"),
+    path('teachersignup', views.handleTeacherSignUp,name="handleTeacherSignUp"),
+    path('saveCourse', views.saveCourse,name="saveCourse"),
 ]

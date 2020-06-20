@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from home.models import Contact
+from home.models import Courses
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -21,6 +22,19 @@ def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
     return render(request,'home/createCourse.html')
+def saveCourse(request):
+    return render(request,'home/saveCourse.html')
+def addVideos(request):
+    if request.method=='POST':
+       category=request.POST.get('cat')
+       subcat=request.POST.get('subcat')
+       title=request.POST.get('title')
+       language=request.POST.get('language')
+       pricing=request.POST.get('pricing')
+       user=request.user
+       saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,pricing=pricing,creater=user)
+       saveCourse.save()
+    return render(request,'home/addVideos.html')
 def contact(request):
     if request.method=='POST':
         name=request.POST['userName']

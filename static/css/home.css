@@ -27,8 +27,8 @@
   }
   .searchSection{
     position: relative;
- margin-left: 10%;
- top: 25%;
+    margin-left: 10%;
+    top: 25%;
 }
 .searchSection h1{
     font-size: 1.8rem;
@@ -62,9 +62,7 @@
     #searchBox{
         display: none;
     }
-    /* #home{
-      height: 60%;
-    } */
+
 }
 
 
