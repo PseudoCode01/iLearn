@@ -16,4 +16,7 @@ urlpatterns = [
     path('addVideos', views.addVideos,name="addVideos"),
     path('teachersignup', views.handleTeacherSignUp,name="handleTeacherSignUp"),
     path('saveCourse', views.saveCourse,name="saveCourse"),
+    path('video', views.video,name="video"),
+    # path('editCourse/<int:id>', views.editCourse,name="editCourse"),
+    path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),
 ]

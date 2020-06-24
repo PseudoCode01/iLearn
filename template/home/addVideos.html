@@ -1,0 +1,84 @@
+{% extends 'baseTeach.html' %}
+
+{% block body %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/addVideo.css' %}">
+
+{% for courses in get_courses %}
+<div class="courseData">
+<ul class="courseUl">
+    <li class="item"><b>Title : </b>{{courses.title}}</li>
+    <li  class="item"><b>Category : </b>{{courses.category}}</li>
+    <li  class="item"><b>Sub Category : </b>{{courses.sub_category}}</li>
+    <li  class="item"><b>Language : </b>{{courses.language}}</li>
+    <li  class="item"><b>Pricing : </b> Rs  {{courses.pricing}}</li>
+  </ul>
+<button type="button" class="collapsible">
+Add Videos
+</button>
+<div class="content">
+<!-- <input type="file" id="myFile" name="filename">
+<input type="submit" class="submitVideo" value="Add Video"> -->
+<div class="container">
+    <form action="/video" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+        <input type="hidden" value="{{courses.sno}}" id="courseSno" name="courseSno" >
+      <div class="row">
+        <div class="col-25">
+          <label for="videoTitle">Title of the Video</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="videoTitle" name="videoTitle" placeholder="eg: Arithmatic of Complex Number" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="thumbnail">Video Thumbnail Image</label>
+        </div>
+        <div class="col-75">
+          <input type="file" id="thumbnail" name="thumbnail"  required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="video">Add Video</label>
+        </div>
+        <div class="col-75">
+          <input class="myFile"  type="file" id="video" name="video"  required></input>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="resources">Add Resources</label>
+        </div>
+        <div class="col-75">
+          <input  type="file" id="resources" name="resources" ></input>
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Add">
+      </div>
+    </form>
+  </div> 
+</div> 
+<button type="button" class="collapsible">
+Videos Added
+</button>
+<div class="content">
+    {% for video in get_videos %}
+    {% if courses.sno|slugify == video.videoOfCourse|slugify  %}
+    <ul class="courseUl">
+        <li class="item"> {{video.videoTitle}}</li>
+        <video width="100" height="100" controls>
+            <source src="/media/{{video.videofile}}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+    </ul>
+    {% endif %}
+    {% endfor %}
+</div> 
+</div>
+{% endfor %}
+<script   src="{% static 'js/addVideo.js'%}"></script>
+{% endblock body %}
+    

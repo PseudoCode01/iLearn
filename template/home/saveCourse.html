@@ -3,8 +3,7 @@
 {% block body %}
  {% load static %}
  <link rel="stylesheet" href="{% static 'css/saveCourse.css' %}">
- 
-<form action="/addVideos" method="POST">{% csrf_token %}
+<form action="" method="POST">{% csrf_token %}
   <div class="form-group">
     <label for="category"><b> Category : </b></label>
     <input class="courseData" id="cat" name="cat" readonly></input>
@@ -19,23 +18,32 @@
   </div>
   <div class="form-group language">
     <label for="category"><b> Language : </b></label>
-    <div class="select">
-      <select id="cat" name="language">
+    <div class="select" id="lang">
+      <select id="setLang" name="language">
           <option value="">Choose an Option</option>
           <option value="Hindi">Hindi</option>
           <option value="English">English</option>
           <option value="Hindi + English">Hindi + English</option>
       </select>
-  </div>
+    </div>
+    <input  name="" class="courseData" id="savedLang">
   </div>
   <div class="form-group pricing">
     <label for="category"><b> Pricing : </b></label>
       <input name="pricing" type="range" min="0" max="10000" value="1000" class="slider" id="myRange" >
-      <output class="value"> </output>
+      <output id="value" class="value"> </output>
+      <input  name=""  id="pricing">
   </div>
-  <button type="submit">Save</button>
+  <button class="save btn-outline" type="submit">Save</button>
+  <div class="afterSave">
+  <button class="delete" type="submit">Delete</button>
+  <a href="/addVideos" class="addVideo btn-outline" >Go to AddVideo</a>
+</div>
 </form>
-<!-- <input type="file" id="myFile" name="filename">
-<input type="submit"> -->
-<script  type="module"src="{% static 'js/saveCourse.js'%}"></script>
+
+<input id="status" type="hidden" value="{{status}}">
+<input id="id" type="hidden" value="{{id}}">
+
+
+<script   src="{% static 'js/saveCourse.js'%}"></script>
 {% endblock body %}

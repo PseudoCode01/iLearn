@@ -97,12 +97,160 @@
     margin: 0;
   }
 }
+
+
+.engage{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: white;
+  margin-top: 9rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 2px 2px #cacaca;
+  padding:40px 10px;
+}
+.engage:hover{
+  box-shadow: 5px 5px 5px 5px #cacaca;
+}
+.engage div:first-child{
+  width: 25%;
+}
+.engage div:last-child{
+  width: 75%;
+}
+.video{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: white;
+  margin-top: 3rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 2px 2px #cacaca;
+  padding:40px 10px;
+}
+.video:hover{
+  box-shadow: 5px 5px 5px 5px #cacaca;
+}
+.video div:first-child{
+  width: 25%;
+}
+.video div:last-child{
+  width: 75%;
+}
+.audience{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: white;
+  margin-top:3rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
+  margin-bottom: 2rem;
+  box-shadow: 2px 2px 2px 2px #cacaca;
+  padding:40px 10px;
+}
+.audience:hover{
+  box-shadow: 5px 5px 5px 5px #cacaca;
+}
+.audience div:first-child{
+  width: 25%;
+}
+.audience div:last-child{
+  width: 75%;
+}
+.help{
+  display: flex;
+  margin-left: 70px;
+  justify-content: space-around;
+  
+}
+.helpHeading{
+margin-left: 70px;
+  
+}
+ h3{
+  text-align: center;
+  margin-top: 100px;
+}
+.support{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 30%;
+}
+
+.support a{
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+.testvideo a{
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+.teaching a{
+  text-decoration: none;
+  color: black;
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+.teaching{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 30%;
+}
+.testvideo{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 30%;
+}
+.support p,.testvideo p,.teaching p{
+  text-align: center;
+}
+@media (max-width:926px){
+  .help{
+    flex-direction: column;
+  }
+  .support ,.testvideo ,.teaching {
+    width: 90%;
+  }
+}
+@media (max-width:600px){
+  .engage, .audience,.video{
+    flex-direction: column;
+      align-items: center;
+  }
+}
 @media (max-width:760px){
   .addCourse{
     margin-right: 1rem;
     margin-left: 4rem;
   }
   .homeTutor{
+    margin-right: 1rem;
+    margin-left: 4rem;
+  }
+  .engage,.audience,.video{
     margin-right: 1rem;
     margin-left: 4rem;
   }

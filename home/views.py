@@ -2,11 +2,12 @@
 from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
+from home.models import Videos
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-
+from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def home(request):
     return render(request,'home/home.html')
@@ -22,9 +23,10 @@ def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
     return render(request,'home/createCourse.html')
+
 def saveCourse(request):
-    return render(request,'home/saveCourse.html')
-def addVideos(request):
+    status=False
+    course=-1
     if request.method=='POST':
        category=request.POST.get('cat')
        subcat=request.POST.get('subcat')
@@ -32,9 +34,53 @@ def addVideos(request):
        language=request.POST.get('language')
        pricing=request.POST.get('pricing')
        user=request.user
-       saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,pricing=pricing,creater=user)
-       saveCourse.save()
-    return render(request,'home/addVideos.html')
+       try:
+           saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,pricing=pricing,creater=user)
+           saveCourse.save()
+           status=True
+           course=Courses.objects.filter(creater_id=request.user)
+           course=course.last()
+           course=(int(str(course)))
+           print(type(int(str(course))))
+       except Exception as e:
+           status=False
+    print(status)
+    return render(request,'home/saveCourse.html',{'status':status,'id':course})
+# def editCourse(request,id):
+#     status=False
+#     if request.method=='POST':
+#         course = Courses.objects.get(sno = id)
+#         course.title=request.POST.get('title')
+#         course.language=request.POST.get('language')
+#         course.pricing=request.POST.get('pricing')
+#         try:
+#            status=True 
+#            course.save()
+#         except Exception as e:
+#            status=False    
+#     return render(request,'home/saveCourse.html',{'status':status})
+def deleteCourse(request,id):
+    course = Courses.objects.get(sno = id)
+    course.delete()
+    return render(request,'home/saveCourse.html')
+def addVideos(request):
+    get_courses=Courses.objects.filter(creater_id=request.user)
+    get_videos=Videos.objects.filter(creater_id=request.user)
+    get_data={'get_courses':get_courses,'get_videos':get_videos}
+    return render(request,'home/addVideos.html',get_data)
+def video(request):
+    if request.method=='POST':
+        courseSno=request.POST['courseSno']
+        videoTitle=request.POST['videoTitle']
+        thumbnail=request.FILES['thumbnail']
+        video=request.FILES['video']
+        resources=request.FILES['resources']
+        course=Courses.objects.get(sno=courseSno)
+        user=request.user
+    video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
+    video.save()
+    return redirect('/addVideos')
+    
 def contact(request):
     if request.method=='POST':
         name=request.POST['userName']

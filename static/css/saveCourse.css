@@ -12,6 +12,12 @@ form{
     background-color: #f6f6f6; /* Add a grey background color */
     padding:0 0 0 12px; /* Add some padding */   
 }
+@media (max-width:700px){
+    .form-group{
+        margin-left: 60px;
+    margin-right: 10px; 
+    }
+}
 select { 
     -webkit-appearance: none; 
     -moz-appearance: none; 
@@ -99,7 +105,7 @@ select::-ms-expand {
 .value{
     margin-left: auto;
 }
-form button{
+ .btn-outline{
     float: right;
     font-size: 1.3rem;
     margin-right: 5em;
@@ -109,18 +115,75 @@ form button{
     border: 1.5px solid rgb(52, 160, 2);
     border-radius: 2px;
 }
+form .delete{
+  
+    font-size: 1.3rem;
+    margin-left: 5em;
+    padding: 10px 25px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1.5px solid rgb(218, 2, 2);
+    border-radius: 2px;
+}
+
+ .btn-outline:hover{
+    background-color: rgb(52, 160, 2);
+    color: white;   
+}
+form .delete:hover{
+    background-color: rgb(218, 2, 2);
+    color: white;   
+}
+.addVideo{
+   float: none;
+   margin-left: auto;
+   text-decoration: none;
+ }
+ .afterSave{
+     display: none;
+ }
 form .courseData{
-    width: 60em;
     border: none;
     border-radius: 0;
     padding: 12px;
     background-color: #f6f6f6;
     font-size: 16px;
 }
-form button:hover{
-   
-    background-color: rgb(52, 160, 2);
-    color: white;
-    /* border: 1.5px solid rgb(52, 160, 2); */
-    
+
+#st{
+    margin-left: 200px;
 }
+form #savedLang{
+    display: none;
+}
+form #pricing{
+    display: none;
+    border: none;
+    border-radius: 0;
+    background-color: #f6f6f6;
+    font-size: 16px;
+}
+
+
+/* making form responsive
+@media (max-width:650px){
+    .form-group{
+        display: flex;
+        margin-left: 58px;
+    margin-right: 10px;
+    flex-direction: column;
+    }
+    .btn-outline{
+        margin-right: .5em;
+    }
+    form .delete{
+        margin-left: 2.8em;
+    }
+    form label{
+        font-size: 13px;
+    }
+    form .courseData{
+        width: 150px;
+        font-size: 13px;
+    }
+} */

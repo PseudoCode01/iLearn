@@ -16,17 +16,17 @@ class Courses(models.Model):
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
     def __str__(self):
-        return self.creater+" "+self.title
+        return str(self.sno)
 
-# class AddVedios(models.Model):
-#     sno=models.AutoField(primary_key=True)
-#     category=models.CharField(max_length=150)
-#     sub_category=models.CharField(max_length=150)
-#     title=models.CharField(max_length=150)
-#     sub_title=models.CharField(max_length=150)
-#     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
-#     videofile= models.FileField(upload_to='videos/', null=True, verbose_name="")
-#     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+class Videos(models.Model):
+    sno=models.AutoField(primary_key=True)
+    videoTitle=models.CharField(max_length=150)
+    videofile= models.FileField(upload_to='home/video', null=True, verbose_name="")
+    thumbnail=models.ImageField( upload_to="home/image",default="")
+    resource= models.FileField(upload_to='home/resource', null=True, verbose_name="")
+    videoOfCourse=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
+    creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
     
 class Contact(models.Model):
