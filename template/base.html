@@ -19,15 +19,19 @@
         </div>
           <ul class="dropdown-content sidenav" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#8592;</a>
-            <a class=" collapsible" id="6">Class 6
+            {% for courses in get_courses %}
+            <a class=" collapsible" id="6">{{courses}}
             </a>
-                  <ul class="content ds6 ">
-                      <li class="subitem">{{get_courses}}</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>
-            <a class=" collapsible" id="7">Class 7
+            
+            <ul class="content ds6 ">
+              {% for subCat in sub_cat %}
+              {% if subCat.1 == courses %}
+                      <li class="subitem">{{subCat.0}}</li>
+                      {% endif %}
+                      {% endfor %}
+                    </ul>
+                    {% endfor %}
+            <!-- <a class=" collapsible" id="7">Class 7
             </a>
                   <ul class="content ds7 ">
                       <li class="subitem">Maths</li>
@@ -74,7 +78,7 @@
                       <li class="subitem">Physics</li>
                       <li class="subitem">Chemistry</li>
                       <li class="subitem">Computer</li>
-                  </ul>
+                  </ul>-->
         </ul>
     <div class="mid2">
             <div id="searchBox" >
