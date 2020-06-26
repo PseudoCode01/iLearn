@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <title>{%block title%} {% endblock title %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
@@ -20,65 +21,21 @@
           <ul class="dropdown-content sidenav" id="mySidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#8592;</a>
             {% for courses in get_courses %}
-            <a class=" collapsible" id="6">{{courses}}
+            <a class=" collapsible" onclick="category(this)" id="6">{{courses}}
             </a>
-            
             <ul class="content ds6 ">
               {% for subCat in sub_cat %}
               {% if subCat.1 == courses %}
-                      <li class="subitem">{{subCat.0}}</li>
+                      <li class="subitem" onclick="sub_category(this)">{{subCat.0}}</li>
                       {% endif %}
                       {% endfor %}
                     </ul>
                     {% endfor %}
-            <!-- <a class=" collapsible" id="7">Class 7
-            </a>
-                  <ul class="content ds7 ">
-                      <li class="subitem">Maths</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>
-            <a class=" collapsible" id="8">Class 8
-            </a>
-                  <ul class="content ds8 ">
-                      <li class="subitem">Maths</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>
-            <a class=" collapsible" id="9">Class 9
-            </a>
-                  <ul class="content ds9 ">
-                      <li class="subitem">Maths</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>
-            <a class=" collapsible" id="10">Class 10
-            </a>
-                  <ul class="content ds10 ">
-                      <li class="subitem">Maths</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>
-            <a class=" collapsible" id="11">Class 11
-            </a>
-                  <ul class="content ds11 ">
-                      <li class="subitem">Maths</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>
-            <a class=" collapsible" id="12">Class 12
-            </a>
-                  <ul class="content ds12 ">
-                      <li class="subitem">Maths</li>
-                      <li class="subitem">Physics</li>
-                      <li class="subitem">Chemistry</li>
-                      <li class="subitem">Computer</li>
-                  </ul>-->
+                <form action="/viewCourses" class="vc" method="POST">
+                  {% csrf_token %}
+            <input type="hidden" name="get_cat" id="get_cat" value="v">
+            <input type="hidden" name="get_scat" id="get_scat">
+          </form>
         </ul>
     <div class="mid2">
             <div id="searchBox" >
@@ -164,6 +121,17 @@
     </div>
   </div>
 </div>
+<div id="cart" class="cartIcon">
+    <a href="#" ><img src="/static/img/cartIcon.png" alt=""> </a>
+        <div class="cartItems arrow-top">
+          
+          {% for item in get_cartCourses %}
+          <p>{{item.title}}</p>
+            
+          {% endfor %}
+            
+          </div>
+        </div> 
     {% block body %}
     {% endblock body %}
     <div id="lastElem">
@@ -200,5 +168,6 @@
         </div>
     
 </body>
-<script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/base.js' %}">
+</script>
 </html>

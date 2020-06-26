@@ -78,3 +78,39 @@ for (i = 0; i < coll.length; i++) {
     }
   });
 } 
+
+
+
+// getting selected category and sub_category to fetch required courses
+function category(val){
+  document.getElementById('get_cat').value=val.innerText
+}
+function sub_category(val){
+  document.getElementById('get_scat').value=val.innerText
+  document.querySelector('.vc').submit();
+}
+// showing items inside on hover
+// document.getElementById('cart').addEventListener('mouseenter',function(){
+//   document.querySelector('.cartItems').style.display="block"
+// })
+// document.getElementById('cart').addEventListener('mouseleave',function(){
+//   document.querySelector('.cartItems').style.display="none"
+// })
+
+
+function getToken(name) {
+  var cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+var csrftoken = getToken('csrftoken')

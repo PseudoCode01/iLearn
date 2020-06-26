@@ -3,11 +3,13 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
+from home.models import Cart
 from django.shortcuts import render,HttpResponse,redirect
+from django.http import JsonResponse
+import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from django.core.files.storage import FileSystemStorage
 # Create your views here.
 def home(request):
     return render(request,'home/home.html')
@@ -23,7 +25,24 @@ def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
     return render(request,'home/createCourse.html')
+def get_video(request):
+    videos=Videos.objects.all()
+    return JsonResponse({'videos':list(videos.values())})
 
+def addCart(request):
+    data=json.loads(request.body)
+    print(data)
+    courseId=data['courseId']
+    action=data['action']
+    print(action,courseId)
+    user=request.user
+    course=Courses.objects.get(sno=courseId)
+    addcart=Cart(course=course,user=user)
+    if action=="add" :
+        addcart.save()
+    elif action=="remove" :
+        addcart.delete()
+    return JsonResponse('item was added ',safe=False)
 def saveCourse(request):
     status=False
     course=-1
@@ -32,10 +51,12 @@ def saveCourse(request):
        subcat=request.POST.get('subcat')
        title=request.POST.get('title')
        language=request.POST.get('language')
+       courseThumbnail=request.FILES['courseThumbnail']
        pricing=request.POST.get('pricing')
+       author=request.user.username
        user=request.user
        try:
-           saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,pricing=pricing,creater=user)
+           saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,creater_name=author,creater=user)
            saveCourse.save()
            status=True
            course=Courses.objects.filter(creater_id=request.user)
@@ -80,7 +101,12 @@ def video(request):
     video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
     video.save()
     return redirect('/addVideos')
-    
+def viewCourses(request):
+    if request.method=='POST':
+        category=request.POST.get('get_cat')
+        sub_category=request.POST.get('get_scat')
+        courses=Courses.objects.filter(category=category).filter(sub_category=sub_category)
+    return render(request,'home/viewCourses.html',{'courses':courses})   
 def contact(request):
     if request.method=='POST':
         name=request.POST['userName']

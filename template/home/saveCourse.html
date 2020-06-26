@@ -3,7 +3,7 @@
 {% block body %}
  {% load static %}
  <link rel="stylesheet" href="{% static 'css/saveCourse.css' %}">
-<form action="" method="POST">{% csrf_token %}
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
   <div class="form-group">
     <label for="category"><b> Category : </b></label>
     <input class="courseData" id="cat" name="cat" readonly></input>
@@ -27,6 +27,12 @@
       </select>
     </div>
     <input  name="" class="courseData" id="savedLang">
+  </div>
+  <div>
+    <div class="form-group">
+      <label for="courseThumbnail"><b> Course Thumbnail Image  : </b></label>
+      <input type="file" class="courseData" name="courseThumbnail" id="courseThumbnail">
+    </div>
   </div>
   <div class="form-group pricing">
     <label for="category"><b> Pricing : </b></label>

@@ -11,7 +11,9 @@ class Courses(models.Model):
     sub_category=models.CharField(max_length=50)
     title=models.CharField(max_length=150)
     language=models.CharField(max_length=50,default="Hindi + English")
+    courseThumbnail=models.ImageField( upload_to="home/courseThumbnail",default="")
     pricing=models.CharField(max_length=10,default="149")
+    creater_name=models.CharField(max_length=150,default="")
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
@@ -28,7 +30,11 @@ class Videos(models.Model):
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
-    
+class Cart(models.Model):
+    sno=models.AutoField(primary_key=True)
+    course=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 class Contact(models.Model):
     sno=models.AutoField(primary_key=True)
     username=models.CharField(max_length=50)
