@@ -121,15 +121,11 @@
     </div>
   </div>
 </div>
-<div id="cart" class="cartIcon">
-    <a href="#" ><img src="/static/img/cartIcon.png" alt=""> </a>
+<div id="cart" >
+  <div class="cartIcon">
+    <img src="/static/img/cartIcon.png" alt=""><span class="count"></span></div>
         <div class="cartItems arrow-top">
-          
-          {% for item in get_cartCourses %}
-          <p>{{item.title}}</p>
-            
-          {% endfor %}
-            
+        
           </div>
         </div> 
     {% block body %}

@@ -25,9 +25,12 @@ def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
     return render(request,'home/createCourse.html')
-def get_video(request):
-    videos=Videos.objects.all()
-    return JsonResponse({'videos':list(videos.values())})
+def get_cartItems(request):
+    cart=Cart.objects.values()
+    courses=list()
+    for item in cart:
+        courses.append(list(Courses.objects.filter(sno=item['course_id']).values()))
+    return JsonResponse({'cartItems':list(courses)})
 
 def addCart(request):
     data=json.loads(request.body)
@@ -67,19 +70,6 @@ def saveCourse(request):
            status=False
     print(status)
     return render(request,'home/saveCourse.html',{'status':status,'id':course})
-# def editCourse(request,id):
-#     status=False
-#     if request.method=='POST':
-#         course = Courses.objects.get(sno = id)
-#         course.title=request.POST.get('title')
-#         course.language=request.POST.get('language')
-#         course.pricing=request.POST.get('pricing')
-#         try:
-#            status=True 
-#            course.save()
-#         except Exception as e:
-#            status=False    
-#     return render(request,'home/saveCourse.html',{'status':status})
 def deleteCourse(request,id):
     course = Courses.objects.get(sno = id)
     course.delete()

@@ -377,8 +377,7 @@ form button:hover{
 .alert strong{
 margin-left: 10px;
 }
-.closeAlert{
-   
+.closeAlert{ 
 float: right;
 border: none;
 padding: 0px 11px;
@@ -402,29 +401,13 @@ font-size: 38px;
     }
 }
 
-/* cart styling
-.cartIcon{
-  
-    height: 70px;
-    width: 70px;
-    
-    border-radius: 50%;
-    margin-left: auto;
-    margin-top: 2%;
-    margin-right: 2%;
-    border: 4px dotted rgb(0, 98, 128);}
 
-.cartIcon img{
-margin-left: 11px;
-margin-top: 12px;
-} */
-/* Style the links inside the sidenav */
 #cart {
   position: absolute; 
   right: 0;
-  top: 70px;
-  padding:12px 15px; 
-  width: 25px; 
+  top: 100px;
+  padding:12px 1px 12px 15px; 
+  width: 55px; 
   transition: 0.3s;
   height: 30px;
   text-decoration: none; /* Remove underline */
@@ -435,18 +418,26 @@ margin-top: 12px;
   background-color: rgb(52, 192, 87);
 }
 #cart:hover{
-  width: 40px; 
+  width: 60px; 
 }
-
+.cartIcon{
+  display: flex;
+} .cartIcon .count{
+  background-color: #ff0000;
+  color: white;
+  border-radius: 50%;
+  padding:1px 5px;
+  font-size: 13px;
+  height: 18px;
+  margin-top: -9px;
+}
 .cartItems{
     display: none;
     position: relative;
-    width: 150px;
-    height: 75px;
-    background-color: rgb(231, 231, 231);
-    padding: 20px;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
     top: -34px;
-    right: 150px;
+    right: 260px;
     font-size: 1rem;
     color:black;
     font-size: .8rem;
@@ -463,7 +454,7 @@ margin-top: 12px;
   .cartItems.arrow-top:after {
     content: " ";
     position: absolute;
-    right: 19px;
+    right: 11px;
     top: -15px;
     border-top: none;
     border-right: 15px solid transparent;
@@ -474,13 +465,37 @@ margin-top: 12px;
    #cart:hover .cartItems{
       display: block;
    }
-
-
+  .cartItems{
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 3px rgb(133, 133, 133);
+  }
+.cartItems >div{
+  padding: 15px;
+  border-bottom: 1px solid rgb(170, 170, 170);
+}
+   .cartItems >div>div{
+   display: flex;
+   }
+   .cartItems >div>div>div{
+   margin-left: 10px;
+   }
+   .cartItems >div>div>div>p{
+   color: rgb(148, 148, 148);
+   font-size: 12px;
+   }
+   .thumbnail{
+     width: 70px;
+     height: 70px;
+   }
+.pricing{
+ margin-left: 80px;
+ margin-top: -24px;
+}
   /* footer part is designed */
 #lastElem{
     position: relative;
     bottom: 0;
-    margin-top: 50px;
+    margin-top: 350px;
     background-color:rgb(53, 53, 53);
     }
     .foot{
@@ -564,7 +579,7 @@ margin-top: 12px;
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
+  top: 0;
   left: 0;
   background-color:white; 
   overflow-x: hidden; /* Disable horizontal scroll */

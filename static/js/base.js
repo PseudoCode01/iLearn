@@ -89,13 +89,6 @@ function sub_category(val){
   document.getElementById('get_scat').value=val.innerText
   document.querySelector('.vc').submit();
 }
-// showing items inside on hover
-// document.getElementById('cart').addEventListener('mouseenter',function(){
-//   document.querySelector('.cartItems').style.display="block"
-// })
-// document.getElementById('cart').addEventListener('mouseleave',function(){
-//   document.querySelector('.cartItems').style.display="none"
-// })
 
 
 function getToken(name) {
@@ -114,3 +107,60 @@ function getToken(name) {
   return cookieValue;
 }
 var csrftoken = getToken('csrftoken')
+
+
+
+
+
+function Cart(){
+// fetching item on cart via ajax
+var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/get_cartItems');
+  xhr.setRequestHeader('X-CSRFToken', csrftoken);       
+  xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+  xhr.setRequestHeader("Accept", "application/json");
+
+xhr.send();
+var data='fg'
+let ci=``
+var setCartItem=new Set()
+xhr.onload = function() {
+  if (xhr.status != 200) { 
+    alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+  } else { 
+    data=JSON.parse(xhr.responseText)
+    data=(data['cartItems'])
+    for(let item of data){
+ci+=`
+<div class="itemList">
+<div>
+<img class="thumbnail" src="/media/${item[0]['courseThumbnail']}" alt="">
+<div>
+<h3 data-id=${item[0]['id']} class="title">${item[0]['title'].toUpperCase()}</h3>
+<p class "creater">By:${item[0]['creater_name']}</p></div>
+</div>
+<h3 class="pricing">Rs:${item[0]['pricing']}</h3>
+</div>
+`   }
+    document.querySelector('.count').innerText=`${data.length}`
+    document.querySelector('.cartItems').innerHTML=ci;
+  }
+
+};
+
+xhr.onprogress = function(event) {
+  if (event.lengthComputable) {
+    // alert('progress')
+  } else {
+  //  alert('fff')
+  }
+
+};
+
+xhr.onerror = function() {
+  alert("Request failed");
+};
+
+
+}
+Cart()
