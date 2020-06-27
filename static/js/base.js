@@ -80,16 +80,14 @@ for (i = 0; i < coll.length; i++) {
 } 
 
 
-
 // getting selected category and sub_category to fetch required courses
 function category(val){
-  document.getElementById('get_cat').value=val.innerText
+  localStorage.setItem('cat',val.innerText)
 }
 function sub_category(val){
-  document.getElementById('get_scat').value=val.innerText
-  document.querySelector('.vc').submit();
+  localStorage.setItem('scat',val.innerText)
+  window.location.href='/viewCourses'
 }
-
 
 function getToken(name) {
   var cookieValue = null;
@@ -111,7 +109,7 @@ var csrftoken = getToken('csrftoken')
 
 
 
-
+window.data=''
 function Cart(){
 // fetching item on cart via ajax
 var xhr = new XMLHttpRequest();
@@ -121,16 +119,17 @@ var xhr = new XMLHttpRequest();
   xhr.setRequestHeader("Accept", "application/json");
 
 xhr.send();
-var data='fg'
+
 let ci=``
-var setCartItem=new Set()
 xhr.onload = function() {
+  var cart='';
   if (xhr.status != 200) { 
     alert(`Error ${xhr.status}: ${xhr.statusText}`); 
   } else { 
     data=JSON.parse(xhr.responseText)
     data=(data['cartItems'])
     for(let item of data){
+cart+=' '+item[0]['sno']
 ci+=`
 <div class="itemList">
 <div>
@@ -141,9 +140,11 @@ ci+=`
 </div>
 <h3 class="pricing">Rs:${item[0]['pricing']}</h3>
 </div>
-`   }
+`   }if( document.querySelector('.count')!==null){
     document.querySelector('.count').innerText=`${data.length}`
-    document.querySelector('.cartItems').innerHTML=ci;
+    document.querySelector('.cartItems').innerHTML=ci;}
+   
+localStorage.setItem('cart',cart)
   }
 
 };
@@ -164,3 +165,6 @@ xhr.onerror = function() {
 
 }
 Cart()
+function clearStorage(){
+  localStorage.clear()
+}

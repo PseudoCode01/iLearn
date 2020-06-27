@@ -1,7 +1,8 @@
 from home.models import Courses,Cart
 # from django.contrib.auth.models import User
 def add_variable_to_context(request):
-    get_courses=list(Courses.objects.values().order_by('category'))
+    get_course=Courses.objects.values().order_by('category')
+    get_courses=list(get_course)
     courses=set()
     sub_cat=set()
     for course in get_courses:
@@ -9,14 +10,12 @@ def add_variable_to_context(request):
         sub_cat.add((course['sub_category'],course['category']))
     
     if request.user.is_authenticated :
-        get_cartItem=list(Cart.objects.filter(user_id=request.user).values('course_id'))
-        get_cartItem=list(Cart.objects.filter(user_id=request.user).values('course_id'))
-        get_cartCourses=""
-        if len(get_cartItem)>0:
-            get_cartItemCousreId=get_cartItem[0]['course_id']
-            get_cartCourses=Courses.objects.filter(sno=get_cartItemCousreId).order_by('timeStamp')
-        print(get_cartCourses)
-        return { 'get_courses':courses,'sub_cat':sub_cat,'get_cartCourses':get_cartCourses,'get_cartItem':get_cartItem }
+        cart=Cart.objects.filter(user_id=request.user)
+        get_cartItem=list(cart.values('course_id','timeStamp'))
+        get_cartCourses=set()
+        for item in get_cartItem:
+            get_cartCourses.add((get_course.filter(sno=item['course_id']),item['timeStamp']))
+        return { 'get_courses':courses,'sub_cat':sub_cat,'get_cartCourses':get_cartCourses,'addedon_cartItem':'addedon_cartItem'}
     else:
-        return { 'get_courses':courses,'sub_cat':sub_cat,'get_cartCourses':'','get_cartItem':'' }
+        return { 'get_courses':courses,'sub_cat':sub_cat,'get_cartCourses':'','addedon_cartItem':''}
     

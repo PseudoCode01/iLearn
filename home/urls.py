@@ -17,9 +17,11 @@ urlpatterns = [
     path('teachersignup', views.handleTeacherSignUp,name="handleTeacherSignUp"),
     path('saveCourse', views.saveCourse,name="saveCourse"),
     path('viewCourses', views.viewCourses,name="viewCourses"),
+    path('get_viewCourses', views.get_viewCourses,name="get_viewCourses"),
     path('video', views.video,name="video"),
     path('get_cartItems', views.get_cartItems,name="get_cartItems"),
     path('addCart', views.addCart,name="addCart"),
+    path('cart', views.CartItem,name="CartItem"),
     # path('editCourse/<int:id>', views.editCourse,name="editCourse"),
     path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),
 ]

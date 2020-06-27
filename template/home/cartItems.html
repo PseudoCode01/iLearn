@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/cartItems.css' %}">
+<div class="cartPage">
+{% for course in get_cartCourses %}
+    <div class="itemInCart">
+        <div class="left">
+            <img src="/media/{{course.0.0.courseThumbnail}}" alt="" srcset="">
+            <span class="date">{{course.1|date:"d"}}</span>
+            <span class="month">{{course.1|date:"F"}}</span>
+        </div>
+        <div class="right">
+            <h3 class="ctitle">{{course.0.0.title|upper}}</h3>
+            <p class="cCreater">By: {{course.0.0.creater_name}}</p>
+            <div class="line"></div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero nulla odio beatae inventore quis accusantium ratione expedita quos exercitationem ullam laborum cum officiis laboriosam eveniet assumenda natus.</p>
+            <h4 class="ctime">On: {{course.0.0.timeStamp}}</h4>
+            <div>
+            <button class="buyNow">Buy Now</button>
+            <button class="remove">Remove</button>
+        </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+<script   src="{% static 'js/cartItems.js'%}"></script>
+{% endblock body %}
+    

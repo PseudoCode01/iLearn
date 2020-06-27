@@ -5,22 +5,7 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/viewCourses.css' %}">
     <div class="container">
-        
-        {% for course in courses %}
-            <div class="item">
-               <img src="/media/{{course.courseThumbnail}}" alt="">
-               <div class="courseInfo">
-               <h4>{{course.title|upper}}</h4>
-               <h5>Rs: {{course.pricing}}</h5>
-               <p>Created By- {{course.creater_name}}</p>
-               <p>Date- {{course.timeStamp|date:"D,d M,Y"}}</p>
-            </div>
-            <div class="addcart btn-cart">
-                <button data-product="{{course.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
-            </div> 
-        </div> 
-        {% endfor %}
-            
+     
     </div>
     <script   src="{% static 'js/viewCourses.js'%}"></script>
 {% endblock body %}

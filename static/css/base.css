@@ -403,7 +403,7 @@ font-size: 38px;
 
 
 #cart {
-  position: absolute; 
+  position: fixed; 
   right: 0;
   top: 100px;
   padding:12px 1px 12px 15px; 

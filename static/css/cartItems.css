@@ -1,0 +1,78 @@
+
+.cartPage{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+.itemInCart{
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding: 30px;
+    box-shadow: 2px 2px 2px 2px rgb(136, 136, 136);
+    margin-bottom: 40px;
+    background-color: rgb(255, 255, 255);
+}
+.itemInCart .left img{
+    position: relative;
+    top:-50px;
+    box-shadow: 5px 5px 5px 5px rgb(136, 136, 136);
+    -webkit-box-shadow: 5px 5px 5px 5px rgb(136, 136, 136);
+    border-radius: 2px;
+    width:400px;
+    height: 220px;
+    float: left;
+}
+.itemInCart .left .date{
+    font-size: 4rem;
+    color: rgb(122, 122, 122);
+}
+.itemInCart .left .month{
+    color: rgb(122, 122, 122);
+}
+.itemInCart .right{
+    margin-left: 40px;
+}
+.itemInCart .right .ctitle{
+    color: rgb(0, 0, 109);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+.itemInCart .right .cCreater{
+    display: inline;
+    background-color: rgb(119, 184, 236);
+    color: rgb(49, 49, 49);
+    border-radius: 16px 16px 16px 16px; 
+    /* color: white; */
+    padding: 4px 8px;
+}
+.itemInCart .right .ctime{
+margin-top: 20px;
+}
+.itemInCart .right .line{
+margin-top: 15px;
+margin-bottom: 10px;
+height: 1px;
+background-color: black;
+}
+.itemInCart .right .buyNow{
+    margin-top: 40px;
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    padding:10px 20px;
+}
+.itemInCart .right .remove{
+    margin-top: 40px;
+    margin-left: 50px;
+    background-color: rgb(211, 11, 11);
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    padding:10px 20px;
+}

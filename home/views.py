@@ -34,10 +34,8 @@ def get_cartItems(request):
 
 def addCart(request):
     data=json.loads(request.body)
-    print(data)
     courseId=data['courseId']
     action=data['action']
-    print(action,courseId)
     user=request.user
     course=Courses.objects.get(sno=courseId)
     addcart=Cart(course=course,user=user)
@@ -65,7 +63,6 @@ def saveCourse(request):
            course=Courses.objects.filter(creater_id=request.user)
            course=course.last()
            course=(int(str(course)))
-           print(type(int(str(course))))
        except Exception as e:
            status=False
     print(status)
@@ -92,11 +89,15 @@ def video(request):
     video.save()
     return redirect('/addVideos')
 def viewCourses(request):
-    if request.method=='POST':
-        category=request.POST.get('get_cat')
-        sub_category=request.POST.get('get_scat')
-        courses=Courses.objects.filter(category=category).filter(sub_category=sub_category)
-    return render(request,'home/viewCourses.html',{'courses':courses})   
+    return render(request,'home/viewCourses.html')
+def get_viewCourses(request):
+    data=json.loads(request.body)
+    cat=data['cat']
+    scat=data['scat']
+    courses=(Courses.objects.filter(category=cat).filter(sub_category=scat).values())
+    return JsonResponse({'courses':list(courses)})
+def CartItem(request):
+    return render(request,'home/cartItems.html')
 def contact(request):
     if request.method=='POST':
         name=request.POST['userName']

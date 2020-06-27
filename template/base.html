@@ -31,11 +31,9 @@
                       {% endfor %}
                     </ul>
                     {% endfor %}
-                <form action="/viewCourses" class="vc" method="POST">
-                  {% csrf_token %}
-            <input type="hidden" name="get_cat" id="get_cat" value="v">
+               
+            <input type="hidden" name="get_cat" id="get_cat">
             <input type="hidden" name="get_scat" id="get_scat">
-          </form>
         </ul>
     <div class="mid2">
             <div id="searchBox" >
@@ -45,7 +43,7 @@
         </div>
         {% if user.is_authenticated %}
          <span id="uname">
-             <button class="btn logout" ><a  class="logouta" href="/logout">Logout</a></button>
+             <button class="btn logout" ><a  class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
              {% if request.user.first_name == "Teacher" %}
              <a href="/addCourse" class="role">Instructer</a>
             {% endif %}
@@ -121,13 +119,15 @@
     </div>
   </div>
 </div>
-<div id="cart" >
+{% if user.is_authenticated %}
+<div id="cart" onclick="window.location.href='/cart'">
   <div class="cartIcon">
     <img src="/static/img/cartIcon.png" alt=""><span class="count"></span></div>
         <div class="cartItems arrow-top">
         
           </div>
         </div> 
+      {%  endif %}
     {% block body %}
     {% endblock body %}
     <div id="lastElem">
@@ -165,5 +165,6 @@
     
 </body>
 <script src="{% static 'js/base.js' %}">
+  
 </script>
 </html>
