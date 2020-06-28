@@ -10,8 +10,17 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <body>
-
+     <div class="mobile_Nav">
+       <span onclick="openMobileNav()" class="hamburger">&#9776;</span>
+       
+       <a class="Mlogo" href=""><img src="/static/img/logo.png" alt=""><div>iLearn</div></a>
+       <form id="searchBar">
+        <input type="search" placeholder="Search">
+      </form>
+     </div>
     <div class="topnav" id="myTopnav">
+      <span onclick="closeMobileNav()" class="cross">&#x2718</span>
+      <div class="cline"></div>
         <a href="/" class="logo">i Learn</a>
         <div class="dropside">
           <button class="dropbtn" onclick="openNav()">Categories
@@ -47,8 +56,7 @@
              {% if request.user.first_name == "Teacher" %}
              <a href="/addCourse" class="role">Instructer</a>
             {% endif %}
-
-             <span id="name" class="typewriter"><b>Welcome {{request.user}}</b></span>
+             <span id="name" class="typewriter"><b>Hi! {{request.user}}</b></span>
         </span>
         {% else %}
         <!-- Button to trigger signup modal -->
@@ -57,7 +65,7 @@
         <button id="logIn" class="btn btn-Login">Log In</button>
         <button class="btn btn-Teach"><a href="/teach1">Teach On iLearn</a></button>
         {% endif %}
-        <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+        <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
       </div> 
       {% for message in messages %}
       <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">

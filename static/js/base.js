@@ -26,6 +26,12 @@ window.onclick = function(event) {
   }
 }
 }
+function openMobileNav(){
+  document.querySelector('.topnav').style.width='250px'
+}
+function closeMobileNav(){
+  document.querySelector('.topnav').style.width='0'
+}
 if( document.getElementById("signUp")!==null){
 var modalLogin = document.querySelector(".modal-login");
 // Get the button that opens the Log In modal
@@ -54,7 +60,6 @@ document.querySelector('.closeAlert').addEventListener('click',function(){
 //open side nav
 /* Set the width of the side navigation to 250px */
 function openNav() {
-  console.log(this)
   document.getElementById("mySidenav").style.width = "250px";
 }
 

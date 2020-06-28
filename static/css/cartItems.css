@@ -1,4 +1,6 @@
-
+body{
+    background-image: url("/static/img/email-pattern.png");
+}
 .cartPage{
     width: 80%;
     margin-left: auto;
