@@ -1,0 +1,23 @@
+{% extends 'baseTeach.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/tPerformance.css' %}">
+<h1>Permormance</h1>
+    <div class="perBox">
+    <div class="perTab">
+        <button class="perBtn default" onclick="opentab(event,'revenue')">Total Revenue</button>
+        <button class="perBtn" onclick="opentab(event,'enrollment')">Total Enrollment</button>
+        <button class="perBtn" onclick="opentab(event,'rating')">Instructor Rating</button>
+    </div>
+    <div class="tabcontent" id="revenue">
+        <h3>no data to display</h3>
+    </div>
+    <div class="tabcontent" id="enrollment">
+
+    </div>
+    <div class="tabcontent" id="rating">
+
+    </div>
+</div>
+<script src="{% static 'js/tPerformance.js' %}"></script>
+{% endblock body %}

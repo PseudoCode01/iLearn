@@ -1,3 +1,6 @@
+body{
+    background-image: url('/static/img/email-pattern.png');
+}
 form{
     display: flex;
     flex-direction: column;

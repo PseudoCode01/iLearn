@@ -1,0 +1,40 @@
+h1{
+    text-align: center;
+
+ }
+ .perBox{
+     margin: auto;
+     width: 800px;
+ }
+ .perBox:hover{
+     box-shadow:4px 4px 4px 4px rgb(216, 212, 212) ;
+ }
+ .perTab{
+     overflow: hidden;
+   display: flex;
+   height: 80px;
+   width: 800px;
+   border: 1px solid rgb(214, 209, 209);
+ }
+ .perBtn{
+     font-size: 1.2rem;
+     width: 33%;
+     font-weight: bold;
+     border: none;
+     background-color: white;
+     cursor: pointer;
+ }
+ .perBtn:hover{
+     background-color:rgb(250, 244, 250) ;
+ }
+  .perBtn.active{
+     text-decoration: none;
+     border-bottom: 8px solid rgb(111, 153, 77);
+ }
+ .tabcontent{
+     display: none;
+     height: 500px;
+     border: 1px solid rgb(214, 209, 209);
+     width: 800px;
+     background-color: rgb(250, 244, 250);
+ }

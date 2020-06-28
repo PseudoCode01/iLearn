@@ -25,6 +25,8 @@ def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
     return render(request,'home/createCourse.html')
+def teacherPerformance(request):
+    return render(request,'home/tPerformance.html')
 def get_cartItems(request):
     cart=Cart.objects.values()
     courses=list()

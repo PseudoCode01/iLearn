@@ -22,6 +22,7 @@ urlpatterns = [
     path('get_cartItems', views.get_cartItems,name="get_cartItems"),
     path('addCart', views.addCart,name="addCart"),
     path('cart', views.CartItem,name="CartItem"),
+    path('teacherPerformance', views.teacherPerformance,name="teacherPerformance"),
     # path('editCourse/<int:id>', views.editCourse,name="editCourse"),
     path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),
 ]
