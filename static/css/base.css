@@ -114,6 +114,9 @@ margin-top: 5px;
     margin-left: 19px;
     font-size: 17px;
   }
+  .mid2 form{
+    margin-top: 0px;
+  }
 .mid2 #searchBox{
     display: flex;
  }

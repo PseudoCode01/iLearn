@@ -1,12 +1,12 @@
 
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+// function myFunction() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
 if( document.getElementById("signUp")!==null){
 var modalSignup = document.querySelector(".modal-signup");
 // Get the button that opens the Sign Up modal
@@ -25,6 +25,9 @@ window.onclick = function(event) {
     modalSignup.style.display = "none";
   }
 }
+}
+function searchQuery(){
+  window.location.href="/search"
 }
 function openMobileNav(){
   document.querySelector('.topnav').style.width='250px'

@@ -28,11 +28,17 @@ body{
     font-size: small;
     margin-bottom: 25px;
   }
+  .searchForm{
+margin-top: -22px;
+align-items: flex-start;
+  }
   .searchSection{
     position: relative;
     margin-left: 10%;
     top: 25%;
+    max-width: 510px;
 }
+
 .searchSection h1{
     font-size: 1.8rem;
     color: black;
@@ -65,7 +71,6 @@ body{
     #searchBox{
         display: none;
     }
-
 }
 
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
@@ -12,9 +11,9 @@
 <body>
      <div class="mobile_Nav">
        <span onclick="openMobileNav()" class="hamburger">&#9776;</span>
-       
+    
        <a class="Mlogo" href=""><img src="/static/img/logo.png" alt=""><div>iLearn</div></a>
-       <form id="searchBar">
+       <form action="/search"  class="searchForm" method="get" id="searchBar">
         <input type="search" placeholder="Search">
       </form>
      </div>
@@ -45,10 +44,12 @@
             <input type="hidden" name="get_scat" id="get_scat">
         </ul>
     <div class="mid2">
+      <form action="/search"  class="searchForm" method="get">
             <div id="searchBox" >
               <input type="text" id="search" name="search" placeholder="What Do You Want Learn?">
-              <img src="static/img/search.png" alt="">
-           </div>
+              <img src="static/img/search.png" alt="" >
+            </div>
+          </form>
         </div>
         {% if user.is_authenticated %}
          <span id="uname">
@@ -76,7 +77,7 @@
       </div>
       {% endfor %}
 <!--signUp The Modal -->
-<div id="myModal " class="modal modal-signup">
+<div id="myModal" class="modal modal-signup">
   <div class="modal-content">
     <div class="modal-header">
       <span class="close closesignup">&times;</span>

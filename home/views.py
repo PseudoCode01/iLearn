@@ -10,6 +10,7 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
+from django.contrib.postgres.search import SearchVector, SearchQuery
 # Create your views here.
 def home(request):
     return render(request,'home/home.html')
@@ -19,6 +20,13 @@ def about(request):
     return render(request,'home/about.html')
 def addCourse(request):
     return render(request,'home/addCourse.html')
+def search(request):
+    query=request.GET['search']
+    result=Courses.objects.annotate(
+    search=SearchVector('title') + SearchVector('category')+SearchVector('sub_category')+SearchVector('creater_name')
+    ).filter(search = SearchQuery(query) ).filter(verified="True").values()
+    print(result)
+    return render(request,'home/search.html',{'searchResults':result})
 def homeTutor(request):
     return render(request,'home/homeTutor.html')
 def getStarted(request):
@@ -28,11 +36,13 @@ def createCourse(request):
 def teacherPerformance(request):
     return render(request,'home/tPerformance.html')
 def get_cartItems(request):
-    cart=Cart.objects.values()
-    courses=list()
-    for item in cart:
-        courses.append(list(Courses.objects.filter(sno=item['course_id']).values()))
-    return JsonResponse({'cartItems':list(courses)})
+    if request.user.is_authenticated :
+        cart=Cart.objects.filter(user_id=request.user).values()
+        courses=list()
+        for item in cart:
+            courses.append(list(Courses.objects.filter(sno=item['course_id']).values()))
+        return JsonResponse({'cartItems':list(courses)})
+    return JsonResponse({'cartItems':list()})
 
 def addCart(request):
     data=json.loads(request.body)
@@ -40,11 +50,13 @@ def addCart(request):
     action=data['action']
     user=request.user
     course=Courses.objects.get(sno=courseId)
+    print(course)
     addcart=Cart(course=course,user=user)
     if action=="add" :
         addcart.save()
-    elif action=="remove" :
-        addcart.delete()
+    elif action=="remove":
+        removecart=Cart.objects.filter(user_id=user).filter(course_id=courseId)
+        removecart.delete()
     return JsonResponse('item was added ',safe=False)
 def saveCourse(request):
     status=False
@@ -67,7 +79,6 @@ def saveCourse(request):
            course=(int(str(course)))
        except Exception as e:
            status=False
-    print(status)
     return render(request,'home/saveCourse.html',{'status':status,'id':course})
 def deleteCourse(request,id):
     course = Courses.objects.get(sno = id)
@@ -96,7 +107,7 @@ def get_viewCourses(request):
     data=json.loads(request.body)
     cat=data['cat']
     scat=data['scat']
-    courses=(Courses.objects.filter(category=cat).filter(sub_category=scat).values())
+    courses=(Courses.objects.filter(category=cat).filter(sub_category=scat).filter(verified="True").values())
     return JsonResponse({'courses':list(courses)})
 def CartItem(request):
     return render(request,'home/cartItems.html')
@@ -192,3 +203,27 @@ def handleLogout(request):
     logout(request)
     messages.success(request,"Successfully Loged Out")
     return redirect('/')
+def adminPanel(request):
+    course=Courses.objects.filter(verified="False")
+    sno=course.values('sno')
+    un_verified_set=list()
+    for item in sno:
+        un_verified=Videos.objects.filter(videoOfCourse_id=item['sno'])
+        print(un_verified)
+        if(len(un_verified) != 0) :
+            un_verified_set.append(list((course.filter(sno=item['sno']).values(),un_verified.values().first())))
+    return render(request,'home/adminPanel.html',{'un_verified':un_verified_set})
+def verification(request):
+    data=json.loads(request.body)
+    courseId=data['courseId']
+    action=data['action']
+    user=request.user
+    course=Courses.objects.get(sno=courseId)
+    # addcart=Cart(course=course,user=user)
+    if action=="verify":
+        course.verified="True"
+        course.save()
+        return JsonResponse('item was verified ',safe=False)
+    elif action=="remove":
+        course.delete()
+        return JsonResponse('item was deleted ',safe=False)

@@ -9,6 +9,7 @@ urlpatterns = [
     path('signup', views.handleSignUp,name="handleSignUp"),
     path('contact', views.contact,name="contact"),
     path('about', views.about,name="about"),
+    path('search', views.search,name="search"),
     path('addCourse', views.addCourse,name="addCourse"),
     path('homeTutor', views.homeTutor,name="homeTutor"),
     path('getStarted', views.getStarted,name="getStrated"),
@@ -25,4 +26,6 @@ urlpatterns = [
     path('teacherPerformance', views.teacherPerformance,name="teacherPerformance"),
     # path('editCourse/<int:id>', views.editCourse,name="editCourse"),
     path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),
+    path('adminPanel', views.adminPanel,name="adminPanel"),
+    path('verification', views.verification,name="verification"),
 ]

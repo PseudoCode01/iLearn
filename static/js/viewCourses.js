@@ -38,12 +38,11 @@ function updateUserOrder(val,courseId,action){
         Cart()
         var x = val.parentElement;
         x.innerHTML= `
-        <button class="goCart">Go To Cart</button>`
+        <button class="goCart"  onclick="window.location.href='/cart'">Go To Cart</button>`
     })
 }
-if(document.querySelectorAll('.title')==undefined){
-console.log(document.querySelectorAll('.titlel'))
-}
+
+
 let cat=localStorage.getItem('cat')
 let scat=localStorage.getItem('scat')
 var cart='';
@@ -55,7 +54,6 @@ xh.open('POST', '/get_viewCourses');
 xh.setRequestHeader('X-CSRFToken', csrftoken);       
 xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 xh.setRequestHeader("Accept", "application/json");
-
 xh.send(JSON.stringify({'cat':cat,'scat':scat}));
 var data='fg'
 xh.onload = function() {
@@ -115,5 +113,4 @@ xh.onerror = function() {
 alert("Request failed");
 };
 }
-
 console.log(document.querySelectorAll('.title'))

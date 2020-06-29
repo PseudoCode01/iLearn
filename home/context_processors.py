@@ -1,7 +1,7 @@
 from home.models import Courses,Cart
 # from django.contrib.auth.models import User
 def add_variable_to_context(request):
-    get_course=Courses.objects.values().order_by('category')
+    get_course=Courses.objects.filter(verified="True").values().order_by('category')
     get_courses=list(get_course)
     courses=set()
     sub_cat=set()

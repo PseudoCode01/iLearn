@@ -1,0 +1,261 @@
+#Tname{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    float:right;
+    margin-right: 10px;
+    height: 44px;
+    font-size: 2rem;
+    width: 51px;
+    text-align: center;
+    background-color:rgb(136, 136, 136);
+    border-radius: 50%;
+    padding-top: 5px;
+    color: white;
+    border: 2px solid rgba(240, 240, 240, 0.64);
+    cursor: pointer;
+}
+
+#role{
+position: absolute;
+top: 10px;
+right: 40px;
+margin-right: 3rem;
+font-size: 1rem;
+padding-top: 17px;
+height: 35px;
+width: 111px;
+text-decoration: none;
+color: black;
+text-align: center;
+border-radius: 2px;
+}
+
+#role:hover{
+    border: 1px solid rgb(179, 179, 179);
+    background-color: rgb(218, 218, 218);
+}
+
+ /* The side navigation menu */
+ .sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 60px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgb(123, 213, 123);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  display: flex;
+  flex-direction: row;
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  transition: 0.3s;
+  max-lines: 1;
+}
+.sidenav a span{
+  margin-right: 10px;
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
+
+.box {
+  display: none;
+  width: 150px;
+  height: 75px;
+  background-color: rgb(231, 231, 231);
+  color:rgb(0, 0, 0);
+  padding: 20px;
+  position: relative;
+  margin: -132px;
+  float: left;
+  font-size: 1rem;
+  color:black;
+  font-size: .8rem;
+}
+
+.box.arrow-top {
+  margin-top: 60px;
+}
+
+.box.arrow-top:after {
+  content: " ";
+  position: absolute;
+  right: 19px;
+  top: -15px;
+  border-top: none;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid rgb(211, 211, 211);
+}
+#Tname:hover .box{
+  display: block;
+}
+
+.container{
+    display: grid;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* grid-gap: 10px; */
+}
+.item{
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px #cacaca;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    margin-bottom: 100px;
+}
+.item .courseInfo h4{
+    max-lines: 1;
+}
+.item .btn{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    
+}
+.item .verify{
+    display: flex;
+    text-decoration: none;
+    background-color: green;
+    color: white;
+    border-radius: 2px;
+   border: none;
+   cursor: pointer;
+    padding: 10px;
+}
+.item .remove{
+    display: flex;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 2px;
+    cursor: pointer;
+    border: 1px solid rgb(197, 0, 0);
+    padding: 10px;
+}
+.item .remove:hover{
+   background-color: rgb(223, 0, 0);
+}
+.item .verify:hover{
+    background-color: rgb(0, 173, 0);
+}
+.courseInfo{
+    padding: 10px;
+    line-height: 23px;
+}
+.item:hover{
+    box-shadow: 5px 5px 5px 5px #cacaca;
+}
+.item img{
+    width: 250px;
+    height: 150px;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modal-header h2{
+    font-size: 1.3rem;
+  }
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color:black;
+    float: right;
+    font-size: 1.6rem;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* Modal Header */
+  .modal-header {
+    padding: 12px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;}
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  @media only screen and (max-width:1100px )and (min-width:800px){
+      .modal-content{
+      width: 55%;}
+  }
+  @media only screen and (max-width:800px ){
+      .modal-content{
+      width: 90%;}
+  }
+  @media only screen and (max-width:420px ){
+      .modal-content{
+      width: 100%;}
+  }
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -800px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }

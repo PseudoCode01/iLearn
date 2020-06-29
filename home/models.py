@@ -14,6 +14,7 @@ class Courses(models.Model):
     courseThumbnail=models.ImageField( upload_to="home/courseThumbnail",default="")
     pricing=models.CharField(max_length=10,default="149")
     creater_name=models.CharField(max_length=150,default="")
+    verified=models.CharField(max_length=150,default="False")
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 

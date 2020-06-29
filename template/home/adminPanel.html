@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    {% load static %}
+</head>
+<link rel="stylesheet" href="{% static 'css/adminPanel.css' %}">
+<body>
+    
+    {% if request.user.is_staff %}
+    <div class="top">
+        <div id="Tname">
+            {{request.user|slugify|first|upper}}
+            <div class="box arrow-top">
+                <h5>Hi! {{request.user}}</h5>
+                <p>{{request.user.email}}</p>
+              </div>
+        </div>
+        <a href="/" id="role">Student</a>
+    </div>
+    <div id="mySidenav" class="sidenav">
+        <a><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
+        <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
+        <a href="#"><span><img src="/static/img/resource.png" alt=""></span><span>Resources</span></a>
+      </div> 
+      <div class="container">
+      {% for item in un_verified %}
+      <div class="item">
+          <img onclick="player(this)" data-id={{item.0.0.sno}} src="/media/{{item.0.0.courseThumbnail}}" alt="">
+        <!-- <video width="100%" height="250px" poster="/media/{{item.0.0.courseThumbnail}}" controls>
+            <source src="/media/{{item.1.videofile}}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video> -->
+        <div class="courseInfo">
+        <h4>{{item.0.0.title|upper}}</h4>
+        <h5>Rs: {{item.0.0.pricing}}</h5>
+        <p>Created By- {{item.0.0.creater_name}}</p>
+        <p>Date- {{item.0.0.timeStamp}}</p>
+      </div>
+      <hr> 
+      <div class="btn">
+      <div class="btn-cart">
+        <button data-product="{{item.0.0.sno}}" data-action="verify" type="button" class="verify" onclick="verification(this)">Verify</button>
+     </div>
+      <div class=" btn-cart">
+        <button data-product="{{item.0.0.sno}}" data-action="remove" type="button" class="remove" onclick="verification(this)">Delete</button>
+     </div>
+     </div>
+      </div>
+      <div id="myModal{{item.0.0.sno}}" class="modal modal-play">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" id="closeplay{{item.0.0.sno}}">&times;</span>
+            <h2>{{item.1.videoTitle}}</h2>
+          </div>
+          <div class="modal-body">
+              <video width="100%" height="250px" poster="/media/{{item.1.thumbnail}}" controls>
+            <source src="/media/{{item.1.videofile}}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+        {% else %}
+        <span>You Dont Have Permission To View This Page</span>
+    {% endif %}
+</body>
+<script src="{% static 'js/adminPanel.js' %}"></script>
+</html>

@@ -20,7 +20,7 @@
             <h4 class="ctime">On: {{course.0.0.timeStamp}}</h4>
             <div>
             <button class="buyNow">Buy Now</button>
-            <button class="remove">Remove</button>
+            <button data-product="{{course.0.0.sno}}" data-action="remove" onclick="remove(this)" class="remove">Remove</button>
         </div>
         </div>
     </div>

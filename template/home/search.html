@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+<div class="container">
+    {% for item in searchResults %}    
+    <div class="item">
+        <img src="/media/{{item.courseThumbnail}}" alt="">
+        <div class="courseInfo">
+        <h4>{{item.title|upper}}</h4>
+        <h5>Rs: {{item.pricing}}</h5>
+        <p>Created By- {{item.creater_name}}</p>
+        <p>Date- {{item.timeStamp}}</p>
+      </div>
+      <div class="addcart btn-cart">
+        <button data-product="{{item.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
+     </div>
+      </div>  
+{% endfor %}
+
+</div>
+
+<script src="{% static 'js/search.js' %}"></script>
+{% endblock body %}
+    
