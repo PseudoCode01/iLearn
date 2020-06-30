@@ -1,16 +1,19 @@
 body{
-    background-image: url('/static/img/email-pattern.png');
+    background-image: url('/static/img/contactus.jpg');
 }
-form{
+ .column form{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 90px;
     height: 600px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* form::before{
         content: "";
-        background:url("/static/img/back8.jpg") no-repeat center center/cover;
+        background:url("/static/img/contactus.jpg") no-repeat center center/cover;
         position: absolute;
         top: 0px;
         left: 0px;
@@ -20,46 +23,47 @@ form{
         opacity: 0.9;
         z-index: -1;
 } */
-form span{
+.column form span{
     font-size: 2rem;
 }
-.form-group{
+.column .form-group{
     justify-content: center;
+    width: 100%;
     margin-top: 20px;
 }
-.form-group input{
+.column .form-group input{
     display:block;
     padding: 15px 20px;
     border: 2px solid black;
-    width: 750px;
     height: 15px;
+    width: 100%;
     margin-top: 8px;
     border-radius: 6px;
 }
-.form-group textarea{
+.column .form-group textarea{
     display:block;
     padding: 15px 20px;
     border: 2px solid black;
-    width: 750px;
     height: 100px;
     margin-top: 8px;
+    width: 100%;
     border-radius: 6px;
 }
 
-form button{
+.column form button{
     display: flex;
     font-size: 20px;
     margin-top: 30px;
     margin-bottom: 20px;
     padding: 11px 40px;
     width: 150px;
-    background-color: rgb(6, 180, 6);
+    background-color: rgb(236, 65, 65);
     color: white;
     border: none;
     border-radius: 2px;
 }
 
-form button:hover{
-    background-color: black;
+.column form button:hover{
+    background-color: rgb(243, 44, 44);
     cursor: pointer;
 }

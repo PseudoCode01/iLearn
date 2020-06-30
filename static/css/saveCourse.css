@@ -99,7 +99,7 @@ select::-ms-expand {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: rgb(236, 65, 65);
     cursor: pointer;
   }
 .value{
@@ -127,7 +127,7 @@ form .delete{
 }
 
  .btn-outline:hover{
-    background-color: rgb(52, 160, 2);
+    background-color: rgb(76, 192, 72);
     color: white;   
 }
 form .delete:hover{

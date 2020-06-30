@@ -38,7 +38,7 @@
 .container button{
     border: none;
     font-size: 1.5em;
-    background-color: rgb(52, 192, 87);
+    background-color: rgb(236, 65, 65);
     padding: 10px;
     color: white;
      margin-top: 50px;
@@ -47,7 +47,7 @@
 
 }
 .container button:hover{
-    background-color: rgb(49, 219, 49);
+    background-color: rgb(231, 40, 40);
     border: 2px solid white;
     cursor: pointer;
 }
@@ -187,7 +187,7 @@ flex-wrap: wrap;
     border: none;
     font-size: 1.5em;
     background-color:
-    rgb(52, 192, 87);
+    rgb(236, 65, 65);
     padding: 10px;
     color: white;
     top: 50px;

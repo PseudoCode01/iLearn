@@ -1,5 +1,5 @@
 body{
-    background-image: url("/static/img/email-pattern.png");
+    background: url("/static/img/cartback.jpg") no-repeat center center/cover;
 }
 .cartPage{
     width: 80%;

@@ -17,7 +17,7 @@
    .btn{
     margin-left: auto;
     text-align: center;
-    background-color: rgb(52, 192, 87);
+    background-color: rgb(236, 65, 65);
     font-size: 1.1rem;
     height: 26px;
     margin-right: 30px;
@@ -30,7 +30,7 @@
   }
   
   .btn:hover{
-     background-color: rgb(7, 167, 47);
+     background-color: rgb(231, 42, 42);
   }
 
   #Home-Tutor{
