@@ -99,7 +99,7 @@ select::-ms-expand {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: rgb(236, 65, 65);
+    background: rgb(65, 100, 236);
     cursor: pointer;
   }
 .value{
@@ -112,7 +112,7 @@ select::-ms-expand {
     padding: 10px 25px;
     background-color: #ffffff;
     color: rgb(0, 0, 0);
-    border: 1.5px solid rgb(52, 160, 2);
+    border: 1.5px solid rgb(45, 72, 179);
     border-radius: 2px;
 }
 form .delete{

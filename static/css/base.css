@@ -1,0 +1,855 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+}
+@media (max-width:700px){
+  *{
+    font-size: 12px;
+  }
+}
+html{
+    scroll-behavior: smooth;
+}
+
+.active{
+    color:rgb(0, 0, 0);
+    background-color: rgb(65, 100, 236);
+}
+@media (min-width:950px)
+{
+  .mobile_Nav{
+  display: none;
+  }
+  .cline{
+    display: none;
+  }
+  .cross{
+    display: none;
+  }
+  .logo{
+  color:rgb(0, 0, 0);
+  background-color: rgb(65, 100, 236);
+}
+ /* Add a black background color to the top navigation */
+ @media(min-width:900px){
+.topnav{
+    height: 60px;
+}
+ }
+.topnav {
+  background-color: rgba(121, 121, 121, 0.623);
+  overflow: hidden;
+  position: sticky;
+  top:0;
+  left: 0;
+  right: 0;
+  align-items: center;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  padding: 17px 24px;
+  text-decoration: none;
+  font-size: 17px;
+}
+#uname >a{
+  float:right;
+  color: #000;
+  font-size: 15px;
+  border-radius: 2px;
+  padding: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+#uname >a:hover{
+  border: 1px solid black;
+  background-color: rgb(236, 236, 236);
+}
+.topnav .logo{
+    font-size: 20px;
+}
+/* Add an active class to highlight the current page */
+.active {
+  background-color: rgb(65, 100, 236);
+  color: white;
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+  display: none;
+}
+
+/* dropside container - needed to position the dropside content */
+.dropside {
+  float: left;
+  /* overflow: hidden; */
+  margin-left: 20px;
+margin-top: 5px;
+}
+
+/* Style the dropside button to fit inside the topnav */
+.dropside .dropbtn {
+  font-size: 17px;/* Add a dark background on topnav links and the dropside button on hover */
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  cursor: pointer;
+}
+
+
+
+.topnav .mid2 {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 12px 24px;
+    text-decoration: none;
+    margin-left: 19px;
+    font-size: 17px;
+  }
+  .mid2 form{
+    margin-top: 0px;
+  }
+.mid2 #searchBox{
+    display: flex;
+ }
+ .mid2 #searchBox img{
+    background-color: white;
+    height: 18px;
+    padding: 8px;
+}
+ .mid2 #searchBox img:hover{
+    background-color: rgb(65, 100, 236);
+    cursor: pointer;
+}
+.mid2 #search{
+    width: 222px;
+    height: 34px;
+    padding: 0 10px;
+    border: none;
+}
+ .btn{
+    float:right;
+    background-color: rgb(65, 100, 236);
+    border:1px solid #000;
+    font-size: 15px;
+    border-radius: 2px;
+    padding: 10px;
+    margin-top: 8px;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white
+  }
+  .btn-SignUp{
+      margin-right: 10px;
+  }
+  .btn-Teach{
+    padding: 0;
+  }
+  .btn-Teach a{
+    padding: 9px;
+    color: white;
+  }
+   .btn:hover{
+    background-color: rgb(103, 130, 238);
+    border:1px solid white;
+    color: white;
+  }
+  .btn:hover a{
+    color: white;
+  }
+  .logout{
+      margin-right: 10px;
+  }
+/* When the screen is less than 900 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+@media screen and (max-width: 900px) {
+  .topnav a:not(:first-child), .dropside .dropbtn,.topnav .btn,.topnav .mid2 ,.topnav #uname{
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 922px) {
+    .topnav{
+        background-color: black;
+    }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav{
+    z-index: 0;
+  }
+  .dropside-content{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-y: scroll;
+  }
+  .dropside-subcontent{
+    margin-bottom: 30px;
+  }
+  .topnav.responsive a,.topnav.responsive .btn,.topnav.responsive .mid2,.topnav.responsive #uname {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+ #uname >a{
+    float: none;
+    display: inline-block;
+    color: white;
+    padding: 10px 3px;
+    margin-bottom: 20px;
+  }
+  .topnav.responsive #uname span{
+      position: absolute;
+      font-size: 18px;
+      font-family: ubuntu, monospace;
+      top: 60px;
+      margin: auto;
+      text-align: center;
+  }
+  .dropside{
+      margin-top: 45px;
+    margin-left: -5px;  
+  }
+  .topnav.responsive .mid2{
+      margin-left: -10px;
+  }
+  .btn-Teach{
+      margin-bottom: 10px;
+  }
+  .topnav.responsive .dropside {float: none;}
+  .topnav.responsive .dropside-content {position: relative;}
+  .topnav.responsive .dropside .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+  .btn{
+      float: left;
+  }
+} 
+.logout a{
+    padding: 10px;
+}
+.logout{
+    margin-bottom: 10px;
+    padding:0;
+}
+#uname span{
+  float: right;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-top: 8px;
+  margin-left: 10px;
+  color: white;
+}
+}
+
+@media(max-width:950px){
+  .topnav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color:white; 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  .topnav .cross{
+    font-size: 25px;
+    cursor: pointer;
+    background-color: rgb(184, 184, 184);
+    width: 40px;
+    height: 37px;
+    padding-top: 4px;
+    text-align: center;
+    position: absolute;
+    border-radius: 50%;
+    top:20px;
+    right: 10px;
+  }
+  .topnav .logo{
+    display: none;
+  }
+  .mobile_Nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    height: 50px;
+  }
+  .mobile_Nav .hamburger {
+font-size: 25px;
+margin-top:10px ;
+margin-left: 10px;
+  }
+  .mobile_Nav .Mlogo  {
+display: flex;
+text-decoration: none;
+  }
+  .mobile_Nav .Mlogo div {
+margin-top: 21px;
+color: black;
+font-weight: bolder;
+font-size: 20px;
+  }
+
+  input {
+    outline: none;
+  }
+  input[type=search] {
+    -webkit-appearance: textfield;
+    -webkit-box-sizing: content-box;
+    font-family: inherit;
+    font-size: 100%;
+  }
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button {
+    display: none; 
+  }
+  #searchBar{
+    margin-top:6px ;
+    margin-right: 10px;
+  }
+  
+  input[type=search] {
+    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    border: solid 1px #ccc;
+    padding: 9px 10px 9px 32px;
+    width: 55px;
+    
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+  }
+  input[type=search]:focus {
+    width: 130px;
+    background-color: #fff;
+    border-color: rgb(65, 100, 236);
+    
+    -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+    -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+    box-shadow: 0 0 5px rgba(109,207,246,.5);
+  }
+  
+  
+  input:-moz-placeholder {
+    color: #999;
+  }
+  input::-webkit-input-placeholder {
+    color: #999;
+  }
+  
+  
+ input[type=search] {
+    width: 15px;
+    padding-left: 10px;
+    color: transparent;
+    cursor: pointer;
+  }
+  input[type=search]:hover {
+    background-color: #fff;
+  }
+   input[type=search]:focus {
+    width: 130px;
+    padding-left: 32px;
+    color: #000;
+    background-color: #fff;
+    cursor: auto;
+  }
+   input:-moz-placeholder {
+    color: transparent;
+  }
+   input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  .dropbtn{
+   margin-bottom: 10px;
+    background: none;
+    border: none;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .btn{
+    background: none;
+    color: teal;
+    padding: 7px;
+    border: none;
+  }
+  .btn a{
+text-decoration: none;
+color: teal;
+  }
+  .mid2{
+    display: none;
+  }
+  #uname{
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+  #uname a{
+    text-decoration: none;
+    color: teal;
+  }
+  #uname span{
+    color: black;
+    position: absolute;
+    top: 26px;
+    left: 10px;
+  }
+  .cline{
+    position: absolute;
+    top: 67px;
+    height: 1px;
+    width: 100%;
+   background-color: black;
+  }
+}
+
+
+
+
+/* signup modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modal-header h2{
+    font-size: 1.3rem;
+  }
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color:black;
+    float: right;
+    font-size: 1.6rem;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* Modal Header */
+  .modal-header {
+    padding: 12px 16px;
+    background-color: rgb(65, 100, 236);
+    color: white;
+  }
+  
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;}
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  @media only screen and (max-width:1100px )and (min-width:800px){
+      .modal-content{
+      width: 55%;}
+  }
+  @media only screen and (max-width:800px ){
+      .modal-content{
+      width: 90%;}
+  }
+  @media only screen and (max-width:420px ){
+      .modal-content{
+      width: 100%;}
+  }
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -800px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+
+
+/* signup form */
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+.form-group{
+    justify-content: center;
+    margin-top: 20px;
+}
+.form-group input{
+    display:block;
+    padding: 15px 20px;
+    border: 2px solid black;
+    width: 350px;
+    height: 15px;
+    margin-top: 8px;
+    border-radius: 6px;
+}
+@media only screen and (max-width:470px ){
+    .form-group input {
+    max-width:300px ;}
+}
+form button{
+    display: flex;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 11px 40px;
+    width: 150px;
+    background-color: rgb(65, 100, 236);
+    color: white;
+    border: none;
+    border-radius: 2px;
+}
+
+form button:hover{
+    background-color:rgb(107, 129, 221);
+    cursor: pointer;
+}
+/* css fpr alerts */
+.alert-success{
+    padding:10px 0 10px 0;
+    width: 100%;
+    background-color: rgb(79, 255, 133);
+}
+.alert-error{
+    padding:12px 0 12px 0;
+    width: 100%;
+    background-color:#f44336;
+}
+.alert strong{
+margin-left: 10px;
+}
+.closeAlert{ 
+float: right;
+border: none;
+padding: 0px 11px;
+background-color:rgba(255, 255, 255, 0);
+margin-top: -12px;
+}
+.closeAlert span{
+font-size: 38px;
+}
+@media(max-width:450px){
+    .alert{
+        font-size: 10px;
+    }
+    .closeAlert{
+        font-size: 38px;
+    float: right;
+    border: none;
+    padding: 0px 11px;
+    background-color:rgba(255, 255, 255, 0);
+    margin-top: -17px;
+    }
+}
+
+
+#cart {
+  position: fixed; 
+  right: 0;
+  top: 100px;
+  padding:12px 1px 12px 15px; 
+  width: 55px; 
+  transition: 0.3s;
+  height: 30px;
+  text-decoration: none; /* Remove underline */
+  border-radius: 29px 0 0 29px; 
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: rgb(65, 100, 236);
+}
+#cart:hover{
+  width: 60px; 
+}
+.cartIcon{
+  display: flex;
+} .cartIcon .count{
+  background-color: #0058ff;
+  color: white;
+  border-radius: 50%;
+  padding:1px 5px;
+  font-size: 13px;
+  height: 18px;
+  margin-top: -9px;
+}
+.cartItems{
+    display: none;
+    position: relative;
+    width: 300px;
+    background-color: rgb(255, 255, 255);
+    top: -34px;
+    right: 260px;
+    font-size: 1rem;
+    color:black;
+    font-size: .8rem;
+    animation: fadeinout 1s linear forwards;
+  }
+  @keyframes fadeinout {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .cartItems.arrow-top {
+    margin-top: 60px;
+  }
+  
+  .cartItems.arrow-top:after {
+    content: " ";
+    position: absolute;
+    right: 11px;
+    top: -15px;
+    border-top: none;
+    border-right: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid rgb(211, 211, 211);
+  }
+/* showing cart item on hover */
+   #cart:hover .cartItems{
+      display: block;
+   }
+  .cartItems{
+    cursor: pointer;
+    box-shadow: 1px 1px 1px 3px rgb(133, 133, 133);
+  }
+.cartItems >div{
+  padding: 15px;
+  border-bottom: 1px solid rgb(170, 170, 170);
+}
+   .cartItems >div>div{
+   display: flex;
+   }
+   .cartItems >div>div>div{
+   margin-left: 10px;
+   }
+   .cartItems >div>div>div>p{
+   color: rgb(148, 148, 148);
+   font-size: 12px;
+   }
+   .thumbnail{
+     width: 70px;
+     height: 70px;
+   }
+.pricing{
+ margin-left: 80px;
+ margin-top: -24px;
+}
+  /* footer part is designed */
+#lastElem{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1000px;
+    margin-top: 350px;
+    background-color:#f2f2f2;
+    }
+    .foot{
+      padding-top: 30px;
+      display: flex;
+      color: teal;
+      flex-wrap: wrap;
+    }
+    .footUl{
+      margin: 20px 55px;
+      color: teal;
+      list-style-type: none;
+    }
+    .footUl li{
+      margin-top: 8px;
+    }
+    .footUl li b{
+      font-size: 23px;
+    }
+    .footUl li a{
+        
+        color: teal;
+        text-decoration: none;
+    }
+    footer{
+      font-family: fantasy;padding-left: 60px;
+      color: black;
+      padding-top: 20px;
+      padding-bottom: 30px;
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: space-between;
+    }
+    @media (min-width:800px)
+    {#fitem1{
+      padding-left: 60px;
+    }
+    #fitem2{
+      padding-right: 150px;
+    }
+    #fitem2 img{
+      margin:0px 20px;
+    }}
+    @media (max-width: 800px){
+      #fitem2{
+      margin-bottom: 30px;
+    }
+      #fitem2 img{
+      margin:0px 10px;
+    } 
+    }
+
+    /* creating the typewritter effect */
+    .typewriter b {
+      font-size: 20px;
+      font-family: monospace; /* Web-safe typewriter-like font */
+      overflow: hidden; /* Ensures the content is not revealed until the animation */
+      border-right: .10em solid rgb(0, 255, 42); /* The typwriter cursor */
+      white-space: nowrap; /* Keeps the content on a single line */
+      margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+      letter-spacing: .05em; 
+      animation: 
+      typing 3.5s steps(30),
+      blinking-cursor .5s step-end infinite;
+      animation-iteration-count: infinite;
+    }
+    
+    /* The typing effect */
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    /* The typewriter cursor effect */
+    @keyframes blinking-cursor {
+      from, to { border-color: transparent }
+      50% { border-color: rgb(65, 100, 236); }
+    }
+
+    /* sidenav for categories */
+ /* The side navigation menu */
+ .sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color:white; 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 28px;
+  text-decoration: none;
+  font-size: 25px;
+  color:black;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size:50px;
+  color: rgb(65, 100, 236);
+  margin-left: 50px;
+}
+.sidenav .closebtn:hover {
+  color: rgb(110, 133, 228);
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
+
+/* adding collapsible in sidebar */
+ /* Style the button that is used to open and close the collapsible content */
+ .collapsible {
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: rgb(65, 100, 236);
+  color: white;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.content li{
+  list-style: none;
+  padding: 10px;
+  margin-left: 10px;
+}

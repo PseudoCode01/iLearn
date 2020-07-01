@@ -23,9 +23,13 @@ urlpatterns = [
     path('get_cartItems', views.get_cartItems,name="get_cartItems"),
     path('addCart', views.addCart,name="addCart"),
     path('cart', views.CartItem,name="CartItem"),
+    path('teacherProfile', views.teacherProfile,name="teacherProfile"),
+    path('get_teacherProfile', views.get_teacherProfile,name="get_teacherProfile"),
     path('teacherPerformance', views.teacherPerformance,name="teacherPerformance"),
+    path('previewCourse/<int:id>', views.previewCourse,name="previewCourse"),
     # path('editCourse/<int:id>', views.editCourse,name="editCourse"),
     path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),
     path('adminPanel', views.adminPanel,name="adminPanel"),
     path('verification', views.verification,name="verification"),
+    
 ]

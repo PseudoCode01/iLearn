@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
 from django.utils.timezone import now
 from django.contrib.auth.models import User
@@ -13,6 +12,10 @@ class Courses(models.Model):
     language=models.CharField(max_length=50,default="Hindi + English")
     courseThumbnail=models.ImageField( upload_to="home/courseThumbnail",default="")
     pricing=models.CharField(max_length=10,default="149")
+    discription=models.CharField(max_length=1000,default="")
+    enrolled=models.IntegerField(default=0)
+    rating=models.IntegerField(default=0)
+    ratedBy=models.IntegerField(default=0)
     creater_name=models.CharField(max_length=150,default="")
     verified=models.CharField(max_length=150,default="False")
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
@@ -30,7 +33,13 @@ class Videos(models.Model):
     videoOfCourse=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
-
+class TeacherProfile(models.Model):
+    sno=models.AutoField(primary_key=True)
+    fname=models.CharField(max_length=50)
+    lname=models.CharField(max_length=50)
+    disc=models.CharField(max_length=500)
+    ProfileOf=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 class Cart(models.Model):
     sno=models.AutoField(primary_key=True)
     course=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)

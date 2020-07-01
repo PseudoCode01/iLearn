@@ -88,7 +88,7 @@ input[type=text], select, textarea{
   
   /* Style the submit button */
   input[type=submit] {
-    background-color: #4CAF50;
+    background-color: rgb(65, 100, 236);
     color: white;
     padding: 12px 20px;
     border: none;

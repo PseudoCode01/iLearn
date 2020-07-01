@@ -44,7 +44,7 @@ border-radius: 2px;
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: rgb(236, 65, 65);
+  background-color: rgb(65, 100, 236);
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -87,7 +87,7 @@ border-radius: 2px;
 .box {
   display: none;
   width: 150px;
-  height: 75px;
+  height: 120px;
   background-color: rgb(231, 231, 231);
   color:rgb(0, 0, 0);
   padding: 20px;
@@ -116,3 +116,260 @@ border-radius: 2px;
 #Tname:hover .box{
   display: block;
 }
+.box h2{
+  color: teal;
+  padding: 10px;
+}
+.box h2:hover{
+  color:rgb(255, 255, 255);
+  background-color: crimson;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-header h2{
+  font-size: 1.3rem;
+}
+/* Modal Content/Box */
+
+
+/* The Close Button */
+.close {
+  color:black;
+  float: right;
+  font-size: 2.0rem;
+  margin-top: 12px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+ /* Modal Header */
+ .modal-header {
+  padding: 2px 16px;
+  background-color: rgb(65, 100, 236);
+  color: white;
+}
+
+.modal-body{
+  padding:10px;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 40%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+@media only screen and (max-width:1100px )and (min-width:800px){
+    .modal-content{
+    width: 55%;}
+}
+@media only screen and (max-width:800px ){
+    .modal-content{
+    width: 90%;}
+}
+@media only screen and (max-width:420px ){
+    .modal-content{
+    width: 100%;}
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -800px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+.profile input[type=text], select, textarea{
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+.profile label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+/* Style the submit button */
+.profile button {
+  background-color: rgb(65, 100, 236);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  margin-top: 7px;
+}
+.profile button:hover {
+  background-color: rgb(10, 55, 235);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+/* Style the container */
+.profile .container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/* Floating column for labels: 25% width */
+.profile .col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+.row-btn {
+display: flex;
+justify-content: center;
+}
+/* Clear floats after the columns */
+.profile .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.editTprofile {
+ padding: 12px 20px;
+border: 2px solid rgb(65, 100, 236);
+background-color: white;
+  color: black;
+  margin-top: 7px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.editTprofile:hover {
+  background-color:rgb(65, 100, 236);
+  color: rgb(255, 255, 255);
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+ .profile .col-25,.profile .col-75,.profile input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.showProfile {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+.showProfile li {
+  border: 1px solid #ddd; /* Add a thin border to each list item */
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Add a grey background color */
+  padding: 12px; /* Add some padding */
+}
+
+
+table { 
+  width: 50%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
+}
+
+/* <div class="loadingio-spinner-dual-ball-r8c8qw9ip7"><div class="ldio-q4l6k50whm">
+<div></div><div></div><div></div>
+</div></div> */
+
+@keyframes ldio-q4l6k50whm-o {
+    0%    { opacity: 1; transform: translate(0 0) }
+   49.99% { opacity: 1; transform: translate(40px,0) }
+   50%    { opacity: 0; transform: translate(40px,0) }
+  100%    { opacity: 0; transform: translate(0,0) }
+}
+@keyframes ldio-q4l6k50whm {
+    0% { transform: translate(0,0) }
+   50% { transform: translate(40px,0) }
+  100% { transform: translate(0,0) }
+}
+.ldio-q4l6k50whm div {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 30px;
+  left: 10px;
+}
+.ldio-q4l6k50whm div:nth-child(1) {
+  background: #e90c0c;
+  animation: ldio-q4l6k50whm 1s linear infinite;
+  animation-delay: -0.5s;
+}
+.ldio-q4l6k50whm div:nth-child(2) {
+  background: #4648f0;
+  animation: ldio-q4l6k50whm 1s linear infinite;
+  animation-delay: 0s;
+}
+.ldio-q4l6k50whm div:nth-child(3) {
+  background: #e90c0c;
+  animation: ldio-q4l6k50whm-o 1s linear infinite;
+  animation-delay: -0.5s;
+}
+.loadingio-spinner-dual-ball-r8c8qw9ip7 {
+  width: 28px;
+  height: 28px;
+  display: inline-block;
+  overflow: hidden;
+  background: rgba(241, 242, 243, 0);
+}
+.ldio-q4l6k50whm {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(0.28);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-q4l6k50whm div { box-sizing: content-box; }
+/* generated by https://loading.io/ */

@@ -1,0 +1,201 @@
+.preview{
+    background-color: #505763;
+    padding: 20px;
+    display: flex;
+    height: 300px;
+}
+.preview .leftContent{
+    color: white;
+    display: flex;
+    line-height: 40px;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+}
+.rate{
+    margin-left: 10px;
+}
+.preview .leftContent .row{
+    display: flex;
+}
+.preview .leftContent h1{
+font-size: 2rem;
+}
+.preview .leftContent h2{
+font-size: 1.5rem;
+}
+
+.preview .rightContent{
+    color: rgb(0, 0, 0);
+    width: 40%;
+}
+.preview .cart{
+    display: flex;
+    flex-direction:column;
+}
+.preview .cart button{
+   width: 200px;
+   text-align: center;
+   margin: 0 auto;
+   display: table-cell;
+    vertical-align: middle;
+}
+.disc{
+    background-color: rgb(233, 233, 233);
+    width: 60%;
+    float: left;
+    padding: 2rem;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.disc h1{
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.disc p{
+    color: rgb(94, 94, 94);
+}
+.star{
+    color: goldenrod;
+    font-size: 1.5rem;
+    padding: 0 0rem; /* space out the stars */
+  }
+.ratedBy{
+    margin-left: 20px;
+}
+.enrolled{
+    margin-left: 40px;
+}
+.language{
+    margin-left: 100px;
+}
+  .star::before{
+    content: '\2606';    /* star outline */
+    cursor: pointer;
+  }
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+  }
+  
+  .stars{
+      display: flex;
+      flex-direction: row;
+      counter-reset: rateme 0;   
+      font-size: 2.0rem;
+      font-weight: 900;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }
+  /* .stars::after{
+      content: counter(rateme) '/5';
+  } */
+
+  .item{
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px #cacaca;
+    height: 351px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    margin-bottom: 100px;
+}
+.item .btn-cart{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+.item .addCart{
+    display: flex;
+    text-decoration: none;
+    background-color: rgb(236, 65, 65);
+    color: white;
+    border-radius: 2px;
+   border: none;
+   cursor: pointer;
+    padding: 10px;
+
+}
+.item .goCart{
+    display: flex;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 2px;
+    cursor: pointer;
+   border: 1px solid rgb(65, 100, 236);
+    padding: 10px;
+
+}
+.item button:hover{
+    background-color: rgb(121, 145, 240);
+}
+.courseInfo{
+    padding: 10px;
+    line-height: 23px;
+}
+.courseInfo h1{
+    font-size: 1.6rem;
+}
+.item:hover{
+    box-shadow: 5px 5px 5px 5px #cacaca;
+}
+.item img{
+    width: 250px;
+    height: 150px;
+}
+
+#video{
+    margin-top: 50px;
+    width: 65%;
+    float: left;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+#video h1{
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+table { 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+    width: 70%;
+  }
+
+  .aboutCreater{
+    border: 1px solid #e6e6e6;
+    padding: 2rem;
+    margin-top: 50px;
+    width: 60%;
+    float: left;
+    margin-left: 20px;
+    margin-top: 50px;
+  }
+  .aboutCreater h2{
+   color: teal;
+   font-size: 1.5rem;
+   margin-top: 10px;
+   margin-bottom: 30px;
+  }
+  .aboutCreater .allcourses{
+   margin-top: 30px;
+  }
+  .aboutCreater .allcourses p{
+   margin-top: 10px;
+   margin-left: 40px;
+  }

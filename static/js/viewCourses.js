@@ -64,8 +64,8 @@ if (xh.status != 200) {
   var flag =false;
 let course=``;
  for (let item of data['courses']){
-  course+=`<div class="item">
-  <img src="/media/${item['courseThumbnail']}" alt="">
+  course+=`<div  class="item">
+  <img onclick="window.location.href='/previewCourse/${item['sno']}'" src="/media/${item['courseThumbnail']}" alt="">
   <div class="courseInfo">
   <h4>${item['title'].toUpperCase()}</h4>
   <h5>Rs: ${item['pricing']}</h5>

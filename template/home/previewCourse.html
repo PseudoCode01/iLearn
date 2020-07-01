@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+{% load static%}
+<link rel="stylesheet" href="{% static 'css/previewCourse.css' %}">
+<div class="preview">
+    <div class="leftContent">
+        <h1>{{course.0.title|upper}}</h1>
+        <h2>{{course.0.category}},{{course.0.sub_category}}</h2>
+        <div  class="row">
+        <div class="stars"  data-rating="{{course.0.rating}}" data-rated={{course.0.ratedBy}}>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <h1 class="rate">0/5</h1>
+            </div> 
+            <p class="ratedBy">({{course.0.ratedBy}} ratings)</p>
+            <p class="enrolled">{{course.0.enrolled}} Students enrolled</p>
+        </div>
+        <div   class="row"> <p class="cn" data-id="{{item.sno}}">Created By {{course.0.creater_name}}</p>
+        <p class="language">{{course.0.language}}</p>
+        </div>
+    </div>
+    <div class="rightContent">
+        <div class="item">
+            <img src="/media/{{course.0.courseThumbnail}}" alt="">
+            <div class="courseInfo">
+            <h1>Rs:{{course.0.pricing}}</h1>
+          </div>
+          <div class="cart">
+          <div class="addcart btn-cart">
+            <button data-product="{{item.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
+         </div> 
+        </div>
+         </div> 
+    </div>
+    
+</div>
+<div class="disc">
+    <h1>What you'll learn</h1>
+    <p>{{course.0.discription}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis dignissimos ratione voluptate corporis labore quibusdam itaque atque ullam unde id aperiam corrupti nisi provident, sequi fugiat, laboriosam, quo deserunt. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, exercitationem! Harum, odio nobis eaque repellat officiis odit pariatur eius velit facere fugiat eos et, at error delectus omnis corrupti quas est placeat. Fugiat sapiente eveniet vero mollitia at, doloremque cupiditate repellat et qui debitis reprehenderit quaerat aspernatur, dolorum nemo cum.</p>
+</div>
+<div id="video">
+    <h1>Course content</h1>
+    <table style="width:100%">
+        {% for item in videos %}
+        <tr>
+          <td>{{item.0.videoTitle}}</td>
+          <td id="fnameSaved">{{item.1}}</td>
+        </tr>
+        {% endfor %}
+            
+      </table> 
+</div>
+<div class="aboutCreater">
+    
+    {% if teacherProfile %}
+         <h1>{{course.0.creater_name}} (Username)</h1>
+        <h2>{{teacherProfile.0.fname}} {{teacherProfile.0.fname}}</h2>
+        <p>{{teacherProfile.0.disc}}</p>
+    <div class="allcourses">
+        <h1>Creater of:</h1>
+        {% for i  in allcourses %}
+        <p>{{i.title}}</p>
+        {% endfor %}
+            
+    </div>
+    {% endif %}
+        
+</div>
+  <script src="{% static 'js/previewCourse.js' %}"></script>
+{% endblock body %}
+    

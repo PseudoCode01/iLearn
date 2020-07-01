@@ -7,6 +7,7 @@
 //     x.className = "topnav";
 //   }
 // }
+
 if( document.getElementById("signUp")!==null){
 var modalSignup = document.querySelector(".modal-signup");
 // Get the button that opens the Sign Up modal

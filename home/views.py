@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart
+from home.models import Cart,TeacherProfile
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -11,6 +11,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.postgres.search import SearchVector, SearchQuery
+import os
+from mutagen.mp4 import MP4
+# from moviepy.editor import VideoFileClip 
+
 # Create your views here.
 def home(request):
     return render(request,'home/home.html')
@@ -19,6 +23,7 @@ def Teach1(request):
 def about(request):
     return render(request,'home/about.html')
 def addCourse(request):
+   
     return render(request,'home/addCourse.html')
 def search(request):
     query=request.GET['search']
@@ -33,6 +38,32 @@ def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
     return render(request,'home/createCourse.html')
+def teacherProfile(request):
+    data=json.loads(request.body)
+    fname=data['fname']
+    lname=data['lname']
+    disc=data['disc']
+    action=data['action']
+    if action=='save':
+        profile=TeacherProfile(fname=fname,lname=lname,disc=disc,ProfileOf=request.user)
+        profile.save()
+        return JsonResponse('OK',safe=False)
+    elif action=='edit':
+        profile=TeacherProfile.objects.get(ProfileOf_id=request.user)
+        profile.fname=fname
+        profile.lname=lname
+        profile.disc=disc
+        profile.save()
+        return JsonResponse('OK',safe=False)
+def get_teacherProfile(request):
+    Tprofile=''
+    if request.user.is_authenticated :
+        if request.user.first_name=="Teacher":
+            Tprofile=TeacherProfile.objects.filter(ProfileOf_id=request.user).values()
+            Tprofile=list(Tprofile)
+            # if len(Tprofile) != 0:
+            #     print(Tprofile.values())
+        return JsonResponse({'teacherProfile':Tprofile})
 def teacherPerformance(request):
     return render(request,'home/tPerformance.html')
 def get_cartItems(request):
@@ -68,10 +99,11 @@ def saveCourse(request):
        language=request.POST.get('language')
        courseThumbnail=request.FILES['courseThumbnail']
        pricing=request.POST.get('pricing')
+       disc=request.POST.get('disc')
        author=request.user.username
        user=request.user
        try:
-           saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,creater_name=author,creater=user)
+           saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,discription=disc,creater_name=author,creater=user)
            saveCourse.save()
            status=True
            course=Courses.objects.filter(creater_id=request.user)
@@ -103,6 +135,20 @@ def video(request):
     return redirect('/addVideos')
 def viewCourses(request):
     return render(request,'home/viewCourses.html')
+def previewCourse(request,id):
+    courses=Courses.objects.filter(sno=id).values()
+    vid=Videos.objects.filter(videoOfCourse_id=courses[0]['sno'])
+    # print(videos)
+    video=set()
+    for item in vid:
+        path="media/"+str(item.videofile)
+        Vlength = MP4(path)
+        video.add((item,Vlength.info.length))
+    Tprofile=courses[0]['creater_id']
+    teacherProfile=TeacherProfile.objects.filter(ProfileOf=Tprofile)
+    allcourses=Courses.objects.filter(creater_id=Tprofile)
+    print(allcourses)
+    return render(request,'home/previewCourse.html',{'course':courses,'videos':video,'teacherProfile':teacherProfile,'allcourses':allcourses})
 def get_viewCourses(request):
     data=json.loads(request.body)
     cat=data['cat']
@@ -219,7 +265,6 @@ def verification(request):
     action=data['action']
     user=request.user
     course=Courses.objects.get(sno=courseId)
-    # addcart=Cart(course=course,user=user)
     if action=="verify":
         course.verified="True"
         course.save()
@@ -227,3 +272,4 @@ def verification(request):
     elif action=="remove":
         course.delete()
         return JsonResponse('item was deleted ',safe=False)
+
