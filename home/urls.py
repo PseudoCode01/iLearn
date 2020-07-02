@@ -31,5 +31,6 @@ urlpatterns = [
     path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),
     path('adminPanel', views.adminPanel,name="adminPanel"),
     path('verification', views.verification,name="verification"),
-    
+    path('buynow', views.buynow,name="buynow"),
+    path('handleRequest/', views.handleRequest,name="handleRequest"),
 ]

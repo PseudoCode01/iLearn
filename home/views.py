@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile
+from home.models import Cart,TeacherProfile,MyCourses
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -13,6 +13,9 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.postgres.search import SearchVector, SearchQuery
 import os
 from mutagen.mp4 import MP4
+from django.views.decorators.csrf import csrf_exempt
+from PayTm import Checksum
+MERCHANT_KEY = '0K5Uhk4At%X1t80Q'
 # from moviepy.editor import VideoFileClip 
 
 # Create your views here.
@@ -272,4 +275,48 @@ def verification(request):
     elif action=="remove":
         course.delete()
         return JsonResponse('item was deleted ',safe=False)
+def buynow(request):
+    if request.method=='POST':
+        buy=request.POST['buy']
+        course=Courses.objects.filter(sno=buy).values()
+        amount=course[0]['pricing']
+        print(course[0]['pricing'])
+        email=request.user.email
+        cart=Cart.objects.filter(course_id=buy).filter(user_id=request.user).values()
+        order_id=cart[0]['sno']+100
+        print(order_id)
+        param_dict = {
 
+                    'MID': 'RLUAjJ34588862174269',
+                    'ORDER_ID': str(order_id),
+                    'TXN_AMOUNT': str(amount),
+                    'CUST_ID': email,
+                    'INDUSTRY_TYPE_ID': 'Retail',
+                    'WEBSITE': 'WEBSTAGING',
+                    'CHANNEL_ID': 'WEB',
+                    'CALLBACK_URL':'http://127.0.0.1:8000/handleRequest/',
+
+        }
+        param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
+        return render(request,'home/paytm.html',{'param_dict':param_dict})
+    
+    return redirect('/cart')
+
+
+@csrf_exempt
+def handleRequest(request):
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print(response_dict)
+            
+        else:
+            print('order was not successful because ' + response_dict['RESPMSG'])
+        return render(request,'home/paymentstatus.html',{'response_dict':response_dict})

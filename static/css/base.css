@@ -36,17 +36,20 @@ html{
  /* Add a black background color to the top navigation */
  @media(min-width:900px){
 .topnav{
-    height: 60px;
+    height: 61px;
 }
  }
 .topnav {
-  background-color: rgba(121, 121, 121, 0.623);
+  background-color: rgb(30, 70, 227);
   overflow: hidden;
-  position: sticky;
+  position: fixed;
   top:0;
   left: 0;
   right: 0;
   align-items: center;
+  z-index: 2;
+  border: none;
+
 }
 
 /* Style the links inside the navigation bar */
@@ -74,6 +77,7 @@ html{
 }
 .topnav .logo{
     font-size: 20px;
+    background-color: rgba(0, 0, 255, 0);
 }
 /* Add an active class to highlight the current page */
 .active {
@@ -142,15 +146,20 @@ margin-top: 5px;
 }
  .btn{
     float:right;
-    background-color: rgb(65, 100, 236);
-    border:1px solid #000;
-    font-size: 15px;
-    border-radius: 2px;
-    padding: 10px;
-    margin-top: 8px;
-    margin-left: 10px;
-    cursor: pointer;
-    color: white
+    flex: 1 1 auto;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+
   }
   .btn-SignUp{
       margin-right: 10px;
@@ -163,9 +172,7 @@ margin-top: 5px;
     color: white;
   }
    .btn:hover{
-    background-color: rgb(103, 130, 238);
-    border:1px solid white;
-    color: white;
+  background-position: right;
   }
   .btn:hover a{
     color: white;
@@ -519,17 +526,17 @@ color: teal;
 
 
 /* signup form */
-form{
+.modal-body form{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
 }
-.form-group{
+.modal-body .form-group{
     justify-content: center;
     margin-top: 20px;
 }
-.form-group input{
+.modal-body .form-group input{
     display:block;
     padding: 15px 20px;
     border: 2px solid black;
@@ -539,10 +546,10 @@ form{
     border-radius: 6px;
 }
 @media only screen and (max-width:470px ){
-    .form-group input {
+  .modal-body .form-group input {
     max-width:300px ;}
 }
-form button{
+.modal-body form button{
     display: flex;
     font-size: 20px;
     margin-top: 30px;
@@ -555,17 +562,19 @@ form button{
     border-radius: 2px;
 }
 
-form button:hover{
+.modal-body form button:hover{
     background-color:rgb(107, 129, 221);
     cursor: pointer;
 }
 /* css fpr alerts */
 .alert-success{
+  margin-top: 60px;
     padding:10px 0 10px 0;
     width: 100%;
     background-color: rgb(79, 255, 133);
 }
 .alert-error{
+  margin-top: 60px;
     padding:12px 0 12px 0;
     width: 100%;
     background-color:#f44336;
@@ -779,7 +788,7 @@ font-size: 38px;
   height: 100%; /* 100% Full-height */
   width: 0; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
+  z-index: 2; /* Stay on top */
   top: 0;
   left: 0;
   background-color:white; 

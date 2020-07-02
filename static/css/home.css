@@ -1,30 +1,51 @@
-
+/* 
 body{
     background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-}
+    
+} */
 #home
-{
+{   position: absolute;
+    top: 60px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     color: white;
-    height: 450px;
-}
-#home::before{
-    content: "";
-    background:url("/static/img/back.jpg") no-repeat center center/cover;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+    background-image: url('/static/img/wave2.svg');
+    background-size: cover;
+    height:80vh;
     width: 100%;
-    overflow: hidden;
-    height: 420px;
-    opacity: 0.9;
     z-index: -1;
 }
+/* .curve{
+   margin-top: auto;
+    height: 300px;
+    width: 100%;
+    background-color: blue;
+    background-image: url("/static/img/wave-bottom.svg");
+} */
+/* #home::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-image: url("/static/img/wave-bottom.svg");
+    height: 275px;
+    z-index: 0;
+} */
+/* #home:after{
+    content: '';
+    position: absolute;
+    top: 60vh;
+    width: 100%;
+    height:270px;
+    background-image: url("/static/img/wave-bottom.svg");
+    background-size: cover;
+    z-index: 0;
+
+} */
 #home #cThought {
     font-family: cursive;
-    color: black;
+    color: rgb(255, 255, 255);
     font-size: small;
     margin-bottom: 25px;
   }
@@ -37,11 +58,12 @@ align-items: flex-start;
     margin-left: 10%;
     top: 25%;
     max-width: 510px;
+
 }
 
 .searchSection h1{
     font-size: 1.8rem;
-    color: black;
+    color: rgb(255, 255, 255);
     font-family: Ubuntu,serif, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
 }
 @media only screen and (min-width: 900px){

@@ -23,7 +23,11 @@ class Courses(models.Model):
 
     def __str__(self):
         return str(self.sno)
-
+class MyCourses(models.Model):
+    sno=models.AutoField(primary_key=True)
+    course=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
+    order_id=models.IntegerField(default=-1)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 class Videos(models.Model):
     sno=models.AutoField(primary_key=True)
     videoTitle=models.CharField(max_length=150)

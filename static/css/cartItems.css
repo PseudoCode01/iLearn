@@ -59,13 +59,22 @@ margin-bottom: 10px;
 height: 1px;
 background-color: black;
 }
+.itemInCart .right .bottom{
+    display: flex;
+}
+.itemInCart .right .bottom form{
+    margin-top: 0;
+    display: block;
+}
 .itemInCart .right .buyNow{
+    display: block;
     margin-top: 40px;
     background-color: green;
     border-radius: 5px;
     color: white;
     font-size: 1rem;
     border: none;
+    height: 40px;
     padding:10px 20px;
 }
 .itemInCart .right .remove{
@@ -76,5 +85,6 @@ background-color: black;
     color: white;
     font-size: 1rem;
     border: none;
+    height: 40px;
     padding:10px 20px;
 }
