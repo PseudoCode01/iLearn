@@ -1,7 +1,17 @@
-
+.header-bar{
+    background-color: #505763 !important;
+    /* width: 100%; */
+    padding-top: 150px;
+    padding-bottom: 20px;
+    padding-left: 10vh;
+}
+.header-bar >span{
+    font-size: 25px;
+    color: white;
+}
 .container{
     display: grid;
-    margin-top: 100px;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 95%;
@@ -11,11 +21,14 @@
 .container .item{
     background-color: white;
     box-shadow: 3px 3px 3px 3px #cacaca;
-    height: 351px;
     margin-left: auto;
     margin-right: auto;
     width: 250px;
     margin-bottom: 100px;
+    cursor: pointer;
+}
+.container .item hr{
+   margin-top: 25px;
 }
 .container .item .btn-cart{
     display: flex;
@@ -23,39 +36,19 @@
     margin-top: 20px;
     
 }
-.container .item .addCart{
-    display: flex;
-    text-decoration: none;
-    background-color: rgb(236, 65, 65);
-    color: white;
-    border-radius: 2px;
-   border: none;
-   cursor: pointer;
-    padding: 10px;
 
-}
-.container .item .goCart{
-    display: flex;
-    text-decoration: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 2px;
-    cursor: pointer;
-   border: 1px solid rgb(65, 100, 236);
-    padding: 10px;
-
-}
-.container .item button:hover{
-    background-color: rgb(121, 145, 240);
-}
 .container .courseInfo{
     padding: 10px;
     line-height: 23px;
+}
+.container .courseInfo p{
+    color: #007791;
+    font-size: 14px;
 }
 .container .item:hover{
     box-shadow: 5px 5px 5px 5px #cacaca;
 }
 .container .item img{
     width: 250px;
-    height: 150px;
+    height: 130px;
 }

@@ -14,10 +14,10 @@ html{
     scroll-behavior: smooth;
 }
 
-.active{
+/* .active{
     color:rgb(0, 0, 0);
     background-color: rgb(65, 100, 236);
-}
+} */
 @media (min-width:950px)
 {
   .mobile_Nav{
@@ -34,22 +34,15 @@ html{
   background-color: rgb(65, 100, 236);
 }
  /* Add a black background color to the top navigation */
- @media(min-width:900px){
-.topnav{
-    height: 61px;
-}
- }
+
 .topnav {
   background-color: rgb(30, 70, 227);
-  overflow: hidden;
   position: fixed;
   top:0;
   left: 0;
   right: 0;
-  align-items: center;
-  z-index: 2;
   border: none;
-
+height: 61px;
 }
 
 /* Style the links inside the navigation bar */
@@ -61,18 +54,58 @@ html{
   text-decoration: none;
   font-size: 17px;
 }
+#uname .userIcon{
+margin-top: 6px;
+margin-left: 20px;
+border-radius: 50%;
+transition: 0.5s;
+  background-size: 200% auto;
+background-image: linear-gradient(to right, #45c1e0 0%, #b16fdd 51%,#45c1e0 100%);
+box-shadow: 0px 2px 10px 1px rgb(0, 0, 0);
+width: 50px;
+height: 50px;
+}
+#uname .userIcon:hover{
+  background-position: right;
+}
+
+#uname .userIcon img{
+margin-top: 7px;
+margin-left: 10px;
+width: 30px;
+height: 30px;
+}
+ .userData{
+  display: none;
+  position: absolute;
+background-color:#f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 2;
+right: 10px;
+flex-direction: column;
+align-items: center;
+padding: 14px;
+border-radius: 4px;
+}
+#uname {
+  float: right;
+  margin-right: 40px;
+  display: flex;
+}
 #uname >a{
-  float:right;
-  color: #000;
-  font-size: 15px;
-  border-radius: 2px;
-  padding: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  cursor: pointer;
+  color: rgb(255, 255, 255);
+  font-size: 17px;
+border-radius: 2px;
+padding: 8px;
+margin-top: 11px;
+margin-left: 10px;
+cursor: pointer;
+margin-bottom: 4px;
 }
 #uname >a:hover{
   border: 1px solid black;
+  color: #000;
   background-color: rgb(236, 236, 236);
 }
 .topnav .logo{
@@ -93,8 +126,6 @@ html{
 /* dropside container - needed to position the dropside content */
 .dropside {
   float: left;
-  /* overflow: hidden; */
-  margin-left: 20px;
 margin-top: 5px;
 }
 
@@ -114,16 +145,16 @@ margin-top: 5px;
 
 
 .topnav .mid2 {
-    float: left;
+    float: right;
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 12px 24px;
+    padding: 6px 24px;
     text-decoration: none;
     margin-left: 19px;
     font-size: 17px;
   }
-  .mid2 form{
+  /* .mid2 form{
     margin-top: 0px;
   }
 .mid2 #searchBox{
@@ -143,6 +174,81 @@ margin-top: 5px;
     height: 34px;
     padding: 0 10px;
     border: none;
+} */
+input {
+  outline: none;
+}
+input[type=search] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+  font-size: 100%;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none; 
+}
+#searchBar{
+  margin-top:6px ;
+  margin-right: 10px;
+}
+
+input[type=search] {
+  background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 1px #ccc;
+  padding: 9px 10px 9px 32px;
+  width: 55px;
+  
+  -webkit-border-radius: 10em;
+  -moz-border-radius: 10em;
+  border-radius: 10em;
+  
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+input[type=search]:focus {
+  width: 130px;
+  background-color: #fff;
+  border-color: rgb(65, 100, 236);
+  
+  -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+  -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+  box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+
+input[type=search] {
+  width: 15px;
+  padding-left: 10px;
+  color: transparent;
+  cursor: pointer;
+}
+input[type=search]:hover {
+  background-color: #fff;
+}
+
+ input[type=search]:focus {
+  width: 300px;
+  padding-left: 32px;
+  color: #000;
+  border: 2px solid rgb(27, 231, 27);
+  background-color: #fff;
+  cursor: auto;
+}
+ input:-moz-placeholder {
+  color: transparent;
+}
+ input::-webkit-input-placeholder {
+  color: transparent;
 }
  .btn{
     float:right;
@@ -157,7 +263,7 @@ margin-top: 5px;
  /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 8px black;
   border: none;
-  border-radius: 10px;
+  border-radius: 50px;
   background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
 
   }
@@ -177,9 +283,7 @@ margin-top: 5px;
   .btn:hover a{
     color: white;
   }
-  .logout{
-      margin-right: 10px;
-  }
+  
 /* When the screen is less than 900 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 900px) {
   .topnav a:not(:first-child), .dropside .dropbtn,.topnav .btn,.topnav .mid2 ,.topnav #uname{
@@ -190,17 +294,7 @@ margin-top: 5px;
     display: block;
   }
 }
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: 922px) {
-    .topnav{
-        background-color: black;
-    }
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+
   .topnav{
     z-index: 0;
   }
@@ -212,55 +306,68 @@ margin-top: 5px;
   .dropside-subcontent{
     margin-bottom: 30px;
   }
-  .topnav.responsive a,.topnav.responsive .btn,.topnav.responsive .mid2,.topnav.responsive #uname {
-    float: none;
-    display: block;
-    text-align: left;
-  }
- #uname >a{
-    float: none;
-    display: inline-block;
-    color: white;
-    padding: 10px 3px;
-    margin-bottom: 20px;
-  }
-  .topnav.responsive #uname span{
-      position: absolute;
-      font-size: 18px;
-      font-family: ubuntu, monospace;
-      top: 60px;
-      margin: auto;
-      text-align: center;
-  }
-  .dropside{
-      margin-top: 45px;
-    margin-left: -5px;  
-  }
-  .topnav.responsive .mid2{
-      margin-left: -10px;
-  }
+  
+ 
   .btn-Teach{
       margin-bottom: 10px;
   }
-  .topnav.responsive .dropside {float: none;}
-  .topnav.responsive .dropside-content {position: relative;}
-  .topnav.responsive .dropside .dropbtn {
-    display: block;
-    width: 100%;
-    text-align: left;
+  .myCourses{
+  position: absolute;
+   margin-top: 20px;
+   color:white;
+  right: 298px;
+  width: 100px;
+    
+    cursor: pointer;
   }
-  .btn{
-      float: left;
+  .myCourses:hover .courses{
+    display: block;
+  }
+  .myCourses .courses{
+ display: none;
+margin-top: 20px;
+background-color:#f9f9f9;
+width: 300px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 2;
+right: 10px;
+flex-direction: column;
+color: black;
+align-items: center;
+border-radius: 4px;
+/* padding-bottom: 1px; */
+}
+.myCourses .courses .item{
+  display: flex;
+  padding: 20px;
+    border-bottom: 1px solid rgb(187, 187, 187);
+  }
+  .myCourses .courses .item .myCoursesthumbnail{
+    padding: 5px;
+  }
+  .myCourses .courses .item .myCoursesthumbnail img{
+    width: 60px;
+    height: 60px;
+  }
+  .myCourses .courses .item p{
+    margin-top: 5px;
+    color: #2d8643;
+  }
+  .myCourses .courses .item h1{
+    font-size: 16px;
   }
 } 
 .logout a{
     padding: 10px;
+    text-align: center;
+    width: 86%;
 }
 .logout{
-    margin-bottom: 10px;
+    margin-top: 20px;
     padding:0;
+    width: 130px;
 }
-#uname span{
+/* #uname span{
   float: right;
   display: flex;
   flex-direction: column;
@@ -268,9 +375,9 @@ margin-top: 5px;
   margin-top: 8px;
   margin-left: 10px;
   color: white;
-}
-}
+} */
 
+/* mobile nav */
 @media(max-width:950px){
   .topnav{
     display: flex;
@@ -861,4 +968,60 @@ font-size: 38px;
   list-style: none;
   padding: 10px;
   margin-left: 10px;
+}
+
+.searchBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:  translate(-50%,50%);
+  background: #2f3640;
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+
+}
+
+.searchBox:hover > .searchInput {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+background: white;
+color : #2f3640;
+}
+
+.searchButton {
+  color: white;
+  float: right;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2f3640;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+}
+
+.searchInput {
+  border:none;
+  background: none;
+  outline:none;
+  float:left;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+
+}
+
+@media screen and (max-width: 620px) {
+.searchBox:hover > .searchInput {
+  width: 150px;
+  padding: 0 6px;
+}
 }

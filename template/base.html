@@ -43,22 +43,47 @@
             <input type="hidden" name="get_cat" id="get_cat">
             <input type="hidden" name="get_scat" id="get_scat">
         </ul>
-    <div class="mid2">
-      <form action="/search"  class="searchForm" method="get">
-            <div id="searchBox" >
-              <input type="text" id="search" name="search" placeholder="What Do You Want Learn?">
-              <img src="static/img/search.png" alt="" >
-            </div>
-          </form>
-        </div>
+
         {% if user.is_authenticated %}
          <span id="uname">
+           {% if request.user.first_name == "Teacher" %}
+           <a href="/addCourse" class="role">Instructer</a>
+           {% endif %}
+           <div class="userIcon">
+           <img src="/static/img/user1.png" alt="">
+           <div class="userData">
+            <span id="name"><b>Hi! {{request.user}}</b></span>
              <button class="btn logout" ><a  class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
-             {% if request.user.first_name == "Teacher" %}
-             <a href="/addCourse" class="role">Instructer</a>
-            {% endif %}
-             <span id="name" class="typewriter"><b>Hi! {{request.user}}</b></span>
+        </div>
+          </div>
+            
         </span>
+        <div class="myCourses">
+          <p onclick="window.location.href='/myCourses'">MyCourses</p>
+         <div class="courses">
+           
+           {% if myCourses %}
+           
+           {% for courses in myCourses %}
+           <div class="item" onclick="window.location.href='/myCourses'">
+                <div class="myCoursesthumbnail">
+               <img src="/media/{{courses.0.courseThumbnail}}" alt=""></div>
+            <div class="myCoursesData">
+             <h1>{{courses.0.title|upper}}</h1>
+             <h1>{{courses.0.category}},{{courses.0.sub_category}}</h1>
+             <p>Start Learning</p>
+             </div>
+            
+               
+          </div>
+           {%  endfor %}
+          
+           
+             {% else %}
+           {% endif %}
+             
+         </div>
+        </div>
         {% else %}
         <!-- Button to trigger signup modal -->
         <button id="signUp" class="btn btn-SignUp">Sign Up</button>
@@ -67,6 +92,11 @@
         <button class="btn btn-Teach"><a href="/teach1">Teach On iLearn</a></button>
         {% endif %}
         <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
+        <div class="mid2">
+          <form action="/search"  class="searchForm" method="get" id="searchBar">
+            <input type="search" name="search" id="search" placeholder="Search">
+          </form>
+            </div>
       </div> 
       {% for message in messages %}
       <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
@@ -138,7 +168,10 @@
         </div> 
       {%  endif %}
     {% block body %}
+
     {% endblock body %}
+
+
     <div id="lastElem">
         <div class="foot">
         <div>
@@ -174,6 +207,5 @@
     
 </body>
 <script src="{% static 'js/base.js' %}">
-  
 </script>
 </html>

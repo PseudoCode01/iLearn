@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
-
+{% load static %}
 {% block body %}
-    {{response_dict}}
+<link rel="stylesheet" href="{% static 'css/myCourses.css' %}">
+<div class="header-bar">
+   <span>My courses</span> 
+</div>
+<div class="container">
+    {% for item in myCourses %}    
+    <div class="item">
+        <img src="/media/{{item.0.courseThumbnail}}" alt="">
+        <div class="courseInfo">
+        <h4>{{item.0.title|upper}}</h4>
+        <h4>{{item.0.category}},{{item.0.sub_category}}</h4>
+        <hr>
+        <p>Start Course</p>
+      </div>
+      </div>  
+{% endfor %}
+
+</div>
+
+<!-- <script src="{% static 'js/myCourses.js' %}"></script> -->
 {% endblock body %}
     

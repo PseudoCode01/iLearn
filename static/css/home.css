@@ -1,8 +1,4 @@
-/* 
-body{
-    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-    
-} */
+
 #home
 {   position: absolute;
     top: 60px;
@@ -16,33 +12,18 @@ body{
     width: 100%;
     z-index: -1;
 }
-/* .curve{
-   margin-top: auto;
-    height: 300px;
-    width: 100%;
-    background-color: blue;
-    background-image: url("/static/img/wave-bottom.svg");
-} */
-/* #home::before{
+#home::after{
     content: '';
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-image: url("/static/img/wave-bottom.svg");
-    height: 275px;
-    z-index: 0;
-} */
-/* #home:after{
-    content: '';
-    position: absolute;
-    top: 60vh;
-    width: 100%;
+    top: 9vh;
+    width: 22%;
+    right: 200px;
     height:270px;
-    background-image: url("/static/img/wave-bottom.svg");
+    background-image: url("/static/img/book.png");
     background-size: cover;
-    z-index: 0;
+    z-index: 1;
 
-} */
+}
 #home #cThought {
     font-family: cursive;
     color: rgb(255, 255, 255);

@@ -33,4 +33,6 @@ urlpatterns = [
     path('verification', views.verification,name="verification"),
     path('buynow', views.buynow,name="buynow"),
     path('handleRequest/', views.handleRequest,name="handleRequest"),
+    path('courseAdded', views.courseAdded,name="courseAdded"),
+    path('myCourses', views.myCourses,name="myCourses"),
 ]

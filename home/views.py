@@ -283,8 +283,7 @@ def buynow(request):
         print(course[0]['pricing'])
         email=request.user.email
         cart=Cart.objects.filter(course_id=buy).filter(user_id=request.user).values()
-        order_id=cart[0]['sno']+100
-        print(order_id)
+        order_id=cart[0]['sno']
         param_dict = {
 
                     'MID': 'RLUAjJ34588862174269',
@@ -301,7 +300,8 @@ def buynow(request):
         return render(request,'home/paytm.html',{'param_dict':param_dict})
     
     return redirect('/cart')
-
+def payment(request):
+    return render(request,'home/paymentStatus.html')
 
 @csrf_exempt
 def handleRequest(request):
@@ -311,12 +311,32 @@ def handleRequest(request):
         response_dict[i] = form[i]
         if i == 'CHECKSUMHASH':
             checksum = form[i]
-
+    status=''
     verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
-            print(response_dict)
+            status='OK'
             
         else:
+            status="Failed"
             print('order was not successful because ' + response_dict['RESPMSG'])
-        return render(request,'home/paymentstatus.html',{'response_dict':response_dict})
+    return render(request,'home/paymentStatus.html',{'response_dict':response_dict,'status':status,'sent':'True'})
+
+def courseAdded(request):
+    if request.method=='POST':
+        id=request.POST.get('sno')
+        print(id)
+        status=request.POST.get('status')
+        cart=Cart.objects.filter(user_id=request.user).filter(sno=id)
+        
+        if len(cart)!=0:
+            c_id=cart.values()[0]['course_id']
+            courses=Courses.objects.get(sno=c_id)
+            cart.delete()
+            myCourse=MyCourses(course=courses,order_id=id,user=request.user)
+            myCourse.save()
+            return render(request,'home/paymentStatus.html',{'status':'OK','send':'False'})
+        else:
+            return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
+def myCourses(request):
+    return render(request,'home/myCourses.html')
