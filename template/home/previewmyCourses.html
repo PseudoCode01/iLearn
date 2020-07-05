@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/previewmyCourses.css' %}">
+    <div class="header-bar">
+        <h3>iLearn</h3>
+    </div>
+    <div class="container">
+        <div class="left">
+    <div class="player">
+        <video data-id={{course.0.0.sno}} id="vp" width="100%" height="400px" controls>
+            <source id="source" src="/media/{{course.0.0.videofile}}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- <div class="resourses">
+        
+       
+    </div> -->
+    <div class="perBox">
+        <div class="perTab">
+            <button class="perBtn default" onclick="opentab(event,'resource')">Resourses</button>
+            <button class="perBtn" onclick="opentab(event,'query')">Ask Query Regarding the Video</button>
+        </div>
+        <div class="tabcontent"  id="resource">
+            <a class="buttonDownload" href="/media/{{course.0.0.resource}}" download>Download Resourses</a>
+        </div>
+        <div class="tabcontent" id="query">
+            <textarea name="studentQuery" id="studentQuery" cols="100" rows="10"></textarea>
+            <button>Ask</button>
+        </div>
+    </div>
+    </div>
+  
+    <div class="videos">
+        <div class='content'>Course content</div>
+    {% for item in course %}
+    
+    {% if forloop.counter == 1 %}
+        
+    <div class="active-bar" id='bar{{item.0.sno}}' onclick="play(this,'{{item.0.videofile}}','{{item.0.resource}}','{{item.0.sno}}')">
+        {% else %}
+    <div class="video-bar" id='bar{{item.0.sno}}' onclick="play(this,'{{item.0.videofile}}','{{item.0.resource}}','{{item.0.sno}}')">
+        {% endif %}
+        <h4>{{forloop.counter}}.{{item.0.videoTitle}}</h4>
+        <div class="lower-video-bar">
+            <p>{{item.1}} min</p>
+            <div class="watched">
+        {% for watch in watched %}
+        {% if watch.watched_id == item.0.sno %}
+        <img src="/static/img/watched.png" alt="">
+        {% endif %}
+        {% endfor %}
+    </div>
+    </div>  
+    </div>  
+    {% endfor %}
+</div>
+</div>
+</div>
+<script   src="{% static 'js/previewmyCourses.js'%}"></script>
+</html>

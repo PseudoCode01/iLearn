@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -340,3 +340,28 @@ def courseAdded(request):
             return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
 def myCourses(request):
     return render(request,'home/myCourses.html')
+def previewmyCourses(request,slug,id):
+    myCourses=MyCourses.objects.filter(user_id=request.user).values('course_id')
+    course=''
+    video=list()
+    for i in myCourses:
+        if i['course_id'] == id:
+            course=Videos.objects.filter(videoOfCourse=i['course_id']).order_by('timeStamp')
+    for item in course:
+        path="media/"+str(item.videofile)
+        Vlength = MP4(path)
+        video.append((item,round((Vlength.info.length)/60),4))
+    watched=WatchedVideos.objects.filter(user_id=request.user)
+    print(watched)
+    return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched})
+
+def watched(request):
+    data=json.loads(request.body)
+    videoId=int(data['videoId'])
+    user=request.user
+    wvideo=WatchedVideos.objects.filter(user_id=user).filter(watched_id=videoId)
+    if len(wvideo) == 0:
+        video=Videos.objects.get(sno=videoId)
+        watch=WatchedVideos(user=user,watched=video)
+        watch.save()
+    return JsonResponse('ok',safe=False)

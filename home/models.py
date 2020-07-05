@@ -38,6 +38,15 @@ class Videos(models.Model):
     videoOfCourse=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+class WatchedVideos(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    watched=models.ForeignKey(Videos,default=None,on_delete=models.CASCADE)
+    query=models.CharField(max_length=1000,default="")
+    answer=models.CharField(max_length=1000,default="")
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+
 class TeacherProfile(models.Model):
     sno=models.AutoField(primary_key=True)
     fname=models.CharField(max_length=50)

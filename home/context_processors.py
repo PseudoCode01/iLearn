@@ -21,7 +21,6 @@ def add_variable_to_context(request):
         myCourses=set()
         for course in get_myCourses:
             myCourses.add(Courses.objects.filter(verified="True").filter(sno=course['course_id']).values())
-        print(myCourses)
         return { 'get_courses':courses,'sub_cat':sub_cat,'get_cartCourses':get_cartCourses,'teacherProfile':Tprofile,'myCourses':myCourses}
     else:
         return { 'get_courses':courses,'sub_cat':sub_cat,'get_cartCourses':'','addedon_cartItem':'','myCourses':''}

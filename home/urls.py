@@ -35,4 +35,6 @@ urlpatterns = [
     path('handleRequest/', views.handleRequest,name="handleRequest"),
     path('courseAdded', views.courseAdded,name="courseAdded"),
     path('myCourses', views.myCourses,name="myCourses"),
+    path('watched', views.watched,name="watched"),
+    path('courses/<str:slug>/<int:id>', views.previewmyCourses,name="previewmyCourses"),
 ]

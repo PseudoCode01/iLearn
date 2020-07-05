@@ -8,7 +8,7 @@
 </div>
 <div class="container">
     {% for item in myCourses %}    
-    <div class="item">
+    <div class="item" onclick="window.location.href='/courses/{{item.0.title}}/{{item.0.sno}}'">
         <img src="/media/{{item.0.courseThumbnail}}" alt="">
         <div class="courseInfo">
         <h4>{{item.0.title|upper}}</h4>

@@ -1,18 +1,18 @@
 
 #home
 {   position: absolute;
-    top: 60px;
+    top: 24px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     color: white;
-    background-image: url('/static/img/wave2.svg');
+    background-image: url('/static/img/homebg.svg');
     background-size: cover;
-    height:80vh;
+    height:89vh;
     width: 100%;
     z-index: -1;
 }
-#home::after{
+/* #home::after{
     content: '';
     position: absolute;
     top: 9vh;
@@ -23,7 +23,7 @@
     background-size: cover;
     z-index: 1;
 
-}
+} */
 #home #cThought {
     font-family: cursive;
     color: rgb(255, 255, 255);
