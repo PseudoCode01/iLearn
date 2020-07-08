@@ -6,6 +6,7 @@
 }
 .header-bar{
     position: absolute;
+    display: flex;
     top: 0;
     left: 0;
     right: 0;
@@ -18,24 +19,31 @@
 .header-bar h3{
    padding: 20px;
    width: 72px;
-    
+}
+.header-bar h2{
+    padding: 17px;   
+}
+.header-bar span{
+    display: none;
 }
 .container{
     display: flex;
 }
 .left{
-    width: 75%;  
+    width: 74%; 
+    float: left; 
 }
 .player{
+    
     background-color:#000 ;
     margin-top: 60px;
-    margin-left: -8px;
-    /* width: 100%; */
 }
 .videos{
-    width: 24%;
+    float: right;
+    width: 25.9%;
     margin-top: 60px;
     border-left: 1px solid rgb(204, 204, 204);
+    transition: .5s;
     /* background-color: white;
     box-shadow: 0 0 0 5px rgb(173, 173, 173); */
 }
@@ -45,7 +53,9 @@
     height: 20px;
     color: rgb(56, 56, 56);
     box-shadow: 0 0 5px 0 rgb(173, 173, 173);
-    width: 88%;
+}
+.videos .title{
+    display: none;
 }
 .videos .video-bar{
     border-bottom: 1px solid rgb(182, 182, 182);
@@ -56,6 +66,10 @@
 .videos .video-bar:hover{
     
     background-color: rgb(219, 219, 219);
+}
+#studentQuery{
+    color: #000;
+display: inline;
 }
 .active-bar{
     border-bottom: 1px solidrgb(182, 182, 182);
@@ -77,7 +91,8 @@
 }
 .perBox{
     margin: auto;
-    width: 800px;
+    width: 99%;
+    margin-bottom: 50px;
 }
 .perBox:hover{
     box-shadow:4px 4px 4px 4px rgb(216, 212, 212) ;
@@ -86,12 +101,12 @@
     overflow: hidden;
   display: flex;
   height: 80px;
-  width: 800px;
+  width: 100%;
   border: 1px solid rgb(214, 209, 209);
 }
 .perBtn{
-    font-size: 1.2rem;
-    width: 33%;
+    font-size: 1rem;
+    width: 50%;
     font-weight: bold;
     border: none;
     background-color: white;
@@ -106,11 +121,12 @@
 }
 .tabcontent{
     display: none;
-    height: 500px;
     border: 1px solid rgb(214, 209, 209);
-    width: 800px;
+    padding: 3%;
+    width: 94%;
     background-color: rgb(250, 244, 250);
 }
+
 .buttonDownload {
 	display: inline-block;
 	position: relative;
@@ -192,4 +208,53 @@
 		margin-top: 0;
 		opacity: 0;
 	}
+}
+@media(max-width:1000px){
+    .left{
+        width: 100%;
+    }
+    
+    .videos{
+        position: absolute;
+margin-left: auto;
+top: 11px;
+width: 500px;
+right: 0;
+background-color:white;
+    }
+    .header-bar span{
+        display: flex;
+        margin-left: auto;
+        flex-direction: column;
+    }
+    .header-bar span h1{
+      height: 13px;
+    }
+   
+    
+}
+@media(max-width:520px){
+
+    .videos{
+        width: 90%;
+    }
+    .header-bar h1{
+        font-size: 20px;
+    }
+    .header-bar h2{
+        display: none;
+    }
+    .header-bar h3{
+        padding: 20px 5px;
+    }
+    .header-bar span{
+       margin-top: 5px;
+    }
+    .videos .con{
+        display: none;
+    }
+    .videos .title{
+        display: block;
+    }
+    
 }

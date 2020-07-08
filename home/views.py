@@ -239,7 +239,10 @@ def handleLogin(request):
     if request.method=='POST':
         loginusername=request.POST['loginuserName']
         loginpassword=request.POST['loginpass']
-        user=authenticate(username=loginusername,password=loginpassword)
+        try:
+            user=authenticate(username=User.objects.get(email=loginusername),password=loginpassword)
+        except:
+            user=authenticate(username=loginusername,password=loginpassword)
         if user is not None:
             login(request,user)
             messages.success(request,"Successfully Loged In")
@@ -342,6 +345,8 @@ def myCourses(request):
     return render(request,'home/myCourses.html')
 def previewmyCourses(request,slug,id):
     myCourses=MyCourses.objects.filter(user_id=request.user).values('course_id')
+    c=Courses.objects.filter(sno=id).values('title')
+    print(c)
     course=''
     video=list()
     for i in myCourses:
@@ -353,15 +358,28 @@ def previewmyCourses(request,slug,id):
         video.append((item,round((Vlength.info.length)/60),4))
     watched=WatchedVideos.objects.filter(user_id=request.user)
     print(watched)
-    return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched})
+    return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched,'cTitle':c})
 
 def watched(request):
     data=json.loads(request.body)
     videoId=int(data['videoId'])
+    action=(data['action'])
     user=request.user
     wvideo=WatchedVideos.objects.filter(user_id=user).filter(watched_id=videoId)
-    if len(wvideo) == 0:
-        video=Videos.objects.get(sno=videoId)
-        watch=WatchedVideos(user=user,watched=video)
-        watch.save()
+    if action == 'watch':
+        if len(wvideo) == 0:
+            video=Videos.objects.get(sno=videoId)
+            watch=WatchedVideos(user=user,watched=video)
+            watch.save()
+    elif action == 'ask':
+        if len(wvideo) != 0:
+            w=WatchedVideos.objects.get(user_id=user,watched_id=videoId)
+            que=data['query']
+            w.query=que
+            w.save()
+            print('asked')
     return JsonResponse('ok',safe=False)
+
+def password_reset(request):
+    return render(request,'home/password_reset.html')
+

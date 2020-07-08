@@ -64,6 +64,7 @@ class Contact(models.Model):
     username=models.CharField(max_length=50)
     email=models.CharField(max_length=50)
     content=models.TextField()
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
     def __str__(self):

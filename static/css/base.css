@@ -14,10 +14,7 @@ html{
     scroll-behavior: smooth;
 }
 
-/* .active{
-    color:rgb(0, 0, 0);
-    background-color: rgb(65, 100, 236);
-} */
+
 @media (min-width:950px)
 {
   .mobile_Nav{
@@ -154,27 +151,7 @@ margin-top: 5px;
     margin-left: 19px;
     font-size: 17px;
   }
-  /* .mid2 form{
-    margin-top: 0px;
-  }
-.mid2 #searchBox{
-    display: flex;
- }
- .mid2 #searchBox img{
-    background-color: white;
-    height: 18px;
-    padding: 8px;
-}
- .mid2 #searchBox img:hover{
-    background-color: rgb(65, 100, 236);
-    cursor: pointer;
-}
-.mid2 #search{
-    width: 222px;
-    height: 34px;
-    padding: 0 10px;
-    border: none;
-} */
+
 input {
   outline: none;
 }
@@ -260,12 +237,10 @@ input[type=search]:hover {
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
- /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
   box-shadow: 0 0 8px black;
   border: none;
   border-radius: 50px;
   background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
-
   }
   .btn-SignUp{
       margin-right: 10px;
@@ -282,7 +257,9 @@ input[type=search]:hover {
   }
   .btn:hover a{
     color: white;
+
   }
+  
   
 /* When the screen is less than 900 pixels wide, hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
 @media screen and (max-width: 900px) {
@@ -657,22 +634,24 @@ color: teal;
     max-width:300px ;}
 }
 .modal-body form button{
-    display: flex;
-    font-size: 20px;
     margin-top: 30px;
-    margin-bottom: 20px;
-    padding: 11px 40px;
-    width: 150px;
-    background-color: rgb(65, 100, 236);
-    color: white;
-    border: none;
-    border-radius: 2px;
+   flex: none;
+   width: 130px;
+   box-shadow: 0 0 8px rgb(49, 49, 49);
+  
+}
+.login-btn{
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.login-btn a{
+  margin-top: 44px;
+  color: teal;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
-.modal-body form button:hover{
-    background-color:rgb(107, 129, 221);
-    cursor: pointer;
-}
 /* css fpr alerts */
 .alert-success{
   margin-top: 60px;
@@ -735,7 +714,7 @@ font-size: 38px;
 .cartIcon{
   display: flex;
 } .cartIcon .count{
-  background-color: #0058ff;
+  background-color: #b00;;
   color: white;
   border-radius: 50%;
   padding:1px 5px;
@@ -805,10 +784,8 @@ font-size: 38px;
 }
   /* footer part is designed */
 #lastElem{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 1000px;
+    position: -ms-page;
+   
     margin-top: 350px;
     background-color:#f2f2f2;
     }
@@ -1025,3 +1002,45 @@ color : #2f3640;
   padding: 0 6px;
 }
 }
+
+
+/* .collapsible {
+  border-radius: 4px;
+  background-color: #5ca1e1;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 32px;
+  padding: 16px;
+  width: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 2px;
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.collapsible{
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.collapsibl:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;  
+  top: 14px;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.collapsible:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+
+.collapsible:hover:after {
+  opacity: 1;
+  right: 10px;
+} */

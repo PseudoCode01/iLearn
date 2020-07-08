@@ -19,35 +19,50 @@
 }
 .item .btn-cart{
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    
+justify-content: center;
+margin-top: 20px;
+width: 126px;
+margin-left: auto;
+margin-right: auto;
 }
 .item .addCart{
-    display: flex;
     text-decoration: none;
-    background-color: green;
-    color: white;
-    border-radius: 2px;
-   border: none;
+    flex: 1 1 auto;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
    cursor: pointer;
     padding: 10px;
 
 }
+.item .addCart:hover{
+    background-position: right;
+  }
 .item .goCart{
-    display: flex;
     text-decoration: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 2px;
-    cursor: pointer;
-   border: 1px solid green;
+    flex: 1 1 auto;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #009b86 51%, #004bc4 100%);
+   cursor: pointer;
     padding: 10px;
-
 }
-.item button:hover{
-    background-color: rgb(65, 100, 236);
-}
+.item .goCart:hover{
+    background-position: right;
+  }
 .courseInfo{
     padding: 10px;
     line-height: 23px;

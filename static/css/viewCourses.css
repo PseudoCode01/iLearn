@@ -19,35 +19,52 @@
 }
 .container .item .btn-cart{
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    
+justify-content: center;
+margin-top: 20px;
+width: 126px;
+margin-left: auto;
+margin-right: auto;
 }
 .container .item .addCart{
-    display: flex;
     text-decoration: none;
-    background-color: rgb(236, 65, 65);
-    color: white;
-    border-radius: 2px;
-   border: none;
+    flex: 1 1 auto;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  width: 60px;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+   cursor: pointer;
+    padding: 10px;
+}
+.container .item .addCart:hover{
+  background-position: right;
+}
+.container .item .goCart{
+    text-decoration: none;
+    flex: 1 1 auto;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  width: 60px;
+ /* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #009b86 51%, #004bc4 100%);
    cursor: pointer;
     padding: 10px;
 
 }
-.container .item .goCart{
-    display: flex;
-    text-decoration: none;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    border-radius: 2px;
-    cursor: pointer;
-   border: 1px solid rgb(65, 100, 236);
-    padding: 10px;
+.container .item .goCart:hover{
+    background-position: right;
+  }
 
-}
-.container .item button:hover{
-    background-color: rgb(121, 145, 240);
-}
 .container .courseInfo{
     padding: 10px;
     line-height: 23px;
@@ -59,3 +76,47 @@
     width: 250px;
     height: 150px;
 }
+.addcart .loader{
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+transition: 0.5s;
+background-size: 200% auto;
+width: 60px;
+/* text-shadow: 0px 0px 10px rgba(0,0,0,0.2);*/
+box-shadow: 0 0 8px black;
+border: none;
+border-radius: 50px;
+background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+ cursor: pointer;
+  padding:7px 10px;
+}
+  #loader-container {
+    width: 25px;
+    height: 25px;
+  }
+  
+  @keyframes animation {
+    0% {
+      stroke-dasharray: 1 98;
+      stroke-dashoffset: -105;
+    }
+    50% {
+      stroke-dasharray: 80 10;
+      stroke-dashoffset: -160;
+    }
+    100% {
+      stroke-dasharray: 1 98;
+      stroke-dashoffset: -300;
+    }
+  }
+  
+  #spinner {
+    transform-origin: center;
+    animation-name: animation;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier;
+    animation-iteration-count: infinite;
+  }

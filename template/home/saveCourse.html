@@ -5,44 +5,60 @@
  <link rel="stylesheet" href="{% static 'css/saveCourse.css' %}">
 <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
   <div class="form-group">
-    <label for="category"><b> Category : </b></label>
-    <input class="courseData" id="cat" name="cat" readonly></input>
+    <div class="col-25">
+    <label for="category"><b> Category </b></label></div>
+    <div class="col-75">
+    <input class="courseData" id="cat" name="cat" readonly></input></div>
   </div>
   <div class="form-group">
-    <label for="category"><b> Sub-Category : </b></label>
+    <div class="col-25">
+    <label for="category"><b> Sub-Category </b></label></div>
+    <div class="col-75">
     <input class="courseData" id="subcat" name="subcat" readonly></input>
   </div>
+  </div>
   <div class="form-group">
-    <label for="category"><b> Course Title : </b></label>
-    <input class="courseData" id="title" name="title" readonly></input>
+    <div class="col-25">
+    <label for="category"><b> Course Title  </b></label>
+  </div>
+    <div class="col-75">
+    <input class="courseData" id="title" name="title" readonly></input></div>
   </div>
   <div class="form-group language">
-    <label for="category"><b> Language : </b></label>
+    <div class="col-25">
+    <label for="category"><b> Language  </b></label></div>
+    <div class="col-75">
     <div class="select" id="lang">
       <select id="setLang" name="language">
           <option value="">Choose an Option</option>
           <option value="Hindi">Hindi</option>
           <option value="English">English</option>
           <option value="Hindi + English">Hindi + English</option>
-      </select>
+      </select></div>
     </div>
     <input  name="" class="courseData" id="savedLang">
   </div>
   <div>
     <div class="form-group">
-      <label for="courseThumbnail"><b> Course Thumbnail Image  : </b></label>
-      <input type="file" class="courseData" name="courseThumbnail" id="courseThumbnail">
+      <div class="col-25">
+      <label for="courseThumbnail"><b> Course Thumbnail Image  </b></label></div>
+      <div class="col-75">
+      <input type="file" class="courseData" name="courseThumbnail" id="courseThumbnail"></div>
     </div>
   </div>
   <div class="form-group pricing">
-    <label for="category"><b> Pricing : </b></label>
+    <div class="col-25">
+    <label for="category"><b> Pricing </b></label></div>
+    <div class="col-75">
       <input name="pricing" type="range" min="0" max="10000" value="1000" class="slider" id="myRange" >
       <output id="value" class="value"> </output>
-      <input  name=""  id="pricing">
+      <input  name=""  id="pricing"></div>
   </div>
   <div class="form-group">
-    <label for="category"><b>What students will learn : </b></label>
-    <textarea class="courseData" id="disc" name="disc" ></textarea>
+    <div class="col-25">
+    <label for="category"><b>What students will learn </b></label></div>
+    <div class="col-75">
+    <textarea class="courseData" id="disc" name="disc" ></textarea></div>
   </div>
   <button class="save btn-outline" type="submit">Save</button>
   <div class="afterSave">

@@ -17,18 +17,19 @@ function getToken(name) {
 document.getElementById('vp').addEventListener('ended', function(e) {
     document.querySelector('.active-bar').children[1].children[1].innerHTML=`<img src="/static/img/watched.png" alt="">`
     let sno=document.getElementById('vp').dataset.id;
+    // document.getElementById('asKQuery').removeAttribute('disabled')
     let xh = new XMLHttpRequest();
     xh.open('POST', '/watched');
     xh.setRequestHeader('X-CSRFToken', csrftoken);       
     xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xh.setRequestHeader("Accept", "application/json");
-    xh.send(JSON.stringify({'videoId':sno}));
+    xh.send(JSON.stringify({'videoId':sno,'action':'watch','query':''}));
     xh.onload = function() {
     if (xh.status != 200) { 
-    //   alert(`Error ${xh.status}: ${xh.statusText}`); 
+    
     } else { 
       data=JSON.parse(xh.responseText)
-     
+     console.log('aa')
     };
     
     xh.onprogress = function(event) {
@@ -46,10 +47,79 @@ document.getElementById('vp').addEventListener('ended', function(e) {
     }
     
 });
+function askQuery(){
+let val=document.getElementById('studentQuery')
+   let id=val.dataset.id;
+   let q=document.getElementById('studentQuery').value
+   document.getElementById('query').innerHTML=`<span  name="studentQuery" id="studentQuery" >Q: ${q}</span>
+   `
+   let xh = new XMLHttpRequest();
+    xh.open('POST', '/watched');
+    xh.setRequestHeader('X-CSRFToken', csrftoken);       
+    xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xh.setRequestHeader("Accept", "application/json");
+    xh.send(JSON.stringify({'videoId':id,'action':'ask','query':q}));
+    xh.onload = function() {
+    if (xh.status != 200) { 
+      alert(`Error ${xh.status}: ${xh.statusText}`); 
+    } else { 
+      data=JSON.parse(xh.responseText)
+     console.log('dd')
+    };
+    
+    xh.onprogress = function(event) {
+    if (event.lengthComputable) {
+      
+    } else {
+    //  alert('fff')
+    }
+    
+    };
+    
+    xh.onerror = function() {
+    alert("Request failed");
+    };
+    }
+}
 function play(elem,val,res,id){
+  console.log(document.getElementById('get_query'+id))
+  if(document.getElementById('get_query'+id)!= null){
+    let get_query= document.getElementById('get_query'+id).value
+    if(get_query!='')
+  {  
+ document.getElementById('query').innerHTML=`
+ <span data-id="${id}" name="studentQuery" id="studentQuery" >Q: ${get_query}</span>
+ `
+ let get_answer=document.getElementById('get_answer'+id).value
+ if(get_answer != '')
+ {
+  document.getElementById('query').innerHTML+=`<br><br>
+ <span  name="answer" id="answer" >Ans: ${get_answer}</span>
+ ` 
+ }
+}
+ else{
+  document.getElementById('query').innerHTML=`
+  <textarea data-id=${id} name="studentQuery" id="studentQuery" cols="100" rows="10" placeholder="Ask Your Query" ></textarea>
+  <button  id="asKQuery"  onclick="askQuery(this)">Ask</button>
+ `
+ }
+}
+else if(document.getElementById('get_query'+id).value==''){
+ 
+}
+else{
+  document.getElementById('query').innerHTML=`
+  <textarea data-id=${id} name="studentQuery" id="studentQuery" cols="100" rows="10" placeholder="Ask Your Query" ></textarea>
+  <button  id="asKQuery"  onclick="askQuery(this)">Ask</button>
+ `
+}
     document.querySelector('.active-bar').classList.replace('active-bar','video-bar')
     elem.classList.replace('video-bar','active-bar')
     let videocontainer=document.getElementById('vp')
+    let ask=document.getElementById('studentQuery')
+    console.log(ask)
+    ask.dataset.id=id;
     let get_res=document.querySelector('.buttonDownload')
     get_res.href='/media/'+res;
     videocontainer.pause();
@@ -79,3 +149,12 @@ function opentab(evt, option) {
     evt.currentTarget.className += " active";
   }
   document.querySelector('.default').click()
+
+function  openVideos(){
+  var x= document.querySelector('.videos')
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}

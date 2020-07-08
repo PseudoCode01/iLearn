@@ -12,6 +12,9 @@
     width: 100%;
     z-index: -1;
 }
+#lastElem{
+    margin-top: 700px;
+}
 /* #home::after{
     content: '';
     position: absolute;

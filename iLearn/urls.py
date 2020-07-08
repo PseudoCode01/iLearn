@@ -16,12 +16,33 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import (get_resolver,get_urlconf,resolve,reverse,NoReverseMatch)
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('django.contrib.auth.urls')),
     path('', include('home.urls')),
+   
+    path(r'reset_password/',
+     auth_views.PasswordResetView.as_view(template_name='home/password_reset.html'),
+     name="reset_password"),
+
+    path(r'reset_password_sent/', 
+    auth_views.PasswordResetDoneView.as_view(template_name='home/password_reset_done.html'), 
+    name="password_reset_done"),
+
+    path(r'password_reset_confirm/<uidb64>/<token>/',
+     auth_views.PasswordResetConfirmView.as_view(), 
+     name="password_reset_confirm"),
+     
+    path(r'reset_password_complete/', 
+        auth_views.PasswordResetCompleteView.as_view(template_name='home/password_reset_complete.html'), 
+        name="password_reset_complete"),
+  
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

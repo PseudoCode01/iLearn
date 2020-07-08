@@ -1,12 +1,15 @@
  
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
+from django.conf.urls import url,include
 urlpatterns = [
     path("",views.home,name="home"),
     path("teach1",views.Teach1,name="Teach1"),
     path('login', views.handleLogin,name="handleLogin"),
     path('logout', views.handleLogout,name="handleLogout"),
     path('signup', views.handleSignUp,name="handleSignUp"),
+   
     path('contact', views.contact,name="contact"),
     path('about', views.about,name="about"),
     path('search', views.search,name="search"),
@@ -37,4 +40,5 @@ urlpatterns = [
     path('myCourses', views.myCourses,name="myCourses"),
     path('watched', views.watched,name="watched"),
     path('courses/<str:slug>/<int:id>', views.previewmyCourses,name="previewmyCourses"),
+
 ]

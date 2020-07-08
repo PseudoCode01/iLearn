@@ -125,6 +125,20 @@ xhr2.onerror = function() {
   alert("Request failed");
 };
 }
+function displaysidenav(){
+  document.querySelector('.sidenav').style.width='250px'
+  
+}
+function closedisplaysidenav(){
+  document.querySelector('.sidenav').style.width='0'
+}
+let nav= document.querySelector('.sidenav')
+    window.onclick = function(event) {
+      // console.log(event)
+      if (event.target == nav) {
+        nav.style.width = "0";
+      }
+    }
 get_teacherProfile()
 function editTProfile(){
   let fname=document.getElementById('fnameSaved').innerText

@@ -9,9 +9,16 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/previewmyCourses.css' %}">
     <div class="header-bar">
-        <h3>iLearn</h3>
+        <h3 onclick="window.location.href='/'">iLearn</h3>
+        <hr>
+        <h2>{{cTitle.0.title}}</h2>
+        <span onclick="openVideos()">
+        <h1>&#8226;</h1>
+        <h1>&#8226;</h1>
+        <h1>&#8226;</h1>
+    </span>
     </div>
-    <div class="container">
+    
         <div class="left">
     <div class="player">
         <video data-id={{course.0.0.sno}} id="vp" width="100%" height="400px" controls>
@@ -32,14 +39,31 @@
             <a class="buttonDownload" href="/media/{{course.0.0.resource}}" download>Download Resourses</a>
         </div>
         <div class="tabcontent" id="query">
-            <textarea name="studentQuery" id="studentQuery" cols="100" rows="10"></textarea>
-            <button>Ask</button>
+            {% for watch in watched %}
+            {% if watch.watched_id == course.0.0.sno %}
+            {% if watch.query %}
+            <span data-id="{{course.0.0.sno}}" name="studentQuery" id="studentQuery" >Q: {{watch.query}}</span>
+            {% if watch.answer %}
+            <br>
+            <br>
+            <span data-id="{{course.0.0.sno}}" name="answer" id="answer" >Ans: {{watch.answer}}</span>
+            {% endif %}
+            {% else %}
+            <textarea data-id="{{course.0.0.sno}}" name="studentQuery" id="studentQuery" cols="100" rows="10" placeholder="Ask Your Query" ></textarea>
+            <button  id="asKQuery"  onclick="askQuery(this)">Ask</button>
+            {% endif %}
+            {% else %}
+            <!-- <textarea data-id="{{course.0.0.sno}}" name="studentQuery" id="studentQuery" cols="100" rows="10" placeholder="Ask Your Query" ></textarea>
+            <button  id="asKQuery"  onclick="askQuery(this)">Ask</button>-->
+            {% endif %} 
+        {% endfor %}
         </div>
     </div>
     </div>
   
     <div class="videos">
-        <div class='content'>Course content</div>
+        <div class='content con'>Course content</div>
+        <div class='content title'>{{cTitle.0.title}}</div>
     {% for item in course %}
     
     {% if forloop.counter == 1 %}
@@ -55,13 +79,14 @@
         {% for watch in watched %}
         {% if watch.watched_id == item.0.sno %}
         <img src="/static/img/watched.png" alt="">
+        <input id='get_query{{item.0.sno}}' type="hidden" value="{{watch.query}}">
+        <input id='get_answer{{item.0.sno}}' type="hidden" value="{{watch.answer}}">
         {% endif %}
         {% endfor %}
     </div>
     </div>  
     </div>  
     {% endfor %}
-</div>
 </div>
 </div>
 <script   src="{% static 'js/previewmyCourses.js'%}"></script>
