@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff 
+   
+         </title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/baseStaff.css' %}">
+<body>
+    {% if request.user.is_staff %}
+    <div class="top">
+        <div id="Tname">
+            {{request.user|slugify|first|upper}}
+            <div class="box arrow-top">
+                <h5>Hi! {{request.user}}</h5>
+                <p>{{request.user.email}}</p>
+              </div>
+        </div>
+        <a href="/" id="role">Student</a>
+    </div>
+    <div onclick="displaysidenav()" class="hamburger">&#9776;</div>
+    <div id="mySidenav" class="sidenav">
+        <span onclick="closedisplaysidenav()" class="cross">&#x2718</span>
+        <a href="/"><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
+        <a href="/staff"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
+        <a href="userQueries"><span><img src="/static/img/resource.png" alt=""></span><span>Queries</span></a>
+      </div> 
+      
+      {% block body %}
+          
+      {% endblock body %}
+      {% else %}
+      <span>You Dont Have Permission To View This Page</span>
+  {% endif %}   
+
+</body>
+<script src="{% static 'js/baseStaff.js' %}"></script>
+</html>

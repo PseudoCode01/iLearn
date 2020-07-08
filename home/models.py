@@ -61,8 +61,10 @@ class Cart(models.Model):
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 class Contact(models.Model):
     sno=models.AutoField(primary_key=True)
+    name=models.CharField(max_length=50)
     username=models.CharField(max_length=50)
     email=models.CharField(max_length=50)
+    answered=models.CharField(max_length=50,default='False')
     content=models.TextField()
     user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)

@@ -165,10 +165,12 @@ def contact(request):
         name=request.POST['userName']
         email=request.POST['email']
         content=request.POST['disc']
+        user=request.user
+        username=request.user.username
         if len(email)<6 or len(content)<5:
             messages.error(request,'Please fill the form Correctly')
         else:
-            contact=Contact(username=name,email=email,content=content)
+            contact=Contact(name=name,email=email,content=content,user=user,username=username)
             contact.save()
             messages.success(request,'We Will Respond You as soon as Possible')
 
@@ -255,29 +257,7 @@ def handleLogout(request):
     logout(request)
     messages.success(request,"Successfully Loged Out")
     return redirect('/')
-def adminPanel(request):
-    course=Courses.objects.filter(verified="False")
-    sno=course.values('sno')
-    un_verified_set=list()
-    for item in sno:
-        un_verified=Videos.objects.filter(videoOfCourse_id=item['sno'])
-        print(un_verified)
-        if(len(un_verified) != 0) :
-            un_verified_set.append(list((course.filter(sno=item['sno']).values(),un_verified.values().first())))
-    return render(request,'home/adminPanel.html',{'un_verified':un_verified_set})
-def verification(request):
-    data=json.loads(request.body)
-    courseId=data['courseId']
-    action=data['action']
-    user=request.user
-    course=Courses.objects.get(sno=courseId)
-    if action=="verify":
-        course.verified="True"
-        course.save()
-        return JsonResponse('item was verified ',safe=False)
-    elif action=="remove":
-        course.delete()
-        return JsonResponse('item was deleted ',safe=False)
+
 def buynow(request):
     if request.method=='POST':
         buy=request.POST['buy']
@@ -377,7 +357,6 @@ def watched(request):
             que=data['query']
             w.query=que
             w.save()
-            print('asked')
     return JsonResponse('ok',safe=False)
 
 def password_reset(request):

@@ -1,0 +1,25 @@
+{% extends 'baseStaff.html' %}
+
+    {% load static %}
+    {% block body %}
+    <link rel="stylesheet" href="{% static 'css/userQueries.css' %}">
+    <div class="container">
+        
+        <div class="get_query">
+            <div id="searchBox">
+                <input type="text" id="search" name="search" placeholder="Enter the username">
+                <img src="/static/img/search.png" alt="">
+              </div>
+        </div>
+        <div class="query-block">
+        {% for query in queries %}
+                <div class="query-card">
+                    <h3>{{query.name}} ({{query.username}})</h3>
+                    <h5>{{query.email}}</h5>
+                    <p>{{query.content}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock body %}
+        

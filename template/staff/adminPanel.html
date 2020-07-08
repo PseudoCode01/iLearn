@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+{% extends 'baseStaff.html' %}
+
     {% load static %}
-</head>
-<link rel="stylesheet" href="{% static 'css/adminPanel.css' %}">
-<body>
     
-    {% if request.user.is_staff %}
-    <div class="top">
-        <div id="Tname">
-            {{request.user|slugify|first|upper}}
-            <div class="box arrow-top">
-                <h5>Hi! {{request.user}}</h5>
-                <p>{{request.user.email}}</p>
-              </div>
-        </div>
-        <a href="/" id="role">Student</a>
-    </div>
-    <div id="mySidenav" class="sidenav">
-        <a href="/"><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
-        <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
-        <a href="#"><span><img src="/static/img/resource.png" alt=""></span><span>Resources</span></a>
-      </div> 
+    {% block body %}  
+
+    <link rel="stylesheet" href="{% static 'css/adminPanel.css' %}">
       <div class="container">
+      
       {% for item in un_verified %}
       <div class="item">
           <img onclick="player(this)" data-id={{item.0.0.sno}} src="/media/{{item.0.0.courseThumbnail}}" alt="">
@@ -65,9 +46,7 @@
       </div>
       {% endfor %}
     </div>
-        {% else %}
-        <span>You Dont Have Permission To View This Page</span>
-    {% endif %}
-</body>
+      
+
 <script src="{% static 'js/adminPanel.js' %}"></script>
-</html>
+{% endblock body %}

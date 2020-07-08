@@ -1,0 +1,144 @@
+#Tname{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    float:right;
+    margin-right: 10px;
+    height: 44px;
+    font-size: 2rem;
+    width: 51px;
+    text-align: center;
+    background-color:rgb(136, 136, 136);
+    border-radius: 50%;
+    padding-top: 5px;
+    color: white;
+    border: 2px solid rgba(240, 240, 240, 0.64);
+    cursor: pointer;
+}
+
+#role{
+position: absolute;
+top: 10px;
+right: 40px;
+margin-right: 3rem;
+font-size: 1rem;
+padding-top: 17px;
+height: 35px;
+width: 111px;
+text-decoration: none;
+color: black;
+text-align: center;
+border-radius: 2px;
+}
+
+#role:hover{
+    border: 1px solid rgb(179, 179, 179);
+    background-color: rgb(218, 218, 218);
+}
+
+ /* The side navigation menu */
+ .sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 60px; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: rgb(123, 213, 123);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  display: flex;
+  flex-direction: row;
+  padding: 8px 8px 8px 20px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ffffff;
+  transition: 0.3s;
+  max-lines: 1;
+}
+.sidenav a span{
+  margin-right: 10px;
+}
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
+
+.box {
+  display: none;
+  width: 150px;
+  height: 75px;
+  background-color: rgb(231, 231, 231);
+  color:rgb(0, 0, 0);
+  padding: 20px;
+  position: relative;
+  margin: -132px;
+  float: left;
+  font-size: 1rem;
+  color:black;
+  font-size: .8rem;
+}
+
+.box.arrow-top {
+  margin-top: 60px;
+}
+
+.box.arrow-top:after {
+  content: " ";
+  position: absolute;
+  right: 19px;
+  top: -15px;
+  border-top: none;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid rgb(211, 211, 211);
+}
+#Tname:hover .box{
+  display: block;
+}
+.cross{
+  display: none;
+font-size: 25px;
+cursor: pointer;
+background-color: rgb(184, 184, 184);
+width: 40px;
+height: 37px;
+padding-top: 4px;
+text-align: center;
+position: absolute;
+border-radius: 50%;
+top:20px;
+right: 10px;}
+
+@media (max-width:700px){
+  .sidenav{
+    width: 0;
+  }
+  .hamburger{
+    font-size: 30px;
+  }
+.cross{
+  display: block;
+}
+
+}

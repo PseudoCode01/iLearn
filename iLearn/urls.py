@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('django.contrib.auth.urls')),
     path('', include('home.urls')),
+    path('staff/', include('staffPanel.urls')),
    
     path(r'reset_password/',
      auth_views.PasswordResetView.as_view(template_name='home/password_reset.html'),

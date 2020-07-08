@@ -1,0 +1,34 @@
+from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
+from django.http import JsonResponse
+import json
+from home.models import Courses
+from home.models import Videos,Contact
+# Create your views here.
+def staffPanel(request):
+    course=Courses.objects.filter(verified="False")
+    sno=course.values('sno')
+    un_verified_set=list()
+    for item in sno:
+        un_verified=Videos.objects.filter(videoOfCourse_id=item['sno'])
+        print(un_verified)
+        if(len(un_verified) != 0) :
+            un_verified_set.append(list((course.filter(sno=item['sno']).values(),un_verified.values().first())))
+    return render(request,'staff/adminPanel.html',{'un_verified':un_verified_set})
+def verification(request):
+    data=json.loads(request.body)
+    courseId=data['courseId']
+    action=data['action']
+    user=request.user
+    course=Courses.objects.get(sno=courseId)
+    if action=="verify":
+        course.verified="True"
+        course.save()
+        return JsonResponse('item was verified ',safe=False)
+    elif action=="remove":
+        course.delete()
+        return JsonResponse('item was deleted ',safe=False)
+
+def userQueries(request):
+    queries=Contact.objects.filter(answered='False').order_by('timeStamp')
+    return render(request,'staff/userQueries.html',{'queries':queries})
