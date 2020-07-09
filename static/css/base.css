@@ -548,7 +548,7 @@ color: teal;
   }
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    background-color: rgb(134, 205, 238) ;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
@@ -571,21 +571,48 @@ color: teal;
   /* Modal Header */
   .modal-header {
     padding: 12px 16px;
-    background-color: rgb(65, 100, 236);
-    color: white;
+    color: black;
   }
-  
+  .welcomelogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .welcomelogin img{
+    margin-top: 7px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    }
+    .welcomelogin h2{
+      font-size: 25px;
+      font-family: cursive;
+      margin-top: 20px;
+    }
+    .Welcomesignup h2{
+      font-size: 25px;
+      font-family: cursive;
+      margin-top: 20px;
+    }
+    .Welcomesignup{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   /* Modal Body */
   .modal-body {padding: 2px 16px;}
   
   /* Modal Content */
   .modal-content {
+
+
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 40%;
+    width: 25%;
+    height: 680px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
@@ -621,35 +648,77 @@ color: teal;
     margin-top: 20px;
 }
 .modal-body .form-group input{
+  background: transparent;
     display:block;
-    padding: 15px 20px;
-    border: 2px solid black;
-    width: 350px;
+    padding: 15px 5px;
+     border:none;
+     border-bottom: 1px solid black;
+    width: 335px;
     height: 15px;
-    margin-top: 8px;
-    border-radius: 6px;
+    margin-top: 10px;
 }
 @media only screen and (max-width:470px ){
   .modal-body .form-group input {
     max-width:300px ;}
 }
-.modal-body form button{
-    margin-top: 30px;
-   flex: none;
-   width: 130px;
-   box-shadow: 0 0 8px rgb(49, 49, 49);
+.modal-body form button {
+  /* margin-top: 30px; */
+  flex: none;
+  width: 342px;
+  box-shadow: 0 0 8px rgb(49, 49, 49);
+  height: 51px;
+}
+  
+
+.login-btn{
+  justify-content: space-between;
+  width: 78%;
   
 }
-.login-btn{
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
+.logbutton{
+  width: 400px;
+  cursor: pointer;
+  margin-top: 70px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
 }
-.login-btn a{
+.logbutton:hover{
+  background-position: right;
+}
+.loginline{
+  width: 100%;
+  height: 2px;
+  background-color: grey;
+  margin-top: 70px;
+}
+#submitSignup{
+  width: 335px;
+  cursor: pointer;
+  margin: 50px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+}
+.forgetpassword a{
   margin-top: 44px;
   color: teal;
   cursor: pointer;
-  text-decoration: underline;
+  float: right;
 }
 
 /* css fpr alerts */
@@ -784,7 +853,8 @@ font-size: 38px;
 }
   /* footer part is designed */
 #lastElem{
-    position: -ms-page;
+    position: absolute;
+    top: 1000px;
    
     margin-top: 350px;
     background-color:#f2f2f2;
