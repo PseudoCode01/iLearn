@@ -32,3 +32,17 @@ def verification(request):
 def userQueries(request):
     queries=Contact.objects.filter(answered='False').order_by('timeStamp')
     return render(request,'staff/userQueries.html',{'queries':queries})
+
+def fetch_query(request):
+    data=json.loads(request.body)
+    uname=(data['uname'])
+    queries=Contact.objects.filter(username=uname).order_by('timeStamp').values()
+    return JsonResponse({'fetched_queries':list(queries)})
+
+def markasAns(request):
+    data=json.loads(request.body)
+    id=int(data['id'])
+    query=Contact.objects.get(sno=id)
+    query.answered='True'
+    query.save()
+    return JsonResponse('OK',safe=False)

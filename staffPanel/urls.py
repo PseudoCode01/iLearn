@@ -6,4 +6,6 @@ urlpatterns = [
     path('', views.staffPanel,name="staffPanel"),
     path('verification', views.verification,name="verification"),
     path('userQueries', views.userQueries,name="userQueries"),
+    path('fetch_query', views.fetch_query,name="fetch_query"),
+    path('markasAns', views.markasAns,name="markasAns"),
 ]

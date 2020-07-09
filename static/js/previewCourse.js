@@ -18,7 +18,7 @@ function myFunction(){
         if(rated!=0){
          let rate=(rating/rated)
          document.querySelector('.rate').innerText=rate.toPrecision(2)+'/5'
-        }
+        
         let colStar=document.querySelectorAll('.star')
         let c=0;
         for(let item of colStar){
@@ -27,5 +27,5 @@ c=c+1;
          if(c===Math.floor(rating/rated)){
              break;
          }
-        }
+        }}
 }

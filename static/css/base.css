@@ -546,14 +546,7 @@ color: teal;
   .modal-header h2{
     font-size: 1.3rem;
   }
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: rgb(134, 205, 238) ;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
+ 
   
   /* The Close Button */
   .close {
@@ -604,18 +597,19 @@ color: teal;
   
   /* Modal Content */
   .modal-content {
-
-
     position: relative;
     background-color: #fefefe;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
-    width: 25%;
-    height: 680px;
+    width: 36%;
+    height: 650px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
+  }
+  .login_modal-content{
+height:620px;
   }
   @media only screen and (max-width:1100px )and (min-width:800px){
       .modal-content{
@@ -641,19 +635,21 @@ color: teal;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+
 }
 .modal-body .form-group{
-    justify-content: center;
-    margin-top: 20px;
+  margin-top: 20px;
+width: 90%;
+margin-left: auto;
+margin-right: auto;
 }
 .modal-body .form-group input{
   background: transparent;
     display:block;
-    padding: 15px 5px;
+    padding: 15px 5%;
      border:none;
      border-bottom: 1px solid black;
-    width: 335px;
+    width: 90%;
     height: 15px;
     margin-top: 10px;
 }
@@ -669,14 +665,13 @@ color: teal;
   height: 51px;
 }
   
-
 .login-btn{
-  justify-content: space-between;
-  width: 78%;
-  
+  display: flex;
+justify-content: center;
+  width: 100%;
 }
 .logbutton{
-  width: 400px;
+  width: 90%;
   cursor: pointer;
   margin-top: 70px;
   padding: 10px;
@@ -700,7 +695,7 @@ color: teal;
   margin-top: 70px;
 }
 #submitSignup{
-  width: 335px;
+  width: 90%;
   cursor: pointer;
   margin: 50px;
   padding: 10px;
@@ -730,9 +725,9 @@ color: teal;
 }
 .alert-error{
   margin-top: 60px;
-    padding:12px 0 12px 0;
-    width: 100%;
-    background-color:#f44336;
+  padding:12px 0 12px 0;
+  width: 100%;
+  background-color:#f44336;
 }
 .alert strong{
 margin-left: 10px;
@@ -855,7 +850,7 @@ font-size: 38px;
 #lastElem{
     position: absolute;
     top: 1000px;
-   
+   width: 99vw;
     margin-top: 350px;
     background-color:#f2f2f2;
     }

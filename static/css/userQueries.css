@@ -2,7 +2,6 @@
    margin-left: 80px;
    margin-right: 5%;
    margin-top: 100px;
-  
 }
 .container .query-block{
     display: flex;
@@ -40,6 +39,19 @@
     background-color: rgb(199, 196, 199);
     margin-bottom: 30px;
 }
+
+.markasAns{
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+}
 @media(max-width:700px){
     .container .query-block{
         flex-direction: column;
@@ -58,3 +70,79 @@
         width: 95%;
     }
 }
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  .modal-header h2{
+    font-size: 1.3rem;
+  }
+ 
+  /* The Close Button */
+  .close {
+    color:black;
+    float: right;
+    font-size: 1.6rem;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  /* Modal Header */
+  .modal-header {
+    padding: 12px 16px;
+    color: black;
+  }
+ 
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;
+color: black;
+}
+  .modal-body >div {padding: 2px 16px;
+display: flex;
+justify-content: space-between;
+}
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 46%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  @media only screen and (max-width:1100px )and (min-width:800px){
+      .modal-content{
+      width: 55%;}
+  }
+  @media only screen and (max-width:800px ){
+      .modal-content{
+      width: 90%;}
+  }
+  @media only screen and (max-width:420px ){
+      .modal-content{
+      width: 100%;}
+  }
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -800px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }

@@ -1,14 +1,12 @@
 {% extends 'baseStaff.html' %}
-
     {% load static %}
     {% block body %}
     <link rel="stylesheet" href="{% static 'css/userQueries.css' %}">
-    <div class="container">
-        
+    <div class="container">  
         <div class="get_query">
             <div id="searchBox">
                 <input type="text" id="search" name="search" placeholder="Enter the username">
-                <img src="/static/img/search.png" alt="">
+                <img src="/static/img/search.png" alt="" id="get_result" onclick="fetch_query()">
               </div>
         </div>
         <div class="query-block">
@@ -17,9 +15,24 @@
                     <h3>{{query.name}} ({{query.username}})</h3>
                     <h5>{{query.email}}</h5>
                     <p>{{query.content}}</p>
-                </div>
+                   
+                    <button class="markasAns" data-id="{{query.sno}}" onclick="mark(this)">Mark as answered</button></div>
+              
                 {% endfor %}
             </div>
         </div>
+        <div id="myModal" class="modal modal-query">
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close closequery">&times;</span>
+                
+                </div>
+              
+              <div class="modal-body">
+                 
+              </div>
+            </div>
+          </div>
+          <script src="{% static 'js/userQueries.js' %}"></script>
     {% endblock body %}
         

@@ -3,6 +3,7 @@
     padding: 20px;
     display: flex;
     height: 300px;
+    margin-top: 52px;
 }
 .preview .leftContent{
     color: white;
