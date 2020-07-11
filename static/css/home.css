@@ -1,6 +1,7 @@
 
 #home
-{   position: absolute;
+{  
+     /* position: absolute; */
     top: 24px;
     display: flex;
     flex-direction: column;
@@ -81,3 +82,62 @@ align-items: flex-start;
 
 
 
+.facilitysection{
+    padding: 40px 0;
+    /* background-color: #00DBDE;
+    background-image: linear-gradient(90deg, #00DBDE 0%, rgb(158, 65, 160) 100%); */
+    background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+    transition: 1s;
+  background-size: 200% auto;
+    box-shadow: 0 15px 13px rgb(63, 63, 63);
+    color: white;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+    margin-top: 10%;
+display:flex;
+align-items: center; 
+flex-direction: column;  
+}
+.facilitysection:hover{
+    background-position: right;
+    box-shadow: 0 10px 13px rgb(63, 63, 63);
+}
+.facilitysection hr{
+    margin-top: 15px;
+    width: 60px;
+    color: rgb(243, 16, 16);
+}
+.facilitysection h2{
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+}
+.facilitycontent{
+    margin-top: 30px;
+     display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content:space-between;
+    padding: 0 15px;
+}
+.facilitycontent >div
+    {
+        width: 27%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .facilitycontent >div h4{
+        margin-top: 10px;
+        
+    }
+    .facilitycontent >div p{
+        margin-top: 5px;
+        font-size: 15px;
+       color: rgb(236, 236, 236);
+       margin-left: auto;
+       margin-right: auto;
+       text-align: center;
+    }

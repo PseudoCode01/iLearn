@@ -1,7 +1,15 @@
+*{
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+.top{
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
 #Tname{
-    position: absolute;
-    top: 10px;
-    right: 0;
     float:right;
     margin-right: 10px;
     height: 44px;
@@ -17,9 +25,7 @@
 }
 
 #role{
-position: absolute;
-top: 10px;
-right: 40px;
+float: right;
 margin-right: 3rem;
 font-size: 1rem;
 padding-top: 17px;
@@ -397,5 +403,31 @@ right: 10px;}
 .cross{
   display: block;
 }
-
+}
+footer{
+position: relative;
+display: flex;
+justify-content: space-between;
+z-index: 2;
+padding: 25px 4%;
+background-color:#f2f2f2;
+width: 92%;
+margin-bottom: -2vh;
+}
+footer img{
+  margin-right: 10px;
+}
+@media(max-width:700px){
+  footer{
+    flex-direction: column-reverse;
+  }
+  footer #fitem1{
+    margin-top: 20px;
+  }
+ 
+}
+@media(max-width:450px){
+  footer #fitem1{
+    font-size: 13px;
+  }
 }
