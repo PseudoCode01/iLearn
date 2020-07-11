@@ -33,13 +33,13 @@ html{
  /* Add a black background color to the top navigation */
 
 .topnav {
-  background-color: rgb(30, 70, 227);
+  background-color: rgba(255, 255, 255, 0);
   position: fixed;
   top:0;
   left: 0;
   right: 0;
   border: none;
-height: 61px;
+z-index: 1;
 }
 
 /* Style the links inside the navigation bar */
@@ -106,7 +106,7 @@ margin-bottom: 4px;
   background-color: rgb(236, 236, 236);
 }
 .topnav .logo{
-    font-size: 20px;
+    font-size: 1.9rem;
     background-color: rgba(0, 0, 255, 0);
 }
 /* Add an active class to highlight the current page */
@@ -123,12 +123,12 @@ margin-bottom: 4px;
 /* dropside container - needed to position the dropside content */
 .dropside {
   float: left;
-margin-top: 5px;
+margin-top: 1vh;
 }
 
 /* Style the dropside button to fit inside the topnav */
 .dropside .dropbtn {
-  font-size: 17px;/* Add a dark background on topnav links and the dropside button on hover */
+  font-size: 1.4rem;/* Add a dark background on topnav links and the dropside button on hover */
   border: none;
   outline: none;
   color: white;
@@ -229,7 +229,6 @@ input[type=search]:hover {
 }
  .btn{
     float:right;
-    flex: 1 1 auto;
   margin: 10px;
   padding: 10px;
   text-align: center;
@@ -241,6 +240,7 @@ input[type=search]:hover {
   border: none;
   border-radius: 50px;
   background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+  margin-top: 1.7vh;
   }
   .btn-SignUp{
       margin-right: 10px;
@@ -272,9 +272,7 @@ input[type=search]:hover {
   }
 }
 
-  .topnav{
-    z-index: 0;
-  }
+  
   .dropside-content{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -423,7 +421,7 @@ font-size: 20px;
     display: none; 
   }
   #searchBar{
-    margin-top:6px ;
+    margin-top:1.6vh ;
     margin-right: 10px;
   }
   

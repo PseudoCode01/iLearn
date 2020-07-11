@@ -26,7 +26,7 @@ window.addEventListener('scroll', function(e) {
     }
     
             if(scrollTop === 0){
-      document.getElementById('myTopnav').style.backgroundColor='rgb(30, 70, 227)'
+      document.getElementById('myTopnav').style.backgroundColor='rgb(30, 70, 227,0)'
       document.getElementById('myTopnav').style.boxShadow='0 0 0 0 black'
       document.querySelector('.logo').style.color='white'
       document.querySelector('.dropbtn').style.color='white'

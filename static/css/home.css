@@ -1,31 +1,51 @@
-
+.topnav{
+    background-color:rgba(0, 0, 0, 0);
+}
 #home
 {  
      /* position: absolute; */
     top: 24px;
     display: flex;
-    flex-direction: column;
     overflow: hidden;
     color: white;
-    background-image: url('/static/img/homebg.svg');
+    background-image: url('/static/img/hero.jpg');
     background-size: cover;
-    height:89vh;
+    height:97vh;
     width: 100%;
     z-index: -1;
+}
+#home >div{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5vh;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.edu{
+
+    width: 45%;
+}
+.edu img{
+
+   width: 100%;
+   height: auto;
 }
 #lastElem{
     margin-top: 700px;
 }
+
 /* #home::after{
     content: '';
     position: absolute;
     top: 9vh;
-    width: 22%;
-    right: 200px;
-    height:270px;
-    background-image: url("/static/img/book.png");
+    width: 100%;
+    height:400px;
+    background-image: url("/static/img/edu.png");
     background-size: cover;
-    z-index: 1;
+    z-index: 0;
 
 } */
 #home #cThought {
@@ -40,14 +60,11 @@ align-items: flex-start;
   }
   .searchSection{
     position: relative;
-    margin-left: 10%;
-    top: 25%;
-    max-width: 510px;
-
+    width: 50%;
 }
 
 .searchSection h1{
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     color: rgb(255, 255, 255);
     font-family: Ubuntu,serif, 'Segoe UI', Roboto, Oxygen, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
 }
@@ -56,17 +73,18 @@ align-items: flex-start;
  #home #searchBox{
      display: flex;
      margin-top: 50px;
+     height: 6vh;
   }
 #home .searchSection #search{
-    width: 300px;
-    height: 41px;
+    width: 60%;
+    height: 6vh;
     padding: 0 10px;
     border: none;
 }
 #searchBox img{
     background-color: white;
-    height: 21px;
-    padding: 10px;
+    height: 4.4vh;
+    padding: .8vh;
 }
 #searchBox img:hover{
     background-color: rgb(65, 100, 236);
@@ -79,7 +97,20 @@ align-items: flex-start;
         display: none;
     }
 }
+@media(max-width:800px){
+    #home >div{
+       flex-direction: column-reverse;
+       width: 90%;
+       justify-content: space-evenly;
+    } 
+    .edu{
+        width: 90%;
+    }
+    .searchSection{
+        width: 90%;
+    }
 
+}
 
 
 .facilitysection{
