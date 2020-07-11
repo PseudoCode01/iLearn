@@ -39,7 +39,7 @@
           </button>
         </div>
           <ul class="dropdown-content sidenav" id="mySidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#8592;</a>
+            <a href="javascript:void(0)" class="closenav" onclick="closeNav()">&#8592;</a>
             {% for courses in get_courses %}
             <a class=" collapsible" onclick="category(this)" id="6">{{courses}}
             </a>
@@ -112,10 +112,9 @@
       </div> 
       {% for message in messages %}
       <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
-        <strong>Message: </strong>{{message}}
-        <button type="button" class="closeAlert" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+         {{message}}
+        </div> 
       </div>
       {% endfor %}
 <!--signUp The Modal -->

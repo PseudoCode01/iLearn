@@ -3,8 +3,10 @@
 
 {% block body %}
 {% load static%}
+
 <link rel="stylesheet" href="{% static 'css/previewCourse.css' %}">
 <div class="preview">
+    <img class="mediaT" src="/media/{{course.0.courseThumbnail}}" alt="">
     <div class="leftContent">
         <h1>{{course.0.title|upper}}</h1>
         <h2>{{course.0.category}},{{course.0.sub_category}}</h2>
@@ -27,6 +29,7 @@
     <div class="rightContent">
         <div class="item">
             <img src="/media/{{course.0.courseThumbnail}}" alt="">
+            <div>
             <div class="courseInfo">
             <h1>Rs:{{course.0.pricing}}</h1>
           </div>
@@ -35,6 +38,7 @@
             <button data-product="{{item.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
          </div> 
         </div>
+    </div>
          </div> 
     </div>
     
@@ -60,7 +64,7 @@
     {% if teacherProfile %}
          <h1>{{course.0.creater_name}} (Username)</h1>
         <h2>{{teacherProfile.0.fname}} {{teacherProfile.0.fname}}</h2>
-        <p>{{teacherProfile.0.disc}}</p>
+        <span>{{teacherProfile.0.disc}}</span>
     <div class="allcourses">
         <h1>Creater of:</h1>
         {% for i  in allcourses %}
