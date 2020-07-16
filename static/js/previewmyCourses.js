@@ -17,13 +17,14 @@ function getToken(name) {
 document.getElementById('vp').addEventListener('ended', function(e) {
     document.querySelector('.active-bar').children[1].children[1].innerHTML=`<img src="/static/img/watched.png" alt="">`
     let sno=document.getElementById('vp').dataset.id;
+    let c_id=document.getElementById('creater').value;
     // document.getElementById('asKQuery').removeAttribute('disabled')
     let xh = new XMLHttpRequest();
     xh.open('POST', '/watched');
     xh.setRequestHeader('X-CSRFToken', csrftoken);       
     xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xh.setRequestHeader("Accept", "application/json");
-    xh.send(JSON.stringify({'videoId':sno,'action':'watch','query':''}));
+    xh.send(JSON.stringify({'videoId':sno,'action':'watch','query':'','creater':c_id}));
     xh.onload = function() {
     if (xh.status != 200) { 
     
@@ -53,12 +54,14 @@ let val=document.getElementById('studentQuery')
    let q=document.getElementById('studentQuery').value
    document.getElementById('query').innerHTML=`<span  name="studentQuery" id="studentQuery" >Q: ${q}</span>
    `
+   document.getElementById('w'+id).innerHTML+=` <input id='get_query${id}' type="hidden" value="${q}">
+   <input id='get_answer${id}' type="hidden" value="">`
    let xh = new XMLHttpRequest();
     xh.open('POST', '/watched');
     xh.setRequestHeader('X-CSRFToken', csrftoken);       
     xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xh.setRequestHeader("Accept", "application/json");
-    xh.send(JSON.stringify({'videoId':id,'action':'ask','query':q}));
+    xh.send(JSON.stringify({'videoId':id,'action':'ask','query':q,'creater':''}));
     xh.onload = function() {
     if (xh.status != 200) { 
       alert(`Error ${xh.status}: ${xh.statusText}`); 
@@ -82,7 +85,6 @@ let val=document.getElementById('studentQuery')
     }
 }
 function play(elem,val,res,id){
-  console.log(document.getElementById('get_query'+id))
   if(document.getElementById('get_query'+id)!= null){
     let get_query= document.getElementById('get_query'+id).value
     if(get_query!='')
@@ -105,8 +107,8 @@ function play(elem,val,res,id){
  `
  }
 }
-else if(document.getElementById('get_query'+id).value==''){
- 
+else if(document.getElementById('get_query'+id)!= null&& document.getElementById('get_query'+id).value==''){
+ console.log('ss')
 }
 else{
   document.getElementById('query').innerHTML=`

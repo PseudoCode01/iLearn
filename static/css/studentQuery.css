@@ -1,0 +1,9 @@
+.container{
+    margin-top: 100px;
+    margin-left: 80px;
+    margin-right: 20px;
+}
+.container .item{
+    padding: 20px;
+    background-color: rgb(238, 238, 238);
+}

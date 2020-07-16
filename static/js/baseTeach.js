@@ -112,9 +112,10 @@ xhr2.onload = function() {
 }
 xhr2.onprogress = function(event) {
   if (event.lengthComputable) {
+    if(document.querySelector('.editTprofile')!==null){
     document.querySelector('.editTprofile').innerHTML=` <div class="loadingio-spinner-dual-ball-r8c8qw9ip7"><div class="ldio-q4l6k50whm">
     <div></div><div></div><div></div>
-    </div></div> `
+    </div></div> `}
   } else {
   //  alert('fff')
   }

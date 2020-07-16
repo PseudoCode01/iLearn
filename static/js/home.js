@@ -10,13 +10,15 @@ if(document.getElementById('mySidenav').style.width != 0){
 //     console.log('ff')
 //     document.querySelector('.searchSection').style.display='block'
 // })
-console.log(document.getElementById('home').offsetHeight)
+console.log(getComputedStyle(document.querySelector('.mobile_Nav')).display)
+
+if(getComputedStyle(document.querySelector('.mobile_Nav')).display === 'none'){
 let flag = false;
 window.addEventListener('scroll', function(e) {
    
         window.requestAnimationFrame(function() {
             var scrollTop = window.pageYOffset
-            console.log(scrollTop)
+
             if(scrollTop !==0){
       document.getElementById('myTopnav').style.backgroundColor='white'
       document.getElementById('myTopnav').style.boxShadow='0 0 5px 0 black'
@@ -45,3 +47,4 @@ window.addEventListener('scroll', function(e) {
     });
     });
 
+  }

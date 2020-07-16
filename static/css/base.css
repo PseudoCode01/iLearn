@@ -375,6 +375,24 @@ border-radius: 4px;
   .topnav .logo{
     display: none;
   }
+  .myCourses .courses .item{
+    display: none;
+  }
+  .userIcon img{
+    display: none;
+  }
+  .dropside .dropbtn{
+color: teal;
+  }
+  .myCourses{
+    position: absolute;
+    height: 20px;
+    top: 115px;
+    color: teal;
+}
+  .userData{
+    display: block;
+  }
   .mobile_Nav{
     display: flex;
     justify-content: space-between;
@@ -809,7 +827,6 @@ justify-content: center;
    }
   .cartItems{
     cursor: pointer;
-    box-shadow: 1px 1px 1px 3px rgb(133, 133, 133);
   }
 .cartItems >div{
   padding: 15px;
@@ -835,10 +852,9 @@ justify-content: center;
 }
   /* footer part is designed */
 #lastElem{
-    position: absolute;
-    top: 1000px;
-   width: 99vw;
-    margin-top: 350px;
+  
+   width: 99.1vw;
+    margin-top: 130px;
     background-color:#f2f2f2;
     }
     .foot{

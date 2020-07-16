@@ -44,8 +44,8 @@
     margin-top: 60px;
     border-left: 1px solid rgb(204, 204, 204);
     transition: .5s;
-    /* background-color: white;
-    box-shadow: 0 0 0 5px rgb(173, 173, 173); */
+    height: 82vh;
+    overflow-y: scroll;
 }
 .videos .content{
     border-bottom: 1px solid rgb(182, 182, 182);
@@ -69,7 +69,24 @@
 }
 #studentQuery{
     color: #000;
-display: inline;
+width: 98%;
+}
+#asKQuery{
+    padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 8px black;
+    border: none;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+    margin-top: 20px;
+    width: 100px;
+}
+#asKQuery:hover{
+    background-position: right;
 }
 .active-bar{
     border-bottom: 1px solidrgb(182, 182, 182);
@@ -91,7 +108,7 @@ display: inline;
 }
 .perBox{
     margin: auto;
-    width: 99%;
+    width: 100%;
     margin-bottom: 50px;
 }
 .perBox:hover{
@@ -117,7 +134,7 @@ display: inline;
 }
  .perBtn.active{
     text-decoration: none;
-    border-bottom: 8px solid rgb(111, 153, 77);
+    border-bottom: 8px solid rgb(48, 97, 174);
 }
 .tabcontent{
     display: none;
@@ -132,7 +149,7 @@ display: inline;
 	position: relative;
 	padding: 10px 25px;
   
-	background-color: #4CC713;
+	background-color: rgb(48, 97, 174);
 	color: white;
   
 	font-family: sans-serif;
@@ -180,11 +197,11 @@ display: inline;
 }
 
 .buttonDownload:hover:before {
-	border-color: #4CC713;
+	border-color: rgb(48, 97, 174);
 }
 
 .buttonDownload:hover:after {
-	border-top-color: #4CC713;
+	border-top-color: rgb(48, 97, 174);
 	animation-play-state: running;
 }
 

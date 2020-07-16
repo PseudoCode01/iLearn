@@ -1,4 +1,4 @@
-console.log('hello')
+
 document.getElementById('myRange').addEventListener('input',function(val){
     document.querySelector('.value').innerHTML ="Rs : " +document.getElementById('myRange').value;
     localStorage.setItem('price',document.getElementById('myRange').value)
@@ -16,7 +16,7 @@ status=document.getElementById('status').value;
 if(status=="True"){
 
     document.getElementById('savedLang').value=localStorage.getItem('lang')
-    document.getElementById('pricing').value="    Rs : "+localStorage.getItem('price')
+    document.getElementById('pricing').value="Rs:"+localStorage.getItem('price')
     document.getElementById('lang').style.display="none";
     document.getElementById('savedLang').style.display="block";
     document.getElementById('pricing').style.display="block";
@@ -33,7 +33,6 @@ if(status=="True"){
 
 
 
-document.getElementById('cat').value="Class "+localStorage.getItem('cat');
-// document.getElementById('cat').setAttribute(value,localStorage.getItem('cat'))
-document.getElementById('subcat').value=localStorage.getItem('subcat');
+document.getElementById('cat').value=localStorage.getItem('cat');
+console.log(document.getElementById('cat').value)
 document.getElementById('title').value=localStorage.getItem('courseTitle');

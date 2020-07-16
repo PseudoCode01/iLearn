@@ -33,7 +33,6 @@ def search(request):
     result=Courses.objects.annotate(
     search=SearchVector('title') + SearchVector('category')+SearchVector('sub_category')+SearchVector('creater_name')
     ).filter(search = SearchQuery(query) ).filter(verified="True").values()
-    print(result)
     return render(request,'home/search.html',{'searchResults':result})
 def homeTutor(request):
     return render(request,'home/homeTutor.html')
@@ -64,8 +63,6 @@ def get_teacherProfile(request):
         if request.user.first_name=="Teacher":
             Tprofile=TeacherProfile.objects.filter(ProfileOf_id=request.user).values()
             Tprofile=list(Tprofile)
-            # if len(Tprofile) != 0:
-            #     print(Tprofile.values())
         return JsonResponse({'teacherProfile':Tprofile})
 def teacherPerformance(request):
     return render(request,'home/tPerformance.html')
@@ -84,7 +81,6 @@ def addCart(request):
     action=data['action']
     user=request.user
     course=Courses.objects.get(sno=courseId)
-    print(course)
     addcart=Cart(course=course,user=user)
     if action=="add" :
         addcart.save()
@@ -96,8 +92,11 @@ def saveCourse(request):
     status=False
     course=-1
     if request.method=='POST':
-       category=request.POST.get('cat')
-       subcat=request.POST.get('subcat')
+       c=request.POST.get('cat')
+       cat=c.split('/')
+       category=cat[0]
+       sub_category=cat[1]
+       sub_category2=cat[2]
        title=request.POST.get('title')
        language=request.POST.get('language')
        courseThumbnail=request.FILES['courseThumbnail']
@@ -106,7 +105,7 @@ def saveCourse(request):
        author=request.user.username
        user=request.user
        try:
-           saveCourse=Courses(category=category,sub_category=subcat,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,discription=disc,creater_name=author,creater=user)
+           saveCourse=Courses(category=category,sub_category=sub_category,sub_category2=sub_category2,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,discription=disc,creater_name=author,creater=user)
            saveCourse.save()
            status=True
            course=Courses.objects.filter(creater_id=request.user)
@@ -114,7 +113,7 @@ def saveCourse(request):
            course=(int(str(course)))
        except Exception as e:
            status=False
-    return render(request,'home/saveCourse.html',{'status':status,'id':course})
+    return render(request,'home/saveCourse.html')
 def deleteCourse(request,id):
     course = Courses.objects.get(sno = id)
     course.delete()
@@ -141,7 +140,6 @@ def viewCourses(request):
 def previewCourse(request,id):
     courses=Courses.objects.filter(sno=id).values()
     vid=Videos.objects.filter(videoOfCourse_id=courses[0]['sno'])
-    # print(videos)
     video=set()
     for item in vid:
         path="media/"+str(item.videofile)
@@ -150,7 +148,6 @@ def previewCourse(request,id):
     Tprofile=courses[0]['creater_id']
     teacherProfile=TeacherProfile.objects.filter(ProfileOf=Tprofile)
     allcourses=Courses.objects.filter(creater_id=Tprofile)
-    print(allcourses)
     return render(request,'home/previewCourse.html',{'course':courses,'videos':video,'teacherProfile':teacherProfile,'allcourses':allcourses})
 def get_viewCourses(request):
     data=json.loads(request.body)
@@ -263,7 +260,6 @@ def buynow(request):
         buy=request.POST['buy']
         course=Courses.objects.filter(sno=buy).values()
         amount=course[0]['pricing']
-        print(course[0]['pricing'])
         email=request.user.email
         cart=Cart.objects.filter(course_id=buy).filter(user_id=request.user).values()
         order_id=cart[0]['sno']
@@ -302,13 +298,11 @@ def handleRequest(request):
             
         else:
             status="Failed"
-            print('order was not successful because ' + response_dict['RESPMSG'])
     return render(request,'home/paymentStatus.html',{'response_dict':response_dict,'status':status,'sent':'True'})
 
 def courseAdded(request):
     if request.method=='POST':
         id=request.POST.get('sno')
-        print(id)
         status=request.POST.get('status')
         cart=Cart.objects.filter(user_id=request.user).filter(sno=id)
         
@@ -326,7 +320,6 @@ def myCourses(request):
 def previewmyCourses(request,slug,id):
     myCourses=MyCourses.objects.filter(user_id=request.user).values('course_id')
     c=Courses.objects.filter(sno=id).values('title')
-    print(c)
     course=''
     video=list()
     for i in myCourses:
@@ -337,7 +330,6 @@ def previewmyCourses(request,slug,id):
         Vlength = MP4(path)
         video.append((item,round((Vlength.info.length)/60),4))
     watched=WatchedVideos.objects.filter(user_id=request.user)
-    print(watched)
     return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched,'cTitle':c})
 
 def watched(request):
@@ -347,9 +339,10 @@ def watched(request):
     user=request.user
     wvideo=WatchedVideos.objects.filter(user_id=user).filter(watched_id=videoId)
     if action == 'watch':
+        creater=int(data['creater'])
         if len(wvideo) == 0:
             video=Videos.objects.get(sno=videoId)
-            watch=WatchedVideos(user=user,watched=video)
+            watch=WatchedVideos(user=user,watched=video,creater=creater)
             watch.save()
     elif action == 'ask':
         if len(wvideo) != 0:
@@ -357,8 +350,21 @@ def watched(request):
             que=data['query']
             w.query=que
             w.save()
+    elif action == 'answer':
+        username=(data['user'])
+        answer=data['answer']
+        user=User.objects.filter(username=username)
+        w=WatchedVideos.objects.get(user_id=user[0],watched_id=videoId)
+        w.answer=answer
+        w.save()
+
     return JsonResponse('ok',safe=False)
 
 def password_reset(request):
     return render(request,'home/password_reset.html')
 
+
+def studentQuery(request):
+    user=request.user.id
+    query=WatchedVideos.objects.filter(creater=user)
+    return render(request,'home/studentQuery.html',{'query':query})

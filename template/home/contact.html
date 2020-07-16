@@ -2,23 +2,44 @@
 {% load static %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/contact.css' %}">
-<div class="column">
-    <form action="/contact" method="POST">{% csrf_token %}
-        <span>How may we help you?</span>
-        <div class="form-group">
-            <label for="userName">User Name</label>
-            <input type="text" name="userName" id="userName" placeholder="Enter Your Username " required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email Id</label>
-            <input type="email" name="email" id="email" placeholder="Enter Your Email Id" required>
-        </div>
-        <div class="form-group">
-            <label for="disc">Message</label>
-            <textarea type="text" name="disc" id="disc" placeholder="Enter Your Query" required></textarea>
-        </div>
-            <button id="submitcontact" type="submit">Submit</button>
-    </form>
-  </div>
+<div class="context">
+    <div class="column">
+        <div class="img">
+        <img src="/static/img/img-01.png" alt="">
+    </div>
+        <form action="/contact" method="POST">{% csrf_token %}
+            <span>How may we help you?</span>
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="text" name="userName" id="userName" placeholder="Enter Your Username " required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Id</label>
+                <input type="email" name="email" id="email" placeholder="Enter Your Email Id" required>
+            </div>
+            <div class="form-group">
+                <label for="disc">Message</label>
+                <textarea type="text" name="disc" id="disc" placeholder="Enter Your Query" required></textarea>
+            </div>
+                <button id="submitcontact" type="submit">Submit</button>
+        </form>
+      </div>
+</div>
+
+
+<div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+</div >
 {% endblock body %}
     

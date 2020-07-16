@@ -29,6 +29,7 @@ urlpatterns = [
     path('teacherProfile', views.teacherProfile,name="teacherProfile"),
     path('get_teacherProfile', views.get_teacherProfile,name="get_teacherProfile"),
     path('teacherPerformance', views.teacherPerformance,name="teacherPerformance"),
+    path('studentQuery', views.studentQuery,name="studentQuery"),
     path('previewCourse/<int:id>', views.previewCourse,name="previewCourse"),
     # path('editCourse/<int:id>', views.editCourse,name="editCourse"),
     path('deleteCourse/<int:id>', views.deleteCourse,name="deleteCourse"),

@@ -412,6 +412,7 @@ z-index: 2;
 padding: 25px 4%;
 background-color:#f2f2f2;
 width: 92%;
+margin-top: auto;
 margin-bottom: -2vh;
 }
 footer img{
@@ -431,3 +432,18 @@ footer img{
     font-size: 13px;
   }
 }
+.btn{
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  margin-top: 20px;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+  }
+  .btn:hover{
+    background-position: right;
+  }

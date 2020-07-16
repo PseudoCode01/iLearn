@@ -8,31 +8,28 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/getStarted.css' %}">
 <body>
+    <ul class="breadcrumb">
+       
+      </ul> 
     <div id="TeacherCategory">
-    <div class="category">
+    <div class="category c" id="c1">
     <h3>Select a Category you want teach</h3>
     <div class="select">
-    <select id="cat">
+    <select   id="cat">
         <option value="0">Choose an Option</option>
-        <option value="6">Class 6</option>
-        <option value="7">Class 7</option>
-        <option value="8">Class 8</option>
-        <option value="9">Class 9</option>
-        <option value="10">Class 10</option>
-        <option value="11">Class 11</option>
-        <option value="12">Class 12</option>
+        <option value="1">Academics</option>
+        <option value="6">Competative Exams</option>
+        <option value="2">Computer Science</option>
+        <option value="3">Music</option>
+        <option value="4">Health & Fitness</option>
+        <option value="5">Photograpy</option>
     </select>
 </div>
 </div>
-    <div class="subcategory">
-    <h3>Select a Sub-Category</h3>
+    <div class="sub_category">
     <div class="select">
-    <select id="sub-cat">
-        <option value="">Choose an Option</option>
-        <option value="Physics">Physics</option>
-        <option value="Math">Math</option>
-        <option value="Chemistry">Chemistry</option>
-        <option value="Boilogy">Boilogy</option>
+    <select id="scat">
+        
     </select>
 </div>
 </div>
@@ -44,7 +41,7 @@
 
 <div class="btn">
     <button id="previous">Previous</button>
-    <a id="next" >Next</a>
+    <a id="next" onclick="next()">Next</a>
 </div>
 </body>
 <script src="{% static 'js/getStarted.js'%}"></script>

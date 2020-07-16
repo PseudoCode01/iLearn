@@ -1,24 +1,10 @@
 form{
     margin-top: 90px;
+    margin-left: 80px;
+    margin-right: 20px;
 }
-.form-group{
-    display: flex;
-    border-bottom: 1px solid black;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: 100px;
-    margin-right: 100px;
-    border: 1px solid #ddd; /* Add a thin border to each list item */
-    margin-top: -1px; /* Prevent double borders */
-    background-color: #f6f6f6; /* Add a grey background color */
-    padding:0 0 0 12px; /* Add some padding */   
-}
-@media (max-width:700px){
-    .form-group{
-        margin-left: 60px;
-    margin-right: 10px; 
-    }
-}
+
+
 select { 
     -webkit-appearance: none; 
     -moz-appearance: none; 
@@ -33,10 +19,13 @@ select {
     position: relative; 
     display: block; 
     height: 3em; 
-    margin-left: auto;
     line-height: 3;
+    margin: 5px 0 22px 0;
     background: #f6f6f6;
     overflow: hidden; 
+    width: 94%;
+    padding: 0 30px 0 0;
+    border: 1px solid #eaeaea;
 } 
 select { 
     width: 100%; 
@@ -75,7 +64,7 @@ select::-ms-expand {
    
     margin-top: 4px;
     -webkit-appearance: none;
-    width: 80%;
+    width: 60%;
     height: 15px;
     border-radius: 5px;  
     background: #d3d3d3;
@@ -108,12 +97,8 @@ select::-ms-expand {
  .btn-outline{
     float: right;
     font-size: 1.3rem;
-    margin-right: 5em;
-    padding: 10px 25px;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    border: 1.5px solid rgb(45, 72, 179);
-    border-radius: 2px;
+    margin-right: 100px;
+   width: 100px;
 }
 form .delete{
   
@@ -142,13 +127,7 @@ form .delete:hover{
  .afterSave{
      display: none;
  }
-form .courseData{
-    border: none;
-    border-radius: 0;
-    padding: 12px;
-    background-color: #f6f6f6;
-    font-size: 16px;
-}
+
 
 #st{
     margin-left: 200px;
@@ -164,61 +143,82 @@ form #pricing{
     font-size: 16px;
 }
 
-.col-25{
-    width: 25%;
-    display: flex;
-    align-items: center;
-}
-.col-75{
-    width: 70%;
-}
-@media(max-width:700px){
-    .form-group{
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-}
 @media(max-width:560px){
-    .form-group{
-        flex-direction: column;
-    }
-    .col-25{
-        width: 95%;
-    }
-    .col-75{
-        width: 95%;
-    }
-    form .courseData {
-        border: none;
-        border-radius: 0;
-        padding: 0;
-        background-color: #f6f6f6;
-    /* font-size: 16px; */
-    width: 99%;}
+    
+   
     .slider{
         margin-left: 0;
     }
 }
 
-/* making form responsive
-@media (max-width:650px){
-    .form-group{
-        display: flex;
-        margin-left: 58px;
-    margin-right: 10px;
-    flex-direction: column;
-    }
-    .btn-outline{
-        margin-right: .5em;
-    }
-    form .delete{
-        margin-left: 2.8em;
-    }
-    form label{
-        font-size: 13px;
-    }
-    form .courseData{
-        width: 150px;
-        font-size: 13px;
-    }
-} */
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+  }
+  
+  /* Full-width input fields */
+  input[type=text], input[type=file] {
+    width: 94%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  form textarea.courseData{
+    background-color:  #f1f1f1;
+    width: 94%;
+    padding: 15px;
+}
+
+  .pricing{
+    width: 94%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+  }
+  input[type=text]:focus, input[type=file]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Overwrite default styles of hr */
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+  
+  /* Set a style for the submit/register button */
+  .registerbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .registerbtn:hover {
+    opacity:1;
+  }
+  
+  /* Add a blue text color to links */
+  a {
+    color: dodgerblue;
+  }
+  
+  /* Set a grey background color and center the text of the "sign in" section */
+  .signin {
+    background-color: #f1f1f1;
+    text-align: center;
+  }
+  @media(max-width:700px){
+      form{
+    margin-left: 20px;
+  }
+}

@@ -172,11 +172,12 @@ Cart()
 function clearStorage(){
   localStorage.clear()
 }
-document.querySelector('.userIcon').addEventListener('mouseover',function(){
+
+document.querySelector('.userIcon img').addEventListener('mouseover',function(){
   document.querySelector('.userData').style.display='flex'
   document.querySelector('#cart').style.display='none'
 })
-document.querySelector('.userIcon').addEventListener('mouseleave',function(){
+document.querySelector('.userIcon img').addEventListener('mouseleave',function(){
   document.querySelector('.userData').style.display='none'
   document.querySelector('#cart').style.display='block'
 })

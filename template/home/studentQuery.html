@@ -1,0 +1,22 @@
+{% extends 'baseTeach.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/studentQuery.css' %}">
+<div class="container">
+{% for item in query %}
+{% if item.query %}
+    <div class="item">
+<h3>{{item.watched.videoTitle}}</h3>
+<h5>{{item.timeStamp}}</h5>
+<p> Q:{{item.query}}</p>
+<input type="hidden" id="sno" value="{{item.watched.sno}}">
+<input type="hidden" id="user" value="{{item.user}}">
+<textarea name="answer" id="answer" cols="30" rows="10" placeholder="write your answer here"></textarea>
+<button onclick="answered()" class="btn">Submit Answer</button>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+<script  src="{% static 'js/studentQuery.js'%}"></script>
+{% endblock body %}
+    

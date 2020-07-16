@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My courses | Player</title>
 </head>
 <body>
     {% load static %}
@@ -38,6 +38,7 @@
         <div class="tabcontent"  id="resource">
             <a class="buttonDownload" href="/media/{{course.0.0.resource}}" download>Download Resourses</a>
         </div>
+        <input type="hidden" id="creater" value="{{course.0.0.creater_id}}">
         <div class="tabcontent" id="query">
             {% for watch in watched %}
             {% if watch.watched_id == course.0.0.sno %}
@@ -75,7 +76,7 @@
         <h4>{{forloop.counter}}.{{item.0.videoTitle}}</h4>
         <div class="lower-video-bar">
             <p>{{item.1}} min</p>
-            <div class="watched">
+            <div class="watched" id="w{{item.0.sno}}">
         {% for watch in watched %}
         {% if watch.watched_id == item.0.sno %}
         <img src="/static/img/watched.png" alt="">
