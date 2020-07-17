@@ -23,7 +23,6 @@
 <body>
      <div class="mobile_Nav">
        <span onclick="openMobileNav()" class="hamburger">&#9776;</span>
-    
        <a class="Mlogo" href=""><img src="/static/img/logo.png" alt=""><div>iLearn</div></a>
        <form action="/search"  class="searchForm" method="get" id="searchBar">
         <input type="search" placeholder="Search">
@@ -47,6 +46,16 @@
               {% for subCat in sub_cat %}
               {% if subCat.1 == courses %}
                       <li class="subitem" onclick="sub_category(this)">{{subCat.0}}</li>
+                      <ul class="dropdown-content sidenav2" id="mySidenav{{subCat.0|cut:' '}}">
+                        <a href="javascript:void(0)" class="closenav" onclick="closeNav2(this)">&#8592;</a>
+                        <ul class="content2">
+                          {% for subCat2 in sub_cat2 %}
+                          {% if subCat2.0 == subCat.0 %}
+                                  <li class="subitem" onclick="sub_category2(this)">{{subCat2.1}}</li>
+                                  {% endif %}
+                                  {% endfor %}
+                                </ul> 
+                    </ul>
                       {% endif %}
                       {% endfor %}
                     </ul>

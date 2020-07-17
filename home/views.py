@@ -94,9 +94,9 @@ def saveCourse(request):
     if request.method=='POST':
        c=request.POST.get('cat')
        cat=c.split('/')
-       category=cat[0]
-       sub_category=cat[1]
-       sub_category2=cat[2]
+       category=cat[0].strip()
+       sub_category=cat[1].strip()
+       sub_category2=cat[2].strip()
        title=request.POST.get('title')
        language=request.POST.get('language')
        courseThumbnail=request.FILES['courseThumbnail']
@@ -105,15 +105,25 @@ def saveCourse(request):
        author=request.user.username
        user=request.user
        try:
-           saveCourse=Courses(category=category,sub_category=sub_category,sub_category2=sub_category2,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,discription=disc,creater_name=author,creater=user)
-           saveCourse.save()
-           status=True
-           course=Courses.objects.filter(creater_id=request.user)
-           course=course.last()
-           course=(int(str(course)))
+           if len(c)>5 and len(title)>0 and len(language)>0 and len(pricing)>0 and len(courseThumbnail)>0 and len(disc)>20:
+               print('success')
+               saveCourse=Courses(category=category,sub_category=sub_category,sub_category2=sub_category2,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,discription=disc,creater_name=author,creater=user)
+               saveCourse.save()
+               status=True
+               course=Courses.objects.filter(creater_id=request.user)
+               course=course.last()
+               course=(int(str(course)))
+               messages.success(request,'Course created after adding first video the course will be varified')
+               return redirect('/addVideos')
+           else:
+               print('error')
+               messages.error(request,'Some error occured')
+               return render(request,'home/saveCourse.html')
        except Exception as e:
            status=False
-    return render(request,'home/saveCourse.html')
+       
+    else:
+        return render(request,'home/saveCourse.html')
 def deleteCourse(request,id):
     course = Courses.objects.get(sno = id)
     course.delete()
@@ -124,16 +134,18 @@ def addVideos(request):
     get_data={'get_courses':get_courses,'get_videos':get_videos}
     return render(request,'home/addVideos.html',get_data)
 def video(request):
-    if request.method=='POST':
-        courseSno=request.POST['courseSno']
-        videoTitle=request.POST['videoTitle']
-        thumbnail=request.FILES['thumbnail']
-        video=request.FILES['video']
-        resources=request.FILES['resources']
-        course=Courses.objects.get(sno=courseSno)
-        user=request.user
-    video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
-    video.save()
+    data=request.FILES['the']
+    print(data)
+    # if request.method=='POST':
+    #     courseSno=request.POST['courseSno']
+    #     videoTitle=request.POST['videoTitle']
+    #     thumbnail=request.FILES['thumbnail']
+    #     video=request.FILES['video']
+    #     resources=request.FILES['resources']
+    #     course=Courses.objects.get(sno=courseSno)
+    #     user=request.user
+    # video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
+    # video.save()
     return redirect('/addVideos')
 def viewCourses(request):
     return render(request,'home/viewCourses.html')
@@ -151,9 +163,13 @@ def previewCourse(request,id):
     return render(request,'home/previewCourse.html',{'course':courses,'videos':video,'teacherProfile':teacherProfile,'allcourses':allcourses})
 def get_viewCourses(request):
     data=json.loads(request.body)
-    cat=data['cat']
-    scat=data['scat']
-    courses=(Courses.objects.filter(category=cat).filter(sub_category=scat).filter(verified="True").values())
+    cat=data['cat'].strip()
+    scat=data['scat'].strip()
+    scat2=data['scat2'].strip()
+    print(cat,scat,scat2)
+    courses=(Courses.objects.filter(category=cat).filter(sub_category=scat).filter(sub_category2=scat2).filter
+    (verified="True").values())
+    print(courses)
     return JsonResponse({'courses':list(courses)})
 def CartItem(request):
     return render(request,'home/cartItems.html')

@@ -21,7 +21,7 @@ function verification(val){
 }
 var set=new Set()
 function updateUserOrder(val,courseId,action){
-    let url='/verification'
+    let url='verification'
     fetch(url,{
         method:'POST',
         headers:{

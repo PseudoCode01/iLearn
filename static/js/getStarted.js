@@ -294,7 +294,7 @@ document.querySelector('.category').style.display='none'
         document.querySelector('#scat').innerHTML=ht
     }
     else if(i==2){
-        document.querySelector('.breadcrumb').innerText+= document.querySelector('#scat').value
+        document.querySelector('.breadcrumb').innerText+= document.querySelector('#scat').value+' / '
         document.querySelector('#scat').innerHTML=`
         <option value="Physics">Physics</option>
         <option value="Math">Math</option>
@@ -303,7 +303,7 @@ document.querySelector('.category').style.display='none'
     }
     else if(i==3){
         v4=document.querySelector('#scat').value;
-        document.querySelector('.breadcrumb').innerText+=v4
+        document.querySelector('.breadcrumb').innerText+=v4+' / '
         document.querySelector('.sub_category').style.display='none'
         document.querySelector('#title').style.display='block'
     }

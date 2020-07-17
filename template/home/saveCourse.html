@@ -3,18 +3,11 @@
 {% block body %}
  {% load static %}
  <link rel="stylesheet" href="{% static 'css/saveCourse.css' %}">
-<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
- 
+<form action="/saveCourse" method="POST" enctype="multipart/form-data">{% csrf_token %}
     <label for="category"><b> Category </b></label>
-   
     <input type="text" class="courseData" id="cat" name="cat" readonly></input>
-
-
     <label for="category"><b> Course Title  </b></label>
-
     <input type="text" class="courseData" id="title" name="title" readonly></input>
-
-
     <label for="category"><b> Language  </b></label>
     <div class="select" id="lang">
       <select id="setLang" name="language">
@@ -23,7 +16,6 @@
           <option value="English">English</option>
           <option value="Hindi + English">Hindi + English</option>
       </select></div>
-
     <input type="text"  name="" class="courseData" id="savedLang">
       <label for="courseThumbnail"><b> Course Thumbnail Image  </b></label>
       <input  type="file" class="courseData" name="courseThumbnail" id="courseThumbnail">
@@ -38,10 +30,10 @@
 
     <textarea type="text" class="courseData" id="disc" name="disc" ></textarea>
   <button class="save btn-outline btn" type="submit">Save</button>
-  <div class="afterSave">
+  <!-- <div class="afterSave">
   <button class="delete" type="submit">Delete</button>
   <a href="/addVideos" class="addVideo btn-outline" >Go to AddVideo</a>
-</div>
+</div> -->
 </form>
 
 <input id="status" type="hidden" value="{{status}}">

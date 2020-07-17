@@ -10,7 +10,7 @@ if(document.getElementById('mySidenav').style.width != 0){
 //     console.log('ff')
 //     document.querySelector('.searchSection').style.display='block'
 // })
-console.log(getComputedStyle(document.querySelector('.mobile_Nav')).display)
+
 
 if(getComputedStyle(document.querySelector('.mobile_Nav')).display === 'none'){
 let flag = false;

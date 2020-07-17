@@ -14,9 +14,7 @@
 .myCourses{
     color: white;
 }
-.sidenav a{
-    color: black;
-}
+
 @media (max-width:950px){
     .topnav{
         background-color:rgb(255, 255, 255);
@@ -220,7 +218,7 @@ flex-direction: column;
        
     }
     /* courses section start here */
-.courses{
+.course{
     padding: 5px 0;
     margin-top: 150px;
     width: 100%;
@@ -233,7 +231,7 @@ flex-direction: column;
     margin-right: auto;
     align-items: center;
 }
-.courses img{
+.course img{
    
     position: relative;
     margin-left: 10px;
@@ -241,16 +239,16 @@ flex-direction: column;
     
 }
 
-.courses .coursesContent { align-items: center;
+.course .courseContent { align-items: center;
 display: flex;
 flex-direction: column;
 justify-content: center;
 
 }
-.coursesContent h4{
+.courseContent h4{
 font-size: 2rem;    
 text-align: center;}
-.coursesContent p{
+.courseContent p{
 margin-top: 30px;
 line-height: 20px;
 width: 40%;
@@ -261,17 +259,17 @@ text-align: center;
 }
 
 @media (max-width:1000px){
-    .courses{
+    .course{
         flex-direction: column;
         height: 480px;
     }
-    .courses img{
+    .course img{
         margin: 0;
     }
-    .coursesContent h4{
+    .courseContent h4{
         font-size: 1.4rem;
     text-align: center;    }
-    .coursesContent{
+    .courseContent{
         margin-top:15px;
         margin-left: 0;
         justify-content: center;
@@ -515,7 +513,7 @@ background-position: right;    }
 
 
 @media(max-width:450px){
-    .courses img,.learnaround img,.startteaching img{
+    .course img,.learnaround img,.startteaching img{
         width: 80%;
     }
 }

@@ -66,6 +66,9 @@ height: 50px;
 #uname .userIcon:hover{
   background-position: right;
 }
+#uname .userIcon:hover .userData{
+  display: flex;
+}
 
 #uname .userIcon img{
 margin-top: 7px;
@@ -943,7 +946,7 @@ justify-content: center;
   z-index: 2; /* Stay on top */
   top: 0;
   left: 0;
-  background-color:white; 
+  background-color:#100657; 
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -953,9 +956,10 @@ justify-content: center;
 .sidenav a {
   padding: 8px 8px 8px 28px;
   text-decoration: none;
-  font-size: 25px;
-  color:black;
+  font-size: 20px;
+  color:rgb(255, 255, 255);
   display: block;
+  background-color:#100657;
   transition: 0.3s;
 }
 
@@ -970,8 +974,9 @@ justify-content: center;
   top: 0;
   right: 25px;
   font-size:50px;
-  color: rgb(65, 100, 236);
+  color: rgba(65, 100, 236,0);
   margin-left: 50px;
+  height: 43px;
 }
 .sidenav .closenav:hover {
   color: rgb(110, 133, 228);
@@ -982,6 +987,31 @@ justify-content: center;
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 } 
+.sidenav2{
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color:white; 
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+.sidenav2 a {
+  padding: 8px 8px 8px 28px;
+  text-decoration: none;
+  font-size: 25px;
+  color:black;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav2 a:hover {
+  color: #f1f1f1;
+}
 
 /* adding collapsible in sidebar */
  /* Style the button that is used to open and close the collapsible content */
@@ -1010,6 +1040,16 @@ justify-content: center;
   background-color: #f1f1f1;
 }
 .content li{
+  list-style: none;
+  padding: 10px;
+  margin-left: 10px;
+}
+.content2 {
+  padding: 0 18px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.content2 li{
   list-style: none;
   padding: 10px;
   margin-left: 10px;

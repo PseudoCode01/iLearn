@@ -447,3 +447,43 @@ footer img{
   .btn:hover{
     background-position: right;
   }
+
+  /* The alert message box */
+.alert-success {
+  padding: 15px;
+  background-color: #1ca609; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+.alert-error {
+  padding: 15px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+}
+.alert {
+  position: absolute;
+  top: 10vh;
+  left:0;
+  right: 0;
+  opacity: 1;
+  z-index: 2;
+  transition: opacity 0.6s; /* 600ms to fade out */
+}

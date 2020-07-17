@@ -1,13 +1,4 @@
 
-// function myFunction() {
-//   var x = document.getElementById("myTopnav");
-//   if (x.className === "topnav") {
-//     x.className += " responsive";
-//   } else {
-//     x.className = "topnav";
-//   }
-// }
-
 if( document.getElementById("signUp")!==null){
 var modalSignup = document.querySelector(".modal-signup");
 // Get the button that opens the Sign Up modal
@@ -58,13 +49,15 @@ window.onclick = function(event) {
 //open side nav
 /* Set the width of the side navigation to 250px */
 function openNav() {
-  console.log('clicked')
   document.getElementById("mySidenav").style.width = "250px";
 }
 
 /* Set the width of the side navigation to 0 */
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
+}
+function closeNav2(val) {
+  val.parentElement.style.width='0'
 }
 
 //open collapsiblle on sidebar
@@ -90,6 +83,11 @@ function category(val){
 }
 function sub_category(val){
   localStorage.setItem('scat',val.innerText)
+  console.log('mySidenav'+val.innerText.split(" ").join(""))
+  document.getElementById('mySidenav'+val.innerText.split(" ").join("")).style.width='250px'
+}
+function sub_category2(val){
+  localStorage.setItem('scat2',val.innerText)
   window.location.href='/viewCourses'
 }
 
@@ -173,14 +171,6 @@ function clearStorage(){
   localStorage.clear()
 }
 
-document.querySelector('.userIcon img').addEventListener('mouseover',function(){
-  document.querySelector('.userData').style.display='flex'
-  document.querySelector('#cart').style.display='none'
-})
-document.querySelector('.userIcon img').addEventListener('mouseleave',function(){
-  document.querySelector('.userData').style.display='none'
-  document.querySelector('#cart').style.display='block'
-})
 
 // Get all elements with class="closebtn"
 var close = document.getElementsByClassName("closebtn");

@@ -135,17 +135,6 @@ input[type=text], select, textarea{
 
 
 
- /* The alert message box */
- .alert {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
 
 /* The close button */
 .closebtn {

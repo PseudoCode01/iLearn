@@ -7,11 +7,11 @@ let id=document.getElementById('id').value;
 var lang=""
 let status ="False";
 
-document.querySelector('.save').addEventListener('click',function(lang){
-    lang=document.getElementById('setLang').value
-    localStorage.setItem('lang',lang)
-    document.querySelector('form').action="/saveCourse" 
-})
+// document.querySelector('.save').addEventListener('click',function(lang){
+//     lang=document.getElementById('setLang').value
+//     localStorage.setItem('lang',lang)
+//     document.querySelector('form').action="/saveCourse" 
+// })
 status=document.getElementById('status').value;
 if(status=="True"){
 

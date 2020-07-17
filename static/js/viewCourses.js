@@ -71,6 +71,7 @@ alert("Request failed");
 
 let cat=localStorage.getItem('cat')
 let scat=localStorage.getItem('scat')
+let scat2=localStorage.getItem('scat2')
 var cart='';
 if(localStorage.getItem('cart')!==null)
 {cart=localStorage.getItem('cart').split(' ')}
@@ -80,7 +81,7 @@ xh.open('POST', '/get_viewCourses');
 xh.setRequestHeader('X-CSRFToken', csrftoken);       
 xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 xh.setRequestHeader("Accept", "application/json");
-xh.send(JSON.stringify({'cat':cat,'scat':scat}));
+xh.send(JSON.stringify({'cat':cat,'scat':scat,'scat2':scat2}));
 var data='fg'
 xh.onload = function() {
 if (xh.status != 200) { 
@@ -133,11 +134,7 @@ if (event.lengthComputable) {
 } else {
 //  alert('fff')
 }
-
 };
-
 xh.onerror = function() {
 alert("Request failed");
 };
-
-console.log(document.querySelectorAll('.title'))

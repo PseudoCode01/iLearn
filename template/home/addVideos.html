@@ -9,10 +9,10 @@
 <div class="courseData">
 <ul class="courseUl">
     <li class="item"><b>Title : </b>{{courses.title}}</li>
-    <li  class="item"><b>Category : </b>{{courses.category}}</li>
-    <li  class="item"><b>Sub Category : </b>{{courses.sub_category}}</li>
-    <li  class="item"><b>Language : </b>{{courses.language}}</li>
-    <li  class="item"><b>Pricing : </b> Rs  {{courses.pricing}}</li>
+    <li class="item"><b>Category : </b>{{courses.category}}</li>
+    <li class="item"><b>Sub Category : </b>{{courses.sub_category}}</li>
+    <li class="item"><b>Language : </b>{{courses.language}}</li>
+    <li class="item"><b>Pricing : </b> Rs  {{courses.pricing}}</li>
   </ul>
 <button type="button" class="collapsible">
 Add Videos
@@ -21,16 +21,16 @@ Add Videos
 <!-- <input type="file" id="myFile" name="filename">
 <input type="submit" class="submitVideo" value="Add Video"> -->
 <div class="container">
-    <form action="/video" method="POST" enctype="multipart/form-data">{% csrf_token %} 
+    <form id='formData' method="POST" enctype="multipart/form-data">{% csrf_token %} 
         <input type="hidden" value="{{courses.sno}}" id="courseSno" name="courseSno" >
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-25">
           <label for="videoTitle">Title of the Video</label>
         </div>
         <div class="col-75">
           <input type="text" id="videoTitle" name="videoTitle" placeholder="eg: Arithmatic of Complex Number" required>
         </div>
-      </div>
+      </div> -->
       <div class="row">
         <div class="col-25">
           <label for="thumbnail">Video Thumbnail Image</label>
@@ -56,7 +56,7 @@ Add Videos
         </div>
       </div>
       <div class="row">
-        <input type="submit" value="Add">
+        <input onclick="sendForm()" value="Add">
       </div>
     </form>
   </div> 

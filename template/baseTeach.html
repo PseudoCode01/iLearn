@@ -19,6 +19,13 @@
     </div>
     <a href="/" id="role">Student</a>
 </div>
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+   {{message}}
+  </div> 
+</div>
+{% endfor %}
 <div id="myModal" class="modal modal-profile">
     <div class="modal-content">
       <div class="modal-header">

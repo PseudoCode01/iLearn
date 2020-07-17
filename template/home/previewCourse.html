@@ -9,7 +9,7 @@
     <img class="mediaT" src="/media/{{course.0.courseThumbnail}}" alt="">
     <div class="leftContent">
         <h1>{{course.0.title|upper}}</h1>
-        <h2>{{course.0.category}},{{course.0.sub_category}}</h2>
+        <h2>{{course.0.category}}/{{course.0.sub_category}}/{{course.0.sub_category2}}</h2>
         <div  class="row">
         <div class="stars"  data-rating="{{course.0.rating}}" data-rated={{course.0.ratedBy}}>
             <span class="star"></span>
@@ -22,7 +22,7 @@
             <p class="ratedBy">({{course.0.ratedBy}} ratings)</p>
             <p class="enrolled">{{course.0.enrolled}} Students enrolled</p>
         </div>
-        <div   class="row"> <p class="cn" data-id="{{item.sno}}">Created By {{course.0.creater_name}}</p>
+        <div   class="row"> <p class="cn" data-id="{{course.0.sno}}">Created By {{course.0.creater_name}}</p>
         <p class="language">{{course.0.language}}</p>
         </div>
     </div>
@@ -35,7 +35,7 @@
           </div>
           <div class="cart">
           <div class="addcart btn-cart">
-            <button data-product="{{item.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
+            <button data-product="{{course.0.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
          </div> 
         </div>
     </div>
