@@ -39,5 +39,6 @@ urlpatterns = [
     path('myCourses', views.myCourses,name="myCourses"),
     path('watched', views.watched,name="watched"),
     path('courses/<str:slug>/<int:id>', views.previewmyCourses,name="previewmyCourses"),
+    path('homeTutor', views.homeTutor,name="homeTutor"),
 
 ]

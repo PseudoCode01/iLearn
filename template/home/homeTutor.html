@@ -19,7 +19,7 @@
    <li>You will be asked to prove your identity and provide references.</li>
     </ul>
 </div>
-    <form action="/addCourse">
+    <form action="/homeTutor" method="POST" enctype="multipart/form-data"> {% csrf_token %}
         <div class="container">
                 <h1>Register</h1>
                 <p>Please fill in this form to register for home tutor.</p>
@@ -53,18 +53,28 @@
             <input type="text" placeholder="Enter your address" name="state" id="state" value="" readonly required>
   
             <label for="subject"><b>Subject</b></label>
-            <input type="text" placeholder="Enter subject you want to teach" name="subject" id="subject" required>
+         
+            <input type="text" placeholder="Enter subjects you want to teach" name="subject" id="subject" required>
+            <label for="Class"><b>Classes</b></label>
+            <input type="text" placeholder="eg:6-8" name="classes" id="classes" required>
+            <label for="disc"><b>About Yourself</b></label>
+            <div class="discription">
+            <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" required></textarea></div>
+           
+            <label for="id_proof"><b>Id_Proof</b></label>
+            <div class="Id-proof">
+            <input type="file" name="id_proof" id="id_proof" accept="image/*,.pdf" required></div>
             <label for="ranger"><b>Enter the Salery Range</b></label>
             <div class="ranger">
            <div class="rangerLow">
              <label for="amountLower">Lower</label>
-            <input type="range" min="0" max="10000" value="1000" class="amountLower slider" id="myRange" oninput="sliderChangeLower(this.value)">
+            <input type="range" onchange="lowervalue(this.value)" name="salaryL" min="0" max="5000" value="1000" class="amountLower slider" id="myRange" oninput="sliderChangeLower(this.value)" required>
             <output class="lowerValue"> </output>
 
           </div>
           <div class="rangerHigh">
             <label for="amountHigher">Higher</label>
-            <input type="range" min="0" max="10000" value="1000" class="amountHigher slider" id="myRange" oninput="sliderChangeHigher(this.value)">
+            <input type="range" min="0" max="10000" value="1000" name="salaryH" class="amountHigher slider" id="myRange" oninput="sliderChangeHigher(this.value)" required>
             <output class="higherValue"> </output>
           </div>
           </div>

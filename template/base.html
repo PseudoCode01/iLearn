@@ -1,250 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% load static %}
-    <title>{%block title%} {% endblock title %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% load static %}
+  <title>{%block title%} {% endblock title %}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <!--Start of Tawk.to Script-->
 <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/5f076db667771f3813c0c02c/default';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/5f076db667771f3813c0c02c/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
   })();
-  </script>
+</script>
+
 <body>
-     <div class="mobile_Nav">
-       <span onclick="openMobileNav()" class="hamburger">&#9776;</span>
-       <a class="Mlogo" href=""><img src="/static/img/logo.png" alt=""><div>iLearn</div></a>
-       <form action="/search"  class="searchForm" method="get" id="searchBar">
-        <input type="search" placeholder="Search">
-      </form>
-     </div>
-    <div class="topnav" id="myTopnav">
-      <span onclick="closeMobileNav()" class="cross">&#x2718</span>
-      <div class="cline"></div>
-        <a href="/" class="logo">i Learn</a>
-        <div class="dropside">
-          <button class="dropbtn" onclick="openNav()">Categories
-            <i class="fa fa-caret-down"></i>
-          </button>
-        </div>
-          <ul class="dropdown-content sidenav" id="mySidenav">
-            <a href="javascript:void(0)" class="closenav" onclick="closeNav()">&#8592;</a>
-            {% for courses in get_courses %}
-            <a class=" collapsible" onclick="category(this)" id="6">{{courses}}
-            </a>
-            <ul class="content ds6 ">
-              {% for subCat in sub_cat %}
-              {% if subCat.1 == courses %}
-                      <li class="subitem" onclick="sub_category(this)">{{subCat.0}}</li>
-                      <ul class="dropdown-content sidenav2" id="mySidenav{{subCat.0|cut:' '}}">
-                        <a href="javascript:void(0)" class="closenav" onclick="closeNav2(this)">&#8592;</a>
-                        <ul class="content2">
-                          {% for subCat2 in sub_cat2 %}
-                          {% if subCat2.0 == subCat.0 %}
-                                  <li class="subitem" onclick="sub_category2(this)">{{subCat2.1}}</li>
-                                  {% endif %}
-                                  {% endfor %}
-                                </ul> 
-                    </ul>
-                      {% endif %}
-                      {% endfor %}
-                    </ul>
-                    {% endfor %}
-               
-            <input type="hidden" name="get_cat" id="get_cat">
-            <input type="hidden" name="get_scat" id="get_scat">
+  <div class="mobile_Nav">
+    <span onclick="openMobileNav()" class="hamburger">&#9776;</span>
+    <a class="Mlogo" href=""><img src="/static/img/logo.png" alt="">
+      <div>iLearn</div>
+    </a>
+    <form action="/search" class="searchForm" method="get" id="searchBar">
+      <input type="search" placeholder="Search">
+    </form>
+  </div>
+  <div class="topnav" id="myTopnav">
+    <span onclick="closeMobileNav()" class="cross">&#x2718</span>
+    <div class="cline"></div>
+    <a href="/" class="logo">i Learn</a>
+    <div class="dropside">
+      <button class="dropbtn" onclick="openNav()">Categories
+        <i class="fa fa-caret-down"></i>
+      </button>
+    </div>
+    <ul class="dropdown-content sidenav" id="mySidenav">
+      <a href="javascript:void(0)" class="closenav" onclick="closeNav()">&#8592;</a>
+      {% for courses in get_courses %}
+      <a class=" collapsible" onclick="category(this)" id="6">{{courses}}
+      </a>
+      <ul class="content ds6 ">
+        {% for subCat in sub_cat %}
+        {% if subCat.1 == courses %}
+        <li class="subitem" onclick="sub_category(this)">{{subCat.0}}</li>
+        <ul class="dropdown-content sidenav2" id="mySidenav{{subCat.0|cut:' '}}">
+          <a href="javascript:void(0)" class="closenav" onclick="closeNav2(this)">&#8592;</a>
+          <ul class="content2">
+            {% for subCat2 in sub_cat2 %}
+            {% if subCat2.0 == subCat.0 %}
+            <li class="subitem" onclick="sub_category2(this)">{{subCat2.1}}</li>
+            {% endif %}
+            {% endfor %}
+          </ul>
         </ul>
-
-        {% if user.is_authenticated %}
-         <span id="uname">
-           {% if request.user.first_name == "Teacher" %}
-           <a href="/addCourse" class="role">Instructer</a>
-           {% endif %}
-           <div class="userIcon">
-           <img src="/static/img/user1.png" alt="">
-           <div class="userData">
-            <span id="name"><b>Hi! {{request.user}}</b></span>
-             <button class="btn logout" ><a  class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
-        </div>
-          </div>
-            
-        </span>
-        <div class="myCourses">
-          <p onclick="window.location.href='/myCourses'">MyCourses</p>
-         <div class="courses">
-           
-           {% if myCourses %}
-           
-           {% for courses in myCourses %}
-           <div class="item" onclick="window.location.href='/myCourses'">
-                <div class="myCoursesthumbnail">
-               <img src="/media/{{courses.0.courseThumbnail}}" alt=""></div>
-            <div class="myCoursesData">
-             <h1>{{courses.0.title|upper}}</h1>
-             <h1>{{courses.0.category}},{{courses.0.sub_category}}</h1>
-             <p>Start Learning</p>
-             </div>
-            
-               
-          </div>
-           {%  endfor %}
-          
-           
-             {% else %}
-           {% endif %}
-             
-         </div>
-        </div>
-        {% else %}
-        <!-- Button to trigger signup modal -->
-        <button id="signUp" class="btn btn-SignUp">Sign Up</button>
-        <!-- Button to trigger login modal -->
-        <button id="logIn" class="btn btn-Login">Log In</button>
-        <button class="btn btn-Teach"><a href="/teach1">Teach On iLearn</a></button>
         {% endif %}
-        <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
-        <div class="mid2">
-          <form action="/search"  class="searchForm" method="get" id="searchBar">
-            <input type="search" name="search" id="search" placeholder="Search">
-          </form>
-            </div>
-      </div> 
-      {% for message in messages %}
-      <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
-          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-         {{message}}
-        </div> 
-      </div>
+        {% endfor %}
+      </ul>
       {% endfor %}
-<!--signUp The Modal -->
-<div id="myModal" class="modal modal-signup">
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close closesignup">&times;</span>
-      <div class="Welcomesignup">
-        <img src="/static/img/signupAvatar.png" alt="">
-        <h2>Welcome</h2>
-      </div>
-    </div>
-    <div class="modal-body">
-        <form action="/signup" method="POST">{% csrf_token %}
-            <div class="form-group">
-              <img src="/static/img/usernameicon.png" alt="">
-                <label for="userName">User Name</label>
-                <input type="text" name="userName" id="userName" placeholder="Enter a Unique Username " required>
-            </div>
-            <div class="form-group">
-              <img src="/static/img/email.png" alt="">
-                <label for="email">Email Id</label>
-                <input type="email" name="email" id="email" placeholder="Enter Your Email Id" required>
-            </div>
-            <div class="form-group">
-              <img src="/static/img/lockicon.png" alt="">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
-            </div>
-            <div class="form-group">
-              <img src="/static/img/lockicon.png" alt="">
-                <label for="cpassword">Confirm Password</label>
-                <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
-            </div>
-                <button id="submitSignup" type="submit">Sign Up</button>
-        </form>
-    </div>
-  </div>
-</div>
-<!--login The Modal -->
-<div id="myModal" class="modal modal-login">
-  <div class="modal-content login_modal-content">
-    <div class="modal-header">
-      <span class="close closelogin">&times;</span>
-      <div class="welcomelogin">
-        <img src="/static/img/loginavataar.svg" alt="">
-        <h2>Welcome Back</h2>
-      </div>
-    </div>
-    <div class="modal-body">
-        <form action="/login" method="POST">{% csrf_token %}
-            <div class="form-group">
-                 <img src="/static/img/usernameicon.png" alt="">
-                <label for="userName">User Name</label>
-                <input type="text" name="loginuserName" id="loginuserName" placeholder="Enter Your Username " required>
-            </div>
-            <div class="form-group">
-              <img src="/static/img/lockicon.png" alt="">
-                <label for="password">Password</label>
-                <input type="password" name="loginpass" id="loginpass" placeholder="Enter Your Password" required>
-            </div>            
-            <div class="login-btn">
-                <button id="submitLogin" class="logbutton" type="submit">Log In</button>
-               </div>
-               <div class="loginline"></div>
-               <div class="forgetpassword">
-                <a>Forget password</a>
-              </div>
-        </form>
-    </div>
-  </div>
-</div>
-{% if user.is_authenticated %}
-<div id="cart" onclick="window.location.href='/cart'">
-  <div class="cartIcon">
-    <img src="/static/img/cartIcon.png" alt=""><span class="count"></span></div>
-        <div class="cartItems arrow-top">
-        
-          </div>
-        </div> 
-      {%  endif %}
-    {% block body %}
 
-    {% endblock body %}
+      <input type="hidden" name="get_cat" id="get_cat">
+      <input type="hidden" name="get_scat" id="get_scat">
+    </ul>
+
+    {% if user.is_authenticated %}
+    <span id="uname">
+      {% if request.user.first_name == "Teacher" %}
+      <a href="/addCourse" class="role">Instructer</a>
+      {% endif %}
+      <div class="userIcon">
+        <img src="/static/img/user1.png" alt="">
+        <div class="userData">
+          <span id="name"><b>Hi! {{request.user}}</b></span>
+          <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
+        </div>
+      </div>
+
+    </span>
+    <div class="myCourses">
+      <p onclick="window.location.href='/myCourses'">MyCourses</p>
+      <div class="courses">
+
+        {% if myCourses %}
+
+        {% for courses in myCourses %}
+        <div class="item" onclick="window.location.href='/myCourses'">
+          <div class="myCoursesthumbnail">
+            <img src="/media/{{courses.0.courseThumbnail}}" alt=""></div>
+          <div class="myCoursesData">
+            <h1>{{courses.0.title|upper}}</h1>
+            <h1>{{courses.0.category}},{{courses.0.sub_category}}</h1>
+            <p>Start Learning</p>
+          </div>
+
+
+        </div>
+        {%  endfor %}
+
+
+        {% else %}
+        {% endif %}
+
+      </div>
+    </div>
+    {% else %}
+    <!-- Button to trigger signup modal -->
+    <button id="signUp" class="btn btn-SignUp">Sign Up</button>
+    <!-- Button to trigger login modal -->
+    <button id="logIn" class="btn btn-Login">Log In</button>
+    <button class="btn btn-Teach"><a href="/teach1">Teach On iLearn</a></button>
+    {% endif %}
+    <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
+    <div class="mid2">
+      <form action="/search" class="searchForm" method="get" id="searchBar">
+        <input type="search" name="search" id="search" placeholder="Search">
+      </form>
+    </div>
+  </div>
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    {{message}}
+  </div>
+  </div>
+  {% endfor %}
+  <!--signUp The Modal -->
+  <div id="myModal" class="modal modal-signup">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close closesignup">&times;</span>
+        <div class="Welcomesignup">
+          <img src="/static/img/signupAvatar.png" alt="">
+          <h2>Welcome</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form action="/signup" method="POST">{% csrf_token %}
+          <div class="form-group">
+            <img src="/static/img/usernameicon.png" alt="">
+            <label for="userName">User Name</label>
+            <input type="text" name="userName" id="userName" placeholder="Enter a Unique Username " required>
+          </div>
+          <div class="form-group">
+            <img src="/static/img/email.png" alt="">
+            <label for="email">Email Id</label>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email Id" required>
+          </div>
+          <div class="form-group">
+            <img src="/static/img/lockicon.png" alt="">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+          </div>
+          <div class="form-group">
+            <img src="/static/img/lockicon.png" alt="">
+            <label for="cpassword">Confirm Password</label>
+            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
+          </div>
+          <button id="submitSignup" type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--login The Modal -->
+  <div id="myModal" class="modal modal-login">
+    <div class="modal-content login_modal-content">
+      <div class="modal-header">
+        <span class="close closelogin">&times;</span>
+        <div class="welcomelogin">
+          <img src="/static/img/loginavataar.svg" alt="">
+          <h2>Welcome Back</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form action="/login" method="POST">{% csrf_token %}
+          <div class="form-group">
+            <img src="/static/img/usernameicon.png" alt="">
+            <label for="userName">User Name</label>
+            <input type="text" name="loginuserName" id="loginuserName" placeholder="Enter Your Username " required>
+          </div>
+          <div class="form-group">
+            <img src="/static/img/lockicon.png" alt="">
+            <label for="password">Password</label>
+            <input type="password" name="loginpass" id="loginpass" placeholder="Enter Your Password" required>
+          </div>
+          <div class="login-btn">
+            <button id="submitLogin" class="logbutton" type="submit">Log In</button>
+          </div>
+          <div class="loginline"></div>
+          <div class="forgetpassword">
+            <a>Forget password</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% if user.is_authenticated %}
+  <div id="cart" onclick="window.location.href='/cart'">
+    <div class="cartIcon">
+      <img src="/static/img/cartIcon.png" alt=""><span class="count"></span></div>
+    <div class="cartItems arrow-top">
+
+    </div>
+  </div>
+  {%  endif %}
+
+  {% block body %}
+
+  {% endblock body %}
 
   <!--End of Tawk.to Script-->
 
-    <div id="lastElem">
-        <div class="foot">
-        <div>
-          <ul class="footUl">
-            <li><b>iLearn</b></li>
-            <li><a href="/teach1">Teach On iLearn</a></li>
-            <li><a href="/about">About Us</a></li>
-            <li><a href="">Devlopers</a></li>
-            <li><a href="/contact">Contact Us</a></li>
-          </ul>
-        </div>
-        <div>
-          <ul class="footUl">
-            <li><b>More</b></li>
-            <li><a href="">Terms</a></li>
-            <li><a href="">Privacy</a></li>
-          </ul>
-        </div>
-        </div>
-        <hr style="background-color: rgb(209, 209, 209);">
-        <footer>
-          <div id="fitem1">
-          &copy; 2020 iLearn Inc.All Right Reserved
-        </div>
-        <div id="fitem2">
-          <img src="/static/img/facebook.png" alt="">
-          <img src="/static/img/instagram.png" alt="">
-          <img src="/static/img/twitter.png" alt="">
-          <img src="/static/img/linkedin.png" alt="">
-        </div>
-        </footer>
-        </div>
-    
+  <div id="lastElem">
+    <div class="foot">
+      <div>
+        <ul class="footUl">
+          <li><b>iLearn</b></li>
+          <li><a href="/teach1">Teach On iLearn</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="">Devlopers</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="footUl">
+          <li><b>More</b></li>
+          <li><a href="">Terms</a></li>
+          <li><a href="">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr style="background-color: rgb(209, 209, 209);">
+    <footer>
+      <div id="fitem1">
+        &copy; 2020 iLearn Inc.All Right Reserved
+      </div>
+      <div id="fitem2">
+        <img src="/static/img/facebook.png" alt="">
+        <img src="/static/img/instagram.png" alt="">
+        <img src="/static/img/twitter.png" alt="">
+        <img src="/static/img/linkedin.png" alt="">
+      </div>
+    </footer>
+  </div>
+
 </body>
 <script src="{% static 'js/base.js' %}">
 </script>
+
 </html>

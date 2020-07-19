@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -134,8 +134,16 @@ def addVideos(request):
     get_data={'get_courses':get_courses,'get_videos':get_videos}
     return render(request,'home/addVideos.html',get_data)
 def video(request):
-    data=request.FILES['the']
-    print(data)
+    thumbnail = request.FILES['thumbnail']
+    video = request.FILES['video']
+    resources= request.FILES['resources']
+    videoTitle= request.POST['title']
+    courseSno= request.POST['courseSno']
+    course=Courses.objects.get(sno=int(courseSno))
+    user=request.user
+    print(thumbnail,video,resources,videoTitle,course)
+    video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
+    video.save()
     # if request.method=='POST':
     #     courseSno=request.POST['courseSno']
     #     videoTitle=request.POST['videoTitle']
@@ -144,9 +152,8 @@ def video(request):
     #     resources=request.FILES['resources']
     #     course=Courses.objects.get(sno=courseSno)
     #     user=request.user
-    # video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
-    # video.save()
-    return redirect('/addVideos')
+    # 
+    return JsonResponse('OK',safe=False)
 def viewCourses(request):
     return render(request,'home/viewCourses.html')
 def previewCourse(request,id):
@@ -384,3 +391,23 @@ def studentQuery(request):
     user=request.user.id
     query=WatchedVideos.objects.filter(creater=user)
     return render(request,'home/studentQuery.html',{'query':query})
+
+def homeTutor(request):
+    if request.method=='POST':
+        name=request.POST['name']
+        age=request.POST['age']
+        gender=request.POST['gender']
+        phone=request.POST['number']
+        email=request.POST['email']
+        pin=request.POST['pin']
+        district=request.POST['district']
+        state=request.POST['state']
+        subject=request.POST['subject']
+        classes=request.POST['classes']
+        disc=request.POST['disc']
+        id_proof=request.FILES.get('id_proof')
+        salaryL=request.POST['salaryL']
+        salaryH=request.POST['salaryH']
+        ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,varified='False',id_proof=id_proof)
+        ht.save()
+    return render(request,'home/homeTutor.html')

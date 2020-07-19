@@ -16,6 +16,11 @@ function sliderChangeLower(val) {
 document.querySelector('.registerbtn').addEventListener('click',function(){
     displayRadioValue()
 })
+function lowervalue(val){
+document.querySelector('.amountHigher').setAttribute('min',val)
+document.querySelector('.amountHigher').value=val;
+document.querySelector('.higherValue').value=val;
+}
 function autocomp(val){
   let t=val.value
   if(t.length!==6){

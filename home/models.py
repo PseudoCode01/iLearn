@@ -73,4 +73,26 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.username
+class HomeTutor(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    name=models.CharField(max_length=50)
+    age=models.CharField(max_length=50)
+    gender=models.CharField(max_length=50)
+    phone=models.CharField(max_length=50)
+    email=models.CharField(max_length=50)
+    pin=models.IntegerField()
+    state=models.CharField(max_length=50)
+    district=models.CharField(max_length=50)
+    subject=models.CharField(max_length=50)
+    classes=models.CharField(max_length=50)
+    varified=models.CharField(max_length=50)
+    discription=models.TextField()
+    salaryL=models.IntegerField()
+    salaryH=models.IntegerField()
+    id_proof= models.FileField(upload_to='home/homeTutor', null=True, verbose_name="")
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+    def __str__(self):
+        return self.username
        
