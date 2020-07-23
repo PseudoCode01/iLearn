@@ -189,6 +189,7 @@ table {
     float: left;
     margin-left: 20px;
     margin-top: 50px;
+    margin-bottom: 100px;
   }
   .aboutCreater h2{
    color: teal;
@@ -210,6 +211,41 @@ table {
   }
 .mediaT{
     display: none;
+}
+.studentsReview{
+    background-color: whitesmoke;
+    padding: 2rem;
+    float: left;
+    width: 60%;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-bottom: 100px;
+
+}
+.review{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.leftcircle{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+background-color: #21D4FD;
+background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+.leftcircle span{
+    font-size: 25px;
+
+}
+.right{
+width: 88%;
+
 }
   @media(max-width:950px){
       .mediaT{
@@ -265,15 +301,7 @@ table {
     .courseInfo h1{
         color: white;
     }
-}
-@media(max-width:600px){
-    .row p{
-        font-size: 9px;
-    }
-    .preview{
-        height: 600px;
-    }
-    .disc,.aboutCreater{width: 80%;
+    .disc,.aboutCreater,.studentsReview{width: 80%;
         padding: 5%;
     margin-left: auto;
     float: none; ;
@@ -284,6 +312,13 @@ margin-right: auto;}
     margin-left: auto;
 margin-right: auto;
 }
+}
+@media(max-width:600px){
+    .row p{
+        font-size: 9px;
+    }
+    
+   
 }
 @media(max-width:450px){
     .preview{

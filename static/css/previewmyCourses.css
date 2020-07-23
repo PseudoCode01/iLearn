@@ -71,7 +71,7 @@
     color: #000;
 width: 98%;
 }
-#asKQuery{
+#asKQuery,.addReview{
     padding: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -274,4 +274,61 @@ background-color:white;
         display: block;
     }
     
+}
+.star{
+    color: goldenrod;
+    font-size: 2.5rem;
+    padding: 0 0rem; /* space out the stars */
+  }
+.ratedBy{
+    margin-left: 2%;
+}
+.enrolled{
+    margin-left: 4%;
+}
+.language{
+    margin-left: 100px;
+}
+  .star::before{
+    content: '\2606';    /* star outline */
+    cursor: pointer;
+  }
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+  }
+  
+  .stars{
+      display: flex;
+      flex-direction: row;
+      counter-reset: rateme 0;   
+      font-size: 2.0rem;
+      font-weight: 900;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }
+  /* .stars::after{
+      content: counter(rateme) '/5';
+  } */
+
+.rateCourse{
+    margin-bottom: 100px;
+    background-color: #b2b5b9;
+padding: 20px;
+}
+.rateCourse .writeReview{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.rateCourse textarea{
+padding: 20px;
+}
+.alredyrated{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    margin-left: 30px;
 }

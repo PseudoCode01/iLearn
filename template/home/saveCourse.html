@@ -4,10 +4,13 @@
  {% load static %}
  <link rel="stylesheet" href="{% static 'css/saveCourse.css' %}">
 <form action="/saveCourse" method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <div>
     <label for="category"><b> Category </b></label>
-    <input type="text" class="courseData" id="cat" name="cat" readonly></input>
+    <input type="text" class="courseData" id="cat" name="cat" readonly></input></div>
+    <div>
     <label for="category"><b> Course Title  </b></label>
-    <input type="text" class="courseData" id="title" name="title" readonly></input>
+    <input type="text" class="courseData" id="title" name="title" readonly></input></div>
+    <div>
     <label for="category"><b> Language  </b></label>
     <div class="select" id="lang">
       <select id="setLang" name="language">
@@ -15,20 +18,24 @@
           <option value="Hindi">Hindi</option>
           <option value="English">English</option>
           <option value="Hindi + English">Hindi + English</option>
-      </select></div>
-    <input type="text"  name="" class="courseData" id="savedLang">
+          <input type="text"  name="" class="courseData" id="savedLang">
+      </select></div></div>
+      <div>
       <label for="courseThumbnail"><b> Course Thumbnail Image  </b></label>
       <input  type="file" class="courseData" name="courseThumbnail" id="courseThumbnail">
-    
+    </div>
+    <div>
       <label for="category"><b> Pricing </b></label>
 <div class="pricing">
       <input name="pricing" type="range" min="0" max="10000" value="1000" class="slider" id="myRange" >
       <output id="value" class="value"> </output>
       <input type="text"  name=""  id="pricing">
     </div>
+  </div>
+  <div>
     <label for="category"><b>What students will learn </b></label>
-
     <textarea type="text" class="courseData" id="disc" name="disc" ></textarea>
+  </div>
   <button class="save btn-outline btn" type="submit">Save</button>
   <!-- <div class="afterSave">
   <button class="delete" type="submit">Delete</button>

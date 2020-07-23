@@ -155,3 +155,484 @@ float: none;
     margin-top: 20px;
     margin-bottom: 20px;
     }
+    .tutorProfile{
+      margin-bottom: 200px;
+      overflow-y: scroll;
+    }
+.tutorProfile>div{
+  width: 60%;
+margin-left: auto;
+margin-right: auto;
+margin-top: 100px;
+}
+.t2{
+   display: none;
+}
+
+  /* The alert message box */
+  .alert-success {
+   padding: 15px;
+   background-color: #1ca609; /* Red */
+   color: white;
+   margin-bottom: 15px;
+ }
+ .alert-error {
+   padding: 15px;
+   background-color: #f44336; /* Red */
+   color: white;
+   margin-bottom: 15px;
+ }
+ 
+ /* The close button */
+ .closebtn {
+   margin-left: 15px;
+   color: white;
+   font-weight: bold;
+   float: right;
+   font-size: 22px;
+   line-height: 20px;
+   cursor: pointer;
+   transition: 0.3s;
+ }
+ 
+ /* When moving the mouse over the close button */
+ .closebtn:hover {
+   color: black;
+ }
+ .alert {
+   position: absolute;
+   left:0;
+   right: 0;
+   opacity: 1;
+   z-index: 2;
+   transition: opacity 0.6s; /* 600ms to fade out */
+ }
+ /*profile menu */
+.menu-outer:hover ~ .menu-close {
+  margin-right:-100px;
+}
+.menu-outer:hover .bar { background:rgba(100,200,240,.9); }
+.menu-outer > nav ul { top:15%; }
+
+/* The rest I chnaged parts but not most of it */
+
+.menu-outer {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  font-family: 'Montserrat', serif;
+  z-index: 998;  
+  width: 100%;
+  left: 100%;
+  margin-left: -100px;
+  background: rgba(100,200,240,.9);  
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s; 
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+  -o-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.menu-outer:hover {
+  background: rgba(100,200,240,.98);
+  left: 0;
+  margin-left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.menu-icon {
+  z-index: 999;
+  position: absolute;
+  top: 58px;
+  left: 15px;
+  width: 30px;
+  pointer-events: none;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+}
+.menu-icon .bar {
+  background: rgba(250,250,250,1);
+  width: 100%;
+  height: 5px;
+  margin: 0 0 5px;
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+}
+.menu-outer:hover > .menu-icon {
+  opacity: 0;
+}
+
+.menu-close {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 100%;
+  width: 200px;
+  height: 200px;
+  background: rgba(250,130,70,1);
+  cursor: pointer;
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+  -webkit-transform-origin: top right;
+  -moz-transform-origin: top right;
+  -ms-transform-origin: top right;
+  -o-transform-origin: top right;
+  transform-origin: top right;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.menu-close .menu-icon {
+  right: 15px; left: auto;top: 68px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.menu-close .bar {
+  background: rgba(250,250,250,1);
+  width: 100%;
+  height: 5px;
+  position:absolute;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+}
+.menu-close .bar:first-child {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.menu-close .bar:last-child {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* studentdemo */
+.demoContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 80px;
+}
+.profile-card {
+  width: 400px;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  transition: .5s;
+  box-shadow: 0 0 10px #00000070;
+}
+.profile-card:hover{
+  transform: scale(1.1);
+}
+.top-section {
+  padding: 60px 40px;
+  background: #2c2c54aa;
+}
+
+.message, .notif {
+  position: absolute;
+  top: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ffffff50;
+}
+
+.message {
+  right: 40px;
+}
+
+.notif {
+  left: 40px;
+}
+
+.pic {
+  width: 95px;
+  height: 95px;
+  margin: auto;
+  margin-bottom: 20px;
+  border: 2px solid #2c3e50;
+  border-radius: 50%;
+  padding: 8px;
+  position: relative;
+}
+
+.pic::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid #2c3e50;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  animation: wave 1.5s infinite linear;
+}
+
+@keyframes wave {
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.pic span {
+  font-size: 85px;
+}
+
+.name {
+  color: #f1f1f1;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tag {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #222;
+}
+
+.bottom-section {
+  background: #f1f1f1;
+  padding: 35px 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.address{
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-media {
+  position: absolute;
+  width: 100%;
+  top: -30px;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.social-media a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  text-decoration: none;
+  background: #2c3e50;
+  border-radius: 50%;
+  color: #f1f1f1;
+  font-size: 50px;
+  
+  position: relative;
+}
+
+.social-media a::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #2c3e50;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  z-index: -1;
+  transition: 0.4s linear;
+}
+
+.social-media a:hover::after {
+  transform: scale(1.4);
+  opacity: 0;
+}
+/* sidebar to show number of unbuyed demos */
+/* Style the links inside the sidenav */
+#mySidenav a {
+  position: absolute; /* Position them relative to the browser window */
+  left: -55px; /* Position them outside of the screen */
+  transition: 0.3s; /* Add transition on hover */
+  padding: 16px 10px 16px 22px; /* 15px padding */
+  width: 100px; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+  display: flex;
+  align-items: center;
+  justify-content: center;}
+
+#mySidenav a:hover {
+  left: 0; /* On mouse-over, make the elements appear as they should */
+}
+
+
+
+#demosnumber {
+  top: 80px;
+  background-color: #2196F3; /* Blue */
+}
+#demosnumber span{
+  display:flex;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+}
+.overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup .unlock{
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 91%;
+  height: 50px;
+}
+.popup .unlock>input[type='text']{
+  border: none;
+  height: 99%;
+  padding: 0 2px;
+  width: 88%;
+  margin-left: 3px;
+}
+.popup .unlock>input[type='submit']{
+  font-size: 42px;
+cursor: pointer;
+float: right;
+margin-right: 3px;
+color:blue;
+background-color: white;
+border: none;
+}
+.popup .unlock>input[type='submit']:hover{
+color: teal;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+/* loader */
+#loader-container {
+  width: 25px;
+  height: 25px;
+}
+
+@keyframes animation {
+  0% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -105;
+  }
+  50% {
+    stroke-dasharray: 80 10;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -300;
+  }
+}
+
+#spinner {
+  transform-origin: center;
+  animation-name: animation;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier;
+  animation-iteration-count: infinite;
+}
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}

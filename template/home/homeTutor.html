@@ -8,7 +8,116 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/homeTutor.css' %}">
 <body>
+  {% for message in messages %}
+<div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+   {{message}}
+  </div> 
+  {% endfor %}
+  {% if htprofile %}
+  <div class="menu-outer">
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="tutorProfile">
+      <div>
+      <label for="name"><b>Name</b></label>
+      <input type="text" name="name" id="name" disabled value="{{htprofile.0.name}}">
+      <input type="hidden" name="sno" id="sno" disabled value="{{htprofile.0.sno}}">
+      <label for="Age"><b>Age</b></label>
+      <input type="text" name="Age" id="Age" disabled value="{{htprofile.0.age}}">
+      <label for="Gender"><b>Gender</b></label>
+      <input type="text" name="Gender" id="Gender" disabled value="{{htprofile.0.gender}}">
+      <label for="Phone"><b>Phone Number</b></label>
+      <input type="text" name="Phone" id="Phone" disabled value="{{htprofile.0.phone}}">
+      <label for="Email"><b>Email</b></label>
+      <input type="text"  name="Email" id="Email" disabled value="{{htprofile.0.email}}">
+      <label for="Pin"><b>Pin</b></label>
+      <input type="text"  name="Pin" id="Pin" disabled value="{{htprofile.0.pin}}">
+      <label for="District"><b>District</b></label>
+      <input type="text"  name="District" id="District" disabled value="{{htprofile.0.district}}">
+      <label for="State"><b>State</b></label>
+      <input type="text" name="State" id="State" disabled value="{{htprofile.0.state}}">
+      <label for="Subjects"><b>Subjects</b></label>
+      <input type="text"  name="Subjects" id="Subjects" disabled value="{{htprofile.0.subject}}">
+      <label for="Classes"><b>Classes</b></label>
+      <input type="text"  name="Classes" id="Classes" disabled value="{{htprofile.0.classes}}">
+      <label for="Salary"><b>Salary</b></label>
+      <input type="text" name="Salary" id="salary" disabled value="Rs{{htprofile.0.salaryL}}-Rs{{htprofile.0.salaryH}}">
+      <label for="disc"><b>About Yourself</b></label>
+      <div class="discription">
+        <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" value={{htprofile.0.discription}} disabled required>{{htprofile.0.discription}}</textarea></div>
+        <label for="Id_Proof"><b>Id_Proof</b></label>
+        <a href="/media/{{htprofile.0.id_proof}}" name="id_proof" id="id_proof" download>Download</a></div>
+      <button class="edit-btn" onclick="edit()">Edit Profile</button>
+    </div>
+   
+    <div class="tutor t2">
+   
+      <div class="instruct">
+          <h2>FOR TUTORS</h2>
+          <ul>
+         <li> You must be at least 18 years of age to register with us.</li>
+         <li> Your profile is your letter to the student, so emphasize your strong tutoring skills.</li>
+         <li>  Check your spelling and grammar to ensure you create the right impression.</li>
+         <li> Enter correct information in the right place only.</li>
+         <li>You will be asked to prove your identity and provide references.</li>
+          </ul>
+      </div>
+          <form action="/registerhomeTutor" method="POST" enctype="multipart/form-data"> {% csrf_token %}</form>
+    </div>
+</div>
+<a class="menu-close" onClick="return true">
+    <div class="menu-icon">
+        <div class="bar"></div> 
+        <div class="bar"></div>
+    </div>
+</a>
+<div class="demoContainer">
+{% for item in demos %}
+<div class="profile-card">
+  <div class="top-section">
+    <i class="message fas fa-envelope"></i>
+    <i class="notif fas fa-bell"></i>
+    <div class="pic">
+      <span>{{item.fullname|first|upper}}</span>
+    </div>
+    <div class="name">{{item.fullname|upper}}</div>
+    <div class="tag">{{item.timeStamp}}</div>
+  </div>
+  <div class="bottom-section">
+    <div class="social-media">
+      <a href="mailto:{{item.email}}"><b>@</b></a>
+      <a href="tel:{{item.phone}}"><img src="/static/img/phone.png" alt=""></a>
+      
+    </div>
+    <div class="address">
+    <div id="address">{{item.address}}</div>
+    <div id="address2">{{item.address2}}</div>
+  </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+<div id="mySidenav" class="sidenav">
+  <a href="#popup1" id="demosnumber"><img src="/static/img/locked.png" alt=""><span>{{lockedDemos}}</span></a>
+</div> 
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <form action="/unlockDemos" method="post">{% csrf_token %}
+    <div class="unlock">
+    <input type="text" id="unlock" name="unlock" placeholder="Enter the number of profile that you want unlock">
+    <input type="submit" value="&#8594;"></input>
+  </div></form>
+    <a class="close" href="#">&times;</a>
+   
+  </div>
+</div>
+  {% else %}
 <div class="tutor">
+ 
 <div class="instruct">
     <h2>FOR TUTORS</h2>
     <ul>
@@ -19,8 +128,9 @@
    <li>You will be asked to prove your identity and provide references.</li>
     </ul>
 </div>
-    <form action="/homeTutor" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+    <form action="/registerhomeTutor" method="POST" enctype="multipart/form-data"> {% csrf_token %}
         <div class="container">
+          <input type="hidden" name="action" id="action" value="register">
                 <h1>Register</h1>
                 <p>Please fill in this form to register for home tutor.</p>
                 <hr>   
@@ -83,8 +193,8 @@
             <button type="submit" class="registerbtn">Register</button>
           </div>
     </form>
-    
-</div>
+  </div>
+  {%  endif %}
 <script src="{% static 'js/homeTutor.js' %}"></script>
 </body>
 </html>

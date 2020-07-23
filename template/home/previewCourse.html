@@ -45,7 +45,7 @@
 </div>
 <div class="disc">
     <h1>What you'll learn</h1>
-    <p>{{course.0.discription}} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis dignissimos ratione voluptate corporis labore quibusdam itaque atque ullam unde id aperiam corrupti nisi provident, sequi fugiat, laboriosam, quo deserunt. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti, exercitationem! Harum, odio nobis eaque repellat officiis odit pariatur eius velit facere fugiat eos et, at error delectus omnis corrupti quas est placeat. Fugiat sapiente eveniet vero mollitia at, doloremque cupiditate repellat et qui debitis reprehenderit quaerat aspernatur, dolorum nemo cum.</p>
+    <p>{{course.0.discription}}</p>
 </div>
 <div id="video">
     <h1>Course content</h1>
@@ -74,6 +74,44 @@
     </div>
     {% endif %}
         
+</div>
+<div class="studentsReview">
+    
+    {% for r in reviews %}
+      <div class="review">
+<div class="leftcircle">
+<span>{{r.username|first|upper}}</span>
+</div>
+<div class="right">
+<p>{{r.review}}</p>
+<div class="stars reviewstars" data-r="{{r.rating}}">
+    <span class="star" data-val="1"></span>
+    <span class="star" data-val="2"></span>
+    <span class="star" data-val="3"></span>
+    <span class="star" data-val="4"></span>
+    <span class="star" data-val="5"></span>
+    </div> 
+<h3>{{r.username|upper}}-{{r.timeStamp}}</h3>
+</div>
+</div>
+<hr>
+<div class="review">
+<div class="leftcircle">
+<span>A</span>
+</div>
+<div class="right">
+<p>{{r.review}}</p>
+<div class="stars reviewstars" data-r="4">
+    <span class="star" data-val="1"></span>
+    <span class="star" data-val="2"></span>
+    <span class="star" data-val="3"></span>
+    <span class="star" data-val="4"></span>
+    <span class="star" data-val="5"></span>
+    </div> 
+<h3>{{r.username}}-{{r.timeStamp}}</h3>
+</div>
+</div>
+{% endfor %}
 </div>
   <script src="{% static 'js/previewCourse.js' %}"></script>
 {% endblock body %}

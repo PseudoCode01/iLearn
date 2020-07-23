@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+}
+.tutorcontainer{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    margin-left: 70px;
+    margin-right: 10px;
+}
+.tutoritem{
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px;
+    padding: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    width: 250px;
+    height: 500px;
+    margin-top: auto;
+    box-shadow: 0 0 7px rgb(209, 209, 209);
+    transition: all 1s;
+
+}
+.tutoritem:hover{
+/* transform: skew(-5deg); */
+transform: scale(1.1);
+/* transform: translate3d(100px,100px,100px); */
+/* transform: translate3d(100px 0 100px); */
+
+}
+.nameCircle{
+    width: 100px;
+    height: 148px;
+    border-radius: 50%;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    box-shadow:0 0px 5px #a2a2a2;
+    transition: all 1s;
+}
+.nameCircle:hover{
+transform:rotate(360deg);
+}
+.tutoritem h4{
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 12px;
+
+}
+.tutoritem h6{
+    margin-top: 8px;
+    font-size: 15px;
+    color: rgb(109, 109, 109);
+}
+.tutoritem p{
+    margin-top: 25px;
+    height: 200px;
+    overflow: scroll;
+}
+.tutoritem hr{
+    margin-top: auto;
+    margin-top: 20px;
+    width: 115%;
+    margin-left: -20px;
+    margin-right: -20px;
+}
+.tutoritem .bottom{
+    display: flex;
+    width: 116%;
+    margin-left: -25px;
+    margin-right: -25px;
+    height: 50px;
+    align-items: center;
+    margin-top: auto;
+}
+
+.bottom span{
+    border-right: 1px solid rgb(255, 255, 255);
+    width: 45%;
+    height: 100%;
+    border-radius:0 0 0 14px ;
+    display: flex;
+    background-color: #08AEEA;
+background-image: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+
+    align-items: center;
+    justify-content: center;
+}
+.bottom button{
+    width: 60%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: rgb(255, 255, 255);
+    background-color: #FFE53B;
+    background-image: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+    
+border-radius:0 0 14px  0 ;
+}
+@media(max-width:700px){
+    .tutorcontainer{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

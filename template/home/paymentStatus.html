@@ -16,24 +16,7 @@
         {% if status == 'OK' %}
         <div class="accept">
             <div class="icon">
-                <!-- <div class="icon icon--order-success svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="72px" height="72px">
-                      <g fill="none" stroke="#8EC343" stroke-width="2">
-                        <circle cx="36" cy="36" r="35" style="stroke-dasharray:240px, 240px; stroke-dashoffset: 480px;"></circle>
-                        <path d="M17.417,37.778l9.93,9.909l25.444-25.393" style="stroke-dasharray:50px, 50px; stroke-dashoffset: 0px;"></path>
-                      </g>
-                    </svg>
-          
-                  </div> -->
-                  <!-- <div class="trigger drawn"></div>
-                  <svg version="1.1" id="tick" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 37 37" style="enable-background:new 0 0 37 37;" xml:space="preserve">
-<path class="circ path" style="fill:none;stroke:#000;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;" d="
-	M30.5,6.5L30.5,6.5c6.6,6.6,6.6,17.4,0,24l0,0c-6.6,6.6-17.4,6.6-24,0l0,0c-6.6-6.6-6.6-17.4,0-24l0,0C13.1-0.2,23.9-0.2,30.5,6.5z"
-	/>
-<polyline class="tick path" style="fill:none;stroke:#000;stroke-width:3;stroke-linejoin:round;stroke-miterlimit:10;" points="
-	11.6,20 15.9,24.2 26.4,13.8 "/>
-</svg> -->
+               
 <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_yAh844.json"  background="transparent"  speed="2"  style="width: 250px; height: 250px;"  loop  autoplay></lottie-player>
         </div>
         <div class="text">
@@ -50,6 +33,13 @@
                     {% if sent == 'True' %} 
                     <form id="add" action="/courseAdded" method="POST">{% csrf_token %}
                         <input type="hidden" id="sno" name="sno" value="{{response_dict.ORDERID}}">
+                        <input type="hidden" id="status" name="status" value="{{status}}">
+                        
+                    </form>
+                    {% endif %}
+                    {% if sent == 'unlock' %} 
+                    <form id="add" action="/updateunlockedDemo" method="POST">{% csrf_token %}
+                        <input type="hidden" id="sno" name="sno" value="{{response_dict.TXNAMOUNT}}">
                         <input type="hidden" id="status" name="status" value="{{status}}">
                     </form>
                     {% endif %}

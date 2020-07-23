@@ -3,22 +3,23 @@ h1{
 
  }
  .perBox{
-     margin: auto;
-     width: 800px;
+    margin-right: 40px;
+    margin-left: 100px;
+     /* width: 70%; */
  }
  .perBox:hover{
      box-shadow:4px 4px 4px 4px rgb(216, 212, 212) ;
  }
+ 
  .perTab{
      overflow: hidden;
    display: flex;
    height: 80px;
-   width: 800px;
    border: 1px solid rgb(214, 209, 209);
  }
  .perBtn{
      font-size: 1.2rem;
-     width: 33%;
+     width: 34%;
      font-weight: bold;
      border: none;
      background-color: white;
@@ -33,8 +34,78 @@ h1{
  }
  .tabcontent{
      display: none;
-     height: 500px;
+     min-height: 500px;
+     padding: 20px;
      border: 1px solid rgb(214, 209, 209);
-     width: 800px;
      background-color: rgb(250, 244, 250);
+ } 
+ #revenue h3{
+     padding:20px 10px;
+     background-color: rgb(107, 214, 0);
+     text-align: center;
  }
+ .courseRevenue,.courseEnrolled{
+     display: flex;
+     flex-direction: column;
+     padding: 20px;
+     
+ }
+
+ .totalRevenue,.totalEnrolled,.intructorRating{
+     font-size: 25px;
+     height: 100px;
+     position: relative;
+     margin-top: auto;
+ }
+@media (max-width:700px){
+    .perBox{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        /* font-size: 15px; */
+    }
+}
+ @media  (max-width:600px){
+     .perTab{
+         width: 900px;
+        }
+        .perBtn{
+            width: 300px;
+        }
+        .tab{
+            overflow-x: scroll;
+    }
+ }
+ .star{
+    color: goldenrod;
+    font-size: 1.5rem;
+    padding: 0 0rem; /* space out the stars */
+  }
+.ratedBy{
+    margin-left: 2%;
+}
+.enrolled{
+    margin-left: 4%;
+}
+.language{
+    margin-left: 100px;
+}
+  .star::before{
+    content: '\2606';    /* star outline */
+    cursor: pointer;
+  }
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+  }
+  
+  .stars{
+      display: flex;
+      flex-direction: row;
+      counter-reset: rateme 0;   
+      font-size: 2.0rem;
+      font-weight: 900;
+  }
+  .star.rated{
+      counter-increment: rateme 1;
+  }

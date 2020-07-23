@@ -60,6 +60,42 @@
         {% endfor %}
         </div>
     </div>
+    
+    {% if review %}
+    <div class="rateCourse">
+        <div class="alredyrated">
+            <h2>Your review</h2>
+    <div class="stars"  data-rvalue="{{review.rating}}">
+        <span class="star st" data-val="1"></span>
+        <span class="star st" data-val="2"></span>
+        <span class="star st" data-val="3" ></span>
+        <span class="star st" data-val="4" ></span>
+        <span class="star st" data-val="5" ></span>
+        </div> 
+        <span>{{review.review}}</span>
+        <button class="addReview" onclick="editreview('{{csno}}',this)" data-action="reditreview">Edit</button>
+    </div>
+    </div>
+        {% else %}
+   
+        
+    <div class="rateCourse">
+        <h2>Add a public review</h2>
+    <div class="stars">
+        <span class="star" data-val="1" onclick="rate(this)"></span>
+        <span class="star" data-val="2" onclick="rate(this)"></span>
+        <span class="star" data-val="3" onclick="rate(this)"></span>
+        <span class="star" data-val="4" onclick="rate(this)"></span>
+        <span class="star" data-val="5" onclick="rate(this)"></span>
+        <!-- <h1 class="rate">0/5</h1> -->
+        </div> 
+        <div class="writeReview">
+            <label for="review">Add review</label>
+            <textarea name="review"  id="review" cols="60" rows="10"></textarea>
+        </div>
+        <button class="addReview" onclick="addreview('{{csno}}',this)" data-action="basereview">Review</button>
+    </div>
+    {% endif %}
     </div>
   
     <div class="videos">

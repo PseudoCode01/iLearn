@@ -160,3 +160,81 @@ function  openVideos(){
     x.style.display = "none";
   }
 }
+
+function rate(v){
+let val=Number(v.dataset.val);
+var n=0;
+for(let item of document.querySelectorAll('.star')){
+  item.classList.remove('rated')
+}
+for(let item of document.querySelectorAll('.star')){
+  item.classList.add('rated')
+n++;
+if(n==val){
+  document.querySelector('.stars').dataset.r=n;
+  break;
+}
+}
+}
+if(document.querySelector('.alredyrated')!==null){
+ let n=0;
+  let v=document.querySelector('.stars').dataset.rvalue;
+  for(let item of document.querySelectorAll('.star')){
+    item.classList.add('rated')
+  n++;
+  if(n==v){
+    document.querySelector('.stars').dataset.r=n;
+    break;
+  }
+  }
+
+}
+function editreview(val,e){
+ document.querySelector('.rateCourse').innerHTML=`
+ <h2>Add a public review</h2>
+ <div class="stars">
+     <span class="star" data-val="1" onclick="rate(this)"></span>
+     <span class="star" data-val="2" onclick="rate(this)"></span>
+     <span class="star" data-val="3" onclick="rate(this)"></span>
+     <span class="star" data-val="4" onclick="rate(this)"></span>
+     <span class="star" data-val="5" onclick="rate(this)"></span>
+     </div> 
+     <div class="writeReview">
+         <label for="review">Add review</label>
+         <textarea name="review"  id="review" cols="60" rows="10"></textarea>
+     </div>
+     <button class="addReview" onclick="addreview(${val},this)" data-action="editreview">Review</button>
+ `
+}
+function addreview(val,e){
+ 
+  let text=document.getElementById('review').value;
+  let r=document.querySelector('.stars').dataset.r;
+  let xh = new XMLHttpRequest();
+    xh.open('POST', '/addReview');
+    xh.setRequestHeader('X-CSRFToken', csrftoken);       
+    xh.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xh.setRequestHeader("Accept", "application/json");
+    xh.send(JSON.stringify({'csno':val,'textreview':text,'rvalue':r,'action':e.dataset.action}));
+    xh.onload = function() {
+    if (xh.status != 200) { 
+      alert(`Error ${xh.status}: ${xh.statusText}`); 
+    } else { 
+      data=JSON.parse(xh.responseText)
+     
+    };
+    
+    xh.onprogress = function(event) {
+    if (event.lengthComputable) {
+      
+    } else {
+    //  alert('fff')
+    }
+    
+    };
+    
+    xh.onerror = function() {
+    alert("Request failed");
+    };
+    }
+}

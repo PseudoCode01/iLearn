@@ -8,4 +8,6 @@ urlpatterns = [
     path('userQueries', views.userQueries,name="userQueries"),
     path('fetch_query', views.fetch_query,name="fetch_query"),
     path('markasAns', views.markasAns,name="markasAns"),  
+    path('hometutors', views.hometutors,name="hometutors"),  
+    path('verifyhometutors', views.verifyhometutors,name="verifyhometutors"),  
 ]

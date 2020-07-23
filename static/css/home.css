@@ -35,7 +35,7 @@
     display: flex;
     overflow: hidden;
     color: white;
-    background-image: url('/static/img/hero.jpg');
+    background-image: url('/static/img/h1_hero.png');
     background-size: cover;
     height:102vh;
     width: 100%;
@@ -217,6 +217,94 @@ flex-direction: column;
         }
        
     }
+    .homeTutorsection{
+        margin-top: 200px;
+        display: flex;
+        width: 100%;
+     
+        height: 500px;
+    }
+    .homeTutorsection button{
+        margin-top: 20px;
+        cursor: pointer;
+transition: 0.5s;
+background-size: 200% auto;
+color: white;
+box-shadow: 0 0 8px black;
+border: none;
+border-radius: 50px;
+padding: 20px;
+background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+    }
+    .homeTutorsection span{
+        text-align: center;
+        font-size: 1.5rem;
+    }
+    .homeTutorsection button:hover{
+        background-position: right;
+    }
+    .homeTutorsection .leftht{
+        padding: 10px;
+  position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+  
+  overflow: hidden;
+  color: #fff;
+       
+        /* background-image: -webkit-linear-gradient(130deg, rgba(0, 0, 0, 0) 34%, rgba(46, 89, 182, 0.6) 34%); */
+        background-color: rgb(33, 63, 89);
+        width: 50%;
+    }
+    .leftht img{
+        width: 250px;
+        height: 250px;
+    }
+    .rightht img{
+        width: 250px;
+        height: 250px;
+    }
+    .homeTutorsection .rightht{
+        padding: 10px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+          overflow: hidden;
+          color: #fff;      
+          width: 50%;  
+        /* background-image: -webkit-linear-gradient(-130deg, rgba(182, 46, 53, 0.6) 34%, rgba(0, 0, 0, 0) 34%); */
+        background-color: rgb(13, 168, 168);
+    }
+    @media(max-width:1000px){
+        .homeTutorsection{
+            flex-direction: column;
+            height: 855px;
+        }
+        .homeTutorsection .leftht,.homeTutorsection .rightht{
+            width: 90%;
+            padding: 5%;
+        }
+    }
+    /* .homeTutorsection .leftht::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        -webkit-transform-origin: 100% 0;
+        -ms-transform-origin: 100% 0;
+        transform-origin: 100% 0;
+        -webkit-transform: skew(-45deg);
+        -ms-transform: skew(-45deg);
+        transform: skew(-45deg);
+        z-index: -1;
+    } */
     /* courses section start here */
 .course{
     padding: 5px 0;
@@ -434,7 +522,7 @@ text-align: center;
         background-image: url('/static/img/courses_background.jpg');
         padding: 5px 0;
         margin-top: 150px;
-
+        margin-bottom: 200px;
         width: 100%;
         display: flex;
         height: 258px;

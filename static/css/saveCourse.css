@@ -1,7 +1,7 @@
 form{
     margin-top: 90px;
     margin-left: 80px;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 
@@ -23,7 +23,7 @@ select {
     margin: 5px 0 22px 0;
     background: #f6f6f6;
     overflow: hidden; 
-    width: 94%;
+    width: 98%;
     padding: 0 30px 0 0;
     border: 1px solid #eaeaea;
 } 
@@ -159,7 +159,7 @@ form #pricing{
   
   /* Full-width input fields */
   input[type=text], input[type=file] {
-    width: 94%;
+    width: 98%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
@@ -168,12 +168,12 @@ form #pricing{
   }
   form textarea.courseData{
     background-color:  #f1f1f1;
-    width: 94%;
+    width: 100%;
     padding: 15px;
 }
 
   .pricing{
-    width: 94%;
+    width: 98%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;

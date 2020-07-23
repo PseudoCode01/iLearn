@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/get_homeTutor.css' %}">
+
+<div class="tutorcontainer">
+  
+  {% for item in ht %}
+  <div class="tutoritem">
+      <div class="nameCircle">{{item.name|first|upper}}</div>
+      <h4 class="name">{{item.name|upper}}</h4>
+      <h6 class="agesex">{{item.age}}Yrs {{item.gender}}</h6>
+      <h6 class="subject">{{item.subject}}</h6>
+      <h6 class="subject">Class:{{item.classes}}</h6>
+      <hr>
+      <p>{{item.discription}}</p>
+      <hr>
+      <div class="bottom">
+          <span>&#8377;{{item.salaryL}}-{{item.salaryL}}/M</span>
+          {% if registeredht %}
+          {% for obj in registeredht %}
+          {% if item.sno == obj.sno %}
+          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO</button>
+          {% else %}
+          <button  id="registered">REGISTERED</button>
+          {% endif %}  
+          {% endfor %}
+          {% else %}
+          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO</button>
+          {% endif %}
+
+      </div>      
+    </div> 
+    {% endfor %}
+  </div>
+  <div id="HTpopup1" class="HToverlay">
+    <div class="HTpopup">
+      <form method="post">
+        <input type="hidden" name="pinCode" id="pinCode" value="{{pin}}"> {% csrf_token %}
+        <input type="hidden" name="sno" id="sno">
+            <label for="fullname"><b>Name</b></label>
+            <input type="text" name="fullname" id="fullname" placeholder="Enter your full name" >
+            <label for="phone"><b>Phone</b></label>
+            <input type="text" name="phone" id="phone" placeholder="Enter your phone number">
+            <label for="email"><b>Email</b></label>
+            <input type="email" name="email" id="email" placeholder="Enter your email address(optional)">
+            <label for="address"><b>Address</b></label>
+            <input type="text" name="address" id="address" placeholder="Enter your locality" required>
+            <label for="state"><b>City</b></label>
+            <input type="text" name="city" id="city" readonly>
+          </form>
+          <input type="button" class="btn" onclick="submit()" value="CONFIRM">
+          <a class="close" href="#">&times;</a>
+         
+        </div>
+      </div>
+      
+      <script src="{% static 'js/get_homeTutor.js' %}">
+      {% endblock body %}

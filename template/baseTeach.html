@@ -16,21 +16,25 @@
             <p>{{request.user.email}}</p>
             <h2 onclick="profile(this)">Profile</h2>
           </div>
-    </div>
-    <a href="/" id="role">Student</a>
+        </div>
+        <div class="notification">
+          <img src="/static/img/notification.png" alt="">
+        </div>
+        <a href="/" id="role">Student</a>
+        <div onclick="displaysidenav(this)" class="hamburger">&#9776;</div>
 </div>
 {% for message in messages %}
 <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
    {{message}}
   </div> 
-</div>
+
 {% endfor %}
 <div id="myModal" class="modal modal-profile">
     <div class="modal-content">
       <div class="modal-header">
         <span class="close" id="closeprofile">&times;</span>
-        <h2>jj</h2>
+        <h2>{{request.user}}</h2>
       </div>
       <div class="modal-body">
         <div class="profile">
@@ -65,9 +69,8 @@
       </div>
     </div>
   </div>
-  <div onclick="displaysidenav()" class="hamburger">&#9776;</div>
 <div id="mySidenav" class="sidenav">
-  <span onclick="closedisplaysidenav()" class="cross">&#x2718</span>
+  <span onclick="closedisplaysidenav()" class="cross">&#x2718;</span>
     <a href="/addCourse"><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
     <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
     <a href="/teacherPerformance"><span><img src="/static/img/performence.png" alt=""></span><span>Performence</span></a>

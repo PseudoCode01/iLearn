@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -35,7 +35,83 @@ def search(request):
     ).filter(search = SearchQuery(query) ).filter(verified="True").values()
     return render(request,'home/search.html',{'searchResults':result})
 def homeTutor(request):
-    return render(request,'home/homeTutor.html')
+    htprofile=HomeTutor.objects.filter(user_id=request.user)
+    demos=''
+    lockedDemos=''
+    if len(htprofile)>0:
+        user_id=request.user.id
+        demo=HomeTutorDemo.objects.filter(homeTutor=user_id).order_by('timeStamp')
+        demos=demo[:htprofile[0].unlocked]
+        lockedDemos=len(demo)-len(demos)
+    return render(request,'home/homeTutor.html',{'htprofile':htprofile,'demos':demos,'lockedDemos':lockedDemos})
+def get_homeTutor(request):
+    pin=request.GET['pin']
+    ht=HomeTutor.objects.filter(pin=int(pin)).filter(verified=True)
+    registeredht=HomeTutor.objects.filter(user_id=request.user).values('sno')
+    return render(request,'home/get_homeTutor.html',{'ht':ht,'pin':pin,'registeredht':registeredht})
+def getDemo(request):
+    if request.method=='POST':
+        data=json.loads(request.body)
+        sno=data['sno']
+        name=data['name']
+        phone=data['phone']
+        email=data['email']
+        address=data['address']
+        city=data['city']
+        pin=data['pinCode']
+        sno=data['sno']
+        ht=(sno)
+        gd=HomeTutorDemo(fullname=name,phone=phone,email=email,address=address,address2=city,user=request.user,homeTutor=ht,pin=int(pin))
+        gd.save()
+    return JsonResponse('ok',safe=False)
+def registerhomeTutor(request):
+    if request.method=='POST':
+        name=request.POST['name']
+        age=request.POST['age']
+        gender=request.POST['gender']
+        phone=request.POST['number']
+        email=request.POST['email']
+        pin=request.POST['pin']
+        district=request.POST['district']
+        state=request.POST['state']
+        subject=request.POST['subject']
+        classes=request.POST['classes']
+        disc=request.POST['disc']
+        id_proof=request.FILES.get('id_proof')
+        salaryL=request.POST['salaryL']
+        salaryH=request.POST['salaryH']
+        action=request.POST['action']
+        if len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(pin)==6 and len(district)>0 and len(state)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
+            if action == 'register':
+                ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,
+                state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,varified='False',id_proof=id_proof)
+                ht.save()
+                messages.success(request,'Registered Successfully! Once your profile get varified it will be available for students')
+            if action == 'edit':
+                sno=request.POST['sno']
+                ht=HomeTutor.objects.get(sno=int(sno))
+                ht.name=name
+                ht.age=age
+                ht.gender=gender
+                ht.email=email
+                ht.phone=phone
+                ht.pin=pin
+                ht.district=district
+                ht.state=state
+                ht.subject=subject
+                ht.classes=classes
+                ht.disc=disc
+                ht.id_proof=id_proof
+                ht.salaryL=salaryL
+                ht.salaryH=salaryH
+                ht.varified="False"
+                ht.save()
+                messages.success(request,'Edited Successfully! Once your profile get varified it will be available for students')
+        else:
+            messages.error(request,'Failed! Fill the information correctly')
+       
+    return redirect('homeTutor')
+
 def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
@@ -65,7 +141,16 @@ def get_teacherProfile(request):
             Tprofile=list(Tprofile)
         return JsonResponse({'teacherProfile':Tprofile})
 def teacherPerformance(request):
-    return render(request,'home/tPerformance.html')
+    courses=Courses.objects.filter(creater=request.user)
+    rev=set()
+    revenue=0
+    totalenrolled=0
+    for item in courses:
+        review=ReviewCourse.objects.get(reviewOfCourse=item)
+        totalenrolled+=item.enrolled
+        revenue=int(item.pricing)*item.enrolled*0.7
+        rev.add(review)
+    return render(request,'home/tPerformance.html',{'courses':courses,'review':rev,'revenue':revenue,'totalenrolled':totalenrolled})
 def get_cartItems(request):
     if request.user.is_authenticated :
         cart=Cart.objects.filter(user_id=request.user).values()
@@ -144,20 +229,12 @@ def video(request):
     print(thumbnail,video,resources,videoTitle,course)
     video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
     video.save()
-    # if request.method=='POST':
-    #     courseSno=request.POST['courseSno']
-    #     videoTitle=request.POST['videoTitle']
-    #     thumbnail=request.FILES['thumbnail']
-    #     video=request.FILES['video']
-    #     resources=request.FILES['resources']
-    #     course=Courses.objects.get(sno=courseSno)
-    #     user=request.user
-    # 
     return JsonResponse('OK',safe=False)
 def viewCourses(request):
     return render(request,'home/viewCourses.html')
 def previewCourse(request,id):
     courses=Courses.objects.filter(sno=id).values()
+    review=ReviewCourse.objects.filter(reviewOfCourse_id=id)
     vid=Videos.objects.filter(videoOfCourse_id=courses[0]['sno'])
     video=set()
     for item in vid:
@@ -167,7 +244,8 @@ def previewCourse(request,id):
     Tprofile=courses[0]['creater_id']
     teacherProfile=TeacherProfile.objects.filter(ProfileOf=Tprofile)
     allcourses=Courses.objects.filter(creater_id=Tprofile)
-    return render(request,'home/previewCourse.html',{'course':courses,'videos':video,'teacherProfile':teacherProfile,'allcourses':allcourses})
+
+    return render(request,'home/previewCourse.html',{'course':courses,'videos':video,'teacherProfile':teacherProfile,'allcourses':allcourses,'reviews':review})
 def get_viewCourses(request):
     data=json.loads(request.body)
     cat=data['cat'].strip()
@@ -178,6 +256,28 @@ def get_viewCourses(request):
     (verified="True").values())
     print(courses)
     return JsonResponse({'courses':list(courses)})
+def addReview(request):
+    data=json.loads(request.body)
+    csno=int(data['csno'])
+    treview=data['textreview']
+    value=int(data['rvalue'])
+    action=(data['action'])
+    course=Courses.objects.get(sno=csno)
+    if action=='basereview':
+        review =ReviewCourse(reviewOfCourse=course,review=treview,username=request.user.username)
+        review.save()
+        course.rating+=value
+        course.ratedBy+=1
+        course.save()
+    elif action=='editreview':
+        rev=ReviewCourse.objects.get(username=request.user.username)
+        rate=rev.rating
+        course.rating=course.rating-rate+value
+        course.save()
+        rev.rating=value
+        rev.review=treview
+        rev.save()
+    return JsonResponse('ok',safe=False)
 def CartItem(request):
     return render(request,'home/cartItems.html')
 def contact(request):
@@ -304,7 +404,6 @@ def buynow(request):
     return redirect('/cart')
 def payment(request):
     return render(request,'home/paymentStatus.html')
-
 @csrf_exempt
 def handleRequest(request):
     form = request.POST
@@ -323,6 +422,61 @@ def handleRequest(request):
             status="Failed"
     return render(request,'home/paymentStatus.html',{'response_dict':response_dict,'status':status,'sent':'True'})
 
+def unlockDemos(request):
+    if request.method=='POST':
+        unlock=request.POST['unlock']
+        teacher_id=request.user.id
+        ht=HomeTutor.objects.filter(user=request.user).values('unlocked')
+        order_id=str(teacher_id)+str(ht[0]['unlocked'])+'104'
+        email=request.user.email
+        amount=100*int(unlock)
+        param_dict = {
+
+                    'MID': 'RLUAjJ34588862174269',
+                    'ORDER_ID': str(order_id),
+                    'TXN_AMOUNT': str(amount),
+                    'CUST_ID': email,
+                    'INDUSTRY_TYPE_ID': 'Retail',
+                    'WEBSITE': 'WEBSTAGING',
+                    'CHANNEL_ID': 'WEB',
+                    'CALLBACK_URL':'http://127.0.0.1:8000/unlockhandleRequest/',
+
+        }
+        param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
+        return render(request,'home/paytm.html',{'param_dict':param_dict})
+@csrf_exempt
+def unlockhandleRequest(request):
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+    status=''
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            status='OK'
+            
+        else:
+            status="Failed"
+        print(response_dict)
+    return render(request,'home/paymentStatus.html',{'response_dict':response_dict,'status':status,'sent':'unlock'})
+def updateunlockedDemo(request):
+    if request.method=='POST':
+        amount=int(float(request.POST['sno']))
+        status=request.POST['status']
+        if status=='OK':
+            n=amount/100
+            ht=HomeTutor.objects.get(user=request.user)
+            ht.unlocked+=n
+            ht.save()
+            return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
+        else:
+            return render(request,'home/paymentStatus.html',{'status':'Failed','send':'False'})
+
+
+
 def courseAdded(request):
     if request.method=='POST':
         id=request.POST.get('sno')
@@ -332,9 +486,11 @@ def courseAdded(request):
         if len(cart)!=0:
             c_id=cart.values()[0]['course_id']
             courses=Courses.objects.get(sno=c_id)
+            courses.enrolled+=1
             cart.delete()
             myCourse=MyCourses(course=courses,order_id=id,user=request.user)
             myCourse.save()
+            courses.save()
             return render(request,'home/paymentStatus.html',{'status':'OK','send':'False'})
         else:
             return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
@@ -342,7 +498,10 @@ def myCourses(request):
     return render(request,'home/myCourses.html')
 def previewmyCourses(request,slug,id):
     myCourses=MyCourses.objects.filter(user_id=request.user).values('course_id')
-    c=Courses.objects.filter(sno=id).values('title')
+    cr=Courses.objects.filter(sno=id)
+    c=cr.values('title')
+    crating=cr.values('rating')
+    review=ReviewCourse.objects.get(reviewOfCourse_id=id)
     course=''
     video=list()
     for i in myCourses:
@@ -353,7 +512,7 @@ def previewmyCourses(request,slug,id):
         Vlength = MP4(path)
         video.append((item,round((Vlength.info.length)/60),4))
     watched=WatchedVideos.objects.filter(user_id=request.user)
-    return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched,'cTitle':c})
+    return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched,'cTitle':c,'csno':id,'review':review,'crating':crating})
 
 def watched(request):
     data=json.loads(request.body)
@@ -392,22 +551,3 @@ def studentQuery(request):
     query=WatchedVideos.objects.filter(creater=user)
     return render(request,'home/studentQuery.html',{'query':query})
 
-def homeTutor(request):
-    if request.method=='POST':
-        name=request.POST['name']
-        age=request.POST['age']
-        gender=request.POST['gender']
-        phone=request.POST['number']
-        email=request.POST['email']
-        pin=request.POST['pin']
-        district=request.POST['district']
-        state=request.POST['state']
-        subject=request.POST['subject']
-        classes=request.POST['classes']
-        disc=request.POST['disc']
-        id_proof=request.FILES.get('id_proof')
-        salaryL=request.POST['salaryL']
-        salaryH=request.POST['salaryH']
-        ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,varified='False',id_proof=id_proof)
-        ht.save()
-    return render(request,'home/homeTutor.html')

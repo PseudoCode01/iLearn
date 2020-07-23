@@ -24,6 +24,17 @@ class Courses(models.Model):
 
     def __str__(self):
         return str(self.sno)
+class ReviewCourse(models.Model):
+    sno=models.AutoField(primary_key=True)
+    username=models.CharField(max_length=500,default='')
+    rating=models.IntegerField(default=0)
+    reviewOfCourse=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
+    review=models.CharField(max_length=500,default='')
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+    def __str__(self):
+        return str(self.username)
+    
 class MyCourses(models.Model):
     sno=models.AutoField(primary_key=True)
     course=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
@@ -86,13 +97,31 @@ class HomeTutor(models.Model):
     district=models.CharField(max_length=50)
     subject=models.CharField(max_length=50)
     classes=models.CharField(max_length=50)
-    varified=models.CharField(max_length=50)
+    verified=models.BooleanField(default=False)
     discription=models.TextField()
     salaryL=models.IntegerField()
     salaryH=models.IntegerField()
+    unlocked=models.IntegerField(default=1)
     id_proof= models.FileField(upload_to='home/homeTutor', null=True, verbose_name="")
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
     def __str__(self):
-        return self.username
+        return self.name
        
+class HomeTutorDemo(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    homeTutor=models.CharField(max_length=1000)
+    fullname=models.CharField(max_length=500)
+    phone=models.CharField(max_length=50)
+    email=models.CharField(max_length=50)
+    address=models.CharField(max_length=200)
+    pin=models.IntegerField()
+    address2=models.CharField(max_length=200)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+    
+    def __str__(self):
+        return self.fullname
+
+
+

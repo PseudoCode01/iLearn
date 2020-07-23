@@ -1,0 +1,32 @@
+{% extends 'baseStaff.html' %}
+
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/staffhometutors.css' %}">
+<div class="tutorcontainer">
+  
+    {% for item in ht %}
+    <div class="tutoritem">
+        <div class="nameCircle">{{item.name|first|upper}}</div>
+        <h4 class="name">{{item.name|upper}}</h4>
+        <h6 class="agesex">{{item.age}}Yrs {{item.gender}}</h6>
+        <h6 class="subject">{{item.subject}}</h6>
+        <h6 class="classes">Class:{{item.classes}}</h6>
+        <h6 class="price">&#8377; {{item.salaryL}}-{{item.salaryL}}/M</h6>
+        <hr>
+        <p>{{item.discription}}</p>
+        <hr>
+        <div class="bottom">
+            <span data-action="reject" onclick="verify('{{item.user_id}}',this)">Reject</span>
+        
+            <button data-action="verify" onclick="verify('{{item.user_id}}',this)" id="verify">Verify</button>
+            
+  
+        </div>      
+      </div> 
+      {% endfor %}
+    </div>
+          
+    <script src="{% static 'js/staffhometutors.js' %}">
+{% endblock body %}
+    

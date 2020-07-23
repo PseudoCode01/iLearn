@@ -107,6 +107,27 @@ background-position: right;
   border-radius: 50px;
   background-image: linear-gradient(to right, #dd1e1e 0%, #0c04ee 61%, #dd1e1e 100%);
 }
+.emptyCart{
+    border: 1px solid rgb(226, 226, 226);
+    width: 50%;
+    background-color: rgb(247, 247, 247);
+    margin-left: auto;
+    margin-top: 100px;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 2px;
+    align-items: center;
+    padding: 50px 0;
+    margin-bottom: 100px;
+}
+.emptyCart img{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
 @media (max-width:1250px){
     .itemInCart{
         width: 95%;
@@ -139,6 +160,7 @@ background-position: right;
     }
 
 }
+
 @media (max-width:550px){
     .cartPage{
         width: 100%;

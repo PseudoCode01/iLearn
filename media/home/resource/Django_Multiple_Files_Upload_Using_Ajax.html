@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript">
+
+(function() {
+	if(typeof amzn_assoc_utils==="undefined"){amzn_assoc_utils={};}if(typeof amzn_assoc_utils.parse==="undefined"){amzn_assoc_utils.parse=(function(){var d,b,a={'"':'"',"\\":"\\","/":"/",b:"\b",f:"\f",n:"\n",r:"\r",t:"\t"},m,k=function(n){throw {name:"SyntaxError",message:n,at:d,text:m};},g=function(n){if(n&&n!==b){k("Expected '"+n+"' instead of '"+b+"'");}b=m.charAt(d);d+=1;return b;},f=function(){var o,n="";if(b==="-"){n="-";g("-");}while(b>="0"&&b<="9"){n+=b;g();}if(b==="."){n+=".";while(g()&&b>="0"&&b<="9"){n+=b;}}if(b==="e"||b==="E"){n+=b;g();if(b==="-"||b==="+"){n+=b;g();}while(b>="0"&&b<="9"){n+=b;g();}}o=+n;if(!isFinite(o)){k("Bad number");}else{return o;}},h=function(){var q,p,o="",n;if(b==='"'){while(g()){if(b==='"'){g();return o;}if(b==="\\"){g();if(b==="u"){n=0;for(p=0;p<4;p+=1){q=parseInt(g(),16);if(!isFinite(q)){break;}n=n*16+q;}o+=String.fromCharCode(n);}else{if(typeof a[b]==="string"){o+=a[b];}else{break;}}}else{o+=b;}}}k("Bad string");},j=function(){while(b&&b<=" "){g();}},c=function(){switch(b){case"t":g("t");g("r");g("u");g("e");return true;case"f":g("f");g("a");g("l");g("s");g("e");return false;case"n":g("n");g("u");g("l");g("l");return null;}k("Unexpected '"+b+"'");},l,i=function(){var n=[];if(b==="["){g("[");j();if(b==="]"){g("]");return n;}while(b){n.push(l());j();if(b==="]"){g("]");return n;}g(",");j();}}k("Bad array");},e=function(){var o,n={};if(b==="{"){g("{");j();if(b==="}"){g("}");return n;}while(b){o=h();j();g(":");if(Object.hasOwnProperty.call(n,o)){k('Duplicate key "'+o+'"');}n[o]=l();j();if(b==="}"){g("}");return n;}g(",");j();}}k("Bad object");};l=function(){j();switch(b){case"{":return e();case"[":return i();case'"':return h();case"-":return f();default:return b>="0"&&b<="9"?f():c();}};return function(p,o){var n;m=p;d=0;b=" ";n=l();j();if(b){k("Syntax error");}return n;};}());}if(typeof amzn_assoc_utils.stringify==="undefined"){amzn_assoc_utils.stringify=function(b){var a="";if(typeof JSON!=="undefined"){a=JSON.stringify(b);}return a;};}if(typeof amzn_assoc_utils.addCssRules==="undefined"){amzn_assoc_utils.addCssRules=function(g,n){var h=document.createElement("style"),m,e=0,k="";h.appendChild(document.createTextNode(""));document.head.appendChild(h);m=h.sheet;for(e=0,rl=n.length;e<rl;e++){var d=1,l=n[e],b=n[e][0],f="";if(Object.prototype.toString.call(l[1][0])==="[object Array]"){l=l[1];d=0;}for(var c=l.length;d<c;d++){var a=l[d];f+=a[0]+":"+a[1]+(a[2]?" !important":"")+";\n";}if(typeof g==="string"){m.insertRule(g+"{"+b+"{"+f+"}}",m.cssRules.length);}else{m.insertRule(b+"{"+f+"}",m.cssRules.length);}}};}window.trackingUtils=function(l,c,e,o,p,h,d,r,t,n,q){var g={},j=new RegExp("/(ref=[\\w]+)/?","i"),a="assocPayloadId",i=function(u){return u&&encodeURIComponent(u).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");},m=(function(){var u=document.createElement("a");u.href=(window.location!==window.parent.location)?document.referrer:document.location;return u.protocol+"//"+u.hostname+((u.port===""||u.port==="80"||u.port==="443")?"":(":"+u.port))+(u.pathname.indexOf("/")!==0?("/"+u.pathname):u.pathname);}()),s=(function(){return i(m);}()),k=function(u,w,x,v){if(typeof x==="string"&&x!==""){if(u.search===""){u.search="?"+w+"="+x;}else{if(!u.search.match(new RegExp("[?&]"+w+"="))){u.search=u.search.replace(/\?/,"?"+w+"="+x+"&");}else{if(v){u.search=u.search.replace(new RegExp(w+"=([^&]*)"),w+"="+x);}}}}return u;},f=function(w,u,v){if(typeof v==="string"&&v!==""){if(!w.match(/\?/)){w=w+"?"+u+"="+v;}else{if(!w.match(u)){w=w.replace(/\?/,"?"+u+"="+v+"&");}}}return w;},b=function(v){var u=(typeof d!=="undefined")?d:0;if(typeof v!=="undefined"){u=v;}return u;};g.addRefUrls=function(z,A,v,u){var B=new RegExp("^http://.*(amazon|endless|myhabit|amazonwireless|javari|smallparts)\\.(com|ca|co\\.jp|de|fr|co\\.uk|cn|it|es)/.*","i"),w,y,x;for(x=0;x<z.length;x++){z[x].rel="nofollow";w=String(z[x].href);if(y=w.match(B)){z[x].href=g.addTrackingParameters(z[x],A,v,u);}}};g.addRefRefUrl=function(u){return k(u,"ref-refURL",s);};g.getRefRefUrl=function(){return s;};g.getRawRefUrl=function(){return m;};g.addSignature=function(v,u,w){return k(k(v,"sig",u),"sigts",w);};g.addLinkCode=function(v,u){return k(v,"linkCode",u);};g.addTrackingId=function(v,u){return k(v,"tag",u);};g.addLinkId=function(u,v){return k(u,"linkId",v);};g.addSubtag=function(u,v){return k(u,"ascsubtag",v);};g.addCreativeAsin=function(u,v){return k(k(u,"creativeASIN",v),"adId",v);};g.addAdType=function(v,u){return k(v,"adType",u);};g.addAdMode=function(u,v){return k(u,"adMode",v);};g.addAdFormat=function(v,u){return k(v,"adFormat",u);};g.addImpressionTimestamp=function(u,v){if(typeof v==="number"){v=v.toString();}return k(u,"impressionTimestamp",v);};g.convertToRedirectedUrl=function(u,x,v){var w=document.createElement("a");w.setAttribute("href",x);if(typeof v!=="undefined"){k(w,v,i(u.getAttribute("href")),true);}else{w.setAttribute("href",x+"/"+w.getAttribute("href"));}u.setAttribute("href",w.getAttribute("href"));return u;};g.getImpressionToken=function(){return h;};g.generateTransitId=function(){return g.getHashedImpressionToken();};g.getHashedImpressionToken=function(){var u=o.split("/");var v=u[u.length-2];return v;};g.getTransitId=function(){if(typeof assoc_session_storage!=="undefined"){var u=assoc_session_storage.get(a);return u;}return null;};g.getClickUrl=function(){return p;};g.addImpressionToken=function(v,w){var u=b(w);if(typeof h==="string"&&h!==""){k(v,"imprToken",h);if(typeof u!=="undefined"){k(v,"slotNum",u);}}return v;};g.addImpressionTokenStr=function(w,v){var u=b(v);if(typeof h==="string"&&h!==""){w=f(w,"imprToken",h);if(typeof u!=="undefined"){w=f(w,"slotNum",u);}}return w;};g.addTrackingParameters=function(A,B,z,E,x,u,y,w,v,F,D,C){return g.addSignature(g.addCreativeAsin(g.addLinkId(g.addTrackingId(g.addSubtag(g.addLinkCode(g.addRefRefUrl(g.addImpressionToken(g.addRefMarker(g.addAdType(g.addAdMode(g.addAdFormat(g.addImpressionTimestamp(A,C),D),F),v),x))),z),r),E),B),u),y,w);};g.addRefMarker=function(v,x){var w,u=false;if(typeof x==="undefined"){return v;}if(w=v.pathname.match(j)){v.pathname=v.pathname.replace(w[1],"ref="+x);}else{u=(v.pathname.charAt(v.pathname.length-1)==="/");v.pathname=v.pathname+(u?"":"/")+"ref="+x;}return v;};g.getRefMarker=function(u){var v;if(v=u.pathname.match(j)){return v[1].substr(4);}else{return undefined;}};g.getCurrentURL=function(){return(window.location!==window.parent.location)?document.referrer:document.location.href;};g.makeForesterCall=function(w){var u=undefined,v;if(typeof JSON!=="undefined"){v=JSON.stringify(w);}else{if(typeof amzn_assoc_utils!=="undefined"&&typeof amzn_assoc_utils.stringify==="function"){v=amzn_assoc_utils.stringify(w);}else{return;}}if(typeof o==="string"){u=o+"?assoc_payload="+encodeURIComponent(v);g.generateImage(u);}};g.recordImpression=function(v,u,x,w,y){x.linkCode=v;x.trackingId=u;x.refUrl=g.getCurrentURL();if(n||!t){g.makeForesterCall(x);}else{g.addABPFlag(x,g.makeForesterCall);}};g.createAssocPayload=function(y,w,v,u){y.linkCode=w;y.trackingId=v;y.refUrl=u;var x="";if(typeof amzn_assoc_utils!=="undefined"&&typeof amzn_assoc_utils.stringify==="function"){x=amzn_assoc_utils.stringify(y);}return x;};g.recordAESImpression=function(w,u,x){if(typeof q==="string"){var z=g.createAssocPayload(x,w,u,g.getCurrentURL());var v=g.getHashedImpressionToken();var y=q+v+"/pixel?assoc_payload="+encodeURIComponent(z);g.generateImage(y);}};g.recordTransit=function(){if(!(g.getTransitId())||g.isUTMParamPresentInUrl(g.getCurrentURL())){assoc_session_storage.set(a,g.generateTransitId());}};g.isUTMParamPresentInUrl=function(v){var u=v.match(/utm_source=/i);return(u!==null);};g.addAAXClickUrls=function(v){var x,w,u;if(typeof v==="undefined"||typeof p==="undefined"){return;}for(w=0;w<v.length;w++){u=String(v[w].href);if(u.indexOf(p)<0){x=p+u;v[w].href=x;}}};g.addAAXClickUrl=function(u){if(typeof u==="undefined"||u.indexOf(p)===0){return u;}return p+u;};g.updateLinks=function(v,x){var w,u;if(typeof x!=="function"){return;}for(w=0;w<v.length;w++){u=String(v[w].href);v[w].href=x(u);}};g.elementInViewPort=function(u){var v=u.getBoundingClientRect(),w=(v.top>=0&&v.left>=0&&v.bottom<=(window.innerHeight||document.documentElement.clientHeight)&&v.right<=(window.innerWidth||document.documentElement.clientWidth));return{posX:v.left+window.pageXOffset,posY:v.top+window.pageYOffset,inViewPort:w};};g.recordViewability=function(z,y,v,w){if(typeof o==="string"){var x=g.createViewbilityPayload(z,y,v,w);var u=o+x+"&cb="+(new Date()).getTime();g.generateImage(u);}};g.recordAESViewability=function(B,A,v,w){if(typeof q==="string"){var x=g.createViewbilityPayload(B,A,v,w);var u=g.getHashedImpressionToken();var z=encodeURIComponent(x);var y=q+u+"/pixel/"+z+"&cb="+(new Date()).getTime();g.generateImage(y);}};g.createViewbilityPayload=function(z,y,v,x){var w={};if(typeof y!=="undefined"){w.above_the_fold=y;}if(typeof v!=="undefined"){w.topPos=v;}if(typeof x!=="undefined"){w.leftPos=x;}if(typeof z!=="undefined"){if(Object.keys(w).length===0){w.viewable=true;}w.slotNum=z;}var u="";if(typeof amzn_assoc_utils!=="undefined"&&typeof amzn_assoc_utils.stringify==="function"){u=amzn_assoc_utils.stringify({adViewability:[w]});}return u;};g.generateImage=function(u){if(typeof u!=="undefined"){(new Image()).src=u;}};g.addABPFlag=function(x,F){var z=false,y=2,w=document.body?document.body.appendChild(new Image()):new Image(),v=document.body?document.body.appendChild(new Image()):new Image(),C=false,A=false,u=Math.random()*11,E=t+"?ch=*&rn=*",D=function(H,G){if(y===0||G>1000){x.supplySideMetadata={ABPInstalled:y===0&&z};H(x);}else{setTimeout(function(){D(H,G*2);},G*2);}},B=function(){if(--y){return;}z=!C&&A;};w.style.display="none";v.style.display="none";w.onload=B;w.onerror=function(){C=true;B();};w.src=E.replace(/\*/,1).replace(/\*/,u);v.onload=B;v.onerror=function(){A=true;B();};v.src=E.replace(/\*/,2).replace(/\*/,u);D(F,250);};return g;};var assoc_session_storage=(function(){var a={};a.get=function(c){var d=null;if(typeof(window.sessionStorage)!=="undefined"){try{d=window.sessionStorage.getItem(c);}catch(b){}}return d;};a.set=function(c,d){if(typeof(window.sessionStorage)!=="undefined"){try{window.sessionStorage.setItem(c,d);}catch(b){}}};return a;}());window.elemTracker=function(b){var a={};a.trackElements=function(d,c){var f,e;if(typeof d!=="undefined"&&d.length>0&&typeof c==="function"){window.addEventListener("scroll",function(){for(f=0;f<d.length;f++){e=b.elementInViewPort(d[f]);if(e.inViewPort){c();}}},false);}};return a;};
+	var amznAutoTaggerMaker=function(h,v,B){var D={CA:"ca",CN:"cn",IN:"in",DE:"de",FR:"fr",GB:"co.uk",JP:"co.jp",US:"com"},j={CA:[],CN:[],IN:[],DE:["javari"],FR:["javari"],GB:["javari"],JP:["javari"],US:["smallparts","amazonwireless","endless","myhabit"]},F=(function(){var P=-1,O={};O.getNextSlotNum=function(){return ++P;};return O;}()),q,o,e=Math.max(document.body.scrollHeight,document.body.offsetHeight,document.documentElement.clientHeight,document.documentElement.scrollHeight,document.documentElement.offsetHeight),m=Math.max(document.body.scrollWidth,document.body.offsetWidth,document.documentElement.clientWidth,document.documentElement.scrollWidth,document.documentElement.offsetWidth),y={totalDocWidth:m,totalDocHeight:e,logType:"onetag_pageload",pageTitle:document.title},a="w50",J="w61",H="g12",C={},b=new RegExp("%3F"),w=new Object(),x=false,l="",s="",u=0,L=0,d=0,G=new RegExp("amzn.to"),r=new RegExp(h.redirectorEndPoint),E=["kdp.amazon.com"],N=[],I="assocPayloadId",c=function(P){var Q,O=false;for(Q=0;Q<E.length;Q++){if(P.match(E[Q])){O=true;break;}}return O;},p=function(O){return O.nextSibling&&O.nextSibling.tagName==="IMG"&&O.nextSibling.hasAttribute("src")&&(O.nextSibling.getAttribute("src").search(/ir-[a-z]{2}\.amazon-adsystem\.com/)>-1||O.nextSibling.getAttribute("src").search(/www\.assoc-amazon\.*/)>-1);},n=function(O){if(!O.href.match(r)){O.href=h.redirectorEndPoint+O.href;}},k=function(Y,ae){var Z=new RegExp("/(ref=[\\w]+)/?","i"),U,ad=false,P,S,T=false,X=Y.search.match(/\?tag=([^&]+)|&tag=([^&]+)|\?tag-value=([^&]+)|&tag-value=([^&]+)|\?tag_value=([^&]+)|&tag_value=([^&]+)|\?t=([^&]+)|&t=([^&]+)/),R=Y.search.match(/\?tag=|&tag=|\?tag-value=|&tag-value=|\?tag_value=|&tag_value=|\?t=|&t=/),O=Y.search.match(/(linkCode|link_code|lc)=([^&]+)/i),W=v.elementInViewPort(Y),ac={autoTagged:false,overwritten:false,geoRedirected:false,atf:W.inViewPort},Q=F.getNextSlotNum(),V={destinationURL:Y.href,slotNum:Q,atfInFirstLoad:W.inViewPort,posX:W.posX,posY:W.posY,logType:"onetag_textlink"},ab=p(Y),aa;ac.slotNum=Q;if(Y.search===""){Y.search="?imprToken="+v.getImpressionToken()+"&slotNum="+Q;}else{Y.search=Y.search.replace(/\?/,"?imprToken="+v.getImpressionToken()+"&slotNum="+Q+"&");}if(h.enableAutoTagging){ac.autoTagged=true;if(X){if(h.overwrite){for(S=1;S<9;S++){if(X[S]!=undefined){Y.search=Y.search.replace(X[S],ae);break;}}ac.overwritten=true;ad=true;}}else{if(R){Y.search=Y.search.replace(/tag=/,"tag="+ae);ad=true;}else{Y.search=Y.search.replace(/\?/,"?tag="+ae+"&");ad=true;}}}if(O&&typeof h.overridableLinkCodes[O[2]]!=="undefined"){T=true;}if(O&&!T){P=O[2];}else{P=ad?a:J;}if(O){V.oldLinkCode=O[2];Y.search=Y.search.replace(O[2],P);}else{Y.search=Y.search.replace(/\?/,"?linkCode="+P+"&");}if(ad){aa=ae;}else{if(typeof X!=="undefined"&&X instanceof Array&&X.length>=S+1&&typeof X[S]==="string"){aa=X[S];}else{aa="";}}if(C.shouldBeGeoRedirected()){ac.geoRedirected=true;n(Y);}if(Y.hasAttribute("data-amzn-asin")&&!Y.search.match("creativeASIN")){Y.search=Y.search.replace(/\?/,"?creativeASIN="+Y.getAttribute("data-amzn-asin")+"&");}if(C.shouldTrackTransit(h)){v.recordTransit();V[I]=v.getTransitId();}N.push({pos:W,slotNum:Q,linkCode:P,linkInfo:V,skipIRCall:ab,imprTag:aa});Y.href=v.addAAXClickUrl(Y.href);return ac;},A=function(O){if(O.href.match(b)){o=O.href.split(b);O.href=o[0]+"?"+decodeURIComponent(o[1]);}},t=function(P,O,S){var R,Q;for(R=0;R<P.length;R++){for(Q=0;Q<O.length;Q++){if(window.addEventListener){P[R].addEventListener(O[Q],S,false);}else{P[R].attachEvent("on"+O[Q],S);}}}},K=function(O,P){var Q=false;t([O],["touchstart"],function(){Q=false;});t([O],["touchmove"],function(){Q=true;});t([O],["click","touchend"],function(R){if(Q){return;}O.setAttribute("href",P);});t([O],["auxclick","contextmenu"],function(R){O.setAttribute("href",P);});t([O],["mouseup"],function(R){if(R.button===1||R.ctrlKey){O.setAttribute("href",P);}});},M=function(){var O="";for(i=0;i<h.itemRefs.length;i++){if(typeof h.itemRefs[i].type!=="undefined"&&h.itemRefs[i].type==="ASIN"&&typeof h.itemRefs[i].sourceLink!=="undefined"&&String(h.itemRefs[i].sourceLink).match(G)!==null&&typeof h.itemRefs[i].destinationLink!=="undefined"){w[h.itemRefs[i].sourceLink]=h.itemRefs[i].destinationLink;if(l!==""){O=",";}l=l+O+h.itemRefs[i].sourceLink;u++;}}},f=function(P,O){B.trackElements([P],function(){if(typeof O!==undefined&&O.slotNum!==undefined&&(O.viewed===undefined||!O.viewed)){v.recordViewability(O.slotNum);if(C.shouldInteractWithAES(h)){v.recordAESViewability(O.slotNum);}O.viewed=true;}});},g=function(O,P){K(O,O.getAttribute("href"));O.setAttribute("href",P);},z=function(){var Q,P,O;for(Q=0;Q<N.length;Q++){P=N[Q];O=P.pos;v.recordImpression(P.linkCode,P.imprTag,P.linkInfo,P.skipIRCall,P.slotNum);v.recordViewability(P.slotNum,O.inViewPort,O.posX,O.posY);if(C.shouldInteractWithAES(h)){v.recordAESImpression(P.linkCode,P.imprTag,P.linkInfo);v.recordAESViewability(P.slotNum,O.inViewPort,O.posX,O.posY);}}N=[];};if(h.locale!=undefined){q=h.locale;}else{q="US";}C.shouldBeGeoRedirected=function(){return h.enableGeoRedirection&&(h.region!==""&&h.region!==h.viewerCountry);};C.publisherCallBack=function(){window["amzn_assoc_client_cb_"+h.adUnitSlotNum]({type:"onload",data:{},widget:C});};C.decorateLinkElement=function(O){A(O);linkProperties=k(O,h.trackingId);f(O,linkProperties);return linkProperties;};C.shouldTrackTransit=function(O){return((typeof O.disableTransitTracking==="undefined")||!O.disableTransitTracking);};C.shouldInteractWithAES=function(O){return((typeof O.enableAESInteraction!=="undefined")&&O.enableAESInteraction);};C.tagLinks=function(af){var ah,ag,P,aa,aj,ac=[],al=0,X,Z,ai,ae,ak,O,Y,V=0,R=0,ab=0,Q=0,U=0,S=0,T,W,ad="";P=D[q];aa=j[q];aj=new RegExp("^(http|https)://(www|[\\w\\-\\.]+)?amazon\\.("+P+")/","i");if(aa){for(al=0;al<aa.length;al++){X=P;if(P=="co.jp"){X="co.jp|jp";}ac[al]=new RegExp("^(http|https)://(www\\.)?("+aa[al]+")\\.("+X+")/","i");}}Z=af.getElementsByTagName("a");if(!x){M();x=true;}for(ah=0;ah<Z.length;ah++){Y=undefined;ai=String(Z[ah].href);if(ae=ai.match(aj)&&!c(ai)){Y=C.decorateLinkElement(Z[ah]);g(Z[ah],ai);}else{if(h.isShortLinksSupported&&(ak=ai.match(G))!==null){L++;if(s!==""){ad=",";}s=s+ad+Z[ah].href;T=w[Z[ah].href];if(typeof T!=="undefined"){d++;Z[ah].setAttribute("href",T);Y=C.decorateLinkElement(Z[ah]);g(Z[ah],ai);}else{if(C.shouldBeGeoRedirected()){Y=C.decorateLinkElement(Z[ah]);g(Z[ah],ai);}}}else{for(O=0;O<ac.length;O++){if(ae=ai.match(ac[O])){C.decorateLinkElement(Z[ah]);g(Z[ah],ai);}}}}if(typeof Y!=="undefined"){if(Y.autoTagged){R++;}if(Y.overwritten){S++;}if(Y.geoRedirected){ab++;}if(Y.atf){Q++;}else{U++;}V++;}}y.numLinks=V;y.numAutoTaggedLinks=R;y.autoTaggingEnabled=h.enableAutoTagging;y.geoRedirectEnabled=h.enableGeoRedirection;y.disableTransitTracking=h.disableTransitTracking;y.numLinksATF=Q;y.numLinksBTF=U;y.shortLinksInLivePool=l;y.shortLinksInPage=s;y.shortLinksInLivePoolCount=u;y.shortLinksInPageCount=L;y.shortLinksMatchCount=d;if(C.shouldTrackTransit(h)){v.recordTransit();y[I]=v.getTransitId();}v.recordImpression(h.linkCode,h.trackingId,y);if(C.shouldInteractWithAES(h)){v.recordAESImpression(h.linkCode,h.trackingId,y);}t([window],["load"],z);};return C;};
+    var spec = {
+        trackingId : "vitorfs0b-20",
+        region : "US",
+        overwrite : false,
+        enableAutoTagging : false,
+        linkCode : "w49",
+        overridableLinkCodes :  {   "am1": ""   , "am2": ""   , "am3": ""   , "as1": ""   , "as2": ""   , "as3": ""   , "as4": ""   , "li1": ""   , "li2": ""   , "li3": ""   , "ll1": ""   , "ll2": ""   },
+        enableGeoRedirection : true,
+        redirectorEndPoint : "https://assoc-redirect.amazon.com/g/r/",
+        adUnitSlotNum : "0",
+        itemRefs : [],
+        isShortLinksSupported : true,
+        viewerCountry : "IN",
+        disableTransitTracking : false,
+        enableAESInteraction : false
+    }, trackingUtils = window.trackingUtils(
+        "1",
+        "//fls-na.amazon-adsystem.com/1/associates-ads/1/OP/r/json",
+        "//ir-na.amazon-adsystem.com/e/ir",
+        "https://aax-us-east.amazon-adsystem.com/x/px/Qupe2tiwfs2mAdTkFo5UJuEAAAFzUseESwEAAAFKARU44wU/", "https://aax-us-east.amazon-adsystem.com/x/c/Qupe2tiwfs2mAdTkFo5UJuEAAAFzUseESwEAAAFKARU44wU/", "ZvK5Ls28qDVfEiCVHPDfjQ", undefined, undefined, undefined, true,
+        "https://assoc-na.associate-amazon.com/onetag/"
+    );
+
+    window.amznAutoTagger = amznAutoTaggerMaker(spec, trackingUtils, window.elemTracker(trackingUtils));
+    window.amznAutoTagger.tagLinks(document);
+    window.amznAutoTagger.publisherCallBack();
+}());
+
+ //# sourceURL=dynscript-0.js</script>
+  <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ir-site-verification-token" value="-233745807">
+<title>Django Multiple Files Upload Using Ajax</title>
+<meta name="description" content="In this tutorial I will guide you through the steps to implement an AJAX multiple file upload with Django using jQuery.For this tutorial we will be using a s...">
+<link href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/css.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/main.css">
+<link rel="stylesheet" href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/font-awesome.css">
+<link rel="canonical" href="https://simpleisbetterthancomplex.com/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html">
+<link rel="alternate" type="application/rss+xml" title="Simple is Better Than Complex" href="https://simpleisbetterthancomplex.com/feed.xml">
+<link rel="icon" type="image/png" href="https://simpleisbetterthancomplex.com/favicon.png">
+<link rel="mask-icon" href="https://simpleisbetterthancomplex.com/safari-pinned-tab.svg" color="#5bbad5">
+<script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/1689711451348257.js" async=""></script><script async="" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/fbevents.js"></script><script async="" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/analytics.js"></script><script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/jquery.js"></script>
+<script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/site.js"></script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-42049022-10', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    $(function () {
+      $("#ad").on("click", "#carbonads .carbon-wrap a", function () {
+        var page_id = '/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html';
+        ga('send', 'event', 'carbonads', 'click', page_id, {
+          'transport': 'beacon'
+        });
+      });
+    });
+  </script>
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1689711451348257');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" alt="PageView"
+  src="https://www.facebook.com/tr?id=1689711451348257&ev=PageView&noscript=1"
+  /></noscript>
+
+
+  <meta property="og:title" content="Django Multiple Files Upload Using Ajax">
+<meta property="og:url" content="https://simpleisbetterthancomplex.com/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html">
+<meta property="og:image" content="https://simpleisbetterthancomplex.com/media/2016/11/thumbnail-uploads.jpg">
+<meta property="og:description" content="In this tutorial I will guide you through the steps to implement an AJAX multiple file upload with Django using jQuery.For this tutorial we will be using a s...">
+<meta property="og:site_name" content="Simple is Better Than Complex">
+<meta property="og:locale" content="en_US">
+
+  <meta property="article:published_time" content="2016-11-22T20:45:00+02:00">
+  <meta property="article:author" content="https://facebook.com/vitorfs">
+
+<meta property="fb:admins" content="100000024295617">
+<meta property="fb:app_id" content="1645747765697865">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="vitorfs">
+<meta name="twitter:creator" content="vitorfs">
+<meta name="twitter:title" content="Django Multiple Files Upload Using Ajax">
+<meta name="twitter:description" content="In this tutorial I will guide you through the steps to implement an AJAX multiple file upload with Django using jQuery.For this tutorial we will be using a specific plug-in called jQuery File Uploa...">
+<meta name="twitter:image" content="https://simpleisbetterthancomplex.com/media/2016/11/thumbnail-uploads.jpg">
+<meta name="p:domain_verify" content="e262845cb18e4c68b0cff535a0eaea5d">
+  <meta property="og:type" content="article">
+  
+    <meta property="article:tag" content="django">
+  
+    <meta property="article:tag" content="ajax">
+  
+    <meta property="article:tag" content="jquery">
+  
+    <meta property="article:tag" content="upload">
+  
+  <style type="text/css">
+    @media (min-width: 750px) {
+      body {
+        /*padding-top:50px!important;*/
+      }
+    }
+  </style>
+  <script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/monetization.js"></script>
+<script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/embed.js" data-timestamp="1594821670250"></script><div id="_bsa_srv-CK7I4KJJ_0"></div><script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/count-data.js"></script><link rel="prefetch" as="style" href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/a_data/lounge.css"><link rel="prefetch" as="script" href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/a_data/common.js"><link rel="prefetch" as="script" href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/a_data/lounge_002.js"><link rel="prefetch" as="script" href="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/a_data/config.js"><script id="_carbonads_projs" type="text/javascript" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/CKYIEKQM.js"></script></head>
+<body>
+  <div id="top" style="visibility: hidden"></div>
+<header class="nav-down">
+  <div class="container">
+    <ul class="menu menu-right">
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/search/">
+          <span class="fa fa-search"></span>
+        </a>
+      </li>
+      <li class="toggle-menu">
+        <a href="javascript:void(0);">
+          <span class="fa fa-bars"></span>
+        </a>
+      </li>
+    </ul>
+    <ul class="menu menu-left">
+      <li class="logo">
+        <a href="https://simpleisbetterthancomplex.com/" style="font-weight: 900">simple<span class="brand">is</span>better<span class="brand">than</span>complex</a>
+      </li>
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/">
+          <span class="fa fa-home" style="margin-right: 3px"></span>
+          Home
+        </a>
+      </li>
+      <!--li class="menu-item">
+        <a href="/ask/">
+          <span class="fa fa-bullhorn" style="margin-right: 3px"></span>
+          Ask a Question
+        </a>
+      </li-->
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/archive/">
+          <span class="fa fa-archive" style="margin-right: 3px"></span>
+          Articles
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/videos/">
+          <span class="fa fa-video-camera" style="margin-right: 3px"></span>
+          Videos
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="https://community.simpleisbetterthancomplex.com/">
+          <span class="fa fa-comments" style="margin-right: 3px"></span>
+          Community
+        </a>
+      </li>
+      <!--li class="menu-item">
+        <a href="/contact/">
+          <span class="fa fa-envelope" style="margin-right: 3px"></span>
+          Contact
+        </a>
+      </li-->
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/series/">
+          <span class="fa fa-book" style="margin-right: 3px"></span>
+          Series
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/snippets/">
+          <span class="fa fa-code" style="margin-right: 3px"></span>
+          Snippets
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/sponsor/">
+          <span class="fa fa-bullhorn" style="margin-right: 3px"></span>
+          Sponsor
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="https://simpleisbetterthancomplex.com/feed.xml" target="_blank">
+          <span class="fa fa-rss" style="margin-right: 3px"></span>
+          RSS
+        </a>
+      </li>
+      <li class="menu-item">
+        <a href="https://colossus.simpleisbetterthancomplex.com/subscribe/d2320a41-0378-4aa8-8f4e-5bb1ffcd521d/" class="brand" target="_blank">
+          <span class="fa fa-send" style="margin-right: 3px"></span> Subscribe
+        </a>
+      </li>
+      <li class="menu-item hidden-mobile">
+        <a href="https://simpleisbetterthancomplex.com/search/">
+          <span class="fa fa-search"></span> Search
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+  <!--p style="text-align:center;font-size:1.4rem;margin-top:2rem;margin-bottom:2rem;">
+    <i class="fa fa-youtube-play" style="color:#ff0000!important"></i>
+    <a href="https://www.youtube.com/VitorFreitas?sub_confirmation=1" target="_blank">Subscribe to the Simple is Better Than Complex YouTube Channel!</a>
+  </p-->
+
+  <!--p style="text-align:center;font-size:1.4rem;margin-top:2rem;margin-bottom:2rem;">
+    <span style="background-color:#1eaedb;color:#fff;border-radius:3px;padding:3px 5px;font-size:1.2rem;margin-right:5px;">Sponsored</span>
+    <a href="/sponsor/" rel="noopener nofollow">
+      By You? Learn more about sponsorship of the blog.
+    </a>
+  </p-->
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="ten offset-by-one columns content post">
+          <div class="card post-author">
+  <div class="author-picture">
+    <img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/picture.jpg" alt="Vitor Freitas">
+  </div>
+  <div class="author-info">
+    <p class="name">By <strong>Vitor Freitas</strong></p>
+    <p class="bio">
+      I'm a passionate software developer and researcher from Brazil, currently living in Finland. I write about
+      Python, Django and Web Development on a weekly basis. <a href="https://simpleisbetterthancomplex.com/about/" rel="author">Read more</a>.
+    </p>
+    <p class="contact">
+      <a href="https://www.youtube.com/VitorFreitas" rel="me noopener" target="_blank" title="YouTube"><i class="fa fa-youtube-play"></i></a>
+      <a href="https://github.com/vitorfs" rel="me noopener" target="_blank" title="GitHub"><i class="fa fa-github"></i></a>
+      <a href="https://twitter.com/vitorfs" rel="me noopener" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a>
+      <a href="https://facebook.com/vitorfs" rel="me noopener" target="_blank" title="Facebook"><i class="fa fa-facebook-official"></i></a>
+      <a href="https://linkedin.com/in/vitorfs" rel="me noopener" target="_blank" title="LinkedIn"><i class="fa fa-linkedin-square"></i></a>
+      <a href="https://instagram.com/vitorfs" rel="me noopener" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a>
+      <a href="https://simpleisbetterthancomplex.com/contact/" title="Contact"><i class="fa fa-envelope"></i></a>
+    </p>
+  </div>
+  
+  <div class="row">
+    <div class="six columns">
+      <div id="ad">
+        <script async="" type="text/javascript" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/carbon.js" id="_carbonads_js"></script><div id="carbonads"><span><span class="carbon-wrap"><a href="https://sibt.co/2xhZa6M" class="carbon-img" target="_blank" rel="noopener sponsored"><img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/ad323a286af50bace0129cd2f5269aaf.png" alt="ads via Carbon" style="max-width: 130px;" border="0"></a><a href="https://sibt.co/2xhZa6M" class="carbon-text" target="_blank" rel="noopener sponsored">Get $10 Free Credit on DigitalOcean to Get Started.</a></span><a href="http://carbonads.net/?utm_source=simpleisbetterthancomplexcom&amp;utm_medium=ad_via_link&amp;utm_campaign=in_unit&amp;utm_term=carbon" class="carbon-poweredby" target="_blank" rel="noopener sponsored">ads via Carbon</a></span></div>
+      </div>
+    </div>
+
+
+    <!--div class="six columns">
+      <div id="ad2">
+        <div id="sponsored">
+          <a href="/sponsor/">
+            <img src="/media/sponsored/ad.png" alt="Advertise Here">
+            <span>Reach 90k+ Django developers every month. Learn more about sponsorship of the blog.</span>
+          </a>
+          <small>
+            <a href="/sponsor/">Sponsored</a>
+          </small>
+        </div>
+
+        <div id="sponsored">
+          <a href="https://click.linksynergy.com/link?id=phY4769lVwA&offerid=507388.567828&type=2&murl=https%3A%2F%2Fwww.udemy.com%2Fcomplete-python-bootcamp%2F" target="_blank" rel="noopener nofollow">
+            <img border="0" src="https://udemy-images.udemy.com/course/480x270/567828_67d0.jpg" alt="Complete Python Bootcamp: Go from zero to hero in Python 3">
+            <span>Complete Python Bootcamp: Go from zero to hero in Python 3</span>
+          </a>
+          <small>
+            <a href="/sponsor/">Sponsored</a>
+          </small>
+          <img border="0" width="1" height="1" src="https://ad.linksynergy.com/fs-bin/show?id=phY4769lVwA&bids=507388.567828&type=2&subid=0" alt="LinkSynergy">
+        </div>
+
+      </div>
+    </div-->
+
+
+  </div>
+  
+</div>
+
+
+          <div class="card">
+            
+  <h5 class="post-category">
+    
+      tutorial
+    
+  </h5>
+  <hr class="dashed">
+
+<h3 class="post-title">Django Multiple Files Upload Using Ajax</h3>
+<ul class="post-meta">
+  <li>
+    <i class="fa fa-calendar"></i> Nov 22, 2016
+  </li>
+  <li>
+    <i class="fa fa-clock-o"></i>
+    15 minutes read
+  </li>
+  <li>
+    <i class="fa fa-comments"></i>
+    <a href="#disqus_thread" data-disqus-identifier="/tutorial/2016/11/22/django-multiple-file-upload-using-ajax">86 comments</a>
+  </li>
+  <li>
+    <i class="fa fa-eye"></i>
+    <span class="ga-page-views" data-ga-identifier="/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html">77,127</span> views
+  </li>
+  
+  
+</ul>
+
+  <div class="post-featured-image">
+    <img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-uploads.jpg" alt="Django Multiple Files Upload Using Ajax" class="featured-image">
+    
+      <small>(Picture: <a href="https://www.pexels.com/photo/person-using-laptop-computer-during-daytime-196655/" target="_blank">https://www.pexels.com/photo/person-using-laptop-computer-during-daytime-196655/</a>)</small>
+    
+  </div>
+
+            <article>
+              <p>In this tutorial I will guide you through the steps to implement an AJAX multiple file upload with Django using jQuery.
+For this tutorial we will be using a specific plug-in called jQuery File Upload, which takes care of the server
+communication using AJAX and also the compatibility with different browsers.</p>
+
+<p>The plug-in is great, but it have so many features that sometimes it can become challenging for some to get started.
+You will notice that some of the examples are a little bit redundant, repeating code and so on. That’s on purpose,
+so to avoid code abstraction and the examples become more clear.</p>
+
+<p>In the end of this post you will also find the link to download all the code used in this tutorial.</p>
+
+<hr>
+
+<h4 id="basic-configuration">Basic Configuration</h4>
+
+<p>Before you move forward, if you are not familiar at all with file upload with Django, it is a good a idea to check
+this post I published while ago: <a href="https://simpleisbetterthancomplex.com/tutorial/2016/08/01/how-to-upload-files-with-django.html">How to Upload Files With Django</a>.
+It will give you an overview of the basics and some caveats.</p>
+
+<p>To work with file upload you will need to set the <code class="highlighter-rouge">MEDIA_URL</code> and <code class="highlighter-rouge">MEDIA_ROOT</code>.</p>
+
+<p><strong>settings.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">MEDIA_URL</span> <span class="o">=</span> <span class="s">'/media/'</span>
+<span class="n">MEDIA_ROOT</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">BASE_DIR</span><span class="p">,</span> <span class="s">'media'</span><span class="p">)</span></code></pre></figure>
+
+<p>And to test the uploads in the development environment, add this to the bottom of the root urlconf:</p>
+
+<p><strong>urls.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf</span> <span class="kn">import</span> <span class="n">settings</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>
+<span class="kn">from</span> <span class="nn">django.conf.urls.static</span> <span class="kn">import</span> <span class="n">static</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c"># ...</span>
+<span class="p">]</span>
+
+<span class="k">if</span> <span class="n">settings</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span>
+    <span class="n">urlpatterns</span> <span class="o">+=</span> <span class="n">static</span><span class="p">(</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_URL</span><span class="p">,</span> <span class="n">document_root</span><span class="o">=</span><span class="n">settings</span><span class="o">.</span><span class="n">MEDIA_ROOT</span><span class="p">)</span></code></pre></figure>
+
+<p>Now the rest are static assets, mostly JavaScript assets. Here’s what we are going to use:</p>
+
+<ul>
+  <li><a href="https://github.com/twbs/bootstrap/releases/tag/v3.3.7" target="_blank">Bootstrap 3.3.7</a> Not required. Just so our example looks better.</li>
+  <li><a href="https://github.com/jquery/jquery/releases/tag/3.1.1" target="_blank">jQuery 3.1.1</a> Base dependency of the plug-in.</li>
+  <li><a href="https://github.com/blueimp/jQuery-File-Upload/releases/tag/v9.14.1" target="_blank">jQuery File Upload 9.14.1</a> That’s the stuff.</li>
+</ul>
+
+<p>Now you will see that the <strong>jQuery File Upload</strong> comes with several script files, they all have a purpose and you will
+only need some of them for certain features.</p>
+
+<p>Here is how my base template looks like:</p>
+
+<p><strong>base.html</strong></p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="nv">load</span> <span class="nv">static</span> <span class="cp">%}&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span><span class="cp">{%</span> <span class="k">block</span> <span class="nv">title</span> <span class="cp">%}</span>Photos Library - Simple is Better Than Complex<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span><span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'css/bootstrap.min.css'</span> <span class="cp">%}</span><span class="s">"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;
+      &lt;script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"&gt;&lt;/script&gt;
+      &lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;
+    &lt;![endif]--&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="cp">{%</span> <span class="k">include</span> <span class="s1">'includes/header.html'</span> <span class="cp">%}</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+      <span class="cp">{%</span> <span class="k">block</span> <span class="nv">content</span> <span class="cp">%}</span>
+      <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/jquery-3.1.1.min.js'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/bootstrap.min.js'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="cp">{%</span> <span class="k">block</span> <span class="nv">javascript</span> <span class="cp">%}</span>
+    <span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>Bootstrap and jQuery in the base template, and the jQuery File Upload plug-in will be added using the
+<code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">block</span><span class="w"> </span><span class="err">javascript</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code>. We will add them as we need.</p>
+
+<hr>
+
+<h4 id="working-example">Working Example</h4>
+
+<p>We will be working in a app called <strong>photos</strong>. Consider the model below for the rest of this tutorial:</p>
+
+<p><strong>models.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Photo</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">FileField</span><span class="p">(</span><span class="n">upload_to</span><span class="o">=</span><span class="s">'photos/'</span><span class="p">)</span>
+    <span class="n">uploaded_at</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">auto_now_add</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></code></pre></figure>
+
+<p>And the form, as simple as:</p>
+
+<p><strong>forms.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Photo</span>
+
+<span class="k">class</span> <span class="nc">PhotoForm</span><span class="p">(</span><span class="n">forms</span><span class="o">.</span><span class="n">ModelForm</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Photo</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s">'file'</span><span class="p">,</span> <span class="p">)</span></code></pre></figure>
+
+<p>PS: Perhaps using a <code class="highlighter-rouge">ImageField</code> instead of <code class="highlighter-rouge">FileField</code> would be more suitable for the use case, but to avoid the
+hustle of installing Pillow locally, let’s just use <code class="highlighter-rouge">FileField</code>. So we have an easier to run example.</p>
+
+<hr>
+
+<h4 id="basic-file-upload">Basic File Upload</h4>
+
+<p>First we need a route:</p>
+
+<p><strong>urls.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">views</span>
+
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^basic-upload/$'</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">BasicUploadView</span><span class="o">.</span><span class="n">as_view</span><span class="p">(),</span> <span class="n">name</span><span class="o">=</span><span class="s">'basic_upload'</span><span class="p">),</span>
+<span class="p">]</span></code></pre></figure>
+
+<p>A view to process the upload, nothing special:</p>
+
+<p><strong>views.py</strong></p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
+<span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">JsonResponse</span>
+<span class="kn">from</span> <span class="nn">django.views</span> <span class="kn">import</span> <span class="n">View</span>
+
+<span class="kn">from</span> <span class="nn">.forms</span> <span class="kn">import</span> <span class="n">PhotoForm</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Photo</span>
+
+<span class="k">class</span> <span class="nc">BasicUploadView</span><span class="p">(</span><span class="n">View</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">photos_list</span> <span class="o">=</span> <span class="n">Photo</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="nb">all</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="p">,</span> <span class="s">'photos/basic_upload/index.html'</span><span class="p">,</span> <span class="p">{</span><span class="s">'photos'</span><span class="p">:</span> <span class="n">photos_list</span><span class="p">})</span>
+
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">form</span> <span class="o">=</span> <span class="n">PhotoForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+            <span class="n">photo</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'is_valid'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'name'</span><span class="p">:</span> <span class="n">photo</span><span class="o">.</span><span class="nb">file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">'url'</span><span class="p">:</span> <span class="n">photo</span><span class="o">.</span><span class="nb">file</span><span class="o">.</span><span class="n">url</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'is_valid'</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code></pre></figure>
+
+<p>We are using a basic Class-Based View, defining two request processing for the <strong>GET</strong> and <strong>POST</strong> methods.
+Essentially when we access the page where we handle the upload, we are going to show the user a list of uploaded
+photos.</p>
+
+<p>For the POST, it is where the upload handling happens, using Django’s Model Forms. When we call <code class="highlighter-rouge">form.save()</code>, Django
+will create a <code class="highlighter-rouge">Photo</code> instance and save the file in the file system.</p>
+
+<p>We will follow the same strategy for the next examples as well.</p>
+
+<p>Now where the magic happens: the client side. First the required jQuery File Upload scripts:</p>
+
+<p><strong>photos/basic_upload/index.html</strong></p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="cp">{%</span> <span class="k">block</span> <span class="nv">javascript</span> <span class="cp">%}</span>
+  <span class="c">{# JQUERY FILE UPLOAD SCRIPTS #}</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/jquery-file-upload/vendor/jquery.ui.widget.js'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/jquery-file-upload/jquery.iframe-transport.js'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'js/jquery-file-upload/jquery.fileupload.js'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+  <span class="c">{# PHOTOS PAGE SCRIPTS #}</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">static</span> <span class="s1">'photos/js/basic-upload.js'</span> <span class="cp">%}</span><span class="s">"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="cp">{%</span> <span class="k">endblock</span> <span class="cp">%}</span></code></pre></figure>
+
+<ul>
+  <li><strong>jquery.ui.widget.js</strong> It’s a dependency for the plug-in</li>
+  <li><strong>jquery.iframe-transport.js</strong> The Iframe Transport is required for browsers without support for XHR file uploads</li>
+  <li><strong>jquery.fileupload.js</strong> The basic File Upload plug-in</li>
+</ul>
+
+<p>And finally the script <strong>basic-upload.js</strong> is where we will implement our photo upload.</p>
+
+<p>Now let’s see the rest of our template and explore the meat of the page:</p>
+
+<p><strong>photos/basic_upload/index.html</strong></p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="c">{# 1. BUTTON TO TRIGGER THE ACTION #}</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary js-upload-photos"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-cloud-upload"</span><span class="nt">&gt;&lt;/span&gt;</span> Upload photos
+<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">{# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"fileupload"</span> <span class="na">type=</span><span class="s">"file"</span> <span class="na">name=</span><span class="s">"file"</span> <span class="na">multiple</span>
+       <span class="na">style=</span><span class="s">"display: none;"</span>
+       <span class="na">data-url=</span><span class="s">"</span><span class="cp">{%</span> <span class="nv">url</span> <span class="s1">'photos:basic_upload'</span> <span class="cp">%}</span><span class="s">"</span>
+       <span class="na">data-form-data=</span><span class="s">'{"csrfmiddlewaretoken": "</span><span class="cp">{{</span> <span class="nv">csrf_token</span> <span class="cp">}}</span><span class="s">"}'</span><span class="nt">&gt;</span>
+
+<span class="c">{# 3. TABLE TO DISPLAY THE UPLOADED PHOTOS #}</span>
+<span class="nt">&lt;table</span> <span class="na">id=</span><span class="s">"gallery"</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>Photo<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="cp">{%</span> <span class="k">for</span> <span class="nv">photo</span> <span class="ow">in</span> <span class="nv">photos</span> <span class="cp">%}</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"</span><span class="cp">{{</span> <span class="nv">photo.file.url</span> <span class="cp">}}</span><span class="s">"</span><span class="nt">&gt;</span><span class="cp">{{</span> <span class="nv">photo.file.name</span> <span class="cp">}}</span><span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>First, <strong>block 1</strong> of the snippet, is the button to start the workflow. We will hook into the css class
+<strong>.js-upload-photos</strong> to open the file explorer window.</p>
+
+<p><strong>Block 2</strong> is the most important part of the page. It’s the the file input that will be used to load the jQuery File
+Upload component. A few things to note:</p>
+
+<ul>
+  <li>The name of the input must match with the Model Form Field. That is, if the <code class="highlighter-rouge">FileField</code> is called <strong>document</strong>, the input
+must be named <code class="highlighter-rouge">name="document"</code> instead. Otherwise the processing of the file will fail.</li>
+  <li>The <code class="highlighter-rouge">multiple</code> attribute will enable multiple file selection in the file explorer window.</li>
+  <li>The <code class="highlighter-rouge">data-url</code> attribute must point to the route/view where the file form will be processed.</li>
+  <li>The <code class="highlighter-rouge">data-form-data</code> attribute should be defined <strong>exactly</strong> this way! Don’t try to swap the <code class="highlighter-rouge">"</code> and <code class="highlighter-rouge">'</code> of the HTML.
+It won’t work. This line is important so to instruct the plug-in to send the file along with the csrf middleware token.</li>
+</ul>
+
+<p>Finally, <strong>block 3</strong> is just a regular table displaying the photos.</p>
+
+<p>Now let’s explore the page’s script, which is responsible for putting every piece of this puzzle together:</p>
+
+<p><strong>photos/js/basic-upload.js</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="cm">/* 1. OPEN THE FILE EXPLORER WINDOW */</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".js-upload-photos"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#fileupload"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="cm">/* 2. INITIALIZE THE FILE UPLOAD COMPONENT */</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"#fileupload"</span><span class="p">).</span><span class="nx">fileupload</span><span class="p">({</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>
+    <span class="na">done</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>  <span class="cm">/* 3. PROCESS THE RESPONSE FROM THE SERVER */</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">is_valid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#gallery tbody"</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span>
+          <span class="s2">"&lt;tr&gt;&lt;td&gt;&lt;a href='"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s2">"'&gt;"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">"&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;"</span>
+        <span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+
+<span class="p">});</span></code></pre></figure>
+
+<p>Remember how we returned the data in the View class?</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+    <span class="n">form</span> <span class="o">=</span> <span class="n">PhotoForm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">FILES</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">form</span><span class="o">.</span><span class="n">is_valid</span><span class="p">():</span>
+        <span class="n">photo</span> <span class="o">=</span> <span class="n">form</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'is_valid'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'name'</span><span class="p">:</span> <span class="n">photo</span><span class="o">.</span><span class="nb">file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s">'url'</span><span class="p">:</span> <span class="n">photo</span><span class="o">.</span><span class="nb">file</span><span class="o">.</span><span class="n">url</span><span class="p">}</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s">'is_valid'</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></code></pre></figure>
+
+<p>This <code class="highlighter-rouge">JsonResponse</code> will end up in the <strong>data</strong> parameter, passed to the anonymous function hooked to the <strong>done</strong>
+event of the File Upload component.</p>
+
+<p>See what we are doing here? When we are accessing <code class="highlighter-rouge">data.result.name</code>, we are accessing the <strong>name</strong> we returned in the
+<code class="highlighter-rouge">JsonResponse</code>. So, let’s say, if we returned:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">return</span> <span class="n">JsonResponse</span><span class="p">({</span><span class="s">'message'</span><span class="p">:</span> <span class="s">'Success'</span><span class="p">})</span></code></pre></figure>
+
+<p>We would be able to catch it inside the <strong>done</strong> function, this way:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">done</span><span class="err">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">message</span> <span class="o">===</span> <span class="s1">'Success'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// do something...</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>But, what we are actually doing there is putting some pieces of HTML together and prepending it to the table body.</p>
+
+<p>Let’s look at some screen shots to see how it looks like:</p>
+
+<p><img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/uploads1.png" alt="Basic File Upload"></p>
+
+<p>Then when the user clicks in the <strong>Upload photos</strong> button:</p>
+
+<p><img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/uploads2.png" alt="Basic File Upload"></p>
+
+<p>The user selects as may files as he wants and hit the <strong>Open</strong> button:</p>
+
+<p><img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/uploads3.png" alt="Basic File Upload"></p>
+
+<p>And all the files are uploaded to the server and added to the table, with a valid link! This is a minimum example.
+When you grab the code you will see it is really easy to reproduce.</p>
+
+<p>It’s great already! Works on most major web browsers (IE 6.0+ for example!). And it is just a matter of what data to
+return, and what to do with it.</p>
+
+<hr>
+
+<h4 id="displaying-the-progress">Displaying the Progress</h4>
+
+<p>An improvement we can make, is to add a progress bar, to not let the users hanging without knowing what is going on.</p>
+
+<p>In our template, add the following snippet. It’s a Bootstrap modal:</p>
+
+<p><strong>photos/basic_upload/index.html</strong></p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span> <span class="na">id=</span><span class="s">"modal-progress"</span> <span class="na">data-backdrop=</span><span class="s">"static"</span> <span class="na">data-keyboard=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"modal-title"</span><span class="nt">&gt;</span>Uploading...<span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress-bar"</span> <span class="na">role=</span><span class="s">"progressbar"</span> <span class="na">style=</span><span class="s">"width: 0%;"</span><span class="nt">&gt;</span>0%<span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>Let’s improve the JavaScript part so to calculate the progress:</p>
+
+<p><strong>photos/js/basic-upload.js</strong></p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+  <span class="nx">$</span><span class="p">(</span><span class="s2">".js-upload-photos"</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">(</span><span class="s2">"#fileupload"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+  <span class="p">});</span>
+
+  <span class="nx">$</span><span class="p">(</span><span class="s2">"#fileupload"</span><span class="p">).</span><span class="nx">fileupload</span><span class="p">({</span>
+    <span class="na">dataType</span><span class="p">:</span> <span class="s1">'json'</span><span class="p">,</span>
+    <span class="na">sequentialUploads</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>  <span class="cm">/* 1. SEND THE FILES ONE BY ONE */</span>
+    <span class="na">start</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>  <span class="cm">/* 2. WHEN THE UPLOADING PROCESS STARTS, SHOW THE MODAL */</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s2">"#modal-progress"</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s2">"show"</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">stop</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>  <span class="cm">/* 3. WHEN THE UPLOADING PROCESS FINALIZE, HIDE THE MODAL */</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s2">"#modal-progress"</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="s2">"hide"</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">progressall</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>  <span class="cm">/* 4. UPDATE THE PROGRESS BAR */</span>
+      <span class="kd">var</span> <span class="nx">progress</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">loaded</span> <span class="o">/</span> <span class="nx">data</span><span class="p">.</span><span class="nx">total</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">strProgress</span> <span class="o">=</span> <span class="nx">progress</span> <span class="o">+</span> <span class="s2">"%"</span><span class="p">;</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s2">".progress-bar"</span><span class="p">).</span><span class="nx">css</span><span class="p">({</span><span class="s2">"width"</span><span class="p">:</span> <span class="nx">strProgress</span><span class="p">});</span>
+      <span class="nx">$</span><span class="p">(</span><span class="s2">".progress-bar"</span><span class="p">).</span><span class="nx">text</span><span class="p">(</span><span class="nx">strProgress</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">done</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">is_valid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">"#gallery tbody"</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span>
+          <span class="s2">"&lt;tr&gt;&lt;td&gt;&lt;a href='"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s2">"'&gt;"</span> <span class="o">+</span> <span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">name</span> <span class="o">+</span> <span class="s2">"&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;"</span>
+        <span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+  <span class="p">});</span>
+
+<span class="p">});</span></code></pre></figure>
+
+<p>The <strong>sequentialUploads</strong> attribute will instruct the component to send one file at a time. What we are doing here
+basically is showing the loading modal when the upload starts, closing it when it finalizes, meanwhile we update the
+percentage in the progress bar. The rest is the same from the other example.</p>
+
+<p>Here is how it will look like:</p>
+
+<p><img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/uploads4.png" alt="Progress Bar"></p>
+
+<hr>
+
+<h4 id="drag-and-drop-upload">Drag and Drop Upload</h4>
+
+<p>Something great about this plug-in, by default you can drop files anywhere in the page to start the upload process!
+This mean the previous examples will simply work.</p>
+
+<p>What we can do to help the users discover the functionality is just adding this simple HTML, for example:</p>
+
+<p><strong>photos/basic_upload/index.html</strong></p>
+
+<figure class="highlight"><pre><code class="language-django" data-lang="django"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"well text-muted text-center"</span> <span class="na">style=</span><span class="s">"padding-top: 4rem; padding-bottom: 4rem;"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-arrow-down"</span> <span class="na">style=</span><span class="s">"font-size: 4rem;"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  <span class="nt">&lt;h3&gt;</span>Drop Photos Here to Upload<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>And the result will be something like this:</p>
+
+<p><img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/uploads5.png" alt="Drag and Drop Upload"></p>
+
+<hr>
+
+<h4 id="conclusions">Conclusions</h4>
+
+<p>I wanted to give more tips and examples about the jQuery File Upload usage. But the post was already getting big. I
+will continue this post next week. So, let me know what you want to see next!</p>
+
+<p>Anyway, the examples shown in this tutorial should cover the Django part. The rest is a matter of configuration and
+playing with the plug-in. For more details about its API and features, refer to the official documentation:
+<a href="https://github.com/blueimp/jQuery-File-Upload/wiki" target="_blank">jQuery File Upload Docs</a></p>
+
+<p>The code used in this tutorial is available on GitHub: <a href="https://github.com/sibtc/multiple-file-upload" target="_blank">github.com/sibtc/multiple-file-upload</a>,
+so you can try it locally. It’s very straightforward to get it running.</p>
+
+
+            </article>
+            <hr>
+            <div class="popular-posts related-posts">
+  <h4>Related Posts</h4>
+    <div class="row">
+      <div class="four columns">
+<a href="https://simpleisbetterthancomplex.com/tutorial/2018/04/03/how-to-integrate-highcharts-js-with-django.html">
+<img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-highcharts.jpg" alt="How to Integrate Highcharts.js with Django" title="How to Integrate Highcharts.js with Django">
+How to Integrate Highcharts.js with Django
+</a>
+</div>
+<div class="four columns">
+<a href="https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html">
+<img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-dropdown.jpg" alt="How to Implement Dependent/Chained Dropdown List with Django" title="How to Implement Dependent/Chained Dropdown List with Django">
+How to Implement Dependent/Chained Dropdown List with Django
+</a>
+</div>
+<div class="four columns">
+<a href="https://simpleisbetterthancomplex.com/tutorial/2017/03/13/how-to-create-infinite-scroll-with-django.html">
+<img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-infinite-scroll.jpg" alt="How to Create Infinite Scroll With Django" title="How to Create Infinite Scroll With Django">
+How to Create Infinite Scroll With Django
+</a>
+</div>
+    </div>
+</div>
+
+            <hr class="dashed">
+<div class="row">
+  <div class="six columns post-tags" style="padding-top: 4px">
+    
+      <a href="https://simpleisbetterthancomplex.com/tag/django/"><span class="tag">django</span></a>
+    
+      <a href="https://simpleisbetterthancomplex.com/tag/ajax/"><span class="tag">ajax</span></a>
+    
+      <a href="https://simpleisbetterthancomplex.com/tag/jquery/"><span class="tag">jquery</span></a>
+    
+      <a href="https://simpleisbetterthancomplex.com/tag/upload/"><span class="tag">upload</span></a>
+    
+  </div>
+  <div class="six columns post-share">
+    <div class="social">
+  Share this post
+  <a href="http://vk.com/share.php?url=http://sibt.co/2mMRMOn" rel="nofollow" target="_blank" title="Share on VK">
+    <i class="fa fa-vk"></i>
+  </a>
+  <a href="https://twitter.com/intent/tweet?text=Django%20Multiple%20Files%20Upload%20Using%20Ajax&amp;url=http://sibt.co/2mrxqrw&amp;via=vitorfs&amp;related=vitorfs" rel="nofollow" target="_blank" title="Share on Twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+  <a href="https://www.facebook.com/sharer/sharer.php?app_id=1645747765697865&amp;u=http://sibt.co/2nrAG70" rel="nofollow" target="_blank" title="Share on Facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://sibt.co/2lZzI4Z&amp;title=Django%20Multiple%20Files%20Upload%20Using%20Ajax&amp;summary=In%20this%20tutorial%20I%20will%20guide%20you%20through%20the%20steps%20to%20implement%20an%20AJAX%20multiple%20file%20upload%20with%20Django%20using%20jQuery.For%20this%20tutorial%20we%20will%20be%20using%20a%20specific%20plug-in%20called%20jQuery%20File%20Uploa...&amp;source=https://simpleisbetterthancomplex.com" rel="nofollow" target="_blank" title="Share on LinkedIn">
+    <i class="fa fa-linkedin"></i>
+  </a>
+</div>
+
+  </div>
+</div>
+
+          </div>
+          <!--div style="text-align:center;margin-bottom:20px">
+
+            <a href="//namecheap.pxf.io/c/477033/408288/5618" target="_blank" rel="noopener nofollow">
+              <img src="//a.impactradius-go.com/display-ad/5618-408288" border="0" alt="Search and buy domains from Namecheap. Lowest prices!" width="728" height="90" style="max-width:100%!important" />
+            </a>
+            <img height="0" width="0" src="//namecheap.pxf.io/i/477033/408288/5618" alt="Impact Radius" style="position:absolute;visibility:hidden;" border="0" />
+
+
+            <a href="https://click.linksynergy.com/fs-bin/click?id=phY4769lVwA&offerid=467035.415&subid=0&type=4" target="_blank" rel="noopener nofollow">
+              <img border="0" alt="Deep Learning Specialization on Coursera" src="https://ad.linksynergy.com/fs-bin/show?id=phY4769lVwA&bids=467035.415&subid=0&type=4&gridnum=16" style="max-width:100%!important">
+            </a>
+
+          </div-->
+
+          <div class="card">
+            
+  <div id="comments">
+    <div id="disqus_thread"><iframe id="dsq-app9699" name="dsq-app9699" allowtransparency="true" scrolling="no" tabindex="0" title="Disqus" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/a.html" style="height: 7364px !important;" horizontalscrolling="no" verticalscrolling="no" width="100%" frameborder="0"></iframe></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://simpleisbetterthancomplex.com/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html';
+        this.page.identifier = '/tutorial/2016/11/22/django-multiple-file-upload-using-ajax';
+      };
+      (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//simpleisbetterthancomplex.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <script id="dsq-count-scr" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/count.js" async=""></script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+
+
+          </div>
+          <div class="card subscribe">
+  <form action="https://colossus.simpleisbetterthancomplex.com/subscribe/d2320a41-0378-4aa8-8f4e-5bb1ffcd521d/" method="post" target="_blank" novalidate="">
+    <h4>
+      <span class="fa fa-send" style="margin-right: 5px"></span> Subscribe to our Mailing List
+    </h4>
+    <h5>Receive updates from the Blog!</h5>
+    <div class="row">
+      <div class="eight columns">
+        <input class="u-full-width" placeholder="Your email address" type="email" name="email">
+      </div>
+      <div class="four columns">
+        <button type="submit" class="u-full-width">Subscribe</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+          <div class="card popular-posts">
+  <h4>Popular Posts</h4>
+  <div class="row">
+    
+      <div class="four columns">
+        <a href="https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html">
+          <img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-post-image_002.jpg" alt="How to Extend Django User Model" title="How to Extend Django User Model">
+          How to Extend Django User Model
+        </a>
+      </div>
+    
+      <div class="four columns">
+        <a href="https://simpleisbetterthancomplex.com/tutorial/2016/05/11/how-to-setup-ssl-certificate-on-nginx-for-django-application.html">
+          <img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-post-image.jpg" alt="How to Setup a SSL Certificate on Nginx for a Django Application" title="How to Setup a SSL Certificate on Nginx for a Django Application">
+          How to Setup a SSL Certificate on Nginx for a Django Application
+        </a>
+      </div>
+    
+      <div class="four columns">
+        <a href="https://simpleisbetterthancomplex.com/tutorial/2016/10/14/how-to-deploy-to-digital-ocean.html">
+          <img src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/featured-do.jpg" alt="How to Deploy a Django Application to Digital Ocean" title="How to Deploy a Django Application to Digital Ocean">
+          How to Deploy a Django Application to Digital Ocean
+        </a>
+      </div>
+    
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+  <div class="container">
+    <ul>
+      <li>© 2015-2019 simple is better than complex</li>
+      <li><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/3.0/" target="_blank">cc by-nc-sa 3.0</a></li>
+      <li>//</li>
+      <li><a href="https://simpleisbetterthancomplex.com/about/" rel="author">about</a></li>
+      <li><a href="https://simpleisbetterthancomplex.com/contact/">contact</a></li>
+      <li><a href="https://simpleisbetterthancomplex.com/faq/">faq</a></li>
+      <li><a href="https://simpleisbetterthancomplex.com/cookies/">cookies</a></li>
+      <li><a href="https://simpleisbetterthancomplex.com/privacy/">privacy policy</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="overlay"></div>
+
+  
+  <script id="ga-page-views" src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/page-views.js" async=""></script>
+  <script src="Django%20Multiple%20Files%20Upload%20Using%20Ajax_files/onejs.js"></script><div id="amzn_assoc_ad_div_adunit_0"></div>
+
+
+<style>
+.related-posts .row {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.related-posts .four.columns {
+  width: 100%;
+}
+</style>
+
+<script>
+_bsa.init('recommended', 'CK7I4KJJ', 'placement:simpleisbetterthancomplexcom',
+    {
+      target: '.related-posts .columns',
+      template: `
+<div class="four columns">
+<a href="##link##" rel="noopener nofollow">
+<img src="##smallImage##" alt="##title##" title="##title##">[Sponsored] ##title##</a>
+</div>
+      `
+    }
+  );
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": "https://simpleisbetterthancomplex.com/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html",
+  "headline": "Django Multiple Files Upload Using Ajax",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://simpleisbetterthancomplex.com/media/2016/11/featured-uploads.jpg",
+    "height": 370,
+    "width": 960
+  },
+  "datePublished": "2016-11-22T20:45:00+02:00",
+  "dateModified": "2016-11-22T20:45:00+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Vitor Freitas"
+  },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Simple is Better Than Complex",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://simpleisbetterthancomplex.com/img/gplus_logo.png",
+      "height": 60,
+      "width": 600
+    }
+  },
+  "description": "In this tutorial I will guide you through the steps to implement an AJAX multiple file upload with Django using jQuery.For this tutorial we will be using a specific plug-in called jQuery File Uploa..."
+}
+</script>
+
+
+
+<iframe style="display: none;"></iframe></body></html>

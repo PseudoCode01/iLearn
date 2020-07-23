@@ -5,6 +5,9 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/cartItems.css' %}">
 <div class="cartPage">
+    
+    {% if get_cartCourses %}
+        
 {% for course in get_cartCourses %}
     <div class="itemInCart">
         <div class="left">
@@ -28,6 +31,14 @@
         </div>
     </div>
 {% endfor %}
+{% else %}
+<div class="emptyCart">
+    <img src="/static/img/emptyCart.svg" alt="">
+    <h3>Your cart is empty. Keep shopping to find a course!</h3>
+</div>
+{% endif %}
+    
+
 </div>
 <script   src="{% static 'js/cartItems.js'%}"></script>
 {% endblock body %}

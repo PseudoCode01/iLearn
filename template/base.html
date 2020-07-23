@@ -78,6 +78,7 @@
         <img src="/static/img/user1.png" alt="">
         <div class="userData">
           <span id="name"><b>Hi! {{request.user}}</b></span>
+          <a class="btn" href="#popup1">Home Tutor</a>
           <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
         </div>
       </div>
@@ -98,8 +99,6 @@
             <h1>{{courses.0.category}},{{courses.0.sub_category}}</h1>
             <p>Start Learning</p>
           </div>
-
-
         </div>
         {%  endfor %}
 
@@ -209,7 +208,17 @@
     </div>
   </div>
   {%  endif %}
-
+  <div id="popup1" class="overlay">
+    <div class="popup">
+      <form action="/get_homeTutor" method="get">
+      <div class="pin">
+      <input type="text" id="pin" name="pin" placeholder="Enter the pin code of your area">
+      <input type="submit" value="&#8594;"></input>
+    </div></form>
+      <a class="close" href="#">&times;</a>
+     
+    </div>
+  </div>
   {% block body %}
 
   {% endblock body %}
@@ -217,6 +226,7 @@
   <!--End of Tawk.to Script-->
 
   <div id="lastElem">
+    <div class="innerlastelem">
     <div class="foot">
       <div>
         <ul class="footUl">
@@ -248,7 +258,7 @@
       </div>
     </footer>
   </div>
-
+</div>
 </body>
 <script src="{% static 'js/base.js' %}">
 </script>

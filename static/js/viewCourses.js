@@ -22,7 +22,7 @@ function add(val){
 }
 var set=new Set()
 function updateUserOrder(val,courseId,action){
-    
+  var x = val.parentElement;
     let xhr = new XMLHttpRequest();
 xhr.open('POST', '/addCart',true);
 xhr.setRequestHeader('X-CSRFToken', csrftoken);       
@@ -34,7 +34,7 @@ if (xhr.status != 200) {
   alert(`Error ${xhr.status}: ${xhr.statusText}`); 
 } else { 
   data=JSON.parse(xhr.responseText)
-  var x = val.parentElement;
+  
    x.innerHTML= `
   <button class="goCart"  onclick="window.location.href='/cart'">Go To Cart</button>`
   Cart()
@@ -54,8 +54,6 @@ if (event.lengthComputable) {
     <circle id="spinner" style="fill:transparent;stroke:#fc6767;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
 </svg>
 </div></div>`
-console.log('progress')
-
 } else {
  alert('fff')
 }

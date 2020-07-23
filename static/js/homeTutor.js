@@ -13,9 +13,10 @@ function sliderChangeLower(val) {
         } 
     } 
     displayRadioValue()
+    if(document.querySelector('.registerbtn')!==null){
 document.querySelector('.registerbtn').addEventListener('click',function(){
     displayRadioValue()
-})
+})}
 function lowervalue(val){
 document.querySelector('.amountHigher').setAttribute('min',val)
 document.querySelector('.amountHigher').value=val;
@@ -42,7 +43,7 @@ if (xh.status != 200) {
 document.getElementById('district').value=data[0]['PostOffice'][0]['District']
 document.getElementById('state').value=data[0]['PostOffice'][0]['State']
 };
-
+}
 xh.onprogress = function(event) {
 if (event.lengthComputable) {
   
@@ -55,7 +56,94 @@ if (event.lengthComputable) {
 xh.onerror = function() {
 alert("Request failed");
 };
-  }
-  console.log(t.length)
+  
+  
 }
+}
+
+function edit(){
+ let sno= document.getElementById('sno').value;
+ let name= document.getElementById('name').value;
+ let age= document.getElementById('Age').value;
+ let gender= document.getElementById('Gender').value;
+ let phone= document.getElementById('Phone').value;
+ let email= document.getElementById('Email').value;
+ let pin= document.getElementById('Pin').value;
+ let state= document.getElementById('State').value;
+ let district= document.getElementById('District').value;
+ let subject= document.getElementById('Subjects').value;
+ let classes= document.getElementById('Classes').value;
+ let salary= document.getElementById('salary').value;
+ let disc= document.getElementById('disc').value;
+  salary=salary.split('-')
+ salaryL=Number(salary[0].substring(2))
+ salaryH=Number(salary[1].substring(2))
+
+ document.querySelector('.tutorProfile').style.display='none'
+ document.querySelector('.t2').style.display='flex'
+  document.querySelector('form').innerHTML+=`
+        <div class="container">
+        <input type="hidden" name="action" id="action" value="edit">
+        <input type="hidden" name="sno" id="sno" value="${sno}">
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter your full name" name="name" id="name" value="${name}" required>
+              <br>      
+            <label for="age"><b>Age</b></label>
+            <input type="text" placeholder="Enter your age in numbers" name="age" id="age" value="${age}" required>
+        <div class="gender">
+          <label for="gender"><b>Gender:</b></label>
+          <input type="radio" value="Male"  name="gender" id="male" >
+          <label for="male">Male</label>
+          <input type="radio" value="Female" name="gender" id="female" >
+          <label for="female">Female</label>
+          <input type="radio" value="Others" name="gender" id="others" >
+          <label for="others">Rather not say</label>
+        </div>
+          
+            <label for="number"><b>Phone number</b></label>
+            <input type="text" placeholder="Enter your number" name="number" id="number" value="${phone}" required>
+        
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" value="${email}" required>
+
+            <label for="pin"><b>Pin</b></label>
+            <input type="text" oninput="autocomp(this)" placeholder="Enter your address" value="${pin}" name="pin" id="pin" required>
+            <label for="District"><b>District</b></label>
+            <input type="text" placeholder="Enter your address" name="district" id="district"  value="${district}" readonly required>
+            <label for="State"><b>State</b></label>
+            <input type="text" placeholder="Enter your address" name="state" id="state"  value="${state}" readonly required>
+  
+            <label for="subject"><b>Subject</b></label>
+         
+            <input type="text" placeholder="Enter subjects you want to teach" name="subject" id="subject" value="${subject}" required>
+            <label for="Class"><b>Classes</b></label>
+            <input type="text" placeholder="eg:6-8" name="classes" id="classes" value="${classes}" required>
+            <label for="disc"><b>About Yourself</b></label>
+            <div class="discription">
+            <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" value="${disc}" required>${disc}</textarea></div>
+           
+            <label for="id_proof"><b>Id_Proof</b></label>
+            <div class="Id-proof">
+            <input type="file" name="id_proof" id="id_proof" accept="image/*,.pdf"  required></div>
+            <label for="ranger"><b>Enter the Salery Range</b></label>
+            <div class="ranger">
+           <div class="rangerLow">
+             <label for="amountLower">Lower</label>
+            <input type="range" onchange="lowervalue(this.value)" name="salaryL" min="0" max="5000" value="${salaryL}" class="amountLower slider" id="myRange" oninput="sliderChangeLower(this.value)" required>
+            <output class="lowerValue"> </output>
+
+          </div>
+          <div class="rangerHigh">
+            <label for="amountHigher">Higher</label>
+            <input type="range" min="0" max="10000" value="${salaryH}" name="salaryH" class="amountHigher slider" id="myRange" oninput="sliderChangeHigher(this.value)" required>
+            <output class="higherValue"> </output>
+          </div>
+          </div>
+            <hr>        
+            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <button type="submit" class="registerbtn">Save</button>
+          </div>
+    </form>
+</div>
+  `
 }
