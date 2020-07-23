@@ -125,3 +125,8 @@ class HomeTutorDemo(models.Model):
 
 
 
+class Notification(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.CharField(default="",max_length=20)
+    message=models.TextField(default="")
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)

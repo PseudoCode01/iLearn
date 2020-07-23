@@ -39,6 +39,7 @@ urlpatterns = [
     path('courseAdded', views.courseAdded,name="courseAdded"),
     path('myCourses', views.myCourses,name="myCourses"),
     path('watched', views.watched,name="watched"),
+    path('get_notification', views.get_notification,name="get_notification"),
     path('courses/<str:slug>/<int:id>', views.previewmyCourses,name="previewmyCourses"),
     path('registerhomeTutor', views.registerhomeTutor,name="registerhomeTutor"),
     path('get_homeTutor', views.get_homeTutor,name="get_homeTutor"),

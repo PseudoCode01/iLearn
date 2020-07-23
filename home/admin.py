@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Contact,Courses,Videos,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse
+from .models import Contact,Courses,Videos,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification
 # Register your models here.
 admin.site.register(Contact),
 admin.site.register(Courses),
@@ -13,4 +13,5 @@ admin.site.register(WatchedVideos),
 admin.site.register(HomeTutor),
 admin.site.register(HomeTutorDemo),
 admin.site.register(ReviewCourse),
+admin.site.register(Notification),
 

@@ -61,18 +61,18 @@
         </div>
     </div>
     
-    {% if review %}
+    {% if review.0 %}
     <div class="rateCourse">
-        <div class="alredyrated">
+        <div class="alreadyrated">
             <h2>Your review</h2>
-    <div class="stars"  data-rvalue="{{review.rating}}">
+    <div class="stars"  data-rvalue="{{review.0.rating}}">
         <span class="star st" data-val="1"></span>
         <span class="star st" data-val="2"></span>
         <span class="star st" data-val="3" ></span>
         <span class="star st" data-val="4" ></span>
         <span class="star st" data-val="5" ></span>
         </div> 
-        <span>{{review.review}}</span>
+        <span>{{review.0.review}}</span>
         <button class="addReview" onclick="editreview('{{csno}}',this)" data-action="reditreview">Edit</button>
     </div>
     </div>

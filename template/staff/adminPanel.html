@@ -23,10 +23,20 @@
       <hr> 
       <div class="btn">
       <div class="btn-cart">
-        <button data-product="{{item.0.0.sno}}" data-action="verify" type="button" class="verify" onclick="verification(this)">Verify</button>
+        <button data-product="{{item.0.0.sno}}" data-user="{{item.0.0.creater_id}}" data-action="verify" type="button" class="verify" onclick="verification(this)">Verify</button>
      </div>
       <div class=" btn-cart">
-        <button data-product="{{item.0.0.sno}}" data-action="remove" type="button" class="remove" onclick="verification(this)">Delete</button>
+        <button class="remove" onclick="confirm('{{item.0.0.sno}}')">Delete</button>
+        <div id="myModalvar{{item.0.0.sno}}" class="modal ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <span class="close" id="closedel{{item.0.0.sno}}">&times;</span>
+              <h2>Message to the creater</h2>
+            </div>
+            <textarea  id="message" required></textarea>
+            <button data-product="{{item.0.0.sno}}" data-user="{{item.0.0.creater_id}}" data-action="remove" type="button" class="remove" onclick="verification(this)">Confirm</button>
+          </div>
+        </div>
      </div>
      </div>
       </div>

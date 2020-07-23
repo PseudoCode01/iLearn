@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -146,11 +146,11 @@ def teacherPerformance(request):
     revenue=0
     totalenrolled=0
     for item in courses:
-        review=ReviewCourse.objects.get(reviewOfCourse=item)
+        # review=ReviewCourse.objects.filter(reviewOfCourse=item)
         totalenrolled+=item.enrolled
         revenue=int(item.pricing)*item.enrolled*0.7
-        rev.add(review)
-    return render(request,'home/tPerformance.html',{'courses':courses,'review':rev,'revenue':revenue,'totalenrolled':totalenrolled})
+        # rev.add(review)
+    return render(request,'home/tPerformance.html',{'courses':courses,'review':'rev','revenue':revenue,'totalenrolled':totalenrolled})
 def get_cartItems(request):
     if request.user.is_authenticated :
         cart=Cart.objects.filter(user_id=request.user).values()
@@ -501,7 +501,7 @@ def previewmyCourses(request,slug,id):
     cr=Courses.objects.filter(sno=id)
     c=cr.values('title')
     crating=cr.values('rating')
-    review=ReviewCourse.objects.get(reviewOfCourse_id=id)
+    review=ReviewCourse.objects.filter(reviewOfCourse_id=id)
     course=''
     video=list()
     for i in myCourses:
@@ -541,7 +541,10 @@ def watched(request):
         w.save()
 
     return JsonResponse('ok',safe=False)
-
+def get_notification(request):
+    if request.method=='POST':
+        notify=Notification.objects.filter(user=request.user.id).order_by('timeStamp').values()[:15]
+    return JsonResponse({'notify':list(notify)})
 def password_reset(request):
     return render(request,'home/password_reset.html')
 

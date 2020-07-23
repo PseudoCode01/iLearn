@@ -918,9 +918,9 @@ justify-content: center;
 }
   /* footer part is designed */
 #lastElem{
-  height: 348px;
+  height: 365px;
   padding-top: 40px;
-  width: 99.4vw;
+  width: 98.9vw;
   margin-top: 250px;
   background-color: #021b42;
   z-index: 2;
@@ -931,8 +931,6 @@ justify-content: center;
   .innerlastelem{
     height: 100%;
     background-image: url('/static/img/footer-bg.png');
-  
-  
     }
     .foot{
       padding-top: 85px;
@@ -974,6 +972,7 @@ justify-content: center;
     }
     #fitem2 img{
       margin:0px 20px;
+      cursor: pointer;
     }}
     @media (max-width: 800px){
       #fitem2{
@@ -981,36 +980,12 @@ justify-content: center;
     }
       #fitem2 img{
       margin:0px 10px;
+      cursor: pointer;
+
     } 
     }
 
-    /* creating the typewritter effect */
-    .typewriter b {
-      font-size: 20px;
-      font-family: monospace; /* Web-safe typewriter-like font */
-      overflow: hidden; /* Ensures the content is not revealed until the animation */
-      border-right: .10em solid rgb(0, 255, 42); /* The typwriter cursor */
-      white-space: nowrap; /* Keeps the content on a single line */
-      margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-      letter-spacing: .05em; 
-      animation: 
-      typing 3.5s steps(30),
-      blinking-cursor .5s step-end infinite;
-      animation-iteration-count: infinite;
-    }
-    
-    /* The typing effect */
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    
-    /* The typewriter cursor effect */
-    @keyframes blinking-cursor {
-      from, to { border-color: transparent }
-      50% { border-color: rgb(65, 100, 236); }
-    }
-
+   
     /* sidenav for categories */
  /* The side navigation menu */
  .sidenav {
@@ -1103,11 +1078,6 @@ background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
   font-size: 15px;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible:hover {
-  background-color: rgb(65, 100, 236);
-  color: white;
-}
 
 /* Style the collapsible content. Note: hidden by default */
 .content {
@@ -1116,9 +1086,11 @@ background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
   overflow: hidden;
   background-color: #f1f1f1;
 }
+
 .content li{
   list-style: none;
   padding: 10px;
+  cursor: pointer;
   margin-left: 10px;
 }
 .content2 {
@@ -1133,6 +1105,19 @@ background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
   padding: 10px;
   margin-left: 10px;
 }
+.content2 li:hover{
+  background-color: rgb(65, 100, 236);
+  color: white;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.collapsible:hover {
+  background-color: rgb(65, 100, 236);
+  color: white;
+}
+.sidenav .active{
+  background-color: rgb(2, 38, 182);
+
+} 
 
 .searchBox {
   position: absolute;

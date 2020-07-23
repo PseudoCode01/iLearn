@@ -176,7 +176,7 @@ if(n==val){
 }
 }
 }
-if(document.querySelector('.alredyrated')!==null){
+if(document.querySelector('.alreadyrated')!==null){
  let n=0;
   let v=document.querySelector('.stars').dataset.rvalue;
   for(let item of document.querySelectorAll('.star')){

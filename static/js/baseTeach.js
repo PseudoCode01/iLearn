@@ -185,3 +185,38 @@ function editTProfile(){
 </div>
   `
 }
+let xhr2 = new XMLHttpRequest();
+  xhr2.open('POST', '/get_notification');
+  xhr2.setRequestHeader('X-CSRFToken', csrftoken);       
+  xhr2.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+  xhr2.setRequestHeader("Accept", "application/json");
+xhr2.send();
+xhr2.onload = function() {
+
+  if (xhr2.status != 200) { 
+    alert(`Error ${xhr2.status}: ${xhr2.statusText}`); 
+  } else { 
+    data=JSON.parse(xhr2.responseText)
+  let c=``
+  for(let item of data['notify']){
+c+= `<div class="notify">
+<p>${item.message}</p>
+<span>on->${item.timeStamp.substring(0,10)}</span>
+</div>`
+
+  }
+  document.querySelector('.box-notify').innerHTML=c;
+};
+}
+xhr2.onprogress = function(event) {
+  if (event.lengthComputable) {
+   
+  } else {
+  //  alert('fff')
+  }
+
+};
+
+xhr2.onerror = function() {
+  alert("Request failed");
+};
