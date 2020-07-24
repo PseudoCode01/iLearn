@@ -45,7 +45,7 @@ class Videos(models.Model):
     sno=models.AutoField(primary_key=True)
     videoTitle=models.CharField(max_length=150)
     videofile= models.FileField(upload_to='home/video', null=True, verbose_name="")
-    thumbnail=models.ImageField( upload_to="home/image",default="")
+    thumbnail=models.ImageField( upload_to="home/image",default="",verbose_name="")
     resource= models.FileField(upload_to='home/resource', null=True, verbose_name="")
     videoOfCourse=models.ForeignKey(Courses,default=None,on_delete=models.CASCADE)
     creater=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
