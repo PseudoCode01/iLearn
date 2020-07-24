@@ -81,12 +81,16 @@ input[type=text], select, textarea{
   
   /* Style the label to display next to the inputs */
   label {
-    padding: 12px 12px 12px 0;
+    padding: 12px 0 12px 0;
     display: inline-block;
+    font-size: 14px;
+
   }
   /* style the browse button */
   
-  
+  .btn-danger{
+    padding: 10px;
+  }
   /* Style the submit button */
   input[type=submit] {
     background-color: rgb(65, 100, 236);

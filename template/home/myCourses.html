@@ -7,6 +7,11 @@
    <span>My courses</span> 
 </div>
 <div class="container">
+  
+  {% if myCourses %}
+    
+ 
+    
     {% for item in myCourses %}    
     <div class="item" onclick="window.location.href='/courses/{{item.0.title}}/{{item.0.sno}}'">
         <img src="/media/{{item.0.courseThumbnail}}" alt="">
@@ -18,7 +23,13 @@
       </div>
       </div>  
 {% endfor %}
-
+{% else %}
+<div class="emptyMycourses">
+  <img src="/static/img/emptyMycourses.svg" alt="">
+  <p>Start learning what you love.</p>
+  <h3>When you enroll in a course, it will appear here</h3>
+</div>
+{% endif %}
 </div>
 
 <!-- <script src="{% static 'js/myCourses.js' %}"></script> -->

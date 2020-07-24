@@ -529,7 +529,7 @@ footer img{
 }
 .alert {
   position: absolute;
-  top: 10vh;
+  top: 3vh;
   left:0;
   right: 0;
   opacity: 1;

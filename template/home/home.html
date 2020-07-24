@@ -56,7 +56,15 @@
     <div class="leftht">
       <img src="/static/img/becomeht.svg" alt="">
       <span>Become a teacher & get home tutoring / teaching jobs in your city.</span>
-      <button>Become Home Tutor</button>
+      {% if user.is_authenticated %}
+      {% if request.user.first_name == "Teacher" %}
+      <button onclick="window.location.href='/homeTutor'">Become Home Tutor</button>
+      {% else %}
+      <button onclick="studentHT()">Become Home Tutor</button>
+      {% endif %}
+      {% else %}
+      <button onclick="loginHT()">Become Home Tutor</button>
+      {% endif %}
     </div>
     <div class="rightht">
       <img src="/static/img/hireht.svg" alt="">

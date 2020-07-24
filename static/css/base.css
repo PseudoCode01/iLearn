@@ -2,65 +2,8 @@ body{
   height: 100%;
   min-height: 100%;
   margin: 0;
+  padding: 0;
 }
- @keyframes ldio-18944ama75l {
-  0% { transform: rotate(0deg) }
-  100% { transform: rotate(360deg) }
-}
-.ldio-18944ama75l > div > div {
-  transform-origin: 100px 100px;
-  animation: ldio-18944ama75l 3.0303030303030303s linear infinite;
-  opacity: 0.8
-}
-.ldio-18944ama75l > div > div > div {
-  position: absolute;
-  left: 30px;
-  top: 30px;
-  width: 70px;
-  height: 70px;
-  border-radius: 70px 0 0 0;
-  transform-origin: 100px 100px
-}.ldio-18944ama75l > div div:nth-child(1) {
-  animation-duration: 0.7575757575757576s
-}
-.ldio-18944ama75l > div div:nth-child(1) > div {
-  background: #e15b64;
-  transform: rotate(0deg);
-}.ldio-18944ama75l > div div:nth-child(2) {
-  animation-duration: 1.0101010101010102s
-}
-.ldio-18944ama75l > div div:nth-child(2) > div {
-  background: #f47e60;
-  transform: rotate(0deg);
-}.ldio-18944ama75l > div div:nth-child(3) {
-  animation-duration: 1.5151515151515151s
-}
-.ldio-18944ama75l > div div:nth-child(3) > div {
-  background: #f8b26a;
-  transform: rotate(0deg);
-}.ldio-18944ama75l > div div:nth-child(4) {
-  animation-duration: 3.0303030303030303s
-}
-.ldio-18944ama75l > div div:nth-child(4) > div {
-  background: #abbd81;
-  transform: rotate(0deg);
-}
-.loadingio-spinner-wedges-0vk2tss1qpsi {
-  width: 200px;
-  height: 200px;
-  display: inline-block;
-  overflow: hidden;
-  background: #ffffff;
-}
-.ldio-18944ama75l {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
-}
-.ldio-18944ama75l div { box-sizing: content-box; }
 
 *{
     margin: 0px;
@@ -819,7 +762,7 @@ justify-content: center;
   color: black;
 }
 .alert {
-  position: absolute;
+  position: fixed;
   top: 10vh;
   left:0;
   right: 0;
@@ -836,6 +779,7 @@ justify-content: center;
   width: 55px; 
   transition: 0.3s;
   height: 30px;
+  z-index: 1;
   text-decoration: none; /* Remove underline */
   border-radius: 29px 0 0 29px; 
   border-left: 2px solid black;
@@ -918,12 +862,11 @@ justify-content: center;
 }
   /* footer part is designed */
 #lastElem{
-  height: 365px;
   padding-top: 40px;
   width: 98.9vw;
   margin-top: 250px;
   background-color: #021b42;
-  z-index: 2;
+  z-index: 0;
   clear: both;
   position: relative;
   margin-top: auto;
@@ -931,6 +874,7 @@ justify-content: center;
   .innerlastelem{
     height: 100%;
     background-image: url('/static/img/footer-bg.png');
+    background-repeat: no-repeat;
     }
     .foot{
       padding-top: 85px;
@@ -1199,7 +1143,7 @@ color : #2f3640;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 30%;
+  width: 50%;
   position: relative;
   transition: all 5s ease-in-out;
 }
@@ -1256,6 +1200,6 @@ color: teal;
     width: 70%;
   }
   .popup{
-    width: 70%;
+    width: 90%;
   }
 }

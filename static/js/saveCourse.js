@@ -1,4 +1,3 @@
-
 document.getElementById('myRange').addEventListener('input',function(val){
     document.querySelector('.value').innerHTML ="Rs : " +document.getElementById('myRange').value;
     localStorage.setItem('price',document.getElementById('myRange').value)
@@ -36,3 +35,14 @@ if(status=="True"){
 document.getElementById('cat').value=localStorage.getItem('cat');
 console.log(document.getElementById('cat').value)
 document.getElementById('title').value=localStorage.getItem('courseTitle');
+function getfilesize(val){
+    console.log(val.files[0].size/1024)
+    if(val.files[0].size/1024>150){
+        val.style.border='1px solid red'
+        document.querySelector('.save').disabled=true
+    }
+    else{
+        document.querySelector('.save').disabled=false
+
+    }
+}

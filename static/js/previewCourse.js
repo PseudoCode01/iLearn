@@ -41,3 +41,51 @@ c=c+1;
               }
         }
 }
+function add(val){
+  updateUserOrder(val,val.dataset.product,val.dataset.action)
+}
+var set=new Set()
+function updateUserOrder(val,courseId,action){
+var x = val.parentElement;
+  let xhr = new XMLHttpRequest();
+xhr.open('POST', '/addCart',true);
+xhr.setRequestHeader('X-CSRFToken', csrftoken);       
+xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.send(JSON.stringify({'courseId': courseId,'action':action}));
+xhr.onload = function() {
+if (xhr.status != 200) { 
+alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+} else { 
+data=JSON.parse(xhr.responseText)
+
+ x.innerHTML= `
+<button class="goCart"  onclick="window.location.href='/cart'">Go To Cart</button>`
+Cart()
+};
+}
+xhr.onprogress = function(event) {
+if (event.lengthComputable) {
+let p=val.parentElement;
+p.innerHTML=`<div class="loader"><div id="loader-container">
+<svg viewBox="0 0 100 100">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.5" 
+        flood-color="#fc6767"/>
+    </filter>
+  </defs>
+  <circle id="spinner" style="fill:transparent;stroke:#fc6767;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+</svg>
+</div></div>`
+} else {
+alert('fff')
+}
+
+};
+
+xhr.onerror = function() {
+alert("Request failed");
+};
+
+}

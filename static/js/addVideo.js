@@ -50,9 +50,15 @@ function sendForm(val,element){
 var file1=document.getElementById('thumbnail'+val).files[0]
 var file2=document.getElementById('video'+val).files[0]
 var file3=document.getElementById('resources'+val).files[0]
+
+if(file1.size/1024>150 || file2.size/1024>(512*1024) || (file3!==undefined && file3.size/1024>1024)){
+  document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
+   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+ Files not in required format.
+ </div> ` 
+}
+else{
 var formData = new FormData();
-
-
 formData.append("thumbnail", file1);
 formData.append("video", file2);
 formData.append("resources", file3);
@@ -122,8 +128,7 @@ element.style.display='none';
       }
     }
   }
-  // alert(Math.round(done/total*100) + '%')
-    console.log('xhr progress: ' + Math.round(done/total*100) + '%');
+ 
   
   } else {
   
@@ -138,4 +143,4 @@ xhr.onerror = function() {
 
 function abort(){
   xhr.abort();
-}
+}}

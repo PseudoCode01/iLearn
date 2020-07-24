@@ -52,3 +52,44 @@
     width: 250px;
     height: 130px;
 }
+.emptyMycourses{
+    border: 1px solid rgb(226, 226, 226);
+    width: 50%;
+    background-color: rgb(247, 247, 247);
+    margin-left: auto;
+    margin-top: 10px;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 2px;
+    align-items: center;
+    padding: 50px 0;
+    margin-bottom: 100px;
+}
+.emptyMycourses img{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+.emptyMycourses p{
+text-align: center;
+font-size: 18px;
+}
+.emptyMycourses h3{
+text-align: center;
+margin-top: 10px;
+font-weight: bold;
+font-size: 13px;
+}
+@media(max-width:950px){
+    .emptyMycourses{
+width: 80%;
+    }
+}
+@media(max-width:420px){
+    .emptyMycourses{
+width: 95%;
+    }
+}

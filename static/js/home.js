@@ -48,3 +48,17 @@ window.addEventListener('scroll', function(e) {
     });
 
   }
+ function studentHT(){
+   document.querySelector('body').innerHTML+=`<div class="alert alert-error alert-dismissible" role="alert">
+   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  You need to login as a Teacher to become a home tutor
+ </div>
+ </div>`
+ }
+ function login(){
+  document.querySelector('body').innerHTML+=`<div class="alert alert-error alert-dismissible" role="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  You need to login as a Teacher to become a home tutor
+ </div>
+ </div>`
+ }

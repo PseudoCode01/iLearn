@@ -190,7 +190,7 @@ def saveCourse(request):
        author=request.user.username
        user=request.user
        try:
-           if len(c)>5 and len(title)>0 and len(language)>0 and len(pricing)>0 and len(courseThumbnail)>0 and len(disc)>20:
+           if len(c)>5 and len(title)>0 and len(language)>0 and len(pricing)>0 and len(courseThumbnail)>0 and len(disc)>40:
                print('success')
                saveCourse=Courses(category=category,sub_category=sub_category,sub_category2=sub_category2,title=title,language=language,courseThumbnail=courseThumbnail, pricing=pricing,discription=disc,creater_name=author,creater=user)
                saveCourse.save()
@@ -202,7 +202,7 @@ def saveCourse(request):
                return redirect('/addVideos')
            else:
                print('error')
-               messages.error(request,'Some error occured')
+               messages.error(request,'Some fields are left blank')
                return render(request,'home/saveCourse.html')
        except Exception as e:
            status=False
@@ -221,7 +221,7 @@ def addVideos(request):
 def video(request):
     thumbnail = request.FILES['thumbnail']
     video = request.FILES['video']
-    resources= request.FILES['resources']
+    resources= request.FILES.get('resources')
     videoTitle= request.POST['title']
     courseSno= request.POST['courseSno']
     course=Courses.objects.get(sno=int(courseSno))

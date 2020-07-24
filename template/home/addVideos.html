@@ -34,26 +34,26 @@ Add Videos
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="thumbnail">Video Thumbnail Image</label>
+          <label for="thumbnail">Video Thumbnail Image (less than 150kb)</label>
         </div>
         <div class="col-75">
-          <input type="file" id="thumbnail{{courses.sno}}"  name="thumbnail{{courses.sno}}" required>
+          <input type="file" id="thumbnail{{courses.sno}}" accept="image/*"  name="thumbnail{{courses.sno}}" required>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="video">Add Video</label>
+          <label for="video">Add Video (less than 512mb)</label>
         </div>
         <div class="col-75">
-          <input class="myFile"  type="file" id="video{{courses.sno}}" name="video{{courses.sno}}"  required></input>
+          <input class="myFile"  type="file" id="video{{courses.sno}}" accept="video/*" name="video{{courses.sno}}"  required></input>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="resources">Add Resources</label>
+          <label for="resources">Add Resources (less than 1mb)</label>
         </div>
         <div class="col-75">
-          <input  type="file" id="resources{{courses.sno}}" name="resources{{courses.sno}}" ></input>
+          <input  type="file" id="resources{{courses.sno}}"  name="resources{{courses.sno}}" ></input>
         </div>
       </div>
     </form>

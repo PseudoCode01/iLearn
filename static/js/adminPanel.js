@@ -32,7 +32,7 @@ function updateUserOrder(val,courseId,action,user){
     let url='verification'
     let message=document.getElementById('message').value;
     console.log(message)
-    if(message.length>10){
+    if(message.length>10||action=="verify"){
     fetch(url,{
         method:'POST',
         headers:{

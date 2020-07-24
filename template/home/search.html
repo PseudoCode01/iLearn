@@ -4,6 +4,9 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/search.css' %}">
 <div class="container">
+  
+  {% if searchResults %}
+    
     {% for item in searchResults %}    
     <div class="item">
         <img src="/media/{{item.courseThumbnail}}" alt="">
@@ -18,7 +21,12 @@
      </div>
       </div>  
 {% endfor %}
-
+{% else %}
+<div class="emptySearch">
+  <img src="/static/img/emptySearch.svg" alt="">
+  <p>Sorry,No courses found.</p>
+</div>
+{% endif %}
 </div>
 
 <script src="{% static 'js/search.js' %}"></script>
