@@ -2,6 +2,12 @@
   body{
     background-image: url('/static/img/aboutus.jpg');
   }
+  body{
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
   .card{
     display: flex;
     justify-content: space-evenly;

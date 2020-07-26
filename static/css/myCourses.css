@@ -1,3 +1,9 @@
+body{
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 .header-bar{
     background-color: #505763 !important;
     /* width: 100%; */

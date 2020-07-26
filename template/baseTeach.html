@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Course</title>
+    <title>{%block title%} {% endblock title %}</title>
     {% load static %}
 </head>
 <link rel="stylesheet" href="{% static 'css/baseTeach.css' %}">
 <body>
+  <div>
     <div class="top">
     <div id="Tname">
         {{request.user|slugify|first|upper}}
@@ -73,7 +74,7 @@
   </div>
 <div id="mySidenav" class="sidenav">
   <span onclick="closedisplaysidenav()" class="cross">&#x2718;</span>
-    <a href="/addCourse"><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
+    <a href="/addCourse"><span><img src="/static/img/logo.png" alt=""></span><span>Cognedu</span></a>
     <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
     <a href="/teacherPerformance"><span><img src="/static/img/performence.png" alt=""></span><span>Performence</span></a>
     <a href="/studentQuery"><span><img src="/static/img/resource.png" alt=""></span><span>Studentquery</span></a>
@@ -82,9 +83,10 @@
   {% block body %}
       
   {% endblock body %}
+  
   <footer>
     <div id="fitem1">
-    &copy; 2020 iLearn Inc.All Right Reserved
+    &copy; 2020 Cognedu Inc.All Right Reserved
   </div>
   <div id="fitem2">
     <img src="/static/img/facebook.png" alt="">

@@ -14,6 +14,7 @@ from django.contrib.postgres.search import SearchVector, SearchQuery
 import os
 from mutagen.mp4 import MP4
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from PayTm import Checksum
 MERCHANT_KEY = '0K5Uhk4At%X1t80Q'
 # from moviepy.editor import VideoFileClip 
@@ -31,9 +32,10 @@ def addCourse(request):
 def search(request):
     query=request.GET['search']
     result=Courses.objects.annotate(
-    search=SearchVector('title') + SearchVector('category')+SearchVector('sub_category')+SearchVector('creater_name')
+    search=SearchVector('title') + SearchVector('category')+SearchVector('sub_category')+SearchVector('sub_category2')+SearchVector('creater_name')
     ).filter(search = SearchQuery(query) ).filter(verified="True").values()
     return render(request,'home/search.html',{'searchResults':result})
+@login_required(login_url='/')
 def homeTutor(request):
     htprofile=HomeTutor.objects.filter(user_id=request.user)
     demos=''
@@ -44,6 +46,7 @@ def homeTutor(request):
         demos=demo[:htprofile[0].unlocked]
         lockedDemos=len(demo)-len(demos)
     return render(request,'home/homeTutor.html',{'htprofile':htprofile,'demos':demos,'lockedDemos':lockedDemos})
+@login_required(login_url='/')
 def get_homeTutor(request):
     pin=request.GET['pin']
     ht=HomeTutor.objects.filter(pin=int(pin)).filter(verified=True)
@@ -111,7 +114,7 @@ def registerhomeTutor(request):
             messages.error(request,'Failed! Fill the information correctly')
        
     return redirect('homeTutor')
-
+@login_required(login_url='/')
 def getStarted(request):
     return render(request,'home/getStarted.html')
 def createCourse(request):
@@ -140,6 +143,7 @@ def get_teacherProfile(request):
             Tprofile=TeacherProfile.objects.filter(ProfileOf_id=request.user).values()
             Tprofile=list(Tprofile)
         return JsonResponse({'teacherProfile':Tprofile})
+@login_required(login_url='/')
 def teacherPerformance(request):
     courses=Courses.objects.filter(creater=request.user)
     rev=set()
@@ -173,6 +177,7 @@ def addCart(request):
         removecart=Cart.objects.filter(user_id=user).filter(course_id=courseId)
         removecart.delete()
     return JsonResponse('item was added ',safe=False)
+@login_required(login_url='/')
 def saveCourse(request):
     status=False
     course=-1
@@ -213,6 +218,7 @@ def deleteCourse(request,id):
     course = Courses.objects.get(sno = id)
     course.delete()
     return render(request,'home/saveCourse.html')
+@login_required(login_url='/')
 def addVideos(request):
     get_courses=Courses.objects.filter(creater_id=request.user)
     get_videos=Videos.objects.filter(creater_id=request.user)
@@ -302,8 +308,8 @@ def handleSignUp(request):
         pass1=request.POST['password']
         pass2=request.POST['cpassword']
         #validation for errorneous input
-        if len(username)> 15:
-            messages.error(request,"Your username can not contain more than 15 Characters")
+        if len(username)> 20 or len(username)<5:
+            messages.error(request,"Your username can contain 5 to 20 Characters")
             return redirect('/')
         if not username.isalnum():
             messages.error(request,"Your username can contain letters and numbers only ")
@@ -496,6 +502,7 @@ def courseAdded(request):
             return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
 def myCourses(request):
     return render(request,'home/myCourses.html')
+@login_required(login_url='/')
 def previewmyCourses(request,slug,id):
     myCourses=MyCourses.objects.filter(user_id=request.user).values('course_id')
     cr=Courses.objects.filter(sno=id)

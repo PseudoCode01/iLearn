@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{%block title%} home {% endblock title %}
+{%block title%}Cognedu | Home {% endblock title %}
 {% block body %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -22,7 +22,7 @@
   </div>
 </div>
   <div class="facilitysection">
-    <h2>Achieve your goals with iLearn</h2>
+    <h2>Achieve your goals with Cognedu</h2>
     <hr>
     <div class="facilitycontent">
       <div class="improve">
@@ -91,19 +91,15 @@
         <div class="flexline"></div>
         <p>Start learning from  on-demand video lectures today from top instructors in subjects like maths,physics,chemistry and biology.</p>
       </div>
-     
-
         <img src="/static/img/world_back.jpg" alt="">
-   
-
   </div>
   <!-- here start teaching today section begins -->
   <div class="startteaching">
       <img src="/static/img/teach.jpg" alt="">
       <div class="teachingtoday">
        <h5>Become an instructor</h5>
-         <p> Top instructors from around the india teach millions of students on iLearn. We provide the tools and skills to teach what you love. </p> 
-         <button class="startteach">Start teaching today</button>
+         <p> Top instructors from around the india teach millions of students on Cognedu. We provide the tools and skills to teach what you love. </p> 
+         <button class="startteach" onclick="window.location.href='/teach1'">Start teaching today</button>
       </div>
   </div>
 <script src="{% static 'js/home.js' %}"></script>

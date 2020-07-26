@@ -36,12 +36,12 @@
 </div>
 <div id="title">
  <h3>Enter the title of your course</h3> 
- <input type="text" placeholder="eg:Learn Copmlex Number" id="courseTitle" required>  
+ <textarea type="text" placeholder="eg:Learn Copmlex Number" id="courseTitle" required></textarea>  
 </div>
 
 <div class="btn">
-    <button id="previous">Previous</button>
-    <a id="next" onclick="next()">Next</a>
+    <button id="previous" onclick="next('prev')">Previous</button>
+    <a id="next" onclick="next('next')">Next</a>
 </div>
 </body>
 <script src="{% static 'js/getStarted.js'%}"></script>

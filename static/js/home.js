@@ -2,15 +2,6 @@
 if(document.getElementById('mySidenav').style.width != 0){
     document.querySelector('.searchForm').style.display='none'
 }
-// document.querySelector('.dropbtn').addEventListener('click',function(){
-//     console.log('ff')
-//     document.querySelector('.searchSection').style.display='none'
-// })
-// document.querySelector('.closebtn').addEventListener('click',function(){
-//     console.log('ff')
-//     document.querySelector('.searchSection').style.display='block'
-// })
-
 
 if(getComputedStyle(document.querySelector('.mobile_Nav')).display === 'none'){
 let flag = false;
@@ -62,3 +53,5 @@ window.addEventListener('scroll', function(e) {
  </div>
  </div>`
  }
+ 
+

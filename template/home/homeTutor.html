@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Become Home Tutor</title>
 </head>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/homeTutor.css' %}">
@@ -50,8 +50,11 @@
       <div class="discription">
         <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" value={{htprofile.0.discription}} disabled required>{{htprofile.0.discription}}</textarea></div>
         <label for="Id_Proof"><b>Id_Proof</b></label>
-        <a href="/media/{{htprofile.0.id_proof}}" name="id_proof" id="id_proof" download>Download</a></div>
-      <button class="edit-btn" onclick="edit()">Edit Profile</button>
+        <a class="buttonDownload" href="/media/{{htprofile.0.id_proof}}" name="id_proof" id="id_proof" download>Download</a>
+      </div>
+      <div>
+      <button class="edit-btn " onclick="edit()">Edit Profile</button>
+    </div>
     </div>
    
     <div class="tutor t2">

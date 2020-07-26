@@ -23,10 +23,11 @@
 </script>
 
 <body>
+  <div>
   <div class="mobile_Nav">
     <span onclick="openMobileNav()" class="hamburger">&#9776;</span>
-    <a class="Mlogo" href="/"><img src="/static/img/logo.png" alt="">
-      <div>iLearn</div>
+    <a class="Mlogo" href="/"><img src="/static/img/cognedu.svg" alt="">
+      <div>Cognedu</div>
     </a>
     <form action="/search" class="searchForm" method="get" id="searchBar">
       <input type="search" name="search" id="search" placeholder="Search">
@@ -34,8 +35,9 @@
   </div>
   <div class="topnav" id="myTopnav">
     <span onclick="closeMobileNav()" class="cross">&#x2718</span>
-    <div class="cline"></div>
-    <a href="/" class="logo">i Learn</a>
+    <!-- <div class="cline"></div> -->
+    <a href="/" class="logo"><img  src="/static/img/cognedu.svg" alt="">
+     <span> Cognedu</span></a>
     <div class="dropside">
       <button class="dropbtn" onclick="openNav()">Categories
         <i class="fa fa-caret-down"></i>
@@ -78,7 +80,7 @@
         <img src="/static/img/user1.png" alt="">
         <div class="userData">
           <span id="name"><b>Hi! {{request.user}}</b></span>
-          <a class="btn" href="#popup1">Home Tutor</a>
+          <a style="color: teal;" href="#popup1">Home Tutor</a>
           <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
         </div>
       </div>
@@ -113,7 +115,7 @@
     <button id="signUp" class="btn btn-SignUp">Sign Up</button>
     <!-- Button to trigger login modal -->
     <button id="logIn" class="btn btn-Login">Log In</button>
-    <button class="btn btn-Teach"><a href="/teach1">Teach On iLearn</a></button>
+    <button class="btn btn-Teach"><a href="/teach1">Teach On Cognedu</a></button>
     {% endif %}
     <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a> -->
     <div class="mid2">
@@ -213,7 +215,7 @@
       <form action="/get_homeTutor" method="get">
       <div class="pin">
       <input type="text" id="pin" name="pin" placeholder="Enter the pin code of your area">
-      <input type="submit" value="&#8594;"></input>
+      <button type="submit" value="">&#8594;</button>
     </div></form>
       <a class="close" href="#">&times;</a>
      
@@ -223,15 +225,14 @@
 
   {% endblock body %}
 
-  <!--End of Tawk.to Script-->
-
+</div>
   <div id="lastElem">
     <div class="innerlastelem">
     <div class="foot">
       <div>
         <ul class="footUl">
-          <li><b>iLearn</b></li>
-          <li><a href="/teach1">Teach On iLearn</a></li>
+          <li><b>Cognedu</b></li>
+          <li><a href="/teach1">Teach On Cognedu</a></li>
           <li><a href="/about">About Us</a></li>
           <li><a href="">Devlopers</a></li>
           <li><a href="/contact">Contact Us</a></li>
@@ -248,7 +249,7 @@
     <hr style="background-color: rgb(209, 209, 209);">
     <footer>
       <div id="fitem1">
-        &copy; 2020 iLearn Inc.All Right Reserved
+        &copy; 2020 Cognedu Inc.All Right Reserved
       </div>
       <div id="fitem2">
         <img src="/static/img/facebook.png" alt="">

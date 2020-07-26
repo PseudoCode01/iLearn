@@ -114,14 +114,17 @@ var photography={'Potraits':potrait,'Photography Tools':photoTools,'Photography'
 var Academics=['Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12']
 var i=1;
 var v1,v2;
-function next(){
+function next(val){
+    if(val=='prev'&&i!=1){
+i--;
+    }
     v1=document.querySelector('#cat').value;
     console.log(v1)
     document.querySelector('.breadcrumb').style.display='block'
     if(v1==2){
 if(i==1)
 { 
-document.querySelector('.sub_category').style.display='block'
+document.querySelector('.sub_category').style.display='flex'
 document.querySelector('.category').style.display='none'
 let course;
 
@@ -151,7 +154,7 @@ else if(i==3){
     v4=document.querySelector('#scat').value;
     document.querySelector('.breadcrumb').innerText+=v4
     document.querySelector('.sub_category').style.display='none'
-    document.querySelector('#title').style.display='block'
+    document.querySelector('#title').style.display='flex'
 }
 else if(i==4){
     localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
@@ -162,7 +165,7 @@ else if(i==4){
     if(v1==3){
 if(i==1)
 { 
-document.querySelector('.sub_category').style.display='block'
+document.querySelector('.sub_category').style.display='flex'
 document.querySelector('.category').style.display='none'
 let course;
 
@@ -192,7 +195,7 @@ else if(i==3){
     v4=document.querySelector('#scat').value;
     document.querySelector('.breadcrumb').innerText+=v4
     document.querySelector('.sub_category').style.display='none'
-    document.querySelector('#title').style.display='block'
+    document.querySelector('#title').style.display='flex'
 }
 else if(i==4){
     localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
@@ -203,7 +206,7 @@ else if(i==4){
     if(v1==4){
 if(i==1)
 { 
-document.querySelector('.sub_category').style.display='block'
+document.querySelector('.sub_category').style.display='flex'
 document.querySelector('.category').style.display='none'
 let course;
 
@@ -233,7 +236,7 @@ else if(i==3){
     v4=document.querySelector('#scat').value;
     document.querySelector('.breadcrumb').innerText+=v4
     document.querySelector('.sub_category').style.display='none'
-    document.querySelector('#title').style.display='block'
+    document.querySelector('#title').style.display='flex'
 }
 else if(i==4){
     localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
@@ -244,7 +247,7 @@ else if(i==4){
     if(v1==5){
 if(i==1)
 { 
-document.querySelector('.sub_category').style.display='block'
+document.querySelector('.sub_category').style.display='flex'
 document.querySelector('.category').style.display='none'
 let course;
     document.querySelector('.breadcrumb').innerText+='Photography / '
@@ -272,7 +275,7 @@ else if(i==3){
     v4=document.querySelector('#scat').value;
     document.querySelector('.breadcrumb').innerText+=v4
     document.querySelector('.sub_category').style.display='none'
-    document.querySelector('#title').style.display='block'
+    document.querySelector('#title').style.display='flex'
 }
 else if(i==4){
     localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
@@ -283,7 +286,7 @@ else if(i==4){
 if(v1==1){
     console.log('33')
     if(i==1){
-        document.querySelector('.sub_category').style.display='block'
+        document.querySelector('.sub_category').style.display='flex'
 document.querySelector('.category').style.display='none'
         document.querySelector('.breadcrumb').innerText+='Academics / '
         let ht=``
@@ -305,7 +308,7 @@ document.querySelector('.category').style.display='none'
         v4=document.querySelector('#scat').value;
         document.querySelector('.breadcrumb').innerText+=v4+' / '
         document.querySelector('.sub_category').style.display='none'
-        document.querySelector('#title').style.display='block'
+        document.querySelector('#title').style.display='flex'
     }
     else if(i==4){
         localStorage.setItem('courseTitle',document.getElementById('courseTitle').value)

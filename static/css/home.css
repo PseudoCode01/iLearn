@@ -14,7 +14,16 @@
 .myCourses{
     color: white;
 }
-
+.mobile_Nav{
+    
+background-color: #004bc400;
+}
+body{
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 @media (max-width:950px){
     .topnav{
         background-color:rgb(255, 255, 255);
@@ -245,17 +254,14 @@ background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100
     }
     .homeTutorsection .leftht{
         padding: 10px;
-  position: relative;
+ 
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-  
-  overflow: hidden;
+overflow: hidden;
   color: #fff;
-       
-        /* background-image: -webkit-linear-gradient(130deg, rgba(0, 0, 0, 0) 34%, rgba(46, 89, 182, 0.6) 34%); */
-        background-color: rgb(33, 63, 89);
+  background-color: rgb(30, 25, 172);
         width: 50%;
     }
     .leftht img{
@@ -268,7 +274,7 @@ align-items: center;
     }
     .homeTutorsection .rightht{
         padding: 10px;
-        position: relative;
+        
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -276,17 +282,25 @@ align-items: center;
           overflow: hidden;
           color: #fff;      
           width: 50%;  
-        /* background-image: -webkit-linear-gradient(-130deg, rgba(182, 46, 53, 0.6) 34%, rgba(0, 0, 0, 0) 34%); */
-        background-color: rgb(13, 168, 168);
+        background-color: rgb(42, 29, 130);;
+
     }
+    
     @media(max-width:1000px){
         .homeTutorsection{
             flex-direction: column;
-            height: 855px;
+            height: auto;
         }
         .homeTutorsection .leftht,.homeTutorsection .rightht{
             width: 90%;
             padding: 5%;
+        }
+        
+    }
+    @media(max-width:600px){
+        .homeTutorsection img{
+            width: 150px;
+            height: 150px;
         }
     }
     /* .homeTutorsection .leftht::after{
@@ -349,7 +363,7 @@ text-align: center;
 @media (max-width:1000px){
     .course{
         flex-direction: column;
-        height: 480px;
+        height: auto;
     }
     .course img{
         margin: 0;
@@ -378,7 +392,7 @@ text-align: center;
         margin-left: auto;
         margin-right: auto;
         align-items: center;
-        background-image: url('/static/img/newsletter.jpg');
+      
         padding: 15px 0;
         margin-top: 250px;
     }
@@ -424,6 +438,7 @@ text-align: center;
     @media (max-width:1000px){
         .accessible{
             flex-direction: column;
+            height: auto;
         }
         .accessibleitem h2{
             font-size: 1.4rem;    }

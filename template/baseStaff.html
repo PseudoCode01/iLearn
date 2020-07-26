@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff 
-   
-         </title>
+    <title>{%block title%} {% endblock title %} </title>
 </head>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/baseStaff.css' %}">
@@ -24,7 +22,7 @@
     <div onclick="displaysidenav()" class="hamburger">&#9776;</div>
     <div id="mySidenav" class="sidenav">
         <span onclick="closedisplaysidenav()" class="cross">&#x2718</span>
-        <a href="/"><span><img src="/static/img/logo.png" alt=""></span><span>iLearn</span></a>
+        <a href="/"><span><img src="/static/img/logo.png" alt=""></span><span>Cognedu</span></a>
         <a href="/staff"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
         <a href="userQueries"><span><img src="/static/img/resource.png" alt=""></span><span>Queries</span></a>
         <a href="hometutors"><span><img src="/static/img/resource.png" alt=""></span><span>HomeTutors</span></a>

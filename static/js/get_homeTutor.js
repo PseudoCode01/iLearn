@@ -17,7 +17,6 @@ if (xh.status != 200) {
 alert(`Error ${xh.status}: ${xh.statusText}`); 
 } else { 
 data=JSON.parse(xh.responseText)
-console.log(data)
 document.getElementById('city').value=data[0]['PostOffice'][0]['District']+','+data[0]['PostOffice'][0]['State']
 };
 }
@@ -58,7 +57,6 @@ function submit(){
   let pinCode=document.getElementById('pinCode').value
   let sno=document.getElementById('sno').value
   var demo=document.getElementById('getdemo')
-  console.log(name,phone)
 let xhr = new XMLHttpRequest();
 xhr.open('POST', '/getDemo',true);
 xhr.setRequestHeader('X-CSRFToken', csrftoken);       
@@ -72,15 +70,14 @@ if (xhr.status != 200) {
   data=JSON.parse(xhr.responseText)
   demo.innerHTML='registered'
   demo.disabled=true
-  console.log(data)
 };
 }
 xhr.onprogress = function(event) {
 if (event.lengthComputable) {
- console.log('pro')
+ 
 
 } else {
- alert('fff')
+
 }
 
 };

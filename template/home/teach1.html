@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% load static %}
+{%block title%}Teach on Cognedu {% endblock title %}
 {% block body%}
 <link rel="stylesheet" href="{% static 'css/teach1.css' %}">
 <section id="home">
@@ -8,7 +9,9 @@
         <h1>Make a global impact</h1>
         <p>Create an online video course and earn money by teaching people around the world.</p>
         {% if user.is_authenticated %}
+        {% if request.user.first_name == "Teacher" %}
        <a type="button" class="btn-getStarted" href="/addCourse">Get Started</a>
+       {% endif %}
        {% else %}
        <button id="TeacherSignUp">Become an instructor</button>
        {% endif %}
@@ -76,17 +79,17 @@
 <!-- boxes for teachers reviews and their photos -->
 <div class="item2">
     <div id="expand1">
-        <p>iLearn has given me the opportunity to reach a global audience for my classes that wouldn’t have been
+        <p>Cognedu has given me the opportunity to reach a global audience for my classes that wouldn’t have been
             possible otherwise.</p>
            
     </div>
     <div id="expand2">
-        <p>Launching my first course on iLearn allowed me to quit my full-time job and start my own company. I went from
+        <p>Launching my first course on Cognedu allowed me to quit my full-time job and start my own company. I went from
             working 60+ hour weeks to setting my own hours and schedule.</p>
     </div>
     <div id="expand3">
-        <p>There's no greater success on the iLearn marketplace than hearing that you've helped a student achieve their
-            goals. Teaching on iLearn has brought me new relationships from wonderful and insatiably curious students.
+        <p>There's no greater success on the Cognedu marketplace than hearing that you've helped a student achieve their
+            goals. Teaching on Cognedu has brought me new relationships from wonderful and insatiably curious students.
         </p>
     </div>
 </div>

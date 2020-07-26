@@ -100,7 +100,7 @@ let course=``;
 </div>`
 if(cart.length===0){
     course+=`<div class="addcart btn-cart">
-       <button class="addCart">Add To Cart</button>
+    <button data-product="${item['sno']}" data-action="add" type="button" class="addCart " onclick="add(this)">Add To Cart</button>
     </div> 
     </div> `
 }

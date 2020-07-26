@@ -130,6 +130,14 @@ xhr.onload = function() {
   } else { 
     data=JSON.parse(xhr.responseText)
     data=(data['cartItems'])
+    if(data.length==0){
+      ci+=`<div class="noCart">No item in cart.</div>`
+    document.querySelector('.cartItems').innerHTML=ci;
+    document.querySelector('.count').innerText=`0`
+
+    }
+    else{
+      document.querySelector('.count').innerText=`${data.length}`
     for(let item of data){
 cart+=' '+item[0]['sno']
 ci+=`
@@ -143,11 +151,12 @@ ci+=`
 <h3 class="pricing">Rs:${item[0]['pricing']}</h3>
 </div>
 `   }if( document.querySelector('.count')!==null){
-    document.querySelector('.count').innerText=`${data.length}`
+   
     document.querySelector('.cartItems').innerHTML=ci;}
    
-localStorage.setItem('cart',cart)
   }
+  localStorage.setItem('cart',cart)
+}
 
 };
 

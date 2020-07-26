@@ -1,6 +1,8 @@
 {% extends 'baseTeach.html' %}
 
+{%block title%}Save Course {% endblock title %}
 {% block body %}
+
  {% load static %}
  <link rel="stylesheet" href="{% static 'css/saveCourse.css' %}">
 <form action="/saveCourse" method="POST" enctype="multipart/form-data">{% csrf_token %}
