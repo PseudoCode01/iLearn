@@ -23,6 +23,25 @@ body{
   font-size: 15px;
   border: 1px solid rgb(66, 77, 226); /* Add a thin border  */
 }
+.courseUl li .removeCourse{
+  float: right;
+}
+.courseUl li  img{
+float: right;
+}
+.courseUl li .removeCourse:hover .remove{
+ display: flex;
+}
+.remove{
+  background-color: white;
+  box-shadow: 0 0 5px gray;
+  display: none;
+  width: 200px;
+  padding: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsible:hover {

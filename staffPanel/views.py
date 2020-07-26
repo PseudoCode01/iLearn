@@ -32,6 +32,10 @@ def verification(request):
         notify.save()
         course.delete()
         return JsonResponse('item was deleted ',safe=False)
+    elif action=="Selfremove":
+        message=data['message']
+        course.delete()
+        return JsonResponse('item was deleted ',safe=False)
 
 def userQueries(request):
     queries=Contact.objects.filter(answered='False').order_by('timeStamp')

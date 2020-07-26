@@ -497,6 +497,7 @@ margin-top: 100px;
 .social-media a:hover::after {
   transform: scale(1.4);
   opacity: 0;
+  
 }
 /* sidebar to show number of unbuyed demos */
 /* Style the links inside the sidenav */

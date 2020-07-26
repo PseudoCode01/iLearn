@@ -8,8 +8,46 @@ body{
     margin-top: 100px;
     margin-left: 80px;
     margin-right: 20px;
+    min-height: 80.5vh;
 }
 .container .item{
     padding: 20px;
     background-color: rgb(238, 238, 238);
+}
+.emptyCart{
+    border: 1px solid rgb(226, 226, 226);
+    width: 50%;
+    background-color: rgb(247, 247, 247);
+    margin-left: auto;
+    margin-top: 100px;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 2px;
+    align-items: center;
+    padding: 50px 0;
+    margin-bottom: 100px;
+}
+.emptyCart img{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+}
+    .emptySearch h3{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 13px;
+    }
+@media(max-width:950px){
+    .emptyCart{
+width: 80%;
+    }
+}
+@media(max-width:420px){
+    .emptyCart{
+width: 95%;
+    }
 }

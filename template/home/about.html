@@ -1,56 +1,83 @@
 {% extends 'base.html' %}
 
 {% load static %}
-{%block title%}About us{% endblock title %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
 <div class="about-section">
-    <h1>About Us Page</h1>
-    
-    <p>We aim to provide better education to students through our online courses in best price</p>
-  </div>
-  
-  <h2 style="text-align:center">Our Team</h2>
-  <div class="card">
+  <span>About Cognedu</span>
+  <div class="line"></div>
+  <p>We aim to provide better education to students through our online courses in best price.We envision a world where
+    anyone, anywhere can transform their life by accessing the world’s best learning experience.</p>
+</div>
+<div class="aboutline"></div>
 
- 
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="img/avatar.png" alt="" >
-        </div>
-        <div class="flip-card-back">
-          <h1>Adarsh Srivastava</h1>
-          <p>CEO and Founder</p>
-          <p>instagram-</p>
-        </div>
+<h2 style="text-align:center;font-size:35px;">Our Team</h2>
+
+<div class="container">
+  <div class="profile-card">
+    <div class="top-section">
+      <i class="message fas fa-envelope"></i>
+      <i class="notif fas fa-bell"></i>
+      <div class="pic">
+        <span>S</span>
       </div>
+      <div class="name">Saurabh Yadav</div>
+      <div class="tag"></div>
     </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="" alt="">
-        </div>
-        <div class="flip-card-back">
-          <h1>Saurabh Singh Yadav</h1>
-          <p>CEO and Founder</p>
-          <p>instagram-</p>
-        </div>
+    <div class="bottom-section">
+      <div class="social-media">
+        <a href="tel:{{item.phone}}"><img src="/static/img/instagram.png" alt=""></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/fbprofile.png" alt=""></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/linkedinp.png" alt=""></a>
       </div>
+      <div class="disc">
+      <div>Persuing Btech  from IIT B.H.U in Electronics and communication engineering</div>
     </div>
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="img_avatar.png" alt="" >
-        </div>
-        <div class="flip-card-back">
-          <h1>Abhishek Yadav</h1>
-          <p>Manager</p>
-          <p>instagram-</p>
-        </div>
-      </div>
     </div>
   </div>
-  
+  <div class="profile-card">
+    <div class="top-section">
+      <i class="message fas fa-envelope"></i>
+      <i class="notif fas fa-bell"></i>
+      <div class="pic">
+        <span>A</span>
+      </div>
+      <div class="name">Adarsh Srivastava</div>
+      <div class="tag"></div>
+    </div>
+    <div class="bottom-section">
+      <div class="social-media">
+        <a href="tel:{{item.phone}}"><img src="/static/img/instagram.png" alt=""></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/fbprofile.png" alt=""></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/linkedinp.png" alt=""></a>
+      </div>
+      <div class="disc">
+      <div>Persuing Btech from MNNIT in Electronics and communication engineering</div>
+    </div>
+    </div>
+  </div>
+  <div class="profile-card">
+    <div class="top-section">
+      <i class="message fas fa-envelope"></i>
+      <i class="notif fas fa-bell"></i>
+      <div class="pic">
+        <span>A</span>
+      </div>
+      <div class="name">Abhishek Yadav</div>
+      <div class="tag"></div>
+    </div>
+    <div class="bottom-section">
+      <div class="social-media">
+        <a href="tel:{{item.phone}}"><img src="/static/img/instagram.png" alt=""></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/fbprofile.png" alt=""></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/linkedinp.png" alt=""></a>
+      </div>
+      <div class="disc">
+      <div>Persued M.Tech from IIT Delhi </div>
+    </div>
+    </div>
+  </div>
+</div>
+<script   src="{% static 'js/about.js'%}"></script>
+
 {% endblock body %}
-    

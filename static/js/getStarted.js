@@ -111,15 +111,24 @@ var Haf={'Yoga':yoga,'Mental Health':mentalH,'Dance':Dance,'Meditation':med};
 var photography={'Potraits':potrait,'Photography Tools':photoTools,'Photography':photo}
 // var personalDev={'Computer Science':,'Music':,'Health and fitness':,'Photography':}
 
+var ssc=['Reasoning','Maths','English','GS']
+// var uptet=['Reasoning','Maths','English','GS']
+var bank=['Reasoning','Maths','English','GS','Computer']
+var railway=['Reasoning','Maths','English','GS']
+var ce={'SSC':ssc,'Bank':bank,'Railway':railway}
+
+
+
+
+
+
 var Academics=['Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12']
 var i=1;
 var v1,v2;
 function next(val){
-    if(val=='prev'&&i!=1){
-i--;
-    }
+  
     v1=document.querySelector('#cat').value;
-    console.log(v1)
+ 
     document.querySelector('.breadcrumb').style.display='block'
     if(v1==2){
 if(i==1)
@@ -283,15 +292,55 @@ else if(i==4){
     window.location.href='saveCourse'
 }
     }
+    if(v1==6){
+if(i==1)
+{ 
+document.querySelector('.sub_category').style.display='flex'
+document.querySelector('.category').style.display='none'
+let course;
+    document.querySelector('.breadcrumb').innerText+='Competative Exams / '
+    for(let [i,vl] of Object.entries(ce)){
+     course+=`<option value="${i}">${i}</option>` 
+}
+document.querySelector('#scat').innerHTML=course
+}
+else if(i==2){
+ let ht=``
+ v3=document.querySelector('#scat').value;
+ document.querySelector('.breadcrumb').innerText+=v3+' / '
+    for(let [key,val] of Object.entries(ce)){
+        
+        if(key==v3){
+            
+             for(let item of val){
+                ht+=`<option value="${item}">${item}</option>`
+             }}
+    }
+            document.querySelector('#scat').innerHTML=ht
+        }
+        
+
+else if(i==3){
+    v4=document.querySelector('#scat').value;
+    document.querySelector('.breadcrumb').innerText+=v4
+    document.querySelector('.sub_category').style.display='none'
+    document.querySelector('#title').style.display='flex'
+}
+else if(i==4){
+    localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
+    localStorage.setItem('courseTitle',document.getElementById('courseTitle').value)
+    window.location.href='saveCourse'
+}
+    }
 if(v1==1){
-    console.log('33')
+   
     if(i==1){
         document.querySelector('.sub_category').style.display='flex'
 document.querySelector('.category').style.display='none'
         document.querySelector('.breadcrumb').innerText+='Academics / '
         let ht=``
         for(let item of Academics){
-            console.log(item)
+           
             ht+=`<option value="${item}">${item}</option>`
         }
         document.querySelector('#scat').innerHTML=ht

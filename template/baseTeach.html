@@ -8,7 +8,7 @@
 </head>
 <link rel="stylesheet" href="{% static 'css/baseTeach.css' %}">
 <body>
-  <div>
+  <div class="body">
     <div class="top">
     <div id="Tname">
         {{request.user|slugify|first|upper}}
@@ -72,6 +72,7 @@
       </div>
     </div>
   </div>
+  <div class="container">
 <div id="mySidenav" class="sidenav">
   <span onclick="closedisplaysidenav()" class="cross">&#x2718;</span>
     <a href="/addCourse"><span><img src="/static/img/logo.png" alt=""></span><span>Cognedu</span></a>
@@ -83,7 +84,7 @@
   {% block body %}
       
   {% endblock body %}
-  
+</div>
   <footer>
     <div id="fitem1">
     &copy; 2020 Cognedu Inc.All Right Reserved

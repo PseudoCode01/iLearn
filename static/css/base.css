@@ -4,7 +4,10 @@ body{
   margin: 0;
   padding: 0;
 }
-
+.body{
+  height: 100%;
+  min-height: 100%;
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -423,6 +426,11 @@ color: teal;
     align-items: center;
   }
   .mobile_Nav{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     background-color: white;
@@ -896,7 +904,7 @@ justify-content: center;
   /* footer part is designed */
 #lastElem{
   padding-top: 40px;
-  width: 98.9vw;
+  /* width: 98.9vw; */
   background-color: #021b42;
   z-index: 0;
   clear: both;

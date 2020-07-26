@@ -144,3 +144,25 @@ xhr.onerror = function() {
 function abort(){
   xhr.abort();
 }}
+function remove(val,x){
+  
+  let url='staff/verification'
+  
+  fetch(url,{
+      method:'POST',
+      headers:{
+          'Content-Type':'application/json',
+          'X-CSRFToken':csrftoken,
+      },
+      body:JSON.stringify({'courseId': val,'action':'Selfremove','message':''})
+  })
+  .then((response)=>{
+      return response.json()
+  })
+  .then((data)=>{
+    var x2 = x.parentElement.parentElement.parentElement.parentElement.parentElement;
+  x2.style.display='none'
+      alert(data)
+      
+  })
+}

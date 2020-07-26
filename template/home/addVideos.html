@@ -1,7 +1,7 @@
 {% extends 'baseTeach.html' %}
 
-{% block body %}
 {%block title%}Teacher | Course{% endblock title %}
+{% block body %}
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'css/addVideo.css' %}">
@@ -10,7 +10,20 @@
 <div class="courseData">
 <ul class="courseUl">
     <li class="item"><b>Title : </b>{{courses.title}}</li>
-    <li class="item"><b>Category : </b>{{courses.category}}</li>
+    <li class="item"><b>Category : </b>{{courses.category}} 
+      
+      {% if courses.verified == 'True' %}
+      <img src="/static/img/watched.png" alt="">
+      {% else %} 
+      <span class="removeCourse">
+      <img src="/static/img/remove.png" alt="">
+<span class="remove"><h4>Course unverified</h4>
+  <p>Want to remove</p>
+  <button class="btn-danger" onclick="remove('{{courses.sno}}',this)">Confirm</button>
+</span></span>
+      {% endif %}
+        
+    </li>
     <li class="item"><b>Sub Category : </b>{{courses.sub_category}}</li>
     <li class="item"><b>Language : </b>{{courses.language}}</li>
     <li class="item"><b>Pricing : </b> Rs  {{courses.pricing}}</li>
@@ -19,8 +32,7 @@
 Add Videos
 </button>
 <div class="content">
-<!-- <input type="file" id="myFile" name="filename">
-<input type="submit" class="submitVideo" value="Add Video"> -->
+
 <div class="container">
   <div id="message{{courses.sno}}"></div>
     <form id='formData' method="POST" enctype="multipart/form-data">
