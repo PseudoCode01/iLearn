@@ -9,7 +9,7 @@ background-color: cornsilk; }
  text-align: center;
  background: url('/static/img/background-869586_1280.png')no-repeat center center/cover;
  color: black;
- margin-top: 68px;
+ margin-top: 60px;
 }
 .line{
  margin-top: 20px;
@@ -183,4 +183,14 @@ background-color: cornsilk; }
 .social-media a:hover::after {
  transform: scale(1.4);
  opacity: 0;
+}
+
+
+@media (max-width:500px){
+  .about-section p{
+    font-size: 20px;
+  }
+  .about-section {
+    height: auto;
+  }
 }

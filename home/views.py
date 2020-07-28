@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification,TestVideo
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -27,8 +27,9 @@ def Teach1(request):
 def about(request):
     return render(request,'home/about.html')
 def addCourse(request):
-   
-    return render(request,'home/addCourse.html')
+    tv=TestVideo.objects.filter(user=request.user)
+    print(tv)
+    return render(request,'home/addCourse.html',{'tv':tv})
 def search(request):
     query=request.GET['search']
     result=Courses.objects.annotate(
@@ -50,7 +51,8 @@ def homeTutor(request):
 def get_homeTutor(request):
     pin=request.GET['pin']
     ht=HomeTutor.objects.filter(pin=int(pin)).filter(verified=True)
-    registeredht=HomeTutor.objects.filter(user_id=request.user).values('sno')
+    registeredht=HomeTutorDemo.objects.filter(user_id=request.user).values('homeTutor')
+    print(registeredht)
     return render(request,'home/get_homeTutor.html',{'ht':ht,'pin':pin,'registeredht':registeredht})
 def getDemo(request):
     if request.method=='POST':
@@ -433,7 +435,7 @@ def unlockDemos(request):
         unlock=request.POST['unlock']
         teacher_id=request.user.id
         ht=HomeTutor.objects.filter(user=request.user).values('unlocked')
-        order_id=str(teacher_id)+str(ht[0]['unlocked'])+'104'
+        order_id=str(teacher_id)+str(ht[0]['unlocked'])+'2hsHT'
         email=request.user.email
         amount=100*int(unlock)
         param_dict = {
@@ -477,9 +479,9 @@ def updateunlockedDemo(request):
             ht=HomeTutor.objects.get(user=request.user)
             ht.unlocked+=n
             ht.save()
-            return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
+            return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False','val':'unlock'})
         else:
-            return render(request,'home/paymentStatus.html',{'status':'Failed','send':'False'})
+            return render(request,'home/paymentStatus.html',{'status':'Failed','send':'False','val':'unlock'})
 
 
 
@@ -497,9 +499,9 @@ def courseAdded(request):
             myCourse=MyCourses(course=courses,order_id=id,user=request.user)
             myCourse.save()
             courses.save()
-            return render(request,'home/paymentStatus.html',{'status':'OK','send':'False'})
+            return render(request,'home/paymentStatus.html',{'status':'OK','send':'False','val':'add'})
         else:
-            return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False'})
+            return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False','val':'add'})
 def myCourses(request):
     return render(request,'home/myCourses.html')
 @login_required(login_url='/')
@@ -560,4 +562,13 @@ def studentQuery(request):
     user=request.user.id
     query=WatchedVideos.objects.filter(creater=user)
     return render(request,'home/studentQuery.html',{'query':query})
+
+def testVideo(request):
+    if request.method=='POST':
+        video = request.FILES['video']
+        user=request.user
+        tv=TestVideo(user=user,videofile=video)
+        tv.save()
+        print(video)
+    return JsonResponse('ok',safe=False)
 

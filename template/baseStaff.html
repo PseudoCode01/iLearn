@@ -7,6 +7,8 @@
 </head>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/baseStaff.css' %}">
+<link rel="shortcut icon" type="image/x-icon" href="/static/img/cognedu.svg" />
+
 <body>
     {% if request.user.is_staff %}
     <div class="top">
@@ -22,10 +24,11 @@
     <div onclick="displaysidenav()" class="hamburger">&#9776;</div>
     <div id="mySidenav" class="sidenav">
         <span onclick="closedisplaysidenav()" class="cross">&#x2718</span>
-        <a href="/"><span><img src="/static/img/logo.png" alt=""></span><span>Cognedu</span></a>
+        <a href="/"><span><img src="/static/img/cognedu.svg" alt=""></span><span>Cognedu</span></a>
         <a href="/staff"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
         <a href="userQueries"><span><img src="/static/img/resource.png" alt=""></span><span>Queries</span></a>
-        <a href="hometutors"><span><img src="/static/img/resource.png" alt=""></span><span>HomeTutors</span></a>
+        <a href="hometutors"><span><img src="/static/img/ht.png" alt=""></span><span>HomeTutors</span></a>
+        <a href="testvideo"><span><img src="/static/img/tv.png" alt=""></span><span>Testvideo</span></a>
         
 
       </div> 

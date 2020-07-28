@@ -17,7 +17,10 @@ body{
 }
 .top{
   position: absolute;
-  top: 10px;
+display: flex;
+flex-direction: row-reverse;
+  top: 0px;
+  padding: 10px 0;
   right: 0;
 }
 #Tname{
@@ -39,6 +42,7 @@ body{
     margin-right: 1rem;
     height: 44px;
     font-size: 2rem;
+    color: white;
     width: 51px;
     text-align: center;
    padding-top: 5px;
@@ -48,15 +52,19 @@ body{
     align-items: center;
     margin-top: 4px;
 }
+.hamburger{
+  display: none;
+}
 #role{
 float: right;
 margin-right: 2rem;
-font-size: 1rem;
+font-size: 1.3rem;
 padding-top: 17px;
 height: 35px;
 width: 111px;
 text-decoration: none;
 color: black;
+font-family: Georgia, 'Times New Roman', Times, serif;
 text-align: center;
 border-radius: 2px;
 }
@@ -64,6 +72,7 @@ border-radius: 2px;
 #role:hover{
     border: 1px solid rgb(179, 179, 179);
     background-color: rgb(218, 218, 218);
+    color: black;
 }
 .container{
   min-height:89vh;
@@ -76,7 +85,7 @@ border-radius: 2px;
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: rgb(65, 100, 236);
+  background-color: rgb(123, 205, 213);
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -103,6 +112,10 @@ border-radius: 2px;
 }
 .sidenav a span{
   margin-right: 10px;
+}
+.sidenav a span img{
+  height: 35px;
+  width: 35px;
 }
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
@@ -462,9 +475,19 @@ right: 10px;}
   .sidenav{
     width: 0;
   }
+  .top{
+    background-color: #2158ac;
+
+  }
+  #role{
+    color: white;
+  }
   .hamburger{
+    display: block;
+    margin-right: auto;
     font-size: 30px;
     display: inline;
+    color: white;
     padding: 10px;
   }
 .cross{
@@ -479,7 +502,8 @@ footer{
   justify-content: space-between;
   z-index: 2;
   padding: 25px 4%;
-  background-color: #f2f2f2;
+  background-color: #090d55;
+  color:white;
   width: 92%;
   
   /* margin-bottom: -2vh; */

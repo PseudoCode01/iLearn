@@ -12,6 +12,7 @@ body{
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
+    min-height: 60vh;
 }
 .itemInCart{
     display:flex;
@@ -79,6 +80,7 @@ background-color: black;
     font-size: 1rem;
     border: none;
     width: 105px;
+    cursor: pointer;
     height: 40px;
     padding:10px 20px;
     float:right;
@@ -105,6 +107,8 @@ background-position: right;
     height: 40px;
     padding:10px 20px;
     text-align: center;
+    cursor: pointer;
+
   transition: 0.5s;
   background-size: 200% auto;
   color: white;

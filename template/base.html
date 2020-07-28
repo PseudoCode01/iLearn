@@ -7,6 +7,7 @@
   {% load static %}
   <title>{%block title%} {% endblock title %}</title>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/x-icon" href="/static/img/cognedu.svg" />
   <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 <!--Start of Tawk.to Script-->
@@ -74,7 +75,7 @@
     {% if user.is_authenticated %}
     <span id="uname">
       {% if request.user.first_name == "Teacher" %}
-      <a href="/addCourse" class="role">Instructer</a>
+      <a href="/addCourse" class="role">Instructor</a>
       {% endif %}
       <div class="userIcon">
         <img src="/static/img/user1.png" alt="">
@@ -215,7 +216,7 @@
       <form action="/get_homeTutor" method="get">
       <div class="pin">
       <input type="text" id="pin" name="pin" placeholder="Enter the pin code of your area">
-      <button type="submit" value="">&#8594;</button>
+      <button type="submit" value=""><span>&#8594;</span></button>
     </div></form>
       <a class="close" href="#">&times;</a>
      

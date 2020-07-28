@@ -3,6 +3,7 @@
 {% block body %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/addCourse.css' %}">
+
 <div class="addCourse">
     <img src="/static/img/addCourse.png" alt="">
     <h1>Create An Awesome Course</h1>
@@ -55,7 +56,7 @@
 <div class="help">
   <div class="support">
     <img src="/static/img/support.png" alt="">
-    <a href="#">Help and Support</a>
+    <a href='contact'>Help and Support</a>
      <p> Browse our Help Center or contact our support team.</p>
   </div>
   <div class="teaching">
@@ -65,9 +66,56 @@
   </div>
   <div class="testvideo">
     <img src="/static/img/testvideo.png" alt="">
-    <a href="#">Test video</a>
+    <a href="#" id="testvideo">Test video</a>
      <p> Learn about best practices for teaching on Cognedu.</p>
   </div>
 </div>
+<div id="myModal" class="modal modal-signup">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close closesignup">&times;</span>
+      <div class="Welcomesignup">
+        <h2>Test Video</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div id="message"></div>
+     <div class="instruction">
+       <h2>Instruction</h2>
+       <p>Create a short test video so our experts can 
+         provide free feedback within two days on your
+          audio, video, tone, and delivery. Your video
+           can be on any subject you want, it's just a sample!</p>
+           <h4>Test Video Steps</h4>
+           <ol>
+             <li>
+              Tell us which language will be spoken in your video</li>
+             <li>Let us know what types of feedback will be helpful</li> 
+              <li> Optimize your area and equipment</li>
+              <li> Ensure students can see, hear, and understand you</li>
+              <li> Record a test of 1-3 minutes</li>
+              <li> Submit as many as you want
+             </li>
+           </ol>
+           <hr>
+           
+           {% if not tv %}
+           <div class="addtvideo">
+           <input type="file" id="tvideo" name="tvideo"></div>
+           <button class="btn btn-submit" onclick="submit(this)">Submit</button>
+           <div class="progress" id="progress">
+            <div class="myProgress">
+              <div class="myBar" id="bar"></div>
+            </div>
+          <button class="btn-danger" onclick="abort()">Cancel</button>
+          </div>
+          {% else %}
+          <h2>You have already posted a video</h2>
+          {% endif %}
+     </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/addCourse.js' %}"></script>
 {% endblock body %}
     

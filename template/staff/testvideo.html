@@ -1,0 +1,125 @@
+{% extends 'baseStaff.html' %}
+
+{% block title %}
+    TestVideos
+{% endblock title %}
+    
+
+{% block body %}
+<style>
+    .container{
+    display: grid;
+    margin-top: 100px;
+    margin-left: 70px;
+    margin-right: 10px;
+    min-height: 60vh;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    /* grid-gap: 10px; */
+}
+.container .item{
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px #cacaca;
+    height: 560px;
+    width: 250px;
+    margin-bottom: 100px;
+}
+
+
+.container .courseInfo{
+    padding: 10px;
+    line-height: 23px;
+}
+.container .item .btn-tested{
+    display: flex;
+justify-content: center;
+margin-top: 20px;
+width: 126px;
+margin-left: auto;
+margin-right: auto;
+
+padding: 10px;
+background-size: 200% auto;
+color: white;
+transition: 0.5s;
+box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+   cursor: pointer;
+}
+.container .item .btn-tested:hover{
+   background-position: right;
+}
+</style>
+    <div class="container">
+        
+        {% for item in tv %}
+            
+        <div  class="item">
+            <video width="100%" height="200" controls>
+                <source src="/media/${v}" poster="media/{{item.videofile}}" type="video/mp4">
+              Your browser does not support the video tag.
+              </video>
+            <div class="courseInfo">
+            <h4>{{item.user|upper}}</h4>
+            <p>{{item.timeStamp}}</p>
+<div class="message">
+    <label for="mes">Message</label>
+    <textarea name="mes" id="mes{{item.sno}}" cols="30" rows="10"></textarea>
+</div>
+          </div>
+          <button class="btn-tested" onclick="tested('{{item.sno}}',this)">Tested</button>
+          </div>
+          {% endfor %}
+    </div>
+    <script>
+        function getToken(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getToken('csrftoken')
+  
+        function tested(sno,elem){
+            let message=document.getElementById('mes'+sno).value
+          let xhr = new XMLHttpRequest();
+xhr.open('POST', 'tested',true);
+xhr.setRequestHeader('X-CSRFToken', csrftoken);       
+xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+xhr.setRequestHeader("Accept", "application/json");
+xhr.send(JSON.stringify({'sno': sno,'message':message}));
+xhr.onload = function() {
+if (xhr.status != 200) { 
+  alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+} else { 
+  data=JSON.parse(xhr.responseText)
+  alert(data)
+  elem.parentElement.style.display="none";
+};
+}
+xhr.onprogress = function(event) {
+if (event.lengthComputable) {
+
+} else {
+ alert('fff')
+}
+
+};
+
+xhr.onerror = function() {
+alert("Request failed");
+};
+        }
+    </script>
+{% endblock body %}
+    

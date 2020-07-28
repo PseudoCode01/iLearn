@@ -47,4 +47,5 @@ urlpatterns = [
     path('unlockDemos', views.unlockDemos,name="unlockDemos"),
     path('unlockhandleRequest/', views.unlockhandleRequest,name="unlockhandleRequest"),
     path('updateunlockedDemo', views.updateunlockedDemo,name="updateunlockedDemo"),
+    path('testvideo', views.testVideo,name="testvideo"),
 ]

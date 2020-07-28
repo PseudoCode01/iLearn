@@ -3,7 +3,7 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
 from home.models import Courses
-from home.models import Videos,Contact,HomeTutor,Notification
+from home.models import Videos,Contact,HomeTutor,Notification,TestVideo
 # Create your views here.
 def staffPanel(request):
     course=Courses.objects.filter(verified="False")
@@ -69,3 +69,20 @@ def verifyhometutors(request):
     if action == 'reject':
         ht.delete()
         return JsonResponse('removed',safe=False)
+def testvideo(request):
+    tv=TestVideo.objects.all()
+    print(tv)
+    return render(request,'staff/testvideo.html',{'tv':tv})
+def tested(request):
+    if request.method=='POST':
+        data=json.loads(request.body)
+        sno=int(data['sno'])
+        message=data['message']
+        tv=TestVideo.objects.get(sno=sno)
+        user=tv.user_id
+        tv.delete()
+        notify=Notification(user=user,message=message)
+        notify.save()
+    return JsonResponse('removed',safe=False)
+    
+

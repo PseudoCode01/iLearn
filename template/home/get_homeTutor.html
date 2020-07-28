@@ -20,7 +20,7 @@
           <span>&#8377;{{item.salaryL}}-{{item.salaryL}}/M</span>
           {% if registeredht %}
           {% for obj in registeredht %}
-          {% if item.sno == obj.sno %}
+          {% if item.user_id|slugify != obj.homeTutor|slugify %}
           <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO</button>
           {% else %}
           <button  id="registered">REGISTERED</button>
@@ -56,5 +56,5 @@
         </div>
       </div>
       
-      <script src="{% static 'js/get_homeTutor.js' %}">
+      <script src="{% static 'js/get_homeTutor.js' %}"></script>
       {% endblock body %}

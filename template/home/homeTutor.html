@@ -79,30 +79,39 @@
     </div>
 </a>
 <div class="demoContainer">
-{% for item in demos %}
-<div class="profile-card">
-  <div class="top-section">
-    <i class="message fas fa-envelope"></i>
-    <i class="notif fas fa-bell"></i>
-    <div class="pic">
-      <span>{{item.fullname|first|upper}}</span>
+  
+  {% if demos %}
+    
+  {% for item in demos %}
+  <div class="profile-card">
+    <div class="top-section">
+      <i class="message fas fa-envelope"></i>
+      <i class="notif fas fa-bell"></i>
+      <div class="pic">
+        <span>{{item.fullname|first|upper}}</span>
+      </div>
+      <div class="name">{{item.fullname|upper}}</div>
+      <div class="tag">{{item.timeStamp}}</div>
     </div>
-    <div class="name">{{item.fullname|upper}}</div>
-    <div class="tag">{{item.timeStamp}}</div>
-  </div>
-  <div class="bottom-section">
-    <div class="social-media">
-      <a href="mailto:{{item.email}}"><b>@</b></a>
-      <a href="tel:{{item.phone}}"><img src="/static/img/phone.png" alt=""></a>
-      
+    <div class="bottom-section">
+      <div class="social-media">
+        <a href="mailto:{{item.email}}"><b>@</b></a>
+        <a href="tel:{{item.phone}}"><img src="/static/img/phone.png" alt=""></a>
+        
+      </div>
+      <div class="address">
+      <div id="address">{{item.address}}</div>
+      <div id="address2">{{item.address2}}</div>
     </div>
-    <div class="address">
-    <div id="address">{{item.address}}</div>
-    <div id="address2">{{item.address2}}</div>
+    </div>
   </div>
-  </div>
+  {% endfor %}
+{% else %}
+<div class="emptyCart">
+  <img src="/static/img/noHT.png" alt="">
+  <h3>Currently no student asked for a demo!</h3>
 </div>
-{% endfor %}
+{% endif %}
 </div>
 <div id="mySidenav" class="sidenav">
   <a href="#popup1" id="demosnumber"><img src="/static/img/locked.png" alt=""><span>{{lockedDemos}}</span></a>
@@ -112,7 +121,7 @@
     <form action="/unlockDemos" method="post">{% csrf_token %}
     <div class="unlock">
     <input type="text" id="unlock" name="unlock" placeholder="Enter the number of profile that you want unlock">
-    <input type="submit" value="&#8594;"></input>
+    <button type="submit" >&#8594;</button>
   </div></form>
     <a class="close" href="#">&times;</a>
    

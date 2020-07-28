@@ -27,14 +27,13 @@
     </div>
                     <div class="navigate">
                         <a href="/">Home</a>
-                        <a href="/">MyCources</a>
+                        <a href="/myCourses" class="myC">MyCources</a>
                     </div>
-                    
+                    <input type="hidden" id="val" value="{{val}}">
                     {% if sent == 'True' %} 
                     <form id="add" action="/courseAdded" method="POST">{% csrf_token %}
                         <input type="hidden" id="sno" name="sno" value="{{response_dict.ORDERID}}">
                         <input type="hidden" id="status" name="status" value="{{status}}">
-                        
                     </form>
                     {% endif %}
                     {% if sent == 'unlock' %} 
@@ -46,10 +45,14 @@
                     {% endif %}
     </div>
 </body>
-
     <script>
 if(document.getElementById("add")!==null)
 {        document.getElementById("add").submit(); }
+if(document.getElementById('val').value=='unlock'){
+    document.querySelector('h2').innerText='Congrats! Profiles has been unlocked.'
+document.querySelector('.myC').innerText='View Profile'
+document.querySelector('.myC').href='/registerhomeTutor'
+}
     </script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     

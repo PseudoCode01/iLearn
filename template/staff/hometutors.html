@@ -1,11 +1,9 @@
 {% extends 'baseStaff.html' %}
-
 {% load static %}
-{%block title%}Verify HomeTutor {% endblock title %}
+{%block title%}Verify HomeTutor{% endblock title %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/staffhometutors.css' %}">
 <div class="tutorcontainer">
-  
     {% for item in ht %}
     <div class="tutoritem">
         <div class="nameCircle">{{item.name|first|upper}}</div>
@@ -28,6 +26,6 @@
       {% endfor %}
     </div>
           
-    <script src="{% static 'js/staffhometutors.js' %}">
+    <script src="{% static 'js/staffhometutors.js' %}"></script>
 {% endblock body %}
     

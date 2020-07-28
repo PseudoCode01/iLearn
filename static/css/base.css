@@ -385,6 +385,9 @@ border-radius: 4px;
   .logout{
     margin-top: 0;
   }
+  .btn a{
+    color: teal;
+  }
   .topnav .cross{
     font-size: 25px;
     cursor: pointer;
@@ -1078,7 +1081,7 @@ background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
   margin-left: 10px;
 }
 .content2 {
-  padding: 0 18px;
+  
   font-weight: bolder;
   color: white;
   overflow: hidden;
@@ -1087,7 +1090,8 @@ background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
 .content2 li{
   list-style: none;
   padding: 10px;
-  margin-left: 10px;
+  margin-left: 0;
+  font-size: 20px;
 }
 .content2 li:hover{
   background-color: rgb(65, 100, 236);
@@ -1187,6 +1191,9 @@ color : #2f3640;
   position: relative;
   transition: all 5s ease-in-out;
 }
+.popup form{
+  width: 90%;
+}
 .popup .pin{
   border: 1px solid black;
   border-radius: 4px;
@@ -1199,19 +1206,25 @@ color : #2f3640;
   border: none;
   height: 99%;
   padding: 0 2px;
-  width: 75%;
+  width: 80%;
   margin-left: 3px;
 }
 .popup .pin>button[type='submit']{
   font-size: 2.5rem;
   height: 40px;
 cursor: pointer;
-text-align: center;
-margin-left: 10%;
-padding-top: -10px;
+width: 20%;
+justify-content: end;
+margin-right: 3%;
+display: flex;
+align-items: center;
 color:blue;
 background-color: rgba(255, 255, 255, 0);
 border: none;
+}
+.popup .pin>button[type='submit'] span{
+font-size: 30px;
+margin-left: auto;
 }
 .popup .pin>input[type='submit']:hover{
 color: rgb(2, 0, 128);

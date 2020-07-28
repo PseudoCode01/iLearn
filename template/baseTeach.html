@@ -7,7 +7,14 @@
     {% load static %}
 </head>
 <link rel="stylesheet" href="{% static 'css/baseTeach.css' %}">
+<link rel="shortcut icon" type="image/x-icon" href="/static/img/cognedu.svg" />
+s
 <body>
+  
+  {% if request.user.first_name != "Teacher" %} 
+    You have to register as instructor to view this page
+    {% else %}
+ 
   <div class="body">
     <div class="top">
     <div id="Tname">
@@ -75,7 +82,7 @@
   <div class="container">
 <div id="mySidenav" class="sidenav">
   <span onclick="closedisplaysidenav()" class="cross">&#x2718;</span>
-    <a href="/addCourse"><span><img src="/static/img/logo.png" alt=""></span><span>Cognedu</span></a>
+    <a href="/addCourse"><span><img src="/static/img/cognedu.svg" alt=""></span><span>Cognedu</span></a>
     <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
     <a href="/teacherPerformance"><span><img src="/static/img/performence.png" alt=""></span><span>Performence</span></a>
     <a href="/studentQuery"><span><img src="/static/img/resource.png" alt=""></span><span>Studentquery</span></a>
@@ -95,7 +102,8 @@
     <img src="/static/img/twitter.png" alt="">
     <img src="/static/img/linkedin.png" alt="">
   </div>
-  </footer>    
+  </footer>  
+  {% endif %}  
 </body>
 <script src="{% static 'js/baseTeach.js' %}"></script>
 </html>

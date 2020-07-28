@@ -372,6 +372,7 @@ margin-top: 100px;
 .top-section {
   padding: 34px 20px;
   background-color: #2c2c54aa;
+  height: 240px;
 }
 
 .message, .notif {
@@ -446,6 +447,7 @@ margin-top: 100px;
   align-items: center;
   justify-content: center;
   font-size: 20px;
+  height: 125px;
   text-transform: uppercase;
 }
 .address{
@@ -552,79 +554,7 @@ margin-top: 100px;
   justify-content: center;
   align-items: center;
 }
-.overlay {
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
 
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.popup .unlock{
-  border: 1px solid black;
-  border-radius: 4px;
-  width: 91%;
-  height: 50px;
-}
-.popup .unlock>input[type='text']{
-  border: none;
-  height: 99%;
-  padding: 0 2px;
-  width: 88%;
-  margin-left: 3px;
-}
-.popup .unlock>input[type='submit']{
-  font-size: 42px;
-cursor: pointer;
-float: right;
-margin-right: 3px;
-color:blue;
-background-color: white;
-border: none;
-}
-.popup .unlock>input[type='submit']:hover{
-color: teal;
-}
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
 /* loader */
 #loader-container {
   width: 25px;
@@ -750,4 +680,139 @@ width: 300px;
 		margin-top: 0;
 		opacity: 0;
 	}
+}
+.overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup form{
+  width: 90%;
+  height: 100%;
+}
+.popup {
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.popup input[type='text']{
+  border: none;
+  height: 99%;
+  padding: 0;
+  margin-bottom: 0;
+  width: 80%;
+  padding: 2px;
+  margin-left: 3px;
+}
+.unlock{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.popup button[type='submit']{
+  font-size: 2.5rem;
+  height: 40px;
+cursor: pointer;
+width: 20%;
+padding: 2px;
+justify-content: end;
+margin-right: 3%;
+display: flex;
+align-items: center;
+color:blue;
+background-color: #f1f1f1;
+
+border: none;
+}
+.popup button[type='submit'] span{
+font-size: 30px;
+margin-left: auto;
+}
+.popup input[type='submit']:hover{
+color: rgb(2, 0, 128);
+
+}
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+.emptyCart{
+  border: 1px solid rgb(226, 226, 226);
+  width: 50%;
+  background-color: rgb(247, 247, 247);
+  margin-left: auto;
+  margin-top: 100px;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 2px;
+  align-items: center;
+  padding: 50px 0;
+  margin-bottom: 100px;
+}
+.emptyCart img{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+  .emptySearch h3{
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  }
+@media(max-width:950px){
+  .emptyCart{
+width: 80%;
+  }
+}
+@media(max-width:420px){
+  .emptyCart{
+width: 95%;
+  }
 }

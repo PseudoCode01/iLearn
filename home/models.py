@@ -123,7 +123,16 @@ class HomeTutorDemo(models.Model):
     def __str__(self):
         return self.fullname
 
+class TestVideo(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    videofile= models.FileField(upload_to='home/testvideo', null=True, verbose_name="")
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
+    def __str__(self):
+        return str(self.sno)
+
+    
 
 class Notification(models.Model):
     sno=models.AutoField(primary_key=True)

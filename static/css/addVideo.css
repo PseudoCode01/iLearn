@@ -116,6 +116,11 @@ input[type=text], select, textarea{
   .btn-danger{
     padding: 10px;
   }
+  .courseUl span{
+  float: right;
+  color: teal;
+  cursor: pointer;
+  }
   /* Style the submit button */
   input[type=submit] {
     background-color: rgb(65, 100, 236);
@@ -187,7 +192,7 @@ input[type=text], select, textarea{
   .courseData{
     margin-top: 100px;
     margin-left: auto;
-    width: 90%;
+    width: 99%;
     margin-right: auto;
     
 }

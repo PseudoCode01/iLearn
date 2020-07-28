@@ -10,4 +10,6 @@ urlpatterns = [
     path('markasAns', views.markasAns,name="markasAns"),  
     path('hometutors', views.hometutors,name="hometutors"),  
     path('verifyhometutors', views.verifyhometutors,name="verifyhometutors"),  
+    path('testvideo', views.testvideo,name="testvideo"),  
+    path('tested', views.tested,name="tested"),  
 ]

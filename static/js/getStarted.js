@@ -122,7 +122,9 @@ var ce={'SSC':ssc,'Bank':bank,'Railway':railway}
 
 
 
-var Academics=['Class 6','Class 7','Class 8','Class 9','Class 10','Class 11','Class 12']
+var c6_8=['Maths','Science','Social Science','English','Hindi']
+var c9_12=['Physics','Chemistry','Maths','Boilogy','English']
+var Academics={'Class 6':c6_8,'Class 7':c6_8,'Class 8':c6_8,'Class 9':c9_12,'Class 10':c9_12,'Class 11':c9_12,'Class 12':c9_12}
 var i=1;
 var v1,v2;
 function next(val){
@@ -333,37 +335,76 @@ else if(i==4){
 }
     }
 if(v1==1){
-   
-    if(i==1){
-        document.querySelector('.sub_category').style.display='flex'
-document.querySelector('.category').style.display='none'
+    if(i==1)
+    { 
+    document.querySelector('.sub_category').style.display='flex'
+    document.querySelector('.category').style.display='none'
+    let course;
         document.querySelector('.breadcrumb').innerText+='Academics / '
-        let ht=``
-        for(let item of Academics){
-           
-            ht+=`<option value="${item}">${item}</option>`
-        }
-        document.querySelector('#scat').innerHTML=ht
+        for(let [i,vl] of Object.entries(Academics)){
+         course+=`<option value="${i}">${i}</option>` 
+    }
+    document.querySelector('#scat').innerHTML=course
     }
     else if(i==2){
-        document.querySelector('.breadcrumb').innerText+= document.querySelector('#scat').value+' / '
-        document.querySelector('#scat').innerHTML=`
-        <option value="Physics">Physics</option>
-        <option value="Math">Math</option>
-        <option value="Chemistry">Chemistry</option>
-        <option value="Boilogy">Boilogy</option>`
-    }
+     let ht=``
+     v3=document.querySelector('#scat').value;
+     console.log(v3)
+     document.querySelector('.breadcrumb').innerText+=v3+' / '
+        for(let [key,val] of Object.entries(Academics)){
+            
+            if(key==v3){
+                
+                 for(let item of val){
+                    ht+=`<option value="${item}">${item}</option>`
+                 }}
+        }
+                document.querySelector('#scat').innerHTML=ht
+            }
+            
+    
     else if(i==3){
         v4=document.querySelector('#scat').value;
-        document.querySelector('.breadcrumb').innerText+=v4+' / '
+        document.querySelector('.breadcrumb').innerText+=v4
         document.querySelector('.sub_category').style.display='none'
         document.querySelector('#title').style.display='flex'
     }
     else if(i==4){
-        localStorage.setItem('courseTitle',document.getElementById('courseTitle').value)
         localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
+        localStorage.setItem('courseTitle',document.getElementById('courseTitle').value)
         window.location.href='saveCourse'
-    }}
+    }
+//     if(i==1){
+//         document.querySelector('.sub_category').style.display='flex'
+// document.querySelector('.category').style.display='none'
+//         document.querySelector('.breadcrumb').innerText+='Academics / '
+//         let ht=``
+//         for(let item of Academics){
+           
+//             ht+=`<option value="${item}">${item}</option>`
+//         }
+//         document.querySelector('#scat').innerHTML=ht
+//     }
+//     else if(i==2){
+//         document.querySelector('.breadcrumb').innerText+= document.querySelector('#scat').value+' / '
+//         document.querySelector('#scat').innerHTML=`
+//         <option value="Physics">Physics</option>
+//         <option value="Math">Math</option>
+//         <option value="Chemistry">Chemistry</option>
+//         <option value="Boilogy">Boilogy</option>`
+//     }
+//     else if(i==3){
+//         v4=document.querySelector('#scat').value;
+//         document.querySelector('.breadcrumb').innerText+=v4+' / '
+//         document.querySelector('.sub_category').style.display='none'
+//         document.querySelector('#title').style.display='flex'
+//     }
+//     else if(i==4){
+//         localStorage.setItem('courseTitle',document.getElementById('courseTitle').value)
+//         localStorage.setItem('cat',document.querySelector('.breadcrumb').innerText)
+//         window.location.href='saveCourse'
+//     }
+}
     i++;
 }
 

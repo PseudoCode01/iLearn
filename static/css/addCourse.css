@@ -228,6 +228,12 @@ margin-left: 70px;
   margin-bottom: 2rem;
   width: 30%;
 }
+.addtvideo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 .testvideo{
   cursor: pointer;
   display: flex;
@@ -238,6 +244,32 @@ margin-left: 70px;
   margin-bottom: 2rem;
   width: 30%;
 }
+.progress{
+  margin-top: 20px;
+    visibility: hidden;
+    margin-bottom: 10px;
+    width: 60%;
+  }
+  .myProgress {
+    width: 90%;
+    height: 40px;
+    background-color: grey;
+  }
+ .btn-submit{
+  padding: 10px 20px;
+  text-align: center;
+  height: auto;
+ }
+  .myBar {
+    width: 0%;
+    height: 40px;
+    background-color: rgb(3, 53, 216);
+  }
+  
+  .progress button{
+    padding: 10px 20px;
+    margin-top: 10px;
+  }
 .support p,.testvideo p,.teaching p{
   text-align: center;
 }

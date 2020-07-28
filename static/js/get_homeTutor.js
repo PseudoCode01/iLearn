@@ -1,6 +1,5 @@
 function getdemo(val){
     document.getElementById('sno').value=val;
-    console.log(val)
 window.location.href="#HTpopup1"
 }
 
@@ -49,6 +48,7 @@ function getToken(name) {
   }
   var csrftoken = getToken('csrftoken')
 function submit(){
+  window.location.href='#'
   let name=document.getElementById('fullname').value
   let phone=document.getElementById('phone').value
   let email=document.getElementById('email').value
@@ -70,6 +70,7 @@ if (xhr.status != 200) {
   data=JSON.parse(xhr.responseText)
   demo.innerHTML='registered'
   demo.disabled=true
+
 };
 }
 xhr.onprogress = function(event) {

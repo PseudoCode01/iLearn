@@ -15,7 +15,6 @@ body{
     margin-right: 10px;
 }
 .tutoritem{
-
     background-color: rgb(255, 255, 255);
     border-radius: 15px;
     padding: 20px 20px 0;
@@ -29,7 +28,6 @@ body{
     margin-top: auto;
     box-shadow: 0 0 7px rgb(209, 209, 209);
     transition: all 1s;
-
 }
 .tutoritem:hover{
 /* transform: skew(-5deg); */
