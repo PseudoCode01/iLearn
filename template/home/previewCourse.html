@@ -50,12 +50,21 @@
 </div>
 <div id="video">
     <h1>Course content</h1>
-    <table style="width:100%">
+    <table style="width:98%">
         {% for item in videos %}
         <tr>
-          <td>{{item.0.videoTitle}}</td>
-          <td id="fnameSaved">{{item.1}}</td>
+          <td>{{item.0.videoTitle}} </td>
+          
+          <td id="fnameSaved">{{item.1}}m</td>
+          
+          {% if forloop.counter == 1 %}
+          <td><img onclick="preview('{{item.0.videofile}}','{{item.0.thumbnail}}')" src="/static/img/tv.png" alt="">
         </tr>
+        {% else %}
+        <td><img src="/static/img/locked.png" alt="">
+        </tr>
+          {% endif %}
+          
         {% endfor %}
             
       </table> 
@@ -114,6 +123,20 @@
 </div>
 {% endfor %}
 </div>
+<div id="myModal" class="modal modal-preview">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close closepreview">&times;</span>
+        <div class="Welcomesignup">
+          <h2>{{course.0.title|upper}}</h2>
+        </div>
+      </div>
+      <div class="modal-body pre">
+        
+      </div>
+    </div>
+  </div>
+
   <script src="{% static 'js/previewCourse.js' %}"></script>
 {% endblock body %}
     

@@ -14,7 +14,7 @@ body{
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     /* grid-gap: 10px; */
 }
-.container .item{
+.container .itemc{
     background-color: white;
     box-shadow: 3px 3px 3px 3px #cacaca;
     height: 351px;
@@ -23,7 +23,7 @@ body{
     width: 250px;
     margin-bottom: 100px;
 }
-.container .item .btn-cart{
+.container .itemc .btn-cart{
     display: flex;
 justify-content: center;
 margin-top: 20px;
@@ -31,7 +31,7 @@ width: 126px;
 margin-left: auto;
 margin-right: auto;
 }
-.container .item .addCart{
+.container .itemc .addCart{
     text-decoration: none;
     flex: 1 1 auto;
   text-align: center;
@@ -47,10 +47,10 @@ margin-right: auto;
    cursor: pointer;
     padding: 10px;
 }
-.container .item .addCart:hover{
+.container .itemc .addCart:hover{
   background-position: right;
 }
-.container .item .goCart{
+.container .itemc .goCart{
     text-decoration: none;
     flex: 1 1 auto;
   text-align: center;
@@ -67,7 +67,7 @@ margin-right: auto;
     padding: 10px;
 
 }
-.container .item .goCart:hover{
+.container .itemc .goCart:hover{
     background-position: right;
   }
 
@@ -75,10 +75,10 @@ margin-right: auto;
     padding: 10px;
     line-height: 23px;
 }
-.container .item:hover{
+.container .itemc:hover{
     box-shadow: 5px 5px 5px 5px #cacaca;
 }
-.container .item img{
+.container .itemc img{
     width: 250px;
     height: 150px;
 }

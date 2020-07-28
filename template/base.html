@@ -183,8 +183,8 @@
         <form action="/login" method="POST">{% csrf_token %}
           <div class="form-group">
             <img src="/static/img/usernameicon.png" alt="">
-            <label for="userName">User Name</label>
-            <input type="text" name="loginuserName" id="loginuserName" placeholder="Enter Your Username " required>
+            <label for="userName">User Name or email</label>
+            <input type="text" name="loginuserName" id="loginuserName" placeholder="Enter Your Username or email" required>
           </div>
           <div class="form-group">
             <img src="/static/img/lockicon.png" alt="">
@@ -196,7 +196,7 @@
           </div>
           <div class="loginline"></div>
           <div class="forgetpassword">
-            <a>Forget password</a>
+            <a href="/reset_password">Forget password</a>
           </div>
         </form>
       </div>

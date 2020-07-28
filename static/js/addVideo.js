@@ -167,28 +167,22 @@ function remove(val,x){
   })
 }
 
-if( document.getElementById("playvideo")!==null){
-  var modalSignup = document.querySelector(".modal-signup");
-  // Get the button that opens the Sign Up modal
-  var btn = document.getElementById("playvideo");
-  var span = document.getElementsByClassName("closesignup")[0];
-  btn.onclick = function() {
-    let v=document.getElementById('vdata').dataset.video
-    let p=document.getElementById('vdata').dataset.poster
-    document.querySelector('.modal-body').innerHTML=`<video width="100%" height="400" controls>
-    <source src="/media/${v}" poster="media/${p}" type="video/mp4">
+function play(val,pos){
+  var modalPreview = document.querySelector(".modal-preview");
+  document.querySelector(".pre").innerHTML=`<video  id="vp" width="100%" height="400px" controls poster='/media/${pos}'>
+  <source id="source" src="/media/${val}" type="video/mp4">
   Your browser does not support the video tag.
   </video>`
-    modalSignup.style.display = "block";
-  }
+  var span = document.getElementsByClassName("closepreview")[0];
+  modalPreview.style.display = "block";
+  
   
   span.onclick = function() {
-    modalSignup.style.display = "none";
+    modalPreview.style.display = "none";
   }
   
   window.onclick = function(event) {
-    if (event.target == modalSignup) {
-      modalSignup.style.display = "none";
+    if (event.target == modalPreview) {
+      modalPreview.style.display = "none";
     }
-  }
-  }
+  }}

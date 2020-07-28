@@ -89,3 +89,22 @@ alert("Request failed");
 };
 
 }
+function preview(val,pos){
+var modalPreview = document.querySelector(".modal-preview");
+document.querySelector(".pre").innerHTML=`<video  id="vp" width="100%" height="400px" controls poster='/media/${pos}'>
+<source id="source" src="/media/${val}" type="video/mp4">
+Your browser does not support the video tag.
+</video><span>Buy the course to unlock full content</span>`
+var span = document.getElementsByClassName("closepreview")[0];
+modalPreview.style.display = "block";
+
+
+span.onclick = function() {
+  modalPreview.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modalPreview) {
+    modalPreview.style.display = "none";
+  }
+}}

@@ -29,7 +29,7 @@ if(getComputedStyle(document.querySelector('.mobile_Nav')).display === 'none'){
             document.querySelector('.dropbtn').style.color='white'
             if(document.querySelector('.myCourses')!==null){
               document.querySelector('.myCourses').style.color='white'}
-              console.log(getComputedStyle(document.querySelector('.role')).color)
+             
 
               if(document.querySelector('.role')!==null ){
       let role=document.querySelector('.role');

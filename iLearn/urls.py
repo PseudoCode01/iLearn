@@ -20,7 +20,8 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import (get_resolver,get_urlconf,resolve,reverse,NoReverseMatch)
-
+admin.site.site_header='Congedu'
+admin.site.index_title='Congedu administration'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

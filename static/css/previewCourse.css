@@ -118,14 +118,18 @@ font-size: 1rem;
     
 }
 .item .addCart{
-    display: flex;
-    text-decoration: none;
-    background-color: rgb(236, 65, 65);
-    color: white;
-    border-radius: 2px;
-   border: none;
-   cursor: pointer;
+    margin: 10px;
     padding: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 8px black;
+    border: none;
+    border-radius: 50px;
+    background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+    margin-top: 1.7vh;
 
 }
 .item .goCart{
@@ -149,9 +153,10 @@ font-size: 1rem;
 .courseInfo h1{
     font-size: 1.6rem;
 }
+@media(min-width:950px){
 .item:hover{
     box-shadow: 5px 5px 5px 5px #cacaca;
-}
+}}
 .item img{
     width: 250px;
     height: 150px;
@@ -180,13 +185,20 @@ table {
     color: white; 
     font-weight: bold; 
   }
+ 
   td, th { 
+     
     padding: 6px; 
     border: 1px solid #ccc; 
     text-align: left; 
-    width: 70%;
+    width: 80%;
   }
-
+ .modal-content{
+     height: 550px;
+ }
+ .modal-content span{
+     font-size: 20px;
+ }
   .aboutCreater{
     border: 1px solid #e6e6e6;
     padding: 2rem;
@@ -264,7 +276,7 @@ width: 88%;
     .preview{
         flex-direction: column;
         margin-top: 0;
-        height: 700px;
+        height: auto;
     }
     .preview .leftContent{
         width: 70%;
@@ -280,7 +292,8 @@ width: 88%;
         width: 100%;
         margin-top: 20px;
         flex-direction: row;
-        height: 169px;
+        height: 160px;
+        margin-bottom: 0;
         background-color: rgba(0, 0, 0, 0);
         box-shadow: none;
         /* border: 1px solid rgb(0, 0, 109); */

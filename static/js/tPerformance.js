@@ -21,16 +21,15 @@ function opentab(evt, option) {
   document.querySelector('.default').click()
 
   for(let item of document.querySelectorAll('.reviewstars')){
-    let v=item.dataset.r;
+    let v=item.dataset.rvalue;
     n=0;
-    console.log(item.children)
+    
     for(let i of item.children){
-        i.classList.add('rated')
-        console.log(i)
-      n++;
       if(n==v){
-        document.querySelector('.stars').dataset.r=n;
+        // document.querySelector('.stars').dataset.r=n;
         break;
       }
+        i.classList.add('rated')
+      n++;
       }
 }

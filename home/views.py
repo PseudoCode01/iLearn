@@ -248,7 +248,7 @@ def previewCourse(request,id):
     for item in vid:
         path="media/"+str(item.videofile)
         Vlength = MP4(path)
-        video.add((item,Vlength.info.length))
+        video.add((item,round((Vlength.info.length)/60),4))
     Tprofile=courses[0]['creater_id']
     teacherProfile=TeacherProfile.objects.filter(ProfileOf=Tprofile)
     allcourses=Courses.objects.filter(creater_id=Tprofile)

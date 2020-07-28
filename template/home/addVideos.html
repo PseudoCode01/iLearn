@@ -88,7 +88,7 @@ Videos Added
     {% for video in get_videos %}
     {% if courses.sno|slugify == video.videoOfCourse|slugify  %}
     <ul class="courseUl">
-        <li class="item"> {{video.videoTitle}} <span id="playvideo" >Play</span></li>
+        <li class="item"> {{video.videoTitle}} <span id="playvideo" onclick="play('{{video.videofile}}','{{video.thumbnail}}')">Play</span></li>
       
           <input type="hidden" id="vdata" data-video="{{video.videofile}}" data-poster="{{video.thumbnail}}">
     </ul>
@@ -98,15 +98,13 @@ Videos Added
 </div> 
 </div>
 {% endfor %}
-<div id="myModal" class="modal modal-signup">
+<div id="myModal" class="modal modal-preview">
   <div class="modal-content">
     <div class="modal-header">
-      <span class="close closesignup">&times;</span>
-      <div class="Welcomesignup">
-        <h2>Welcome</h2>
-      </div>
+      <span class="close closepreview">&times;</span>
+     
     </div>
-    <div class="modal-body">
+    <div class="modal-body pre">
       
     </div>
   </div>

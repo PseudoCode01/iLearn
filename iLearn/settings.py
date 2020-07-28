@@ -139,4 +139,4 @@ EMAIL_HOST_USER = 'ssygi0007@gmail.com'
 EMAIL_HOST_PASSWORD = 'jgxt jtjq lmqp xlin'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'iLearn Team <noreply@iLearn.com>'
+DEFAULT_FROM_EMAIL = 'Cognedu Team <noreply@Cognedu.com>'
