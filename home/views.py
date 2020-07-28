@@ -28,7 +28,6 @@ def about(request):
     return render(request,'home/about.html')
 def addCourse(request):
     tv=TestVideo.objects.filter(user=request.user)
-    print(tv)
     return render(request,'home/addCourse.html',{'tv':tv})
 def search(request):
     query=request.GET['search']

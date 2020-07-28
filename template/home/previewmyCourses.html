@@ -21,7 +21,7 @@
     
         <div class="left">
     <div class="player">
-        <video data-id={{course.0.0.sno}} id="vp" width="100%" height="400px" controls>
+        <video data-id={{course.0.0.sno}} id="vp" poster="/media/{{course.0.0.thumbnail}}" width="100%" height="400px" controls>
             <source id="source" src="/media/{{course.0.0.videofile}}" type="video/mp4">
           Your browser does not support the video tag.
           </video>
@@ -105,9 +105,9 @@
     
     {% if forloop.counter == 1 %}
         
-    <div class="active-bar" id='bar{{item.0.sno}}' onclick="play(this,'{{item.0.videofile}}','{{item.0.resource}}','{{item.0.sno}}')">
+    <div class="active-bar" id='bar{{item.0.sno}}' onclick="play(this,'{{item.0.videofile}}','{{item.0.resource}}','{{item.0.sno}}','{{item.0.thumbnail}}')">
         {% else %}
-    <div class="video-bar" id='bar{{item.0.sno}}' onclick="play(this,'{{item.0.videofile}}','{{item.0.resource}}','{{item.0.sno}}')">
+    <div class="video-bar" id='bar{{item.0.sno}}' onclick="play(this,'{{item.0.videofile}}','{{item.0.resource}}','{{item.0.sno}}','{{item.0.thumbnail}}')">
         {% endif %}
         <h4>{{forloop.counter}}.{{item.0.videoTitle}}</h4>
         <div class="lower-video-bar">

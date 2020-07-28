@@ -42,6 +42,7 @@ background-color: cornsilk; }
  justify-content: space-around;
  margin-bottom: 100px;
  margin-top: 50px;
+ flex-wrap: wrap;
 }
 .profile-card {
  width: 400px;
@@ -146,7 +147,7 @@ background-color: cornsilk; }
  width: 100%;
  top: -30px;
  left: 0;
- z-index: 1;
+ z-index: 0;
  display: flex;
  justify-content: space-around;
 }

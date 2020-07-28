@@ -820,7 +820,7 @@ justify-content: center;
   width: 55px; 
   transition: 0.3s;
   height: 30px;
-  z-index: 0;
+  z-index: 1;
   text-decoration: none; /* Remove underline */
   border-radius: 29px 0 0 29px; 
   border-left: 2px solid black;

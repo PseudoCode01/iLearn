@@ -18,7 +18,6 @@ document.getElementById('vp').addEventListener('ended', function(e) {
     document.querySelector('.active-bar').children[1].children[1].innerHTML=`<img src="/static/img/watched.png" alt="">`
     let sno=document.getElementById('vp').dataset.id;
     let c_id=document.getElementById('creater').value;
-    // document.getElementById('asKQuery').removeAttribute('disabled')
     let xh = new XMLHttpRequest();
     xh.open('POST', '/watched');
     xh.setRequestHeader('X-CSRFToken', csrftoken);       
@@ -74,7 +73,6 @@ let val=document.getElementById('studentQuery')
     if (event.lengthComputable) {
       
     } else {
-    //  alert('fff')
     }
     
     };
@@ -84,7 +82,7 @@ let val=document.getElementById('studentQuery')
     };
     }
 }
-function play(elem,val,res,id){
+function play(elem,val,res,id,thumb){
   if(document.getElementById('get_query'+id)!= null){
     let get_query= document.getElementById('get_query'+id).value
     if(get_query!='')
@@ -120,11 +118,11 @@ else{
     elem.classList.replace('video-bar','active-bar')
     let videocontainer=document.getElementById('vp')
     let ask=document.getElementById('studentQuery')
-    console.log(ask)
     ask.dataset.id=id;
     let get_res=document.querySelector('.buttonDownload')
     get_res.href='/media/'+res;
     videocontainer.pause();
+    videocontainer.poster='/media/'+thumb;
     videocontainer.dataset.id=id;
     document.getElementById('source').setAttribute('src','/media/'+val)
     videocontainer.load();

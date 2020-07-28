@@ -201,3 +201,9 @@ for (i = 0; i < close.length; i++) {
     setTimeout(function(){ div.style.display = "none"; }, 600);
   }
 }
+document.querySelector('.userIcon').addEventListener('mouseover',function(){
+  document.getElementById('cart').style.zIndex='0'
+})
+document.querySelector('.userIcon').addEventListener('mouseleave',function(){
+  document.getElementById('cart').style.zIndex='1'
+})
