@@ -25,7 +25,7 @@ SECRET_KEY = '=wt5a^84#l+q!_=ncvsw-6)fp%4sud@(tn8v-p5dvln(r17gg6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['103.228.113.102']
 
 
 # Application definition
@@ -81,8 +81,8 @@ WSGI_APPLICATION = 'iLearn.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'iLearn',
-        'USER':'postgres',
+        'NAME': 'postgres',
+        'USER':'cognedu_admin',
         'PASSWORD':'Love4Coding',
         'HOST':'localHost'
     }
