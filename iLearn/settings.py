@@ -25,7 +25,7 @@ SECRET_KEY = '=wt5a^84#l+q!_=ncvsw-6)fp%4sud@(tn8v-p5dvln(r17gg6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['103.228.113.102']
+ALLOWED_HOSTS = ['103.228.113.102','cognedu.com']
 
 
 # Application definition
@@ -143,7 +143,8 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static'),
     
 ]
-STATIC_ROOT='/static/'
+
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
 
