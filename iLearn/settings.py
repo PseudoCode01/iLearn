@@ -25,7 +25,7 @@ SECRET_KEY = '=wt5a^84#l+q!_=ncvsw-6)fp%4sud@(tn8v-p5dvln(r17gg6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['103.228.113.102','cognedu.com']
+ALLOWED_HOSTS = ['103.228.113.102','www.cognedu.com','cognedu.com']
 
 
 # Application definition
