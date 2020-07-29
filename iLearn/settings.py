@@ -77,16 +77,29 @@ WSGI_APPLICATION = 'iLearn.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
+if DEBUG:
+   DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'iLearn',
+        'USER':'postgres',
+        'PASSWORD':'Love4Coding',
+        'HOST':'localHost'
+    }
+}
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER':'cognedu_admin',
         'PASSWORD':'Love4Coding',
         'HOST':'localHost'
     }
 }
+
+
+
 
 
 # Password validation
