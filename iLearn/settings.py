@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=wt5a^84#l+q!_=ncvsw-6)fp%4sud@(tn8v-p5dvln(r17gg6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.cognedu.com','cognedu.com','103.228.113.102']
+ALLOWED_HOSTS = ['127.0.0.1','www.cognedu.com','cognedu.com','103.228.113.102']
 
 
 # Application definition
@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'iLearn.wsgi.application'
 if DEBUG:
    DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER':'cognedu_admin',
+         'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'iLearn',
+        'USER':'postgres',
         'PASSWORD':'Love4Coding',
         'HOST':'localHost'
     }
@@ -139,14 +139,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATICFILES_DIRS=[
-#     os.path.join(BASE_DIR,'static'),
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR,'static'),
     
-# ]
+]
 
-STATIC_ROOT=os.path.join(BASE_DIR,'static')
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+# STATIC_ROOT=os.path.join(BASE_DIR,'static')
 MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

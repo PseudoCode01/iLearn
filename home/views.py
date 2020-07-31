@@ -16,6 +16,9 @@ from mutagen.mp4 import MP4
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from PayTm import Checksum
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 MERCHANT_KEY = '0K5Uhk4At%X1t80Q'
 # from moviepy.editor import VideoFileClip 
 
@@ -88,7 +91,7 @@ def registerhomeTutor(request):
         if len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(pin)==6 and len(district)>0 and len(state)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
             if action == 'register':
                 ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,
-                state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,varified='False',id_proof=id_proof)
+                state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,verified='False',id_proof=id_proof)
                 ht.save()
                 messages.success(request,'Registered Successfully! Once your profile get varified it will be available for students')
             if action == 'edit':
@@ -308,7 +311,6 @@ def handleSignUp(request):
         email=request.POST['email']
         pass1=request.POST['password']
         pass2=request.POST['cpassword']
-        #validation for errorneous input
         if len(username)> 20 or len(username)<5:
             messages.error(request,"Your username can contain 5 to 20 Characters")
             return redirect('/')
@@ -323,15 +325,28 @@ def handleSignUp(request):
             messages.error(request,"UserName has Already Been Taken")
             return redirect('/')
         except:
-        #create user
-            myuser=User.objects.create_user(username,email,pass1)
-            myuser.first_name="Student"
-            myuser.save()
-            messages.success(request,"Your iLearn Account has been successfully created")
-            user=authenticate(username=username,password=pass1)
-            if user is not None:
-                login(request,user)
-            return redirect('/')
+            try:
+                user=User.objects.get(email=email)
+                messages.error(request,"Account with this email already exist")
+                return redirect('/')
+            except:
+                myuser=User.objects.create_user(username,email,pass1)
+                myuser.first_name="Student"
+                myuser.save()
+                template=render_to_string('home/signup_conf.html',{'name':username,'email':email,'pass':pass1})
+                email = EmailMessage(
+                    'Welcome to cognedu.com',
+                    template,
+                    settings.EMAIL_HOST_USER,
+                    [email],
+                )
+                email.fail_silently=False
+                email.send()
+                messages.success(request,"Your Cognedu Account has been successfully created")
+                user=authenticate(username=username,password=pass1)
+                if user is not None:
+                    login(request,user)
+                return redirect('/')
     
 def handleTeacherSignUp(request):
     if request.method=='POST':
@@ -354,15 +369,19 @@ def handleTeacherSignUp(request):
             messages.error(request,"UserName has Already Been Taken")
             return redirect('/teach1')
         except:
-        #create user
-            myuser=User.objects.create_user(username,email,pass1)
-            myuser.first_name="Teacher"
-            myuser.save()
-            messages.success(request,"Your are successfully registered on iLearn")
-            user=authenticate(username=username,password=pass1)
-            if user is not None:
-                login(request,user)
-            return redirect('/teach1')
+            try:
+                user=User.objects.get(email=email)
+                messages.error(request,"Account with this email already exist")
+                return redirect('/')
+            except:
+                myuser=User.objects.create_user(username,email,pass1)
+                myuser.first_name="Teacher"
+                myuser.save()
+                messages.success(request,"Your are successfully registered on Cognedu")
+                user=authenticate(username=username,password=pass1)
+                if user is not None:
+                    login(request,user)
+                return redirect('/teach1')
 
 def handleLogin(request):
     if request.method=='POST':
@@ -370,6 +389,7 @@ def handleLogin(request):
         loginpassword=request.POST['loginpass']
         try:
             user=authenticate(username=User.objects.get(email=loginusername),password=loginpassword)
+            print(User.objects.get(email=loginusername))
         except:
             user=authenticate(username=loginusername,password=loginpassword)
         if user is not None:
