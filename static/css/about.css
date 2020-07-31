@@ -5,7 +5,7 @@
 background-color: cornsilk; }
 .about-section {
  padding: 50px;
- height: 300px;
+ height: auto;
  text-align: center;
  background: url('/static/img/background-869586_1280.png')no-repeat center center/cover;
  color: black;
@@ -22,9 +22,12 @@ background-color: cornsilk; }
 }
 .about-section span{
  font-size: 40px;
- background: linear-gradient(to right, #9208ee, #fb3182);
+ background:linear-gradient(to right, #fff, #f00);
  -webkit-background-clip: text;
  -webkit-text-fill-color: transparent;
+}
+.mission{
+  margin-bottom: 50px;
 }
 .about-section p{
  
@@ -52,6 +55,7 @@ background-color: cornsilk; }
  position: relative;
  transition: .5s;
  box-shadow: 0 0 10px #00000070;
+ margin-bottom: 50px;
 }
 .profile-card:hover{
  transform: scale(1.1);
@@ -193,5 +197,8 @@ background-color: cornsilk; }
   }
   .about-section {
     height: auto;
+  }
+  .profile-card{
+    width: 85%;
   }
 }

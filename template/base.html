@@ -74,8 +74,10 @@
 
     {% if user.is_authenticated %}
     <span id="uname">
-      {% if request.user.first_name == "Teacher" %}
+      {% if request.user.first_name == "Teacher" or request.user.is_superuser %}
       <a href="/addCourse" class="role">Instructor</a>
+      {% else %}
+      <a  class="role"></a>
       {% endif %}
       <div class="userIcon">
         <img src="/static/img/user1.png" alt="">
@@ -129,7 +131,6 @@
   <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
     <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
     {{message}}
-  </div>
   </div>
   {% endfor %}
   <!--signUp The Modal -->

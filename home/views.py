@@ -389,7 +389,6 @@ def handleLogin(request):
         loginpassword=request.POST['loginpass']
         try:
             user=authenticate(username=User.objects.get(email=loginusername),password=loginpassword)
-            print(User.objects.get(email=loginusername))
         except:
             user=authenticate(username=loginusername,password=loginpassword)
         if user is not None:
@@ -487,7 +486,6 @@ def unlockhandleRequest(request):
             
         else:
             status="Failed"
-        print(response_dict)
     return render(request,'home/paymentStatus.html',{'response_dict':response_dict,'status':status,'sent':'unlock'})
 def updateunlockedDemo(request):
     if request.method=='POST':

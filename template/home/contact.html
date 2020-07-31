@@ -17,6 +17,12 @@
             <li></li>
     </ul>
 </div >
+{% if not user.is_authenticated %}
+<div class="alert alert-error alert-dismissible" role="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Login to contact us.
+</div>
+{% endif %}
 <div class="context">
     <div class="column">
         <div class="img">
@@ -36,7 +42,11 @@
                 <label for="disc">Message</label>
                 <textarea type="text" name="disc" id="disc" placeholder="Enter Your Query" required></textarea>
             </div>
+            {% if user.is_authenticated %}
                 <button id="submitcontact" type="submit">Submit</button>
+                {% else %}
+                <button id="submitcontact" disabled>Submit</button>
+{% endif %}
         </form>
       </div>
 </div>

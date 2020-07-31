@@ -3,9 +3,8 @@
 {%block title%}Congedu | HomeTutor {% endblock title %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/get_homeTutor.css' %}">
-
+{% if ht %}
 <div class="tutorcontainer">
-  
   {% for item in ht %}
   <div class="tutoritem">
       <div class="nameCircle">{{item.name|first|upper}}</div>
@@ -55,6 +54,11 @@
          
         </div>
       </div>
-      
+      {% else %}
+      <div class="emptyCart">
+        <img src="/static/img/nohtfound.svg" alt="">
+        <h3>No Home tutor found in your location!</h3>
+    </div>
+      {% endif %}
       <script src="{% static 'js/get_homeTutor.js' %}"></script>
       {% endblock body %}

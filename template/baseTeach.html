@@ -8,101 +8,101 @@
 </head>
 <link rel="stylesheet" href="{% static 'css/baseTeach.css' %}">
 <link rel="shortcut icon" type="image/x-icon" href="/static/img/cognedu.svg" />
-s
+
 <body>
   
-  {% if request.user.first_name != "Teacher" %} 
-    You have to register as instructor to view this page
-    {% else %}
- 
-  <div class="body">
-    <div class="top">
-    <div id="Tname">
-        {{request.user|slugify|first|upper}}
-        <div class="box arrow-top">
-            <h5>Hi! {{request.user}}</h5>
-            <p>{{request.user.email}}</p>
-            <h2 onclick="profile(this)">Profile</h2>
+  {% if request.user.first_name == "Teacher" or request.user.is_superuser %} 
+    
+    <div class="body">
+      <div class="top">
+      <div id="Tname">
+          {{request.user|slugify|first|upper}}
+          <div class="box arrow-top">
+              <h5>Hi! {{request.user}}</h5>
+              <p>{{request.user.email}}</p>
+              <h2 onclick="profile(this)">Profile</h2>
+            </div>
           </div>
+          <div class="notification">
+            <img src="/static/img/notification.png" alt="">
+            <div class="arrow-top box-notify">
+            </div>
+          </div>
+          <a href="/" id="role">Student</a>
+          <div onclick="displaysidenav(this)" class="hamburger">&#9776;</div>
+  </div>
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+     {{message}}
+    </div> 
+  
+  {% endfor %}
+  <div id="myModal" class="modal modal-profile">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" id="closeprofile">&times;</span>
+          <h2>{{request.user}}</h2>
         </div>
-        <div class="notification">
-          <img src="/static/img/notification.png" alt="">
-          <div class="arrow-top box-notify">
-          </div>
+        <div class="modal-body">
+          <div class="profile">
+                <div class="row">
+                  <div class="col-25">
+                    <label for="fname">First Name:</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="lname">Last Name:</label>
+                  </div>
+                  <div class="col-75">
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-25">
+                    <label for="disc">About Yourself:</label>
+                  </div>
+                  <div class="col-75">
+                    <textarea id="disc" name="disc" placeholder="About Yourself.." style="height:200px"></textarea>
+                  </div>
+                </div>
+                <div class="row row-btn">
+                  <button onclick="TeacherProfile(this)" data-action="save" class="saveTprofile">Save</button>
+                </div>
+            </div>
         </div>
-        <a href="/" id="role">Student</a>
-        <div onclick="displaysidenav(this)" class="hamburger">&#9776;</div>
-</div>
-{% for message in messages %}
-<div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-   {{message}}
-  </div> 
-
-{% endfor %}
-<div id="myModal" class="modal modal-profile">
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close" id="closeprofile">&times;</span>
-        <h2>{{request.user}}</h2>
-      </div>
-      <div class="modal-body">
-        <div class="profile">
-              <div class="row">
-                <div class="col-25">
-                  <label for="fname">First Name:</label>
-                </div>
-                <div class="col-75">
-                  <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="lname">Last Name:</label>
-                </div>
-                <div class="col-75">
-                  <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-25">
-                  <label for="disc">About Yourself:</label>
-                </div>
-                <div class="col-75">
-                  <textarea id="disc" name="disc" placeholder="About Yourself.." style="height:200px"></textarea>
-                </div>
-              </div>
-              <div class="row row-btn">
-                <button onclick="TeacherProfile(this)" data-action="save" class="saveTprofile">Save</button>
-              </div>
-          </div>
       </div>
     </div>
+    <div class="container">
+  <div id="mySidenav" class="sidenav">
+    <span onclick="closedisplaysidenav()" class="cross">&#x2718;</span>
+      <a href="/addCourse"><span><img src="/static/img/cognedu.svg" alt=""></span><span>Cognedu</span></a>
+      <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
+      <a href="/teacherPerformance"><span><img src="/static/img/performence.png" alt=""></span><span>Performence</span></a>
+      <a href="/studentQuery"><span><img src="/static/img/resource.png" alt=""></span><span>Studentquery</span></a>
+    </div>
+    
+    {% block body %}
+        
+    {% endblock body %}
   </div>
-  <div class="container">
-<div id="mySidenav" class="sidenav">
-  <span onclick="closedisplaysidenav()" class="cross">&#x2718;</span>
-    <a href="/addCourse"><span><img src="/static/img/cognedu.svg" alt=""></span><span>Cognedu</span></a>
-    <a href="/addVideos"><span><img src="/static/img/courses.png" alt=""></span><span>Courses</span></a>
-    <a href="/teacherPerformance"><span><img src="/static/img/performence.png" alt=""></span><span>Performence</span></a>
-    <a href="/studentQuery"><span><img src="/static/img/resource.png" alt=""></span><span>Studentquery</span></a>
-  </div>
-  
-  {% block body %}
-      
-  {% endblock body %}
-</div>
-  <footer>
-    <div id="fitem1">
-    &copy; 2020 Cognedu Inc.All Right Reserved
-  </div>
-  <div id="fitem2">
-    <img src="/static/img/facebook.png" alt="">
-    <img src="/static/img/instagram.png" alt="">
-    <img src="/static/img/twitter.png" alt="">
-    <img src="/static/img/linkedin.png" alt="">
-  </div>
-  </footer>  
+    <footer>
+      <div id="fitem1">
+      &copy; 2020 Cognedu Inc.All Right Reserved
+    </div>
+    <div id="fitem2">
+      <img src="/static/img/facebook.png" alt="">
+      <img src="/static/img/instagram.png" alt="">
+      <img src="/static/img/twitter.png" alt="">
+      <img src="/static/img/linkedin.png" alt="">
+    </div>
+    </footer>  
+    {% else %}
+    You have to register as instructor to view this page.
   {% endif %}  
 </body>
 <script src="{% static 'js/baseTeach.js' %}"></script>

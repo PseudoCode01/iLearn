@@ -64,3 +64,6 @@ if(getComputedStyle(document.querySelector('.mobile_Nav')).display === 'none'){
  }
  
 
+function submitSearch(){
+document.querySelector('.searchForm').submit()
+ }

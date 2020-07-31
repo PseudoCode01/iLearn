@@ -7,6 +7,8 @@
 </head>
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/homeTutor.css' %}">
+<link rel="shortcut icon" type="image/x-icon" href="/static/img/cognedu.svg" />
+
 <body>
   {% for message in messages %}
 <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
@@ -182,7 +184,6 @@
             <label for="disc"><b>About Yourself</b></label>
             <div class="discription">
             <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" required></textarea></div>
-           
             <label for="id_proof"><b>Id_Proof</b></label>
             <div class="Id-proof">
             <input type="file" name="id_proof" id="id_proof" accept="image/*,.pdf" required></div>
