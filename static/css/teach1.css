@@ -104,6 +104,7 @@ flex-wrap: wrap;
    .expand p{
        font-size: 1rem;
        padding: 5px;
+       text-align: center;
    }
   #Line{
       width: 70px;
@@ -119,7 +120,7 @@ flex-wrap: wrap;
       justify-content: space-evenly;
   }
   .item2 p{
-      font-size: 1rem;
+      font-size: 20px;
   }
   /* boxes for teachers reviews */
   
@@ -127,9 +128,12 @@ flex-wrap: wrap;
        border: 2px solid black;
        width: 300px;
        height: 350px;
-       background-color: blanchedalmond;
+       transition:  0.5s;
+       background-size: 200% auto;
+       background-image: linear-gradient(to right, #2460c2 0%, #8624a4 51%, #2460c2 100%);
+border: none;
+color: white;
      padding: 20px ;
-     border-top: 6px solid green;
      margin-bottom: 10px;
      border-radius: 6px;
    }
@@ -137,23 +141,32 @@ flex-wrap: wrap;
        border: 2px solid black;
        width: 300px;
        height: 350px;
-       background-color: blanchedalmond;
+       transition:  0.5s;
+       background-size: 200% auto;
+       color: white;
+       background-image: linear-gradient(to right, #2460c2 0%, #24a48c 51%, #2460c2 100%);
+       border: none;
        margin-bottom: 10px;
        padding: 20px ;
-       border-top: 6px solid blue;
        border-radius: 6px;
    }
    #expand3{
        border: 2px solid black;
        width: 300px;
        height: 350px;
+       color: white;
        margin-bottom: 10px;
-       background-color: blanchedalmond;
+       transition:  0.5s;
+       background-size: 200% auto;
+       background-image: linear-gradient(to right, #bb0aec 0%, #26a1bd 51%, #bb0aec 100%);
+       border: none;
        padding: 20px ;
-       border-top: 6px solid red;
        border-radius: 6px;
    }
-   /* help section begins here */
+   #expand1:hover,#expand2:hover,#expand3:hover{
+       background-position: right;
+   }
+
   #help{
      justify-content: center;
      align-content: center;

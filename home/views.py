@@ -589,3 +589,5 @@ def testVideo(request):
         print(video)
     return JsonResponse('ok',safe=False)
 
+def privacy(request):
+    return render(request,'home/privacy.html')
