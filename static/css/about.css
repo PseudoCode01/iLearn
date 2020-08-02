@@ -7,9 +7,13 @@ background-color: cornsilk; }
  padding: 50px;
  height: auto;
  text-align: center;
- background: url('/static/img/background-869586_1280.png')no-repeat center center/cover;
- color: black;
+ transition: 1.5s;
+ background-size: 200% auto;
+ background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
  margin-top: 60px;
+}
+.about-section:hover{
+  background-position: right;
 }
 .line{
  margin-top: 20px;
@@ -30,7 +34,7 @@ background-color: cornsilk; }
   margin-bottom: 50px;
 }
 .about-section p{
- 
+ color: white;
  font-size: 25px;
 }
 .aboutline{
@@ -50,7 +54,7 @@ background-color: cornsilk; }
 .profile-card {
  width: 400px;
  overflow: hidden;
- height: 450px;
+ height: 550px;
  text-align: center;
  position: relative;
  transition: .5s;
@@ -82,8 +86,8 @@ background-color: cornsilk; }
 }
 
 .pic {
- width: 95px;
- height: 95px;
+ width: 150px;
+ height: 150px;
  margin: auto;
  margin-bottom: 20px;
  border: 2px solid #2c3e50;
@@ -91,7 +95,11 @@ background-color: cornsilk; }
  padding: 8px;
  position: relative;
 }
-
+.pic >img{
+width: 100%;
+height: 100%;
+border-radius: 50%;
+}
 .pic::after {
  content: '';
  width: 100%;
