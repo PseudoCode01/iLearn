@@ -924,14 +924,33 @@ justify-content: center;
 }
   .innerlastelem{
     height: 100%;
-    background-image: url('/static/img/footer-bg.png');
-    background-repeat: no-repeat;
+    background: url('/static/img/footer-bg.png')  no-repeat center center/cover;
+    }
+    .footouter{
+      display: flex;
+      flex-wrap: wrap-reverse;
+      justify-content: space-between;
+    }
+    .supports{
+      color: white;
+      margin: 70px;
+    }
+    .supports h2{
+     font-size: 1.8rem;
+    }
+    .supports p{
+      font-size: 1.5rem;
     }
     .foot{
       padding-top: 85px;
       display: flex;
       color: white;
       flex-wrap: wrap;
+    }
+    @media(max-width:625px){
+      .foot{
+        padding-top: 15px;  
+      }
     }
     .footUl{
       margin: 20px 55px;

@@ -45,8 +45,8 @@ function move() {
     }
   }
 } 
+var xhr = new XMLHttpRequest();
 function sendForm(val,element){
-
 var file1=document.getElementById('thumbnail'+val).files[0]
 var file2=document.getElementById('video'+val).files[0]
 var file3=document.getElementById('resources'+val).files[0]
@@ -65,14 +65,15 @@ formData.append("resources", file3);
 formData.append("title", document.getElementById('videoTitle'+val).value);
 formData.append("courseSno", val);
 
-var xhr = new XMLHttpRequest();
+
 
   xhr.open('POST', '/video',true);
   xhr.setRequestHeader('X-CSRFToken', csrftoken);       
-
-  xhr.send(formData);
+  var elem = document.getElementById('bar'+val);
+  var width = 0;
+  
   xhr.onload = function() {
-
+    
   if (xhr.status != 200) { 
     // alert(`Error ${xhr.status}: ${xhr.statusText}`); 
     document.getElementById('thumbnail'+val).disabled=false
@@ -103,47 +104,44 @@ var xhr = new XMLHttpRequest();
     element.style.display='block';
 };
 }
-xhr.onprogress = function(e) {
+xhr.upload.onloadstart=function(e){
+  document.getElementById('thumbnail'+val).disabled=true
+  document.getElementById('video'+val).disabled=true
+  document.getElementById('resources'+val).disabled=true
+  document.getElementById('videoTitle'+val).disabled=true
+  document.getElementById('progress'+val).style.visibility='visible';
+  element.style.display='none';
+}
+xhr.upload.onprogress = function(e) {
   if (e.lengthComputable) {
     var done = e.position || e.loaded
     var total = e.totalSize || e.total;
-document.getElementById('thumbnail'+val).disabled=true
-document.getElementById('video'+val).disabled=true
-document.getElementById('resources'+val).disabled=true
-document.getElementById('videoTitle'+val).disabled=true
-document.getElementById('progress'+val).style.visibility='visible';
-element.style.display='none';
-   if (i == 0) {
-    i = 1;
-    var elem = document.getElementById('bar'+val);
-    var width = 0;
-    var id = setInterval(frame,5);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width+=Math.round(done/total*100);
-        elem.style.width = width + "%";
-      }
-    }
-  }
- 
-  
+    width=Math.round((done/total)*100);
+    elem.style.width = width + "%";
   } else {
   
   }
 
 };
-
+xhr.send(formData);
 xhr.onerror = function() {
   alert("Request failed");
 };
 }
-
-function abort(){
+}
+function abort(val){
   xhr.abort();
-}}
+  document.getElementById('thumbnail'+val).disabled=false
+  document.getElementById('video'+val).disabled=false
+  document.getElementById('resources'+val).disabled=false
+  document.getElementById('videoTitle'+val).disabled=false
+  document.getElementById('progress'+val).style.visibility='hidden';
+  document.getElementById('add'+val).style.display='block';
+  document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
+   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+ Uploading canceled by user
+ </div> `
+}
 function remove(val,x){
   
   let url='staff/verification'

@@ -505,8 +505,7 @@ footer{
   background-color: #090d55;
   color:white;
   width: 92%;
-  
-  /* margin-bottom: -2vh; */
+  margin-top: 10px;
 }
 footer img{
   margin-right: 10px;

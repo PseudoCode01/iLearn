@@ -33,7 +33,7 @@ Add Videos
 </button>
 <div class="content">
 
-<div class="container">
+<div class="containerc">
   <div id="message{{courses.sno}}"></div>
     <form id='formData' method="POST" enctype="multipart/form-data">
         <input type="hidden" value="{{courses.sno}}" id="courseSno{{courses.sno}}" name="courseSno" >
@@ -71,13 +71,13 @@ Add Videos
       </div>
     </form>
         <div class="row">
-          <input onclick="sendForm('{{courses.sno}}',this)" type="button" class="btn" value="Add">
+          <input onclick="sendForm('{{courses.sno}}',this)" id="add{{courses.sno}}" type="button" class="btn" value="Add">
         </div>
         <div class="progress" id="progress{{courses.sno}}">
         <div class="myProgress">
           <div class="myBar" id="bar{{courses.sno}}"></div>
         </div>
-      <button class="btn-danger" onclick="abort()">Cancel</button>
+      <button class="btn-danger"  onclick="abort('{{courses.sno}}')">Cancel</button>
       </div>
   </div> 
 </div> 
