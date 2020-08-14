@@ -17,27 +17,25 @@ if( document.getElementById("testvideo")!==null){
       }
     }
     }
+var xhr = new XMLHttpRequest();
 function submit(element){
 var file1=document.getElementById('tvideo').files[0]
 
 
-if(file1.size/1024>(30*1024)){
+if(file1.size/1024>(50*1024)){
   document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
- Files size should be less 30mb.
- </div> ` 
+ Files size should be less 50mb.
+ </div> `
 }
 else{
 var formData = new FormData();
 formData.append("video", file1);
 
 
-var xhr = new XMLHttpRequest();
-
   xhr.open('POST', '/testvideo',true);
   xhr.setRequestHeader('X-CSRFToken', csrftoken);       
 
-  xhr.send(formData);
   xhr.onload = function() {
 
   if (xhr.status != 200) { 
@@ -56,36 +54,37 @@ document.getElementById('progress').style.visibility='hidden';
  
 };
 }
-xhr.onprogress = function(e) {
+xhr.upload.onloadstart=function(e){
+  document.getElementById('progress').style.visibility='visible';
+  element.style.display='none';  
+}
+var width = 0;
+xhr.upload.onprogress = function(e) {
   if (e.lengthComputable) {
     var done = e.position || e.loaded
     var total = e.totalSize || e.total;
-document.getElementById('progress').style.visibility='visible';
-element.style.display='none';
-var i=0;
-   if (i == 0) {
-    i = 1;
+
     var elem = document.getElementById('bar');
-    var width = 0;
-    var id = setInterval(frame,5);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width+=Math.round(done/total*100);
+    
+        width=Math.round(done/total*100);
         elem.style.width = width + "%";
-      }
-    }
-  }
- 
-  
   } else {
   
   }
 
 };
+xhr.send(formData);
 
 xhr.onerror = function() {
   alert("Request failed");
 };}}
+
+function abort(){
+  xhr.abort();
+  document.getElementById('progress').style.visibility='hidden';
+  document.querySelector('.btn-submit').style.display='block';  
+  document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
+   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+ Uploading cancelled.
+ </div> ` 
+}

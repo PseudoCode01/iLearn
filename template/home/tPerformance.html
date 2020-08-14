@@ -13,7 +13,39 @@
     </div>
     <div class="tabcontent" id="revenue">
         <h3>Please note the you will get the 70% of your course</h3>
-        
+        <div class="alert-error alert-dismissible">
+        </div>
+        <div class="account">
+            
+            {% if not account %}
+            <h2>Add payment method</h2>
+            <div class="upi">
+            <h5>UPI ID</h5>
+            <input type="text" id="upiid" placeholder="Enter your upi id">
+        </div>
+        <span>or</span>
+        <div>
+            <h5>Bank Account</h5>         
+<div>
+    <label for="acc_no">Account No.</label>
+    <input type="text" id="accno" placeholder="Enter account number">
+</div>
+<div>
+    <label for="acc_ifsc">IFSC Code</label>
+    <input type="text" id="ifsc" placeholder="Enter IFSC Code">
+</div>
+<div>
+    <label for="acc_holder">Account holder</label>
+    <input type="text" id="accholder" placeholder="Enter account holder name">
+</div>
+        </div>
+        <button class="add btn" onclick="addmethod('add',this)">Add</button>
+        {% else %}
+        <h2>Payment method added</h2>
+        <button class="add btn" onclick="edit()">Edit</button>
+        {% endif %}
+        <hr>
+        </div>
         {% for item in courses %}
         <div class="courseRevenue">
         <span>{{forloop.counter}}.{{item.title|upper}}</span>

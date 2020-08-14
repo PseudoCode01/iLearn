@@ -51,7 +51,7 @@ var file1=document.getElementById('thumbnail'+val).files[0]
 var file2=document.getElementById('video'+val).files[0]
 var file3=document.getElementById('resources'+val).files[0]
 
-if(file1.size/1024>150 || file2.size/1024>(512*1024) || (file3!==undefined && file3.size/1024>1024)){
+if(file1.size/1024>150 || file2.size/1024>(1024*1024) || (file3!==undefined && file3.size/1024>1024)){
   document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
  Files not in required format.
@@ -160,17 +160,34 @@ function remove(val,x){
   .then((data)=>{
     var x2 = x.parentElement.parentElement.parentElement.parentElement.parentElement;
   x2.style.display='none'
-      alert(data)
+     
       
   })
 }
 
 function play(val,pos){
   var modalPreview = document.querySelector(".modal-preview");
-  document.querySelector(".pre").innerHTML=`<video  id="vp" width="100%" height="400px" controls poster='/media/${pos}'>
-  <source id="source" src="/media/${val}" type="video/mp4">
+  let url='geturl'
+  var curl='media/'+val
+  fetch(url,{
+      method:'POST',
+      headers:{
+          'Content-Type':'application/json',
+          'X-CSRFToken':csrftoken,
+      },
+      body:JSON.stringify({'curl':curl})
+  })
+  .then((response)=>{
+      return response.json()
+  })
+  .then((data)=>{
+       data=data['data']
+       document.querySelector(".pre").innerHTML=`<video  id="vp" width="100%" height="400px" controls poster='/media/${pos}'>
+  <source id="source" src='${data}' type="video/mp4">
   Your browser does not support the video tag.
   </video>`
+  })
+  
   var span = document.getElementsByClassName("closepreview")[0];
   modalPreview.style.display = "block";
   

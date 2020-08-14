@@ -115,3 +115,30 @@ h1{
   .star.rated{
       counter-increment: rateme 1;
   }
+.account input{
+    border-radius: 0%;
+    border: 1px solid black;
+   padding: 15px;
+   display: block;
+   margin-top: 7px;
+   margin-bottom: 15px;
+   width: 500px;
+}
+@media(max-width:500px){
+    .account input{
+    width: 90%;
+    padding: 3%;
+}
+}
+.account button{
+width: 100px;
+}
+.account hr{
+    margin-bottom: 10px;
+}
+.alert-error{
+    display: none;
+}
+.alert-error p{
+    width: 80%;
+}

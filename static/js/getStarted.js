@@ -123,8 +123,9 @@ var ce={'SSC':ssc,'Bank':bank,'Railway':railway}
 
 
 var c6_8=['Maths','Science','Social Science','English','Hindi']
-var c9_12=['Physics','Chemistry','Maths','Boilogy','English']
-var Academics={'Class 6':c6_8,'Class 7':c6_8,'Class 8':c6_8,'Class 9':c9_12,'Class 10':c9_12,'Class 11':c9_12,'Class 12':c9_12}
+var c9_10=['Physics','Chemistry','Maths','Boilogy','English','Hindi']
+var c11_12=['Physics','Chemistry','Maths','Boilogy','English','Commerce']
+var Academics={'Class 6':c6_8,'Class 7':c6_8,'Class 8':c6_8,'Class 9':c9_10,'Class 10':c9_10,'Class 11':c11_12,'Class 12':c11_12}
 var i=1;
 var v1,v2;
 function next(val){

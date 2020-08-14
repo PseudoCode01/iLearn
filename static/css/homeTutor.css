@@ -124,6 +124,9 @@ input[type=text], input[type=password],.id-proof,.discription {
 .amountHigher{
 float: none;
 }
+.Id-proof{
+  width: 92%;
+}
 }
 .slider {
     -webkit-appearance: none;

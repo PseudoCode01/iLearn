@@ -82,6 +82,24 @@ let val=document.getElementById('studentQuery')
     };
     }
 }
+let url='geturl'
+var vurl=document.getElementById('source').getAttribute('src')
+fetch(url,{
+  method:'POST',
+  headers:{
+      'Content-Type':'application/json',
+      'X-CSRFToken':csrftoken,
+  },
+  body:JSON.stringify({'curl':vurl})
+})
+.then((response)=>{
+  return response.json()
+})
+.then((data)=>{
+   data=data['data']
+   document.getElementById('source').setAttribute('src',data)
+})
+
 function play(elem,val,res,id,thumb){
   if(document.getElementById('get_query'+id)!= null){
     let get_query= document.getElementById('get_query'+id).value
@@ -116,7 +134,7 @@ else{
 }
     document.querySelector('.active-bar').classList.replace('active-bar','video-bar')
     elem.classList.replace('video-bar','active-bar')
-    let videocontainer=document.getElementById('vp')
+    var videocontainer=document.getElementById('vp')
     let ask=document.getElementById('studentQuery')
     ask.dataset.id=id;
     let get_res=document.querySelector('.buttonDownload')
@@ -124,9 +142,27 @@ else{
     videocontainer.pause();
     videocontainer.poster='/media/'+thumb;
     videocontainer.dataset.id=id;
-    document.getElementById('source').setAttribute('src','/media/'+val)
+    let url='geturl'
+    var curl='media/'+val
+  fetch(url,{
+      method:'POST',
+      headers:{
+          'Content-Type':'application/json',
+          'X-CSRFToken':csrftoken,
+      },
+      body:JSON.stringify({'curl':curl})
+  })
+  .then((response)=>{
+      return response.json()
+  })
+  .then((data)=>{
+       data=data['data']
+       document.getElementById('source').setAttribute('src',data)
     videocontainer.load();
     videocontainer.play();
+
+  })
+
 }
 function opentab(evt, option) {
     // Declare all variables

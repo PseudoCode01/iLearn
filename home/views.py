@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification,TestVideo
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification,TestVideo,AccountDetails
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -12,6 +12,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.postgres.search import SearchVector, SearchQuery
 import os
+import boto3
+from botocore.client import Config
 from mutagen.mp4 import MP4
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -23,6 +25,16 @@ MERCHANT_KEY = '0K5Uhk4At%X1t80Q'
 # from moviepy.editor import VideoFileClip 
 
 # Create your views here.
+session = boto3.session.Session()
+key='
+secret=''
+def geturl(request):
+    if request.method=='POST':
+        data=json.loads(request.body)
+        file=data['curl']
+        client=session.client('s3',region_name='sgp1',endpoint_url='https://sgp1.digitaloceanspaces.com',aws_access_key_id=key,aws_secret_access_key=secret)
+        urli=client.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'cognedu-spaces','Key':file},ExpiresIn=300)
+        return JsonResponse({'data':urli})
 def home(request):
     return render(request,'home/home.html')
 def Teach1(request):
@@ -153,12 +165,13 @@ def teacherPerformance(request):
     rev=set()
     revenue=0
     totalenrolled=0
+    account=AccountDetails.objects.filter(user=request.user)
     for item in courses:
         # review=ReviewCourse.objects.filter(reviewOfCourse=item)
         totalenrolled+=item.enrolled
         revenue=int(item.pricing)*item.enrolled*0.7
         # rev.add(review)
-    return render(request,'home/tPerformance.html',{'courses':courses,'review':'rev','revenue':revenue,'totalenrolled':totalenrolled})
+    return render(request,'home/tPerformance.html',{'courses':courses,'review':'rev','revenue':revenue,'totalenrolled':totalenrolled,'account':account})
 def get_cartItems(request):
     if request.user.is_authenticated :
         cart=Cart.objects.filter(user_id=request.user).values()
@@ -591,3 +604,25 @@ def testVideo(request):
 
 def privacy(request):
     return render(request,'home/privacy.html')
+def Terms(request):
+    return render(request,'home/terms.html')
+def account(request):
+    data=json.loads(request.body)
+    upi=(data['upi'])
+    action=(data['action'])
+    acc=(data['acc'])
+    ifsc=(data['ifsc'])
+    accholder=(data['accholder'])
+    if action == 'add':
+        ad=AccountDetails(user=request.user,upi=upi,acc=acc,ifsc=ifsc,account_holder=accholder)
+        ad.save()
+    elif action == 'edit':
+        ad=AccountDetails.objects.get(user=request.user)
+        ad.upi=upi
+        ad.acc=acc
+        ad.ifsc=ifsc
+        ad.accholder=accholder
+        ad.save()
+    return JsonResponse('ok',safe=False)
+
+    

@@ -33,3 +33,91 @@ function opentab(evt, option) {
       n++;
       }
 }
+function edit(){
+document.querySelector('.account').innerHTML=` <h2>Add payment method</h2>
+<div class="upi">
+<h5>UPI ID</h5>
+<input type="text" id="upiid" placeholder="Enter your upi id">
+</div>
+<span>or</span>
+<div>
+<h5>Bank Account</h5>         
+<div>
+<label for="acc_no">Account No.</label>
+<input type="text" id="accno" placeholder="Enter account number">
+</div>
+<div>
+<label for="acc_ifsc">IFSC Code</label>
+<input type="text" id="ifsc" placeholder="Enter IFSC Code">
+</div>
+<div>
+<label for="acc_holder">Account holder</label>
+<input type="text" id="accholder" placeholder="Enter account holder name">
+</div>
+</div>
+<button class="add btn" onclick="addmethod('edit',this)">Save</button>`
+}
+function addmethod(action, val) {
+  var x = val.parentElement;
+
+
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', '/account', true);
+  xhr.setRequestHeader('X-CSRFToken', csrftoken);
+  xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+  xhr.setRequestHeader("Accept", "application/json");
+  let upi = document.getElementById('upiid').value
+  let acc = document.getElementById('accno').value
+  let ifsc = document.getElementById('ifsc').value
+  let accholder = document.getElementById('accholder').value
+  if (upi.length > 0 && acc.length == 0 && ifsc.length == 0 && accholder.length == 0) {
+    xhr.send(JSON.stringify({ 'upi': upi, 'acc': '', 'ifsc': '', 'accholder': '', 'action': action }));
+
+
+  }
+  else if (upi.length == 0 && acc.length > 0 && ifsc.length > 0 && accholder.length > 0) {
+    xhr.send(JSON.stringify({ 'upi': '', 'acc': acc, 'ifsc': ifsc, 'accholder': accholder, 'action': action }));
+
+
+  }
+  else if (upi.length > 0 && acc.length > 0 && ifsc.length > 0 && accholder.length > 0) {
+
+    document.querySelector('.alert-error').innerHTML = `<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Only one of the method can be added`
+    document.querySelector('.alert-error').style.display = 'block'
+  }
+  else {
+    document.querySelector('.alert-error').innerHTML = `<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>Make sure all required fields are filled`
+    document.querySelector('.alert-error').style.display = 'block'
+  }
+  xhr.onload = function () {
+    if (xhr.status != 200) {
+    } else {
+      data = JSON.parse(xhr.responseText)
+      document.querySelector('.account').innerHTML = `<h2>Payment method added</h2><button class="add btn" onclick="edit()">Edit</button><hr>`
+    };
+  }
+  xhr.onprogress = function (event) {
+    if (event.lengthComputable) {
+      let p = val
+      p.innerHTML = `<div class="loader"><div id="loader-container">
+  <svg viewBox="0 0 100 100">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.5" 
+        flood-color="#fc6767"/>
+    </filter>
+  </defs>
+  <circle id="spinner" style="fill:transparent;stroke:#fc6767;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+  </svg>
+  </div></div>`
+    } else {
+      alert('fff')
+    }
+
+  };
+
+  xhr.onerror = function () {
+    alert("Request failed");
+  };
+
+}

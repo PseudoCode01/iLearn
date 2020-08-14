@@ -9,7 +9,7 @@ urlpatterns = [
     path('login', views.handleLogin,name="handleLogin"),
     path('logout', views.handleLogout,name="handleLogout"),
     path('signup', views.handleSignUp,name="handleSignUp"),
-   
+    path('geturl', views.geturl,name="geturl"),
     path('contact', views.contact,name="contact"),
     path('about', views.about,name="about"),
     path('search', views.search,name="search"),
@@ -49,4 +49,6 @@ urlpatterns = [
     path('updateunlockedDemo', views.updateunlockedDemo,name="updateunlockedDemo"),
     path('testvideo', views.testVideo,name="testvideo"),
     path('privacy', views.privacy,name="privacy"),
+    path('terms', views.Terms,name="Terms"),
+    path('account', views.account,name="account"),
 ]

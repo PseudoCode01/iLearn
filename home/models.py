@@ -139,3 +139,16 @@ class Notification(models.Model):
     user=models.CharField(default="",max_length=20)
     message=models.TextField(default="")
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+class AccountDetails(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    upi=models.CharField(default="",max_length=40)
+    acc=models.CharField(default="",max_length=40)
+    ifsc=models.CharField(default="",max_length=40)
+    account_holder=models.CharField(default="",max_length=40)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+    def __str__(self):
+        return str(self.user)
+
+

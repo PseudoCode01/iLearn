@@ -83,7 +83,11 @@
         <img src="/static/img/user1.png" alt="">
         <div class="userData">
           <span id="name"><b>Hi! {{request.user}}</b></span>
-          <a style="color: teal;" href="#popup1">Home Tutor</a>
+           {% if request.user.first_name == "Teacher" or request.user.is_superuser %}
+          <a style="color: teal;" href="/homeTutor">Become Home Tutor</a>
+          {% else %}
+          <a style="color: teal;" href="#popup1">Hire Home Tutor</a>
+          {% endif %}
           <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
         </div>
       </div>
@@ -140,7 +144,7 @@
         <span class="close closesignup">&times;</span>
         <div class="Welcomesignup">
           <img src="/static/img/signupAvatar.png" alt="">
-          <h2>Welcome</h2>
+          <h2>Student Signup</h2>
         </div>
       </div>
       <div class="modal-body">
@@ -244,7 +248,7 @@
       <div>
         <ul class="footUl">
           <li><b>More</b></li>
-          <li><a href="">Terms</a></li>
+          <li><a href="/terms">Terms</a></li>
           <li><a href="/privacy">Privacy</a></li>
         </ul>
       </div>
@@ -261,7 +265,7 @@
         &copy; 2020 Cognedu Inc.All Right Reserved
       </div>
       <div id="fitem2">
-        <img src="/static/img/facebook.png" alt="">
+        <img src="/static/img/facebook.png" onclick="window.location.href='https://www.facebook.com/Cognedu-125814395619697'" alt="">
         <img src="/static/img/instagram.png" alt="">
         <img src="/static/img/twitter.png" alt="">
         <img src="/static/img/linkedin.png" alt="">

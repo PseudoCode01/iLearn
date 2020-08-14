@@ -199,18 +199,18 @@
             <div class="ranger">
            <div class="rangerLow">
              <label for="amountLower">Lower</label>
-            <input type="range" onchange="lowervalue(this.value)" name="salaryL" min="0" max="5000" value="1000" class="amountLower slider" id="myRange" oninput="sliderChangeLower(this.value)" required>
+            <input type="range" step="100" onchange="lowervalue(this.value)" name="salaryL" min="0" max="5000" value="1000" class="amountLower slider" id="myRange" oninput="sliderChangeLower(this.value)" required>
             <output class="lowerValue"> </output>
 
           </div>
           <div class="rangerHigh">
             <label for="amountHigher">Higher</label>
-            <input type="range" min="0" max="10000" value="1000" name="salaryH" class="amountHigher slider" id="myRange" oninput="sliderChangeHigher(this.value)" required>
+            <input type="range" step="100" min="0" max="10000" value="1000" name="salaryH" class="amountHigher slider" id="myRange" oninput="sliderChangeHigher(this.value)" required>
             <output class="higherValue"> </output>
           </div>
           </div>
             <hr>        
-            <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+            <p>By creating an account you agree to our <a href="/terms">Terms & Privacy</a>.</p>
             <button type="submit" class="registerbtn">Register</button>
           </div>
     </form>
