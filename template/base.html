@@ -83,10 +83,15 @@
         <img src="/static/img/user1.png" alt="">
         <div class="userData">
           <span id="name"><b>Hi! {{request.user}}</b></span>
-           {% if request.user.first_name == "Teacher" or request.user.is_superuser %}
-          <a style="color: teal;" href="/homeTutor">Become Home Tutor</a>
+           {% if request.user.first_name == "Teacher" %}
+          <a style="color: teal;" href="/homeTutor"><p style="text-align: center; margin-top:30px;">Become Home Tutor</p>
+            <p style="text-align: center; margin-top: 10px;">Become one-one online tutor</p>
+
+          </a>
           {% else %}
-          <a style="color: teal;" href="#popup1">Hire Home Tutor</a>
+          <a style="color: teal;"><p  style="text-align: center; margin-top:30px;" onclick="window.location.href='#popup1'" >Hire Home Tutor</p> 
+            <p style="text-align: center; margin-top: 10px;"  onclick="window.location.href='#popup2'">Hire one-one online tutor</p>
+          </a>
           {% endif %}
           <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
         </div>
@@ -223,6 +228,38 @@
       <input type="text" id="pin" name="pin" placeholder="Enter the pin code of your area">
       <button type="submit" value=""><span>&#8594;</span></button>
     </div></form>
+      <a class="close" href="#">&times;</a>
+    </div>
+  </div>
+  <div id="popup2" class="overlay">
+    <div class="popup">
+      <form action="/get_homeTutor" method="get">
+        <div class="select">
+          <select name="cat" id="cat">
+              <option value="0">Choose class</option>
+              <option value="6">Class 6</option>
+              <option value="7">Class 7</option>
+              <option value="8">Class 8</option>
+              <option value="9">Class 9</option>
+              <option value="10">Class 10</option>
+              <option value="11">Class 11</option>
+              <option value="12">Class 12</option>
+          </select>
+      </div>
+        <div class="select">
+          <select name="cat2"  id="cat2">
+              <option value="0">Choose subject</option>
+              <option value="Maths">Maths</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
+              <option value="Boilogy">Boilogy</option>
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Economics">Economics</option>
+          </select>
+      </div>
+      <input type="submit" class="proceed" value="Proceed">
+    </form>
       <a class="close" href="#">&times;</a>
      
     </div>

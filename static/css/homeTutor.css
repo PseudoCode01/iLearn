@@ -39,6 +39,7 @@ display: flex;
 margin-left: -13px;
 padding: 15px;
 margin-bottom: 25px;
+flex-wrap: wrap;
 }
 /* Overwrite default styles of hr */
 hr {
@@ -46,6 +47,27 @@ border: 1px solid #f1f1f1;
 margin-bottom: 25px;
 }
 
+.for{
+  display: flex;
+  margin-left: -13px;
+  padding: 15px;
+}
+.for2{
+  display: flex;
+  margin-left: -13px;
+  padding: 15px;
+  font-size: 21px;
+  flex-wrap: wrap;
+}
+.for2>div{
+  display: flex;
+  flex-wrap:wrap;
+}
+@media(max-width:700px){
+  .for2{
+font-size: 15px;
+  }
+}
 /* Set a style for the submit/register button */
 .registerbtn {
 background-color: rgb(65, 100, 236);
@@ -817,4 +839,30 @@ width: 80%;
   .emptyCart{
 width: 95%;
   }
+}
+
+.locked{
+  background-color: blueviolet;
+  width: 80%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  padding: 20px;
+}
+.locked div>button{
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  transition: 0.5s;
+  background-size: 150% auto;
+  background-image: linear-gradient(to right, rgb(238, 130, 25) 0%, rgb(239, 69, 89) 100% 51%, rgb(238, 130, 25) 100%);
+  color: white;
+  border-radius: 2px;
+}
+.locked div>button:hover{
+  background-position: right;
+}
+.locked div.both{
+margin-top: 30px;
 }

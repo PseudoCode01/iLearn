@@ -38,6 +38,7 @@
                     {% endif %}
                     {% if sent == 'unlock' %} 
                     <form id="add" action="/updateunlockedDemo" method="POST">{% csrf_token %}
+                        <input type="hidden" id="id" name="id" value="{{response_dict.ORDERID}}">
                         <input type="hidden" id="sno" name="sno" value="{{response_dict.TXNAMOUNT}}">
                         <input type="hidden" id="status" name="status" value="{{status}}">
                     </form>

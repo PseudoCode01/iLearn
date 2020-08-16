@@ -2,9 +2,8 @@ function getdemo(val){
     document.getElementById('sno').value=val;
 window.location.href="#HTpopup1"
 }
-
+if(document.getElementById('pinCode')!=null){
 let pin=document.getElementById('pinCode').value
-console.log(pin)
 val=Number(pin)
 let xh = new XMLHttpRequest();
 let url='https://api.postalpincode.in/pincode/'+pin
@@ -30,7 +29,7 @@ if (event.lengthComputable) {
 
 xh.onerror = function() {
 alert("Request failed");
-};
+};}
 function getToken(name) {
     var cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -52,17 +51,23 @@ function submit(){
   let name=document.getElementById('fullname').value
   let phone=document.getElementById('phone').value
   let email=document.getElementById('email').value
-  let address=document.getElementById('address').value
-  let city=document.getElementById('city').value
-  let pinCode=document.getElementById('pinCode').value
-  let sno=document.getElementById('sno').value
+  var reg='One-One'
+  var address=''
+  var city=''
+  var pinCode=0
+  if(document.getElementById('address')!=null){
+    reg='Home Tutor'
+  address=document.getElementById('address').value
+  city=document.getElementById('city').value
+  pinCode=document.getElementById('pinCode').value}
+  var sno=document.getElementById('sno').value
   var demo=document.getElementById('getdemo')
 let xhr = new XMLHttpRequest();
 xhr.open('POST', '/getDemo',true);
 xhr.setRequestHeader('X-CSRFToken', csrftoken);       
 xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 xhr.setRequestHeader("Accept", "application/json");
-xhr.send(JSON.stringify({'name': name,'email':email,'phone':phone,'address':address,'city':city,'pinCode':pinCode,'sno':sno}));
+xhr.send(JSON.stringify({'name': name,'email':email,'phone':phone,'address':address,'city':city,'pinCode':pinCode,'sno':sno,'reg':reg}));
 xhr.onload = function() {
 if (xhr.status != 200) { 
   alert(`Error ${xhr.status}: ${xhr.statusText}`); 

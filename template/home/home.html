@@ -55,21 +55,21 @@
   <div class="homeTutorsection">
     <div class="leftht">
       <img src="/static/img/becomeht.svg" alt="">
-      <span>Become a teacher & get home tutoring / teaching jobs in your city.</span>
+      <span>Become a teacher and get home tutoring / teaching jobs in your city or register for one-one online tution</span>
       {% if user.is_authenticated %}
       {% if request.user.first_name == "Teacher" %}
       <button onclick="window.location.href='/homeTutor'">Become Home Tutor</button>
       {% else %}
-      <button onclick="studentHT()">Become Home Tutor</button>
+      <button onclick="studentHT()">REGISTER</button>
       {% endif %}
       {% else %}
-      <button onclick="loginHT()">Become Home Tutor</button>
+      <button onclick="loginHT()">REGISTER</button>
       {% endif %}
     </div>
     <div class="rightht">
       <img src="/static/img/hireht.svg" alt="">
-      <span>Find perfect home tutor for your subject near you.</span>
-      <button onclick="window.location.href='#popup1'">Hire Home Tutor</button>
+      <span>Find perfect home tutor for your subject near you or one-one online tutor from anywhere around the globe</span>
+      <button onclick="window.location.href='#popup3'">HIRE</button>
     </div>
   </div>
   <div class="accessible">
@@ -101,6 +101,13 @@
          <p> Top instructors from around the india teach millions of students on Cognedu. We provide the tools and skills to teach what you love. </p> 
          <button class="startteach" onclick="window.location.href='/teach1'">Start teaching today</button>
       </div>
+  </div>
+  <div id="popup3" class="overlay">
+    <div class="popup">
+      <button onclick="window.location.href='#popup1'"> Home Tutor</button>
+      <button onclick="window.location.href='#popup2'">One-One Online Tutor</button>
+      <a class="close" href="#">&times;</a>
+    </div>
   </div>
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock body %}

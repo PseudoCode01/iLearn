@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.postgres.search import SearchVector, SearchQuery
 import os
-import boto3
-from botocore.client import Config
+# import boto3
+# from botocore.client import Config
 from mutagen.mp4 import MP4
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -25,15 +25,16 @@ MERCHANT_KEY = '0K5Uhk4At%X1t80Q'
 # from moviepy.editor import VideoFileClip 
 
 # Create your views here.
-session = boto3.session.Session()
-key='
-secret=''
+# session = boto3.session.Session()
+# key='
+# secret=''
 def geturl(request):
     if request.method=='POST':
         data=json.loads(request.body)
         file=data['curl']
-        client=session.client('s3',region_name='sgp1',endpoint_url='https://sgp1.digitaloceanspaces.com',aws_access_key_id=key,aws_secret_access_key=secret)
-        urli=client.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'cognedu-spaces','Key':file},ExpiresIn=300)
+        urli=file
+        # client=session.client('s3',region_name='sgp1',endpoint_url='https://sgp1.digitaloceanspaces.com',aws_access_key_id=key,aws_secret_access_key=secret)
+        # urli=client.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'cognedu-spaces','Key':file},ExpiresIn=300)
         return JsonResponse({'data':urli})
 def home(request):
     return render(request,'home/home.html')
@@ -57,17 +58,26 @@ def homeTutor(request):
     lockedDemos=''
     if len(htprofile)>0:
         user_id=request.user.id
-        demo=HomeTutorDemo.objects.filter(homeTutor=user_id).order_by('timeStamp')
-        demos=demo[:htprofile[0].unlocked]
-        lockedDemos=len(demo)-len(demos)
-    return render(request,'home/homeTutor.html',{'htprofile':htprofile,'demos':demos,'lockedDemos':lockedDemos})
+        demo=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(reg_for='Home Tutor').filter(status=False).order_by('timeStamp')
+        demos=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(status=True).order_by('timeStamp')
+        demo121=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(reg_for='One-One').filter(status=False).order_by('timeStamp')
+        lockedDemos=len(demo)
+        lockedDemos121=len(demo121)
+    return render(request,'home/homeTutor.html',{'htprofile':htprofile,'demos':demos,'lockedDemos':lockedDemos,'lockedDemos121':lockedDemos121})
 @login_required(login_url='/')
 def get_homeTutor(request):
-    pin=request.GET['pin']
-    ht=HomeTutor.objects.filter(pin=int(pin)).filter(verified=True)
-    registeredht=HomeTutorDemo.objects.filter(user_id=request.user).values('homeTutor')
-    print(registeredht)
-    return render(request,'home/get_homeTutor.html',{'ht':ht,'pin':pin,'registeredht':registeredht})
+    pin=request.GET.get('pin')
+    clss=request.GET.get('cat')
+    sub=request.GET.get('cat2')
+    if pin!=None:
+        ht=HomeTutor.objects.filter(pin=int(pin)).filter(verified=True).exclude(registered_for='One-One')
+        registeredht=HomeTutorDemo.objects.filter(user_id=request.user)
+        typ='ht'
+    else:
+        ht=HomeTutor.objects.filter(classes__icontains=clss).filter(verified=True).filter(subject__icontains=sub).exclude(registered_for='Home Tutor')
+        registeredht=HomeTutorDemo.objects.filter(user_id=request.user)
+        typ='one'
+    return render(request,'home/get_homeTutor.html',{'ht':ht,'pin':pin,'registeredht':registeredht,'typ':typ})
 def getDemo(request):
     if request.method=='POST':
         data=json.loads(request.body)
@@ -77,10 +87,11 @@ def getDemo(request):
         email=data['email']
         address=data['address']
         city=data['city']
+        regf=data['reg']
         pin=data['pinCode']
         sno=data['sno']
         ht=(sno)
-        gd=HomeTutorDemo(fullname=name,phone=phone,email=email,address=address,address2=city,user=request.user,homeTutor=ht,pin=int(pin))
+        gd=HomeTutorDemo(fullname=name,phone=phone,email=email,address=address,address2=city,user=request.user,homeTutor=ht,pin=int(pin),reg_for=regf)
         gd.save()
     return JsonResponse('ok',safe=False)
 def registerhomeTutor(request):
@@ -90,20 +101,31 @@ def registerhomeTutor(request):
         gender=request.POST['gender']
         phone=request.POST['number']
         email=request.POST['email']
-        pin=request.POST['pin']
-        district=request.POST['district']
-        state=request.POST['state']
+        fr=request.POST['reg_for']
+        if fr=='One-One':
+            pin=0
+            district=""
+            state=""
+        else:
+            pin=request.POST['pin']
+            district=request.POST['district']
+            state=request.POST['state']
         subject=request.POST['subject']
         classes=request.POST['classes']
+        # clss=classes.split('-')
+        # clssl=int(clss[0])
+        # clssu=int(clss[1])
+        # for i in range(clssl,clssu):
+        #     classes+=str(i)
         disc=request.POST['disc']
         id_proof=request.FILES.get('id_proof')
         salaryL=request.POST['salaryL']
         salaryH=request.POST['salaryH']
         action=request.POST['action']
-        if len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(pin)==6 and len(district)>0 and len(state)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
+        if fr!='One-One' and len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(pin)==6 and len(district)>0 and len(state)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
             if action == 'register':
                 ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,
-                state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,verified='False',id_proof=id_proof)
+                state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,registered_for=fr,verified='False',id_proof=id_proof)
                 ht.save()
                 messages.success(request,'Registered Successfully! Once your profile get varified it will be available for students')
             if action == 'edit':
@@ -113,6 +135,34 @@ def registerhomeTutor(request):
                 ht.age=age
                 ht.gender=gender
                 ht.email=email
+                ht.registered_for=fr
+                ht.phone=phone
+                ht.pin=pin
+                ht.district=district
+                ht.state=state
+                ht.subject=subject
+                ht.classes=classes
+                ht.disc=disc
+                ht.id_proof=id_proof
+                ht.salaryL=salaryL
+                ht.salaryH=salaryH
+                ht.varified="False"
+                ht.save()
+                messages.success(request,'Edited Successfully! Once your profile get varified it will be available for students')
+        elif fr=='One-One' and len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
+            if action == 'register':
+                ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,
+                state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,registered_for=fr,verified='False',id_proof=id_proof)
+                ht.save()
+                messages.success(request,'Registered Successfully! Once your profile get varified it will be available for students')
+            if action == 'edit':
+                sno=request.POST['sno']
+                ht=HomeTutor.objects.get(sno=int(sno))
+                ht.name=name
+                ht.age=age
+                ht.gender=gender
+                ht.email=email
+                ht.registered_for=fr
                 ht.phone=phone
                 ht.pin=pin
                 ht.district=district
@@ -464,11 +514,18 @@ def handleRequest(request):
 def unlockDemos(request):
     if request.method=='POST':
         unlock=request.POST['unlock']
+        unlockf=request.POST['unlockfor']
         teacher_id=request.user.id
-        ht=HomeTutor.objects.filter(user=request.user).values('unlocked')
-        order_id=str(teacher_id)+str(ht[0]['unlocked'])+'2hsHT'
+        ht=HomeTutor.objects.filter(user=request.user)
+        ht=(ht.values('unlockedHT'))
+        ht2=(ht.values('unlockedON'))
         email=request.user.email
-        amount=100*int(unlock)
+        if(unlockf=='Home Tutor'):
+            order_id=str(teacher_id)+str(ht[0]['unlockedHT'])+str(ht2[0]['unlockedON'])+'HT'
+            amount=100*int(unlock)
+        if(unlockf=='One-One'):
+            order_id=str(teacher_id)+str(ht[0]['unlockedHT'])+str(ht2[0]['unlockedON'])+'ON'
+            amount=500*int(unlock)
         param_dict = {
 
                     'MID': 'RLUAjJ34588862174269',
@@ -504,16 +561,30 @@ def updateunlockedDemo(request):
     if request.method=='POST':
         amount=int(float(request.POST['sno']))
         status=request.POST['status']
+        id=request.POST['id']
+        user_id=request.user.id
         if status=='OK':
-            n=amount/100
-            ht=HomeTutor.objects.get(user=request.user)
-            ht.unlocked+=n
-            ht.save()
+            if id[-2:]=='HT':
+                n=int(amount/100)
+                for i in range(n):
+                    qs=HomeTutorDemo.objects.filter(reg_for='Home Tutor').filter(homeTutor=user_id).get(status=False)
+                    qs.status=True
+                    qs.save()
+                ht=HomeTutor.objects.get(user=request.user)
+                ht.unlockedHT+=n
+                ht.save()
+            if id[-2:]=='ON':
+                n=int(amount/500)
+                for i in range(n):
+                    qs=HomeTutorDemo.objects.filter(reg_for='One-One').filter(homeTutor=user_id).get(status=False)
+                    qs.status=True
+                    qs.save()
+                ht=HomeTutor.objects.get(user=request.user)
+                ht.unlockedON+=n
+                ht.save()
             return render(request,'home/paymentStatus.html',{'status':'OK','response_dict':'','send':'False','val':'unlock'})
         else:
             return render(request,'home/paymentStatus.html',{'status':'Failed','send':'False','val':'unlock'})
-
-
 
 def courseAdded(request):
     if request.method=='POST':

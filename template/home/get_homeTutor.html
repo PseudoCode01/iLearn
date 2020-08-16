@@ -12,6 +12,7 @@
       <h6 class="agesex">{{item.age}}Yrs {{item.gender}}</h6>
       <h6 class="subject">{{item.subject}}</h6>
       <h6 class="subject">Class:{{item.classes}}</h6>
+    
       <hr>
       <p>{{item.discription}}</p>
       <hr>
@@ -20,13 +21,18 @@
           {% if registeredht %}
           {% for obj in registeredht %}
           {% if item.user_id|slugify != obj.homeTutor|slugify %}
-          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO</button>
-          {% else %}
+          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO1</button>
+          {% else %}   
+          {% if obj.reg_for == 'One-One' and typ == 'one' %}
           <button  id="registered">REGISTERED</button>
+          {% endif %}
+          {% if obj.reg_for == 'Home Tutor' and typ == 'ht' %}
+          <button  id="registered">REGISTERED</button>
+          {% endif %}
           {% endif %}  
           {% endfor %}
           {% else %}
-          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO</button>
+          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO5</button>
           {% endif %}
 
       </div>      
@@ -35,19 +41,22 @@
   </div>
   <div id="HTpopup1" class="HToverlay">
     <div class="HTpopup">
-      <form method="post">
-        <input type="hidden" name="pinCode" id="pinCode" value="{{pin}}"> {% csrf_token %}
+      <form method="post">{% csrf_token %}
         <input type="hidden" name="sno" id="sno">
-            <label for="fullname"><b>Name</b></label>
-            <input type="text" name="fullname" id="fullname" placeholder="Enter your full name" >
-            <label for="phone"><b>Phone</b></label>
-            <input type="text" name="phone" id="phone" placeholder="Enter your phone number">
-            <label for="email"><b>Email</b></label>
-            <input type="email" name="email" id="email" placeholder="Enter your email address(optional)">
+        <label for="fullname"><b>Name</b></label>
+        <input type="text" name="fullname" id="fullname" placeholder="Enter your full name" >
+        <label for="phone"><b>Phone</b></label>
+        <input type="text" name="phone" id="phone" placeholder="Enter your phone number">
+        <label for="email"><b>Email</b></label>
+        <input type="email" name="email" id="email" placeholder="Enter your email address(optional)">
+        
+        {% if typ == 'ht' %}
+        <input type="hidden" name="pinCode" id="pinCode" value="{{pin}}"> 
             <label for="address"><b>Address</b></label>
             <input type="text" name="address" id="address" placeholder="Enter your locality" required>
             <label for="state"><b>City</b></label>
             <input type="text" name="city" id="city" readonly>
+            {% endif %}
           </form>
           <input type="button" class="btn" onclick="submit()" value="CONFIRM">
           <a class="close" href="#">&times;</a>
@@ -57,7 +66,11 @@
       {% else %}
       <div class="emptyCart">
         <img src="/static/img/nohtfound.svg" alt="">
+        {% if typ == 'ht' %}
         <h3>No Home tutor found in your location!</h3>
+        {% else %}
+        <h3>No one-one tutor found!</h3>
+        {% endif%}
     </div>
       {% endif %}
       <script src="{% static 'js/get_homeTutor.js' %}"></script>

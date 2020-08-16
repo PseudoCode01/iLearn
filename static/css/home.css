@@ -231,7 +231,7 @@ align-items: flex-start;
      
         height: 500px;
     }
-    .homeTutorsection button{
+    .homeTutorsection button,#popup3 button{
         margin-top: 20px;
         cursor: pointer;
 transition: 0.5s;
@@ -241,13 +241,18 @@ box-shadow: 0 0 8px black;
 border: none;
 border-radius: 50px;
 padding: 20px;
+width: 150px;
 background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
     }
+    #popup3 button{
+        width: 80%;
+    }
+    
     .homeTutorsection span{
         text-align: center;
         font-size: 1.5rem;
     }
-    .homeTutorsection button:hover{
+    .homeTutorsection button:hover,#popup3 button:hover{
         background-position: right;
     }
     .homeTutorsection .leftht{

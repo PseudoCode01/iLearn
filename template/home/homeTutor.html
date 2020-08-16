@@ -8,7 +8,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/homeTutor.css' %}">
 <link rel="shortcut icon" type="image/x-icon" href="/static/img/cognedu.svg" />
-
 <body>
   {% for message in messages %}
 <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
@@ -17,6 +16,19 @@
   </div> 
   {% endfor %}
   {% if htprofile %}
+  <div class="locked">
+   
+   {% if htprofile.0.registered_for == 'One-One' %}
+   <div><span>You have <strong> {{lockedDemos121}}</strong> locked students request for one-one online tution </span><button onclick="window.location.href='#popup3'">Unlock</button></div> 
+   {% endif %}
+   {% if htprofile.0.registered_for == 'Home Tutor' %}
+    <div><span> You have <strong>{{lockedDemos}}</strong> locked students request for home tution</span><button onclick="window.location.href='#popup1'">Unlock</button></div>
+   {% endif %}
+   {% if htprofile.0.registered_for == 'Both' %}
+    <div><span>You have <strong> {{lockedDemos}}</strong> locked students request for home tution</span><button onclick="window.location.href='#popup1'">Unlock</button></div>
+   <div class="both"><span> You have <strong>{{lockedDemos121}}</strong> locked students request for one-one online tution</span><button onclick="window.location.href='#popup3'" >Unlock</button></div> 
+   {% endif %}
+  </div>
   <div class="menu-outer">
     <div class="menu-icon">
         <div class="bar"></div>
@@ -26,6 +38,7 @@
     <div class="tutorProfile">
       <div>
       <label for="name"><b>Name</b></label>
+
       <input type="text" name="name" id="name" disabled value="{{htprofile.0.name}}">
       <input type="hidden" name="sno" id="sno" disabled value="{{htprofile.0.sno}}">
       <label for="Age"><b>Age</b></label>
@@ -36,12 +49,17 @@
       <input type="text" name="Phone" id="Phone" disabled value="{{htprofile.0.phone}}">
       <label for="Email"><b>Email</b></label>
       <input type="text"  name="Email" id="Email" disabled value="{{htprofile.0.email}}">
+      <label for="rfor"><b>Registered for</b></label>
+      <input type="text"  name="rfor" id="rfor" disabled value="{{htprofile.0.registered_for}}">
+     
+      {% if htprofile.0.pin != 0 %}
       <label for="Pin"><b>Pin</b></label>
       <input type="text"  name="Pin" id="Pin" disabled value="{{htprofile.0.pin}}">
       <label for="District"><b>District</b></label>
       <input type="text"  name="District" id="District" disabled value="{{htprofile.0.district}}">
       <label for="State"><b>State</b></label>
       <input type="text" name="State" id="State" disabled value="{{htprofile.0.state}}">
+      {% endif %}
       <label for="Subjects"><b>Subjects</b></label>
       <input type="text"  name="Subjects" id="Subjects" disabled value="{{htprofile.0.subject}}">
       <label for="Classes"><b>Classes</b></label>
@@ -58,7 +76,6 @@
       <button class="edit-btn " onclick="edit()">Edit Profile</button>
     </div>
     </div>
-   
     <div class="tutor t2">
    
       <div class="instruct">
@@ -106,8 +123,13 @@
         
       </div>
       <div class="address">
+        
+        {% if item.reg_for == 'One-One' %}
+          <div class="address">One-One Oneline Tution</div>
+          {% else %}
       <div id="address">{{item.address}}</div>
       <div id="address2">{{item.address2}}</div>
+      {% endif %}
     </div>
     </div>
   </div>
@@ -122,11 +144,25 @@
 <div id="mySidenav" class="sidenav">
   <a href="#popup1" id="demosnumber"><img src="/static/img/locked.png" alt=""><span>{{lockedDemos}}</span></a>
 </div> 
+
 <div id="popup1" class="overlay">
   <div class="popup">
     <form action="/unlockDemos" method="post">{% csrf_token %}
     <div class="unlock">
-    <input type="text" id="unlock" name="unlock" placeholder="Enter the number of profile that you want unlock">
+    <input type="text" id="unlock" name="unlock" placeholder="Enter the number of profile that you want unlock(home tution)">
+    <input type="hidden" id="unlockfor" name="unlockfor" value="Home Tution">
+    <button type="submit" >&#8594;</button>
+  </div></form>
+    <a class="close" href="#">&times;</a>
+   
+  </div>
+</div>
+<div id="popup3" class="overlay">
+  <div class="popup">
+    <form action="/unlockDemos" method="post">{% csrf_token %}
+    <div class="unlock">
+    <input type="text" id="unlock" name="unlock" placeholder="Enter the number of profile that you want unlock(one-one online tution)">
+    <input type="hidden" id="unlockfor" name="unlockfor" value="One-One">
     <button type="submit" >&#8594;</button>
   </div></form>
     <a class="close" href="#">&times;</a>
@@ -134,6 +170,25 @@
   </div>
 </div>
   {% else %}
+  <div id="popup2" class="overlay">
+    <div class="popup">
+      <div class="for">
+        <label for="for"><b>Register for:</b></label>
+        <div>
+          <div>
+        <input type="radio" value="Home Tutor"  name="for" id="ht" >
+        <label for="ht">Home Tutor</label></div>
+        <div>
+        <input type="radio" value="One-One" name="for" id="one" >
+        <label for="one">One-One online</label></div>
+        <div>
+        <input type="radio" value="Both" name="for" id="both" >
+        <label for="both">Both</label></div>
+      </div>
+      </div>
+      <a class="close proceed" href="#">&#8594;</a>
+    </div>
+  </div>
 <div class="tutor">
  
 <div class="instruct">
@@ -144,7 +199,8 @@
    <li>  Check your spelling and grammar to ensure you create the right impression.</li>
    <li> Enter correct information in the right place only.</li>
    <li>You will be asked to prove your identity and provide references.</li>
-   <li>Once you get home tuition your behaviour should be proper if any complaint comes from the parents of the student then it will be taken into consideration by our team. 
+   <li>Once you get home tuition your behaviour should be proper if any complaint comes from
+      the parents of the student then it will be taken into consideration by our team. 
      If you found guilty at any point, we can take suitable action. 
     </li>
    <li>You can’t leave in the mid without any significant reason if you do so then our team can take any suitable action.</li>
@@ -163,12 +219,16 @@
             <input type="text" placeholder="Enter your age in numbers" name="age" id="age" required>
         <div class="gender">
           <label for="gender"><b>Gender:</b></label>
+          <div>
+            <div>
           <input type="radio" value="Male"  name="gender" id="male" >
-          <label for="male">Male</label>
+          <label for="male">Male</label></div>
+          <div>
           <input type="radio" value="Female" name="gender" id="female" >
-          <label for="female">Female</label>
+          <label for="female">Female</label></div>
+          <div>
           <input type="radio" value="Others" name="gender" id="others" >
-          <label for="others">Rather not say</label>
+          <label for="others">Rather not say</label></div></div>
         </div>
           
             <label for="number"><b>Phone number</b></label>
@@ -176,19 +236,18 @@
         
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" id="email" required>
+            <input type="hidden" placeholder="Enter Email" name="reg_for" id="reg_for">
 
-            <label for="pin"><b>Pin</b></label>
-            <input type="text" oninput="autocomp(this)" placeholder="Enter your address" name="pin" id="pin" required>
-            <label for="District"><b>District</b></label>
-            <input type="text" placeholder="Enter your address" name="district" id="district" value="" readonly required>
-            <label for="State"><b>State</b></label>
-            <input type="text" placeholder="Enter your address" name="state" id="state" value="" readonly required>
-  
+            <label for="pin" id="pn"><b>Pin</b></label>
+            <input type="text" oninput="autocomp(this)" placeholder="Enter your address" name="pin" id="pin" >
+            <label for="District" id="dt"><b>District</b></label>
+            <input type="text" placeholder="Enter your address"  name="district" id="district" value="" readonly >
+            <label for="State" id="st"><b>State</b></label>
+            <input type="text" placeholder="Enter your address" name="state" id="state" value="" readonly >
             <label for="subject"><b>Subject</b></label>
-         
             <input type="text" placeholder="Enter subjects you want to teach" name="subject" id="subject" required>
             <label for="Class"><b>Classes</b></label>
-            <input type="text" placeholder="eg:6-8" name="classes" id="classes" required>
+            <input type="text" oninput="checkexp(this)" placeholder="eg:6-8" name="classes" id="classes" required>
             <label for="disc"><b>About Yourself</b></label>
             <div class="discription">
             <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" required></textarea></div>
