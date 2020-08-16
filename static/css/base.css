@@ -1362,3 +1362,6 @@ select::-ms-expand {
 #popup2 .proceed:hover{
   background-position: right;
 }
+button{
+  cursor: pointer;
+}

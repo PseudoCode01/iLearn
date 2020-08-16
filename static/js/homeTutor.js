@@ -8,11 +8,10 @@ document.querySelector('.proceed').addEventListener('click', function () {
 
       if (ele[i].checked) {
         sel = ele[i].value
+  document.getElementById('reg_for').value = sel;
       }
     }
   }
-
-  document.getElementById('rfor').value = sel;
   if (sel == 'One-One') {
     document.getElementById('state').style.display = 'none'
     document.getElementById('st').style.display = 'none'

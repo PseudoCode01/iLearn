@@ -4,6 +4,9 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/get_homeTutor.css' %}">
 {% if ht %}
+<div id="mySidenav" class="get_t" >
+  <a href="#HTpopup2" id="demosnumber">Register</a>
+</div> 
 <div class="tutorcontainer">
   {% for item in ht %}
   <div class="tutoritem">
@@ -16,29 +19,28 @@
       <hr>
       <p>{{item.discription}}</p>
       <hr>
+      
       <div class="bottom">
+        <input type="hidden" value="{{item.user_id}}">
           <span>&#8377;{{item.salaryL}}-{{item.salaryL}}/M</span>
           {% if registeredht %}
           {% for obj in registeredht %}
-          {% if item.user_id|slugify != obj.homeTutor|slugify %}
-          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO1</button>
-          {% else %}   
-          {% if obj.reg_for == 'One-One' and typ == 'one' %}
+          {% if item.user_id|slugify == obj.homeTutor|slugify %}
           <button  id="registered">REGISTERED</button>
-          {% endif %}
-          {% if obj.reg_for == 'Home Tutor' and typ == 'ht' %}
-          <button  id="registered">REGISTERED</button>
-          {% endif %}
           {% endif %}  
           {% endfor %}
           {% else %}
-          <button onclick="getdemo('{{item.user_id}}')" id="getdemo">GET DEMO5</button>
+          <button onclick="getdemo('{{item.user_id}}')" id="getdemo{{item.user_id}}">GET DEMO</button>
           {% endif %}
 
       </div>      
     </div> 
     {% endfor %}
   </div>
+  {% if typ == 'ht' %}
+  <input type="hidden" name="pinCode" id="pinCode" value="{{pin}}"> 
+  {% endif %}
+
   <div id="HTpopup1" class="HToverlay">
     <div class="HTpopup">
       <form method="post">{% csrf_token %}
@@ -48,17 +50,21 @@
         <label for="phone"><b>Phone</b></label>
         <input type="text" name="phone" id="phone" placeholder="Enter your phone number">
         <label for="email"><b>Email</b></label>
-        <input type="email" name="email" id="email" placeholder="Enter your email address(optional)">
+        <input type="email" name="email" id="emaill" placeholder="Enter your email address">
         
         {% if typ == 'ht' %}
-        <input type="hidden" name="pinCode" id="pinCode" value="{{pin}}"> 
             <label for="address"><b>Address</b></label>
             <input type="text" name="address" id="address" placeholder="Enter your locality" required>
             <label for="state"><b>City</b></label>
             <input type="text" name="city" id="city" readonly>
             {% endif %}
           </form>
-          <input type="button" class="btn" onclick="submit()" value="CONFIRM">
+          {% if typ == 'ht' %}
+          <input type="button" class="btn-success con" onclick="submit(this)" disabled value="CONFIRM">
+          {% else %}
+          <button type="button" class="btn-success con" onclick="submit(this)">CONFIRM</button>
+          {% endif %}
+
           <a class="close" href="#">&times;</a>
          
         </div>
@@ -67,11 +73,35 @@
       <div class="emptyCart">
         <img src="/static/img/nohtfound.svg" alt="">
         {% if typ == 'ht' %}
-        <h3>No Home tutor found in your location!</h3>
+  <input type="hidden" name="pinCode" id="pinCode" value="{{pin}}"> 
+        <h3>No Home tutor found in your location!Request for teacher our team will try to get one for you within one working day</h3><a href="#HTpopup2">Click here</a>
         {% else %}
-        <h3>No one-one tutor found!</h3>
+        <h3>No one-one tutor found!Request for teacher our team will try to get one for you within one working day</h3><a href="#HTpopup2">Click here</a>
         {% endif%}
     </div>
       {% endif %}
+      <div id="HTpopup2" class="HToverlay">
+        <div class="HTpopup HTpopup2">
+          <form method="post">{% csrf_token %}
+            <label for="wfullname"><b>Name</b></label>
+            <input type="text" name="wfullname" id="wfullname" placeholder="Enter your full name" >
+            <label for="phone"><b>Phone</b></label>
+            <input type="text" name="wphone" id="wphone" placeholder="Enter your phone number">
+            <label for="email"><b>Email</b></label>
+            <input type="email" name="wemail" id="wemail" placeholder="Enter your email address">
+            <label for="amt"><b>Amount</b></label>
+            <input type="text" name="amt" id="amt" placeholder="Enter the amount you want to pay">
+            {% if typ == 'ht' %}
+            <label for="waddress" id="lwaddress"><b>Address</b></label>
+            <input type="text" name="waddress" id="waddress" placeholder="Enter your locality" required>
+            <label for="wcity" id='lwcity'><b>City</b></label>
+            <input type="text" name="wcity" id="wcity" readonly>
+            {% endif %}
+              
+              </form>
+              <button type="button" class="btn-success con" onclick="req_tution(this)">CONFIRM</button>
+              <a class="close" href="#">&times;</a>
+            </div>
+          </div>
       <script src="{% static 'js/get_homeTutor.js' %}"></script>
       {% endblock body %}

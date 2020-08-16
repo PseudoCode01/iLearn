@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from home.models import Contact
 from home.models import Courses
 from home.models import Videos
-from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification,TestVideo,AccountDetails
+from home.models import Cart,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification,TestVideo,AccountDetails,RequestTution
 from django.shortcuts import render,HttpResponse,redirect
 from django.http import JsonResponse
 import json
@@ -56,6 +56,7 @@ def homeTutor(request):
     htprofile=HomeTutor.objects.filter(user_id=request.user)
     demos=''
     lockedDemos=''
+    lockedDemos121=''
     if len(htprofile)>0:
         user_id=request.user.id
         demo=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(reg_for='Home Tutor').filter(status=False).order_by('timeStamp')
@@ -71,11 +72,11 @@ def get_homeTutor(request):
     sub=request.GET.get('cat2')
     if pin!=None:
         ht=HomeTutor.objects.filter(pin=int(pin)).filter(verified=True).exclude(registered_for='One-One')
-        registeredht=HomeTutorDemo.objects.filter(user_id=request.user)
+        registeredht=HomeTutorDemo.objects.filter(user_id=request.user).filter(reg_for='Home Tutor')
         typ='ht'
     else:
         ht=HomeTutor.objects.filter(classes__icontains=clss).filter(verified=True).filter(subject__icontains=sub).exclude(registered_for='Home Tutor')
-        registeredht=HomeTutorDemo.objects.filter(user_id=request.user)
+        registeredht=HomeTutorDemo.objects.filter(user_id=request.user).filter(reg_for='One-One')
         typ='one'
     return render(request,'home/get_homeTutor.html',{'ht':ht,'pin':pin,'registeredht':registeredht,'typ':typ})
 def getDemo(request):
@@ -92,6 +93,20 @@ def getDemo(request):
         sno=data['sno']
         ht=(sno)
         gd=HomeTutorDemo(fullname=name,phone=phone,email=email,address=address,address2=city,user=request.user,homeTutor=ht,pin=int(pin),reg_for=regf)
+        gd.save()
+    return JsonResponse('ok',safe=False)
+def request_tution(request):
+    if request.method=='POST':
+        data=json.loads(request.body)
+        name=data['name']
+        phone=data['phone']
+        email=data['email']
+        address=data['address']
+        city=data['city']
+        regf=data['reg']
+        pin=data['pinCode']
+        amt=data['amt']
+        gd=RequestTution(fullname=name,phone=phone,email=email,Payment=amt,address=address,address2=city,user=request.user,pin=int(pin),reg_for=regf)
         gd.save()
     return JsonResponse('ok',safe=False)
 def registerhomeTutor(request):
@@ -112,11 +127,6 @@ def registerhomeTutor(request):
             state=request.POST['state']
         subject=request.POST['subject']
         classes=request.POST['classes']
-        # clss=classes.split('-')
-        # clssl=int(clss[0])
-        # clssu=int(clss[1])
-        # for i in range(clssl,clssu):
-        #     classes+=str(i)
         disc=request.POST['disc']
         id_proof=request.FILES.get('id_proof')
         salaryL=request.POST['salaryL']
@@ -520,7 +530,7 @@ def unlockDemos(request):
         ht=(ht.values('unlockedHT'))
         ht2=(ht.values('unlockedON'))
         email=request.user.email
-        if(unlockf=='Home Tutor'):
+        if(unlockf=='Home Tution'):
             order_id=str(teacher_id)+str(ht[0]['unlockedHT'])+str(ht2[0]['unlockedON'])+'HT'
             amount=100*int(unlock)
         if(unlockf=='One-One'):

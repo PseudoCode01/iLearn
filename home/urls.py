@@ -44,6 +44,7 @@ urlpatterns = [
     path('registerhomeTutor', views.registerhomeTutor,name="registerhomeTutor"),
     path('get_homeTutor', views.get_homeTutor,name="get_homeTutor"),
     path('getDemo', views.getDemo,name="getDemo"),
+    path('request_tution', views.request_tution,name="request_tution"),
     path('unlockDemos', views.unlockDemos,name="unlockDemos"),
     path('unlockhandleRequest/', views.unlockhandleRequest,name="unlockhandleRequest"),
     path('updateunlockedDemo', views.updateunlockedDemo,name="updateunlockedDemo"),

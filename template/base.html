@@ -84,13 +84,13 @@
         <div class="userData">
           <span id="name"><b>Hi! {{request.user}}</b></span>
            {% if request.user.first_name == "Teacher" %}
-          <a style="color: teal;" href="/homeTutor"><p style="text-align: center; margin-top:30px;">Become Home Tutor</p>
-            <p style="text-align: center; margin-top: 10px;">Become one-one online tutor</p>
+          <a style="color: teal;" href="/homeTutor"><p style="text-align: center; margin-top:30px; cursor: pointer;">Become Home Tutor</p>
+            <p style="text-align: center; margin-top: 10px; cursor: pointer;">Become one-one online tutor</p>
 
           </a>
           {% else %}
-          <a style="color: teal;"><p  style="text-align: center; margin-top:30px;" onclick="window.location.href='#popup1'" >Hire Home Tutor</p> 
-            <p style="text-align: center; margin-top: 10px;"  onclick="window.location.href='#popup2'">Hire one-one online tutor</p>
+          <a style="color: teal;"><p  style="text-align: center; margin-top:30px; cursor: pointer;" onclick="window.location.href='#popup1'" >Hire Home Tutor</p> 
+            <p style="text-align: center; margin-top: 10px; cursor: pointer;"  onclick="window.location.href='#popup2'">Hire one-one online tutor</p>
           </a>
           {% endif %}
           <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>

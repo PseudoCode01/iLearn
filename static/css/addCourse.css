@@ -63,6 +63,8 @@ body{
 }
   .homeTutor h1{
   margin-left: 40px;
+  font-size: 22px;
+padding: 10px 0px
 }
 .homeTutor:hover{
     box-shadow: 5px 5px 5px 5px #cacaca;

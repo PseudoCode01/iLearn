@@ -102,7 +102,7 @@ class HomeTutor(models.Model):
     discription=models.TextField()
     salaryL=models.IntegerField()
     salaryH=models.IntegerField()
-    unlockedHT=models.IntegerField(default=1)
+    unlockedHT=models.IntegerField(default=0)
     unlockedON=models.IntegerField(default=0)
     id_proof= models.FileField(upload_to='home/homeTutor', null=True, verbose_name="")
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
@@ -117,11 +117,27 @@ class HomeTutorDemo(models.Model):
     fullname=models.CharField(max_length=500)
     phone=models.CharField(max_length=50)
     email=models.CharField(max_length=50)
-    address=models.CharField(max_length=200)
+    address=models.CharField(default='',max_length=200)
     reg_for=models.CharField(default="Home Tutor", max_length=200)
     status=models.BooleanField(default=False)
-    pin=models.IntegerField()
-    address2=models.CharField(max_length=200)
+    pin=models.IntegerField(default=0)
+    address2=models.CharField(default='',max_length=200)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+    
+    def __str__(self):
+        return self.fullname
+class RequestTution(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    fullname=models.CharField(max_length=500)
+    phone=models.CharField(max_length=50)
+    email=models.CharField(max_length=50)
+    address=models.CharField(default='',max_length=200)
+    reg_for=models.CharField(default="Home Tutor", max_length=200)
+    status=models.BooleanField(default=False)
+    pin=models.IntegerField(default=0)
+    Payment=models.IntegerField(default=0)
+    address2=models.CharField(default='',max_length=200)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
     
     def __str__(self):

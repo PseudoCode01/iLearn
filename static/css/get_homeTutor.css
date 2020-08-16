@@ -9,6 +9,26 @@ body{
     justify-content: space-evenly;
     margin-top: 100px;
 }
+.get_t a {
+  position: absolute; /* Position them relative to the browser window */
+  left: -32px; /* Position them outside of the screen */
+  transition: 0.3s; /* Add transition on hover */
+  padding: 16px 10px 16px 22px; /* 15px padding */
+  width: 100px; /* Set a specific width */
+  text-decoration: none; /* Remove underline */
+  font-size: 20px; /* Increase font size */
+  color: white; /* White text color */
+  border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+  display: flex;
+  align-items: center;
+  top: 90px;
+  background-color: rgb(12, 12, 170);
+  justify-content: center;
+}
+
+.get_t a:hover {
+  left: 0; /* On mouse-over, make the elements appear as they should */
+}
 .tutoritem{
 
     background-color: rgb(255, 255, 255);
@@ -132,6 +152,7 @@ border-radius:0 0 14px  0 ;
     position: relative;
     transition: all 5s ease-in-out;
   }
+
   .HTpopup .pin{
     border: 1px solid black;
     border-radius: 4px;
@@ -201,7 +222,13 @@ border-radius:0 0 14px  0 ;
   }
   .HTpopup{
 height: 510px;
+overflow-y: scroll;
   }
+  .HTpopup2{
+    
+    overflow-y: scroll;
+  }
+  .select{margin-bottom: 15px;}
   /* Full-width input fields */
 .HTpopup input[type=text], input[type=password],input[type=email] {
   width: 95%;
@@ -231,6 +258,26 @@ height: 510px;
     padding: 50px 0;
     margin-bottom: 100px;
 }
+.btn-success{
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  display: flex;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-success:hover{
+  background-position: right;
+}
 .emptyCart img{
     width: 50%;
     margin-left: auto;
@@ -252,4 +299,31 @@ width: 80%;
     .emptyCart{
 width: 95%;
     }
+}
+#loader-container {
+  width: 25px;
+  height: 25px;
+}
+
+@keyframes animation {
+  0% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -105;
+  }
+  50% {
+    stroke-dasharray: 80 10;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -300;
+  }
+}
+
+#spinner {
+  transform-origin: center;
+  animation-name: animation;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier;
+  animation-iteration-count: infinite;
 }

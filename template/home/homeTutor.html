@@ -17,7 +17,6 @@
   {% endfor %}
   {% if htprofile %}
   <div class="locked">
-   
    {% if htprofile.0.registered_for == 'One-One' %}
    <div><span>You have <strong> {{lockedDemos121}}</strong> locked students request for one-one online tution </span><button onclick="window.location.href='#popup3'">Unlock</button></div> 
    {% endif %}
@@ -90,6 +89,8 @@
           If you found guilty at any point, we can take suitable action. 
          </li>
         <li>You can’t leave in the mid without any significant reason if you do so then our team can take any suitable action.</li>
+        <li>You will be charged Rs:100 to unlock one student profile in case of Home Tutor.</li>
+        <li>You will be charged Rs:500 to unlock one student profile in case of One-One online tution but if the you didn't get hired by that student next profile will be free .This will continue untill you get hired by one student (but max upto 3 profiles).</li>
           </ul>
       </div>
           <form action="/registerhomeTutor" method="POST" enctype="multipart/form-data"> {% csrf_token %}</form>
@@ -141,9 +142,7 @@
 </div>
 {% endif %}
 </div>
-<div id="mySidenav" class="sidenav">
-  <a href="#popup1" id="demosnumber"><img src="/static/img/locked.png" alt=""><span>{{lockedDemos}}</span></a>
-</div> 
+
 
 <div id="popup1" class="overlay">
   <div class="popup">
@@ -204,6 +203,8 @@
      If you found guilty at any point, we can take suitable action. 
     </li>
    <li>You can’t leave in the mid without any significant reason if you do so then our team can take any suitable action.</li>
+   <li>You will be charged Rs:100 to unlock one student profile in case of Home Tutor.</li>
+        <li>You will be charged Rs:500 to unlock one student profile in case of One-One online tution but if the you didn't get hired by that student next profile will be free .This will continue untill you get hired by one student (but max upto 3 profiles).</li>
     </ul>
 </div>
     <form action="/registerhomeTutor" method="POST" enctype="multipart/form-data"> {% csrf_token %}
