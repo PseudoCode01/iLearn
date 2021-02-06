@@ -20,13 +20,14 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import (get_resolver,get_urlconf,resolve,reverse,NoReverseMatch)
-admin.site.site_header='Congedu'
-admin.site.index_title='Congedu administration'
+admin.site.site_header='Cognedu'
+admin.site.index_title='Cognedu administration'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('django.contrib.auth.urls')),
     path('', include('home.urls')),
+    path('api/', include('api.urls')),
     path('staff/', include('staffPanel.urls')),
     # url(r’^static/(?P.*)$’, ‘django.views.static.serve’, {‘document_root’: settings.STATIC_ROOT})
     path(r'reset_password/',

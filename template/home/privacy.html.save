@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cognedu | Privacy
+{% endblock title %}
+    {% block body %}
+    <style>
+        .container{
+            margin-top: 120px;
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 60vh;
+            margin-bottom: 30px;
+            align-items: center;}
+            .container >div{
+                width: 100px;
+                height: 3px;
+                background-color: blue;
+            }
+            h1{
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+            h5{
+                margin-top: 20px;
+                font-size: 20px;
+                color:rgb(70, 105, 187);
+                margin-bottom: 40px;}
+            strong{
+                font-size: 1.2rem;
+            }
+        p{
+            margin-top:20px ;
+            
+        }
+        ul{
+            margin-top: 20px;
+        }
+        li{
+            margin-top: 10px;
+        }
+    </style>
+    <div class="container">
+    <h1>Cognedu privacy policy</h1>
+    <div></div>
+    <h5>The terms "We" / "Us" / "Our"/”Company” individually and collectively refer to Fostering Success Private Limited and
+ the terms "Visitor” ”User” refer to the users. This page states the Terms and Conditions under which you (Visitor) may visit this website (“Cognedu.com”). Please read this page carefully.</h5>
+    <p>It is cognedu policy to respect your privacy regarding any information we may collect while operating our website. Accordingly, 
+        we have developed this privacy policy in order for you to understand how we collect, use,
+         communicate, disclose and otherwise make use of personal information. We have outlined our privacy policy below.</p>
+<ul>
+     <li>  We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned.</li>
+     <li> Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.</li>  
+     <li>  We will collect and use personal information solely for fulfilling those purposes specified by us and for other ancillary purposes, 
+        unless we obtain the consent of the individual concerned or as required by law.</li> 
+      <li>Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should
+         be accurate, complete, and up-to-date.</li>  
+     <li>   We will protect personal information by using reasonable security safeguards against loss or theft, as well as unauthorized access,
+         disclosure, copying, use or modification.</li>
+    <li>We will make readily available to customers information about our policies and practices relating to the management of personal information.</li>    
+      <li>We will only retain personal information for as long as necessary for the fulfilment of those purposes.</li></ul>
+        
+        <p><strong>Student Payment Data- </strong> If you make purchase through our account, we doesn’t collect data about your purchase. 
+        You must provide certain payment and billing data directly to our payment processing partners, including your 
+        name, credit card information, billing address. For security, Cognedu does not collect or store sensitive cardholder data,
+         such as full credit card numbers or card authentication data.
+        </p>
+       <p><strong>Instructor Payment Data- </strong> If you are an instructor, you can link your Paytm, UPI,
+         bank payment account to the Services to receive payments. When you link a payment
+          account, we collect and use certain information, including your payment account 
+          email address, account ID, physical address, or other data necessary for us to send
+           payments to your account. In order to comply with applicable laws, we also work with 
+           trusted third parties who collect tax information as legally required. This tax information
+            may include residency information, tax identification numbers, biographical information, 
+            and other personal information necessary for taxation purposes. For security, Cognedu does
+             not collect or store sensitive bank account information. The collection, use, and disclosure
+              of your payment, billing, and taxation data is subject to the privacy policy and other terms of your payment account provider.</p>    
+            </div>
+    {% endblock body %}
+        

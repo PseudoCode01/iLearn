@@ -47,7 +47,7 @@
     <ul class="dropdown-content sidenav" id="mySidenav">
       <a href="javascript:void(0)" class="closenav" onclick="closeNav()">&#8592;</a>
       {% for courses in get_courses %}
-      <a class=" collapsible" onclick="category(this)" id="6">{{courses}}
+      <a class=" collapsible" style="color:white" onclick="category(this)" id="6">{{courses}}
       </a>
       <ul class="content ds6 ">
         {% for subCat in sub_cat %}
@@ -83,14 +83,14 @@
         <img src="/static/img/user1.png" alt="">
         <div class="userData">
           <span id="name"><b>Hi! {{request.user}}</b></span>
-           {% if request.user.first_name == "Teacher" %}
-          <a style="color: teal;" href="/homeTutor"><p style="text-align: center; margin-top:30px; cursor: pointer;">Become Home Tutor</p>
-            <p style="text-align: center; margin-top: 10px; cursor: pointer;">Become one-one online tutor</p>
+           {% if request.user.first_name == "Teacher" or request.user.is_superuser %}
+          <a style="color: teal; margin-top:45px; "><p onclick="window.location.href='/homeTutor'" style="text-align: center; cursor: pointer;">Become Home Tutor</p>
+            <p onclick="window.location.href='/homeTutor'" style="text-align: center; margin-top:8px; cursor: pointer;">Become one-one online tutor</p>
 
           </a>
           {% else %}
-          <a style="color: teal;"><p  style="text-align: center; margin-top:30px; cursor: pointer;" onclick="window.location.href='#popup1'" >Hire Home Tutor</p> 
-            <p style="text-align: center; margin-top: 10px; cursor: pointer;"  onclick="window.location.href='#popup2'">Hire one-one online tutor</p>
+          <a style="color: teal; margin-top:45px;"><p style="text-align: center; cursor: pointer;" onclick="window.location.href='#popup1'" >Hire Home Tutor</p> 
+            <p style="text-align: center; margin-top:8px; cursor: pointer;"  onclick="window.location.href='#popup2'">Hire one-one online tutor</p>
           </a>
           {% endif %}
           <button class="btn logout"><a class="logouta" onclick="clearStorage()" href="/logout">Logout</a></button>
@@ -287,6 +287,8 @@
           <li><b>More</b></li>
           <li><a href="/terms">Terms</a></li>
           <li><a href="/privacy">Privacy</a></li>
+      <li><a href="/refund">Refund and cancellation policy</a></li>
+
         </ul>
       </div>
     </div>
@@ -299,7 +301,7 @@
     <hr style="background-color: rgb(209, 209, 209);">
     <footer>
       <div id="fitem1">
-        &copy; 2020 Cognedu Inc.All Right Reserved
+        &copy; 2020 FOSTERING SUCCESS PVT LTD Inc.All Right Reserved
       </div>
       <div id="fitem2">
         <img src="/static/img/facebook.png" onclick="window.location.href='https://www.facebook.com/Cognedu-125814395619697'" alt="">

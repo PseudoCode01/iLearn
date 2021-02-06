@@ -12,8 +12,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.postgres.search import SearchVector, SearchQuery
 import os
-# import boto3
-# from botocore.client import Config
+import boto3
+from botocore.client import Config
 from mutagen.mp4 import MP4
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
@@ -21,22 +21,24 @@ from PayTm import Checksum
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
-MERCHANT_KEY = '0K5Uhk4At%X1t80Q'
+MERCHANT_KEY = '&WgbAKt0koh9BCFx'
 # from moviepy.editor import VideoFileClip 
 
 # Create your views here.
-# session = boto3.session.Session()
-# key='
-# secret=''
+session = boto3.session.Session()
+key='W55UFC7TLFNFFNAFPCSX'
+secret='Nb0GaC9os1fQlYVxJpP4y5wpTLZdQUctR1fTHqle+aI'
 def geturl(request):
     if request.method=='POST':
         data=json.loads(request.body)
+        print(data)
         file=data['curl']
-        urli=file
-        # client=session.client('s3',region_name='sgp1',endpoint_url='https://sgp1.digitaloceanspaces.com',aws_access_key_id=key,aws_secret_access_key=secret)
-        # urli=client.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'cognedu-spaces','Key':file},ExpiresIn=300)
+        
+        client=session.client('s3',region_name='sgp1',endpoint_url='https://sgp1.digitaloceanspaces.com',aws_access_key_id=key,aws_secret_access_key=secret)
+        urli=client.generate_presigned_url(ClientMethod='get_object',Params={'Bucket':'cognedu-spaces','Key':file},ExpiresIn=3600)
         return JsonResponse({'data':urli})
 def home(request):
+    
     return render(request,'home/home.html')
 def Teach1(request):
     return render(request,'home/teach1.html')
@@ -57,14 +59,17 @@ def homeTutor(request):
     demos=''
     lockedDemos=''
     lockedDemos121=''
+    dn=''
     if len(htprofile)>0:
         user_id=request.user.id
         demo=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(reg_for='Home Tutor').filter(status=False).order_by('timeStamp')
-        demos=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(status=True).order_by('timeStamp')
+        demos=HomeTutorDemo.objects.filter(homeTutor=user_id)
+        dn=demos
+        demos=demos.filter(status=True).order_by('timeStamp')
         demo121=HomeTutorDemo.objects.filter(homeTutor=user_id).filter(reg_for='One-One').filter(status=False).order_by('timeStamp')
         lockedDemos=len(demo)
         lockedDemos121=len(demo121)
-    return render(request,'home/homeTutor.html',{'htprofile':htprofile,'demos':demos,'lockedDemos':lockedDemos,'lockedDemos121':lockedDemos121})
+    return render(request,'home/homeTutor.html',{'htprofile':htprofile,'demos':demos,'lockedDemos':lockedDemos,'lockedDemos121':lockedDemos121,'dn':dn})
 @login_required(login_url='/')
 def get_homeTutor(request):
     pin=request.GET.get('pin')
@@ -111,28 +116,28 @@ def request_tution(request):
     return JsonResponse('ok',safe=False)
 def registerhomeTutor(request):
     if request.method=='POST':
-        name=request.POST['name']
-        age=request.POST['age']
-        gender=request.POST['gender']
-        phone=request.POST['number']
-        email=request.POST['email']
-        fr=request.POST['reg_for']
+        name=request.POST.get('name')
+        age=request.POST.get('age')
+        gender=request.POST.get('gender')
+        phone=request.POST.get('number')
+        email=request.POST.get('email')
+        fr=request.POST.get('reg_for')
         if fr=='One-One':
             pin=0
             district=""
             state=""
         else:
-            pin=request.POST['pin']
-            district=request.POST['district']
-            state=request.POST['state']
-        subject=request.POST['subject']
-        classes=request.POST['classes']
-        disc=request.POST['disc']
+            pin=request.POST.get('pin')
+            district=request.POST.get('district')
+            state=request.POST.get('state')
+        subject=request.POST.get('subject')
+        classes=request.POST.get('classes')
+        disc=request.POST.get('disc')
         id_proof=request.FILES.get('id_proof')
-        salaryL=request.POST['salaryL']
-        salaryH=request.POST['salaryH']
-        action=request.POST['action']
-        if fr!='One-One' and len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(pin)==6 and len(district)>0 and len(state)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
+        salaryL=request.POST.get('salaryL')
+        salaryH=request.POST.get('salaryH')
+        action=request.POST.get('action')
+        if fr!='One-One' and name!=None and age!=None and gender!=None and phone!=None and email!=None  and pin != None and district!=None and state!=None and subject!=None and classes!=None and disc!=None and salaryL!=None and salaryH!=None and action!=None and len(phone)>9 and  len(pin)==6:
             if action == 'register':
                 ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,
                 state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,registered_for=fr,verified='False',id_proof=id_proof)
@@ -159,7 +164,7 @@ def registerhomeTutor(request):
                 ht.varified="False"
                 ht.save()
                 messages.success(request,'Edited Successfully! Once your profile get varified it will be available for students')
-        elif fr=='One-One' and len(name)>4 and len(age)!=0 and len(gender)!=0 and len(phone)>9 and len(email)>0 and len(subject)>0 and len(classes)>0 and len(disc)>0 and len(id_proof)>0 and len(salaryL)>0 and len(salaryH)>0 and len(action)>0 :
+        elif fr=='One-One' and name!=None and age!=None and gender!=None and phone!=None and email!=None  and pin != None and district!=None and state!=None and subject!=None and classes!=None and disc!=None and salaryL!=None and salaryH!=None and action!=None and len(phone)>9:
             if action == 'register':
                 ht=HomeTutor(user=request.user,name=name,age=age,gender=gender,phone=phone,email=email,pin=pin,district=district,
                 state=state,subject=subject,classes=classes,discription=disc,salaryL=salaryL,salaryH=salaryH,registered_for=fr,verified='False',id_proof=id_proof)
@@ -187,7 +192,7 @@ def registerhomeTutor(request):
                 ht.save()
                 messages.success(request,'Edited Successfully! Once your profile get varified it will be available for students')
         else:
-            messages.error(request,'Failed! Fill the information correctly')
+            messages.error(request,'Failed! Fill the information correctly , some fields might be blank')
        
     return redirect('homeTutor')
 @login_required(login_url='/')
@@ -288,6 +293,8 @@ def saveCourse(request):
                return render(request,'home/saveCourse.html')
        except Exception as e:
            status=False
+           messages.error(request,e)
+           return render(request,'home/saveCourse.html')
        
     else:
         return render(request,'home/saveCourse.html')
@@ -302,28 +309,31 @@ def addVideos(request):
     get_data={'get_courses':get_courses,'get_videos':get_videos}
     return render(request,'home/addVideos.html',get_data)
 def video(request):
-    thumbnail = request.FILES['thumbnail']
-    video = request.FILES['video']
+    thumbnail = request.FILES.get('thumbnail')
+    video = request.FILES.get('video')
     resources= request.FILES.get('resources')
-    videoTitle= request.POST['title']
-    courseSno= request.POST['courseSno']
-    course=Courses.objects.get(sno=int(courseSno))
+    videoTitle= request.POST.get('title')
+    courseSno= request.POST.get('courseSno')
+    #flen = request.POST.get('flen')
+    course=''
+    try:
+        course=Courses.objects.get(sno=int(courseSno))
+    except:
+        pass
     user=request.user
-    print(thumbnail,video,resources,videoTitle,course)
     video = Videos(videoTitle=videoTitle,videofile=video,thumbnail=thumbnail,resource=resources,videoOfCourse=course,creater=user)
     video.save()
     return JsonResponse('OK',safe=False)
 def viewCourses(request):
     return render(request,'home/viewCourses.html')
 def previewCourse(request,id):
-    courses=Courses.objects.filter(sno=id).values()
+    courses=Courses.objects.filter(sno=id).order_by('timeStamp').values()
     review=ReviewCourse.objects.filter(reviewOfCourse_id=id)
-    vid=Videos.objects.filter(videoOfCourse_id=courses[0]['sno'])
-    video=set()
+    vid=Videos.objects.filter(videoOfCourse_id=courses[0]['sno']).order_by('sno')
+    video=[]
     for item in vid:
-        path="media/"+str(item.videofile)
-        Vlength = MP4(path)
-        video.add((item,round((Vlength.info.length)/60),4))
+        
+        video.append((item,35))
     Tprofile=courses[0]['creater_id']
     teacherProfile=TeacherProfile.objects.filter(ProfileOf=Tprofile)
     allcourses=Courses.objects.filter(creater_id=Tprofile)
@@ -386,9 +396,6 @@ def handleSignUp(request):
         pass2=request.POST['cpassword']
         if len(username)> 20 or len(username)<5:
             messages.error(request,"Your username can contain 5 to 20 Characters")
-            return redirect('/')
-        if not username.isalnum():
-            messages.error(request,"Your username can contain letters and numbers only ")
             return redirect('/')
         if pass1 != pass2:
             messages.error(request,"Passwords do not match")
@@ -487,14 +494,14 @@ def buynow(request):
         order_id=cart[0]['sno']
         param_dict = {
 
-                    'MID': 'RLUAjJ34588862174269',
+                    'MID':'pKZNZu37586797634551',
                     'ORDER_ID': str(order_id),
                     'TXN_AMOUNT': str(amount),
                     'CUST_ID': email,
                     'INDUSTRY_TYPE_ID': 'Retail',
                     'WEBSITE': 'WEBSTAGING',
                     'CHANNEL_ID': 'WEB',
-                    'CALLBACK_URL':'http://127.0.0.1:8000/handleRequest/',
+                    'CALLBACK_URL':'https://cognedu.com/handleRequest/',
 
         }
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
@@ -545,7 +552,7 @@ def unlockDemos(request):
                     'INDUSTRY_TYPE_ID': 'Retail',
                     'WEBSITE': 'WEBSTAGING',
                     'CHANNEL_ID': 'WEB',
-                    'CALLBACK_URL':'http://127.0.0.1:8000/unlockhandleRequest/',
+                    'CALLBACK_URL':'https://cognedu.com/unlockhandleRequest/',
 
         }
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(param_dict, MERCHANT_KEY)
@@ -628,9 +635,9 @@ def previewmyCourses(request,slug,id):
         if i['course_id'] == id:
             course=Videos.objects.filter(videoOfCourse=i['course_id']).order_by('timeStamp')
     for item in course:
-        path="media/"+str(item.videofile)
-        Vlength = MP4(path)
-        video.append((item,round((Vlength.info.length)/60),4))
+        #path="https://cognedu.com/media/"+str(item.videofile)
+        #Vlength = MP4(path)
+        video.append((item,35))
     watched=WatchedVideos.objects.filter(user_id=request.user)
     return render(request,'home/previewmyCourses.html',{'course':video,'watched':watched,'cTitle':c,'csno':id,'review':review,'crating':crating})
 
@@ -668,7 +675,6 @@ def get_notification(request):
 def password_reset(request):
     return render(request,'home/password_reset.html')
 
-
 def studentQuery(request):
     user=request.user.id
     query=WatchedVideos.objects.filter(creater=user)
@@ -705,5 +711,5 @@ def account(request):
         ad.accholder=accholder
         ad.save()
     return JsonResponse('ok',safe=False)
-
-    
+def refund(request):
+    return render(request,'home/refund.html')

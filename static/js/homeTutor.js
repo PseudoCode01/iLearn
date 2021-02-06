@@ -74,8 +74,6 @@ function autocomp(val) {
 }
 var htm
 function edit() {
-
-
   let sno = document.getElementById('sno').value;
   let name = document.getElementById('name').value;
   let age = document.getElementById('Age').value;
@@ -130,7 +128,6 @@ function edit() {
         </div>
             <label for="number"><b>Phone number</b></label>
             <input type="text" placeholder="Enter your number" name="number" id="number" value="${phone}" required>
-        
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" id="email" value="${email}" required>
             <input type="hidden" placeholder="Enter Email" value=${fr} name="reg_for" id="reg_for">
@@ -154,7 +151,7 @@ function edit() {
   htm += `<label for="subject"><b>Subject</b></label>
             <input type="text" placeholder="Enter subjects you want to teach" name="subject" id="subject" value="${subject}" required>
             <label for="Class"><b>Classes</b></label>
-            <input type="text" placeholder="eg:6-8" name="classes" id="classes" oninput="checkexp(this)"  value="${classes}" required>
+            <input type="text" placeholder="eg:6,7,8,9" name="classes" id="classes" oninput="checkexp(this)"  value="${classes}" required>
             <label for="disc"><b>About Yourself</b></label>
             <div class="discription">
             <textarea type="text" placeholder="Discribe Yourself"  name="disc" id="disc" value="${disc}" required>${disc}</textarea></div>

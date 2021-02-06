@@ -31,7 +31,7 @@ xhr.setRequestHeader("Accept", "application/json");
 xhr.send(JSON.stringify({'courseId': courseId,'action':action}));
 xhr.onload = function() {
 if (xhr.status != 200) { 
-  alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+ 
 } else { 
   data=JSON.parse(xhr.responseText)
   
@@ -55,13 +55,12 @@ if (event.lengthComputable) {
 </svg>
 </div></div>`
 } else {
- alert('fff')
+ 
 }
 
 };
 
 xhr.onerror = function() {
-alert("Request failed");
 };
 
 }

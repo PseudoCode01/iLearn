@@ -13,7 +13,6 @@ let status ="False";
 // })
 status=document.getElementById('status').value;
 if(status=="True"){
-
     document.getElementById('savedLang').value=localStorage.getItem('lang')
     document.getElementById('pricing').value="Rs:"+localStorage.getItem('price')
     document.getElementById('lang').style.display="none";
@@ -36,8 +35,8 @@ document.getElementById('cat').value=localStorage.getItem('cat');
 console.log(document.getElementById('cat').value)
 document.getElementById('title').value=localStorage.getItem('courseTitle');
 function getfilesize(val){
-    console.log(val.files[0].size/1024)
-    if(val.files[0].size/1024>150){
+    
+    if(val.files[0].size/1024>512){
         val.style.border='1px solid red'
         document.querySelector('.save').disabled=true
     }

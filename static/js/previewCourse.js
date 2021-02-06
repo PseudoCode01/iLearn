@@ -55,7 +55,7 @@ xhr.setRequestHeader("Accept", "application/json");
 xhr.send(JSON.stringify({'courseId': courseId,'action':action}));
 xhr.onload = function() {
 if (xhr.status != 200) { 
-alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+ 
 } else { 
 data=JSON.parse(xhr.responseText)
 
@@ -79,20 +79,19 @@ p.innerHTML=`<div class="loader"><div id="loader-container">
 </svg>
 </div></div>`
 } else {
-alert('fff')
 }
 
 };
 
 xhr.onerror = function() {
-alert("Request failed");
+
 };
 
 }
 function preview(val,pos){
 var modalPreview = document.querySelector(".modal-preview");
-let url='geturl'
-var curl='/media/'+val
+let url='/geturl'
+var curl='media/'+val
 fetch(url,{
     method:'POST',
     headers:{
@@ -124,3 +123,10 @@ window.onclick = function(event) {
     modalPreview.style.display = "none";
   }
 }}
+ function loginF(){
+  document.querySelector('body').innerHTML+=`<div class="alert alert-error alert-dismissible" role="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  Logn in to continue 
+ </div>
+ </div>`
+ }

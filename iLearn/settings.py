@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '=wt5a^84#l+q!_=ncvsw-6)fp%4sud@(tn8v-p5dvln(r17gg6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','www.cognedu.com','cognedu.com','103.228.113.102']
 
@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'storages',
     'home',
+    'api',
+    'rest_framework',
+    'rest_framework.authtoken',
     'staffPanel',
+    'ckeditor'
 ]
 
 
@@ -76,11 +80,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'iLearn.wsgi.application'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES':(
+                'rest_framework.permissions.IsAuthenticated',
+    ),
 
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-if DEBUG:
+if DEBUG==False:
    DATABASES = {
     'default': {
  'ENGINE': 'django.db.backends.postgresql',
@@ -130,7 +142,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -147,18 +159,18 @@ STATIC_URL = '/static/'
     
 # ]
 
- STATIC_ROOT=os.path.join(BASE_DIR,'static')
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 #MEDIA_URL='/media/'
 #MEDIA_ROOT=os.path.join(BASE_DIR,'media')
- AWS_ACCESS_KEY_ID=''
- AWS_SECRET_ACCESS_KEY =''
+AWS_ACCESS_KEY_ID='W55UFC7TLFNFFNAFPCSX'
+AWS_SECRET_ACCESS_KEY ='Nb0GaC9os1fQlYVxJpP4y5wpTLZdQUctR1fTHqle+aI'
 AWS_STORAGE_BUCKET_NAME = 'cognedu-spaces'
- AWS_S3_ENDPOINT_URL = 'https://sgp1.digitaloceanspaces.com'
- AWS_S3_OBJECT_PARAMETERS = {
+AWS_S3_ENDPOINT_URL = 'https://sgp1.digitaloceanspaces.com'
+AWS_S3_OBJECT_PARAMETERS = {
      'CacheControl': 'max-age=86400',
  }
 #AWS_DEFAULT_ACL=None
- AWS_LOCATION ='cognedu-media'
+AWS_LOCATION ='cognedu-media'
 
 #STATICFILES_DIRS = [
  #   os.path.join(BASE_DIR, 'static'),
@@ -172,7 +184,7 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 #STATIC_URL = '{}/{}/'.format(''https://cognedu-spaces.sgp1.digitaloceanspaces.com', 'static')
 #STATIC_ROOT = 'static/'
 
- MEDIA_URL = '{}/{}/'.format('https://cognedu-spaces.sgp1.digitaloceanspaces.com', 'media')
+MEDIA_URL = '{}/{}/'.format('https://cognedu-spaces.sgp1.digitaloceanspaces.com', 'media')
 MEDIA_ROOT = 'media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

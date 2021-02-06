@@ -50,7 +50,7 @@ margin-bottom: 25px;
 .for{
   display: flex;
   margin-left: -13px;
-  padding: 15px;
+  min-width: 80%;
 }
 .for2{
   display: flex;
@@ -100,11 +100,18 @@ text-align: center;
 .instruct{
     width: 450px;
     margin-right: 50px;
-border: 2px solid black;
 padding: 10px;
 align-items: center;
 margin: 20px 0;
-background-color:  rgb(131, 226, 134);
+background-color:  rgb(6, 15, 151);
+color:white;
+box-shadow:0 0 10px #595959;
+}
+.instruct ul li{
+margin-top: 10px;
+font-weight: bold;
+font-style: italic;
+font-size: 17px;
 }
 .bin{
 width: 100%;
@@ -712,7 +719,6 @@ width: 300px;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 50%;
   position: relative;
   transition: all 5s ease-in-out;
 }
@@ -726,7 +732,6 @@ width: 300px;
   width: 80%;
   display: flex;
   align-items: center;
-  height: 40px;
 }
 .popup input[type='text']{
   border: none;
@@ -737,6 +742,7 @@ width: 300px;
   padding: 2px;
   margin-left: 3px;
 }
+
 .unlock{
   width: 100%;
   height: 100%;
@@ -769,21 +775,13 @@ color: rgb(2, 0, 128);
   color: #333;
   font-family: Tahoma, Arial, sans-serif;
 }
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
+.popup{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .popup .content {
-  max-height: 30%;
+ 
   overflow: auto;
 }
 
@@ -850,3 +848,42 @@ width: 95%;
 .locked div.both{
 margin-top: 30px;
 }
+.proceed{
+  padding: 8px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  .proceed:hover{
+    background-position: right;
+  }
+  @media(max-width:500px){
+    .popup{
+      width: 88%;
+    }
+    .for{
+      width: 100%;
+    }
+    .proceed{
+      margin-top: 10px;
+    }
+  }
+form .container h1{
+background: linear-gradient( #027c88,#c600b0);
+-webkit-background-clip: text;
+-webkit-text-fill-color:transparent;
+text-align: center;
+}
+form .container p{
+text-align:center;
+}
+

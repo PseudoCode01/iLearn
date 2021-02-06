@@ -1,82 +1,3 @@
-// let flag =1;
-
-// document.getElementById('previous').addEventListener('click',function(){ 
-//     document.getElementById('TeacherCategory').style.display="flex";
-//     document.getElementById('title').style.display="none";
-//     flag=1
-// })
-// var cat=0;
-// document.getElementById('next').addEventListener('click',function(){
-//    let cat=document.getElementById('cat').value 
-//    let subcat=document.getElementById('sub-cat').value
-//     localStorage.setItem('cat',cat)
-//     localStorage.setItem('subcat',subcat)
-//     console.log(cat.value);
-//        flag++;
-//     document.getElementById('TeacherCategory').style.display="none";
-//     document.getElementById('title').style.display="flex";
-//     if(flag==3){
-//     let title=document.getElementById('courseTitle').value 
-//     localStorage.setItem('courseTitle',title)
-//     window.location.href = "/saveCourse";
-//     }
-// })
-
-
-// function category(){
-//     console.log('change')
-//     if(document.getElementById('cat').value != 0){
-//     document.querySelector('.subcategory').style.display='block'
-//     document.querySelector('.category').style.display='none'
-//     }
-//     if(document.getElementById('cat').value == 1){
-//         document.getElementById('sub-cat').innerHTML=`<option value="">Choose an Option</option>
-//         <option value="Computer Science">Computer Science</option>
-//         <option value="Health & Fitness">Health & Fitness</option>
-//         <option value="Music">Music</option>
-//         <option value="Drawing">Drawing</option>`
-//     }
-// }
-// function sub_category(val){
-    
-// }
-
-
-
-
-// var n=1;
-// function next(){
-//     if(n==1){
-//         document.querySelector('.breadcrumb').style.display='block'
-    
-// for(let item of document.querySelectorAll('.c') ){
-// if(getComputedStyle(item).display!='none'){
-//     let v=Number(item.querySelector('select').value)
-//     if(v>5&&v<13 &&n==1){
-// document.getElementById('c'+n).style.display='none'
-// document.querySelector('.breadcrumb').innerText='Class '+v+"/"
-// n++;
-// document.getElementById('c'+n).style.display='block'
-//     }
-//     if(v==1){
-//         document.getElementById('c'+n).style.display='none'
-//         document.querySelector('.breadcrumb').innerText='Class '+v+"/"
-//         n++;
-//         document.getElementById('c'+n).style.display='block'
-//         document.getElementById('sub-cat').innerHTML=`<option value="0">Choose an Option</option>
-//                  <option value="Computer Science">Computer Science</option>
-//                  <option value="Health & Fitness">Health & Fitness</option>
-//                  <option value="Music">Music</option>
-//                 <option value="Drawing">Drawing</option>`
-//     }
-// }
-
-// }
-// }
-// if(n==2){
-   
-// }
-// }
 
 var school=['Math','Physics','Chemistry','Biology']
 //############## cs #################
@@ -114,17 +35,20 @@ var photography={'Potraits':potrait,'Photography Tools':photoTools,'Photography'
 var ssc=['Reasoning','Maths','English','GS']
 // var uptet=['Reasoning','Maths','English','GS']
 var bank=['Reasoning','Maths','English','GS','Computer']
-var railway=['Reasoning','Maths','English','GS']
-var ce={'SSC':ssc,'Bank':bank,'Railway':railway}
+var railway=['NTPC','Reasoning','Maths','English','GS']
+var NDA=['Maths','English','GK']
+var Airf=['Reasoning','Maths','English']
+var aoe=['GS','English','Maths','Reasoning','Currrent Affairs']
+var ce={'SSC':ssc,'Bank':bank,'Railway':railway,'NDA':NDA,'Airforce':Airf,'All One-Day Exams':aoe}
 
 
 
 
 
 
-var c6_8=['Maths','Science','Social Science','English','Hindi']
-var c9_10=['Physics','Chemistry','Maths','Boilogy','English','Hindi']
-var c11_12=['Physics','Chemistry','Maths','Boilogy','English','Commerce']
+var c6_8=['Maths','Science','Social Science','Computer','English','Hindi']
+var c9_10=['Physics','Chemistry','Maths','Boilogy','Computer','English','Hindi']
+var c11_12=['Physics','Chemistry','Maths','Boilogy','English','Computer','Commerce']
 var Academics={'Class 6':c6_8,'Class 7':c6_8,'Class 8':c6_8,'Class 9':c9_10,'Class 10':c9_10,'Class 11':c11_12,'Class 12':c11_12}
 var i=1;
 var v1,v2;

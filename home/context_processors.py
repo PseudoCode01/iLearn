@@ -11,6 +11,9 @@ def add_variable_to_context(request):
         sub_cat.add((course['sub_category'],course['category']))
         sub_cat2.add((course['sub_category'],course['sub_category2']))
     Tprofile=''
+    cat = []
+    for c in courses:
+        cat.append(c)
     if request.user.is_authenticated :
         if request.user.first_name=="Teacher":
             Tprofile=TeacherProfile.objects.filter(ProfileOf_id=request.user)
@@ -23,7 +26,7 @@ def add_variable_to_context(request):
         myCourses=set()
         for course in get_myCourses:
             myCourses.add(Courses.objects.filter(verified="True").filter(sno=course['course_id']).values())
-        return { 'get_courses':courses,'sub_cat':sub_cat,'sub_cat2':sub_cat2,'get_cartCourses':get_cartCourses,'teacherProfile':Tprofile,'myCourses':myCourses}
+        return { 'get_courses':sorted(cat),'sub_cat':sub_cat,'sub_cat2':sub_cat2,'get_cartCourses':get_cartCourses,'teacherProfile':Tprofile,'myCourses':myCourses}
     else:
-        return { 'get_courses':courses,'sub_cat':sub_cat,'sub_cat2':sub_cat2,'get_cartCourses':'','addedon_cartItem':'','myCourses':''}
+        return { 'get_courses':sorted(cat),'sub_cat':sub_cat,'sub_cat2':sub_cat2,'get_cartCourses':'','addedon_cartItem':'','myCourses':''}
     

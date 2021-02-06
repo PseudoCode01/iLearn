@@ -1,0 +1,889 @@
+
+body{
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.tutor{
+   display: flex;
+   justify-content: space-around;
+   /* margin-left: 10%; */   
+}
+/* Add padding to containers */
+.container {
+padding: 16px;
+width: 45rem;
+/* left: 30%; */
+
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+width: 97%;
+padding: 15px;
+padding: 15px;
+margin-bottom: 25px;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+
+
+input[type=text]:focus, input[type=password]:focus {
+background-color: #ddd;
+outline: none;
+}
+.gender{
+display: flex;
+margin-left: -13px;
+padding: 15px;
+margin-bottom: 25px;
+flex-wrap: wrap;
+}
+/* Overwrite default styles of hr */
+hr {
+border: 1px solid #f1f1f1;
+margin-bottom: 25px;
+}
+
+.for{
+  display: flex;
+  margin-left: -13px;
+  min-width: 80%;
+}
+.for2{
+  display: flex;
+  margin-left: -13px;
+  padding: 15px;
+  font-size: 21px;
+  flex-wrap: wrap;
+}
+.for2>div{
+  display: flex;
+  flex-wrap:wrap;
+}
+@media(max-width:700px){
+  .for2{
+font-size: 15px;
+  }
+}
+/* Set a style for the submit/register button */
+.registerbtn {
+background-color: rgb(65, 100, 236);
+color: white;
+padding: 16px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+opacity: 0.9;
+}
+
+.registerbtn:hover {
+opacity:1;
+}
+.container{
+    width:620px
+ }
+/* Add a blue text color to links */
+a {
+color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+background-color: #f1f1f1;
+text-align: center;
+}
+/* instruction box starts here */
+.instruct{
+    width: 450px;
+    margin-right: 50px;
+padding: 10px;
+align-items: center;
+margin: 20px 0;
+background-color:  rgb(6, 15, 151);
+color:white;
+box-shadow:0 0 10px #595959;
+}
+.instruct ul li{
+margin-top: 10px;
+font-weight: bold;
+font-style: italic;
+font-size: 17px;
+}
+.bin{
+width: 100%;
+border: 2px solid black;
+background-color:rgb(131, 226, 134) ;
+}
+.Id-proof,.discription{
+   width: 97%;
+padding: 15px;
+padding: 15px;
+margin-bottom: 25px;
+display: inline-block;
+border: none;
+background: #f1f1f1;
+}
+.discription textarea{
+   width: 95%;
+   margin-left: auto;
+   margin-right: auto;
+}
+@media screen and (max-width: 1100px){
+.tutor{
+   display: flex;
+   flex-direction: column; 
+   margin-left: 0; 
+} 
+.instruct{
+   width: 90%;
+   margin: auto;
+   
+}
+.container{
+   width: 92%;
+   margin: auto;
+}
+input[type=text], input[type=password],.id-proof,.discription {
+    width: 92%;
+    }
+.amountHigher{
+float: none;
+}
+.Id-proof{
+  width: 92%;
+}
+}
+.slider {
+    -webkit-appearance: none;
+    width: 75%;
+    height: 15px;
+    border-radius: 5px;  
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+  }
+  .rangerLow{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    }
+    .tutorProfile{
+      margin-bottom: 200px;
+      overflow-y: scroll;
+    }
+.tutorProfile>div{
+  width: 60%;
+margin-left: auto;
+margin-right: auto;
+display: flex;
+flex-direction: column;
+margin-top: 100px;
+}
+.t2{
+   display: none;
+}
+
+  /* The alert message box */
+  .alert-success {
+   padding: 15px;
+   background-color: #1ca609; /* Red */
+   color: white;
+   margin-bottom: 15px;
+ }
+ .alert-error {
+   padding: 15px;
+   background-color: #f44336; /* Red */
+   color: white;
+   margin-bottom: 15px;
+ }
+ 
+ /* The close button */
+ .closebtn {
+   margin-left: 15px;
+   color: white;
+   font-weight: bold;
+   float: right;
+   font-size: 22px;
+   line-height: 20px;
+   cursor: pointer;
+   transition: 0.3s;
+ }
+ 
+ /* When moving the mouse over the close button */
+ .closebtn:hover {
+   color: black;
+ }
+ .alert {
+   position: absolute;
+   left:0;
+   right: 0;
+   opacity: 1;
+   z-index: 2;
+   transition: opacity 0.6s; /* 600ms to fade out */
+ }
+ /*profile menu */
+.menu-outer:hover ~ .menu-close {
+  margin-right:-100px;
+}
+.menu-outer:hover .bar { background:rgba(100,200,240,.9); }
+.menu-outer > nav ul { top:15%; }
+
+/* The rest I chnaged parts but not most of it */
+
+.menu-outer {
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  font-family: 'Montserrat', serif;
+  z-index: 998;  
+  width: 100%;
+  left: 100%;
+  margin-left: -100px;
+  background: rgba(100,200,240,.9);  
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s; 
+  -webkit-transform-origin: top left;
+  -moz-transform-origin: top left;
+  -ms-transform-origin: top left;
+  -o-transform-origin: top left;
+  transform-origin: top left;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.menu-outer:hover {
+  background: rgba(100,200,240,.98);
+  left: 0;
+  margin-left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.menu-icon {
+  z-index: 999;
+  position: absolute;
+  top: 58px;
+  left: 15px;
+  width: 30px;
+  pointer-events: none;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+}
+.menu-icon .bar {
+  background: rgba(250,250,250,1);
+  width: 100%;
+  height: 5px;
+  margin: 0 0 5px;
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+}
+.menu-outer:hover > .menu-icon {
+  opacity: 0;
+}
+
+.menu-close {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  right: 100%;
+  width: 200px;
+  height: 200px;
+  background: rgba(250,130,70,1);
+  cursor: pointer;
+  -webkit-transition: all ease .5s;
+  -moz-transition: all ease .5s;
+  -ms-transition: all ease .5s;
+  -o-transition: all ease .5s;
+  transition: all ease .5s;
+  -webkit-transform-origin: top right;
+  -moz-transform-origin: top right;
+  -ms-transform-origin: top right;
+  -o-transform-origin: top right;
+  transform-origin: top right;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.menu-close .menu-icon {
+  right: 15px; left: auto;top: 68px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.menu-close .bar {
+  background: rgba(250,250,250,1);
+  width: 100%;
+  height: 5px;
+  position:absolute;
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+}
+.menu-close .bar:first-child {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.menu-close .bar:last-child {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* studentdemo */
+.demoContainer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 80px;
+}
+.profile-card {
+  width: 300px;
+  overflow: hidden;
+  text-align: center;
+  position: relative;
+  transition: .5s;
+  box-shadow: 0 0 10px #00000070;
+  margin-bottom: 50px;
+}
+.profile-card:hover{
+  transform: scale(1.1);
+}
+.top-section {
+  padding: 34px 20px;
+  background-color: #2c2c54aa;
+  height: 240px;
+}
+
+.message, .notif {
+  position: absolute;
+  top: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ffffff50;
+}
+
+.message {
+  right: 40px;
+}
+
+.notif {
+  left: 40px;
+}
+
+.pic {
+  width: 95px;
+  height: 95px;
+  margin: auto;
+  margin-bottom: 20px;
+  border: 2px solid #2c3e50;
+  border-radius: 50%;
+  padding: 8px;
+  position: relative;
+}
+
+.pic::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border: 1px solid #2c3e50;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  animation: wave 1.5s infinite linear;
+}
+
+@keyframes wave {
+  to {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.pic span {
+  font-size: 85px;
+}
+
+.name {
+  color: #f1f1f1;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.tag {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #222;
+}
+
+.bottom-section {
+  background: #f1f1f1;
+  padding: 20px 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  height: 125px;
+  text-transform: uppercase;
+}
+.address{
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.social-media {
+  position: absolute;
+  width: 100%;
+  top: -30px;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.social-media a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  text-decoration: none;
+  background: #2c3e50;
+  border-radius: 50%;
+  color: #f1f1f1;
+  font-size: 50px;
+  
+  position: relative;
+}
+
+.social-media a::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #2c3e50;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  border-radius: 50%;
+  z-index: -1;
+  transition: 0.4s linear;
+}
+
+.social-media a:hover::after {
+  transform: scale(1.4);
+  opacity: 0;
+  
+}
+/* sidebar to show number of unbuyed demos */
+/* Style the links inside the sidenav */
+
+
+.edit-btn{
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+  margin-top: 1.7vh;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.edit-btn:hover{
+  background-position: right;
+}
+
+#demosnumber {
+  top: 80px;
+  background-color: #2196F3; /* Blue */
+}
+#demosnumber span{
+  display:flex;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: red;
+  justify-content: center;
+  align-items: center;
+}
+
+/* loader */
+#loader-container {
+  width: 25px;
+  height: 25px;
+}
+
+@keyframes animation {
+  0% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -105;
+  }
+  50% {
+    stroke-dasharray: 80 10;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -300;
+  }
+}
+
+#spinner {
+  transform-origin: center;
+  animation-name: animation;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier;
+  animation-iteration-count: infinite;
+}
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+@media(max-width:500px){
+  .profile-card{
+width: 300px;
+  }
+  .tutorProfile>div{
+    width: 80%;
+  }
+}
+.buttonDownload {
+	display: inline-block;
+	position: relative;
+	padding: 10px 25px;
+  
+	background-color: rgb(48, 97, 174);
+	color: white;
+  
+	font-family: sans-serif;
+	text-decoration: none;
+	font-size: 0.9em;
+	text-align: center;
+	text-indent: 15px;
+}
+
+.buttonDownload:hover {
+	background-color: #333;
+	color: white;
+}
+
+.buttonDownload:before, .buttonDownload:after {
+	content: ' ';
+	display: block;
+	position: absolute;
+	left: 15px;
+	top: 52%;
+}
+
+/* Download box shape  */
+.buttonDownload:before {
+	width: 10px;
+	height: 2px;
+	border-style: solid;
+	border-width: 0 2px 2px;
+}
+
+/* Download arrow shape */
+.buttonDownload:after {
+	width: 0;
+	height: 0;
+	margin-left: 3px;
+	margin-top: -7px;
+  
+	border-style: solid;
+	border-width: 4px 4px 0 4px;
+	border-color: transparent;
+	border-top-color: inherit;
+	
+	animation: downloadArrow 2s linear infinite;
+	animation-play-state: paused;
+}
+
+.buttonDownload:hover:before {
+	border-color: rgb(48, 97, 174);
+}
+
+.buttonDownload:hover:after {
+	border-top-color: rgb(48, 97, 174);
+	animation-play-state: running;
+}
+
+/* keyframes for the download icon anim */
+@keyframes downloadArrow {
+	/* 0% and 0.001% keyframes used as a hackish way of having the button frozen on a nice looking frame by default */
+	0% {
+		margin-top: -7px;
+		opacity: 1;
+	}
+	
+	0.001% {
+		margin-top: -15px;
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	
+	100% {
+		margin-top: 0;
+		opacity: 0;
+	}
+}
+.overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup form{
+  width: 90%;
+  height: 100%;
+}
+.popup {
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+}
+.popup input[type='text']{
+  border: none;
+  height: 91%;
+  padding: 0;
+  margin-bottom: 0;
+  width: 85%;
+  padding: 2px;
+  margin-left: 3px;
+}
+
+.unlock{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.popup button[type='submit']{
+  font-size: 2.5rem;
+  height: 40px;
+cursor: pointer;
+padding: 2px;
+justify-content: end;
+margin-right: 3%;
+display: flex;
+align-items: center;
+color:blue;
+background-color: #f1f1f1;
+
+border: none;
+}
+.popup button[type='submit'] span{
+font-size: 30px;
+margin-left: auto;
+}
+.popup input[type='submit']:hover{
+color: rgb(2, 0, 128);
+
+}
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.popup .content {
+ 
+  overflow: auto;
+}
+
+.emptyCart{
+  border: 1px solid rgb(226, 226, 226);
+  width: 50%;
+  background-color: rgb(247, 247, 247);
+  margin-left: auto;
+  margin-top: 100px;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 2px;
+  align-items: center;
+  padding: 50px 0;
+  margin-bottom: 100px;
+}
+.emptyCart img{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+  .emptyCart h3{
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  }
+@media(max-width:950px){
+  .emptyCart{
+width: 80%;
+  }
+}
+@media(max-width:420px){
+  .emptyCart{
+width: 95%;
+  }
+}
+
+.locked{
+  background-color: blueviolet;
+  width: 80%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  padding: 20px;
+}
+.locked div>button{
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  transition: 0.5s;
+  background-size: 150% auto;
+  background-image: linear-gradient(to right, rgb(238, 130, 25) 0%, rgb(239, 69, 89) 100% 51%, rgb(238, 130, 25) 100%);
+  color: white;
+  border-radius: 2px;
+}
+.locked div>button:hover{
+  background-position: right;
+}
+.locked div.both{
+margin-top: 30px;
+}
+.proceed{
+  padding: 8px;
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 8px black;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  background-image: linear-gradient(to right, #004bc4 0%, #7d09a0 51%, #004bc4 100%);
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  }
+  .proceed:hover{
+    background-position: right;
+  }
+  @media(max-width:500px){
+    .popup{
+      width: 88%;
+    }
+    .for{
+      width: 100%;
+    }
+    .proceed{
+      margin-top: 10px;
+    }
+  }
+form .container h1{
+background: linear-gradientcd3e6,#c600b0);
+-webkit-background-clip: text;
+-webkit-text-fill-color:transparent;
+text-align: center;
+}
+form .container p{
+text-align:center;
+}
+

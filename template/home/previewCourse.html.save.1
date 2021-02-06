@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+
+{%block title%}Preview Course{% endblock title %}
+{% block body %}
+{% load static%}
+
+<link rel="stylesheet" href="{% static 'css/previewCourse.css' %}">
+<div class="preview">
+    <img class="mediaT" src="/media/{{course.0.courseThumbnail}}" alt="">
+    <div class="leftContent">
+        <h1>{{course.0.title|upper}}</h1>
+        <h2>{{course.0.category}}/{{course.0.sub_category}}/{{course.0.sub_category2}}</h2>
+        <div class="row">
+        <div class="stars"  data-rating="{{course.0.rating}}" data-rated={{course.0.ratedBy}}>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <h1 class="rate">0/5</h1>
+            </div> 
+            <p class="ratedBy">({{course.0.ratedBy}} ratings)</p>
+            <p class="enrolled">{{course.0.enrolled}} Students enrolled</p>
+        </div>
+        <div class="row"> <p class="cn" data-id="{{course.0.sno}}">Created By {{course.0.creater_name}}</p>
+        <p class="language">{{course.0.language}}</p>
+        </div>
+    </div>
+    <div class="rightContent">
+        <div class="item">
+            <img src="/media/{{course.0.courseThumbnail}}" alt="">
+            <div>
+            <div class="courseInfo">
+            <h1>Rs:{{course.0.pricing}}</h1>
+          </div>
+          <div class="cart">
+          <div class="addcart btn-cart">
+            <button data-product="{{course.0.sno}}" data-action="add" type="button" class="addCart" onclick="add(this)">Add To Cart</button>
+         </div> 
+        </div>
+    </div>
+         </div> 
+    </div>
+    
+</div>
+<div class="disc">
+    <h1>What you'll learn</h1>
+    <p>{{course.0.discription}}</p>
+</div>
+<div id="video">
+    <h1>Course content</h1>
+    <table style="width:98%">
+        {% for item in videos %}
+        <tr>
+          <td>{{item.0.videoTitle}} </td>
+          
+          <td id="fnameSaved">{{item.1}}m</td>
+          
+          {% if forloop.counter == 1 or item.0.isFree == True %}
+          <td><img onclick="preview('{{item.0.videofile}}','{{item.0.thumbnail}}')" src="/static/img/tv.png" alt="">
+        </tr>
+        {% else %}
+        <td><img src="/static/img/locked.png" alt="">
+        </tr>
+          {% endif %}
+          
+        {% endfor %}
+            
+      </table> 
+</div>
+<div class="aboutCreater">
+    
+    {% if teacherProfile %}
+         <h1>{{course.0.creater_name}} (Username)</h1>
+        <h2>{{teacherProfile.0.fname}} {{teacherProfile.0.fname}}</h2>
+        <span>{{teacherProfile.0.disc}}</span>
+    <div class="allcourses">
+        <h1>Creater of:</h1>
+        {% for i  in allcourses %}
+        <p>{{i.title}}</p>
+        {% endfor %}
+            
+    </div>
+    {% endif %}
+        
+</div>
+<div class="studentsReview">
+    
+    {% for r in reviews %}
+      <div class="review">
+<div class="leftcircle">
+<span>{{r.username|first|upper}}</span>
+</div>
+<div class="right">
+<p>{{r.review}}</p>
+<div class="stars reviewstars" data-r="{{r.rating}}">
+    <span class="star" data-val="1"></span>
+    <span class="star" data-val="2"></span>
+    <span class="star" data-val="3"></span>
+    <span class="star" data-val="4"></span>
+    <span class="star" data-val="5"></span>
+    </div> 
+<h3>{{r.username|upper}}-{{r.timeStamp}}</h3>
+</div>
+</div>
+<hr>
+<div class="review">
+<div class="leftcircle">
+<span>A</span>
+</div>
+<div class="right">
+<p>{{r.review}}</p>
+<div class="stars reviewstars" data-r="4">
+    <span class="star" data-val="1"></span>
+    <span class="star" data-val="2"></span>
+    <span class="star" data-val="3"></span>
+    <span class="star" data-val="4"></span>
+    <span class="star" data-val="5"></span>
+    </div> 
+<h3>{{r.username}}-{{r.timeStamp}}</h3>
+</div>
+</div>
+{% endfor %}
+</div>
+<div id="myModal" class="modal modal-preview">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="close closepreview">&times;</span>
+        <div class="Welcomesignup">
+          <h2 style="font-size: 16px;">{{course.0.title|upper}}</h2>
+        </div>
+      </div>
+      <div class="modal-body pre">
+        
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static 'js/previewCourse.js' %}"></script>
+{% endblock body %}
+    

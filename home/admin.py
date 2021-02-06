@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from .models import Contact,Courses,Videos,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,HomeTutorDemo,ReviewCourse,Notification,TestVideo,AccountDetails,RequestTution
+from .models import Contact,Courses,Videos,TeacherProfile,MyCourses,WatchedVideos,HomeTutor,Categories,HomeTutorDemo,ReviewCourse,Notification,TestVideo,AccountDetails,RequestTution,Test,TestImage,TestResult,TestCart,MyTest,TestCategories,InstructorAddedTest,TeachCategories,Doubt,DoubtReply,Doubtliked,Updates,BookMark,wallet,SratchCard,Cart,Megaquiz,MegaQuizInstruction,Notify,AccountDetailsForMQ,MegaquizResult,GeneralNotify,Notes,Feed,SavedFeed,FeedComment,WordoftheDay,Practice,FeedLike,FeedShare,PracticeEnglish,MegaQuizEnglish,MegaQuizHindi,Stories,PreviousPaper,alert,alertrecieved
 # Register your models here.
 admin.site.register(Contact),
 admin.site.register(Courses),
@@ -17,5 +17,44 @@ admin.site.register(Notification),
 admin.site.register(TestVideo),
 admin.site.register(AccountDetails),
 admin.site.register(RequestTution),
+admin.site.register(Test),
+admin.site.register(TestImage),
+admin.site.register(TestResult),
+admin.site.register(TestCart),
+admin.site.register(MyTest),
+admin.site.register(Categories)
+admin.site.register(TestCategories),
+admin.site.register(InstructorAddedTest),
+admin.site.register(TeachCategories),
+admin.site.register(Doubt),
+admin.site.register(DoubtReply),
+admin.site.register(Doubtliked),
+admin.site.register(BookMark),
+admin.site.register(Updates),
+admin.site.register(SratchCard),
+admin.site.register(wallet),
+admin.site.register(Cart),
+admin.site.register(Megaquiz),
+admin.site.register(MegaQuizInstruction),
+admin.site.register(Notify),
+admin.site.register(AccountDetailsForMQ),
+admin.site.register(MegaquizResult),
+admin.site.register(GeneralNotify),
+admin.site.register(Notes),
+admin.site.register(Feed),
+admin.site.register(SavedFeed),
+admin.site.register(FeedComment),
+admin.site.register(WordoftheDay),
+admin.site.register(Practice),
+admin.site.register(FeedLike),
+admin.site.register(FeedShare),
+admin.site.register(PracticeEnglish),
+admin.site.register(MegaQuizEnglish),
+admin.site.register(MegaQuizHindi),
+admin.site.register(Stories),       
+admin.site.register(PreviousPaper),
+admin.site.register(alert),
+admin.site.register(alertrecieved),
+
 
 

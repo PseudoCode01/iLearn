@@ -4,6 +4,9 @@ body{
   margin: 0;
   padding: 0;
 }
+.title{
+ font-size:10px;
+}
 .body{
   height: 100%;
   min-height: 100%;
@@ -363,16 +366,6 @@ border-radius: 4px;
     padding:0;
     width: 130px;
 }
-/* #uname span{
-  float: right;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin-top: 8px;
-  margin-left: 10px;
-  color: white;
-} */
-
 /* mobile nav */
 @media(max-width:950px){
   .topnav{
@@ -476,6 +469,10 @@ color: white;
 font-weight: bolder;
 font-size: 20px;
   }
+.topnav a,.topnav p{
+font-size:15px;
+cursor:pointer;
+}
 
   input {
     outline: none;
@@ -580,9 +577,11 @@ color: teal;
   }
   #uname a{
     text-decoration: none;
-    margin-top: 34px;
-    color: teal;
+     color: teal;
   }
+ .role{
+ margin-top:27px;
+ }
   #uname span{
     color: black;
     position: absolute;

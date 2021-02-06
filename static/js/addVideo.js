@@ -1,6 +1,5 @@
 var coll = document.getElementsByClassName("collapsible");
 var i;
-
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
@@ -47,24 +46,29 @@ function move() {
 } 
 var xhr = new XMLHttpRequest();
 function sendForm(val,element){
+console.log(val)
 var file1=document.getElementById('thumbnail'+val).files[0]
 var file2=document.getElementById('video'+val).files[0]
 var file3=document.getElementById('resources'+val).files[0]
-
-if(file1.size/1024>150 || file2.size/1024>(1024*1024) || (file3!==undefined && file3.size/1024>1024)){
+var url=URL.createObjectURL(file2)
+var vid=document.createElement('video');
+vid.src=url;
+if(file1.size/1024>1024 || file2.size/1024>(1024*1024) || (file3!==undefined && file3.size/1024>1024*8)){
   document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
  Files not in required format.
  </div> ` 
 }
 else{
+vid.ondurationchange=function(){
+  
 var formData = new FormData();
 formData.append("thumbnail", file1);
 formData.append("video", file2);
 formData.append("resources", file3);
 formData.append("title", document.getElementById('videoTitle'+val).value);
 formData.append("courseSno", val);
-
+formData.append("flen", vid.duration);
 
 
   xhr.open('POST', '/video',true);
@@ -75,7 +79,7 @@ formData.append("courseSno", val);
   xhr.onload = function() {
     
   if (xhr.status != 200) { 
-    // alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+    alert(`Error ${xhr.status}: ${xhr.statusText}`); 
     document.getElementById('thumbnail'+val).disabled=false
     document.getElementById('video'+val).disabled=false
     document.getElementById('resources'+val).disabled=false
@@ -128,7 +132,7 @@ xhr.onerror = function() {
   alert("Request failed");
 };
 }
-}
+}}
 function abort(val){
   xhr.abort();
   document.getElementById('thumbnail'+val).disabled=false
@@ -167,12 +171,14 @@ function remove(val,x){
 
 function play(val,pos){
   var modalPreview = document.querySelector(".modal-preview");
-  let url='geturl'
+  let url='/geturl'
   var curl='media/'+val
+console.log(curl)
   fetch(url,{
       method:'POST',
       headers:{
-          'Content-Type':'application/json',
+          
+           'ContentType': 'application/octet-stream',
           'X-CSRFToken':csrftoken,
       },
       body:JSON.stringify({'curl':curl})
